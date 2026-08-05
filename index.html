@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>南方电网电力资讯日报 · 晨报仪表盘（领域聚焦版）</title>
+<style>
+  :root{
+    --bg:#0b1020;
+    --bg-soft:#11182e;
+    --card:#15203b;
+    --card-hover:#1b2949;
+    --line:#243355;
+    --text:#e8eefc;
+    --muted:#9fb0d0;
+    --accent:#3ee0c0;
+    --accent2:#5b8cff;
+    --warn:#ffcf6b;
+    --chip:#1f2d4d;
+    --shadow:0 10px 30px rgba(0,0,0,.35);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,sans-serif;
+    background:radial-gradient(1200px 600px at 80% -10%,rgba(91,140,255,.18),transparent 60%),
+               radial-gradient(900px 500px at -10% 10%,rgba(62,224,192,.12),transparent 55%),
+               var(--bg);
+    color:var(--text);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px;}
+
+  /* ===== Hero ===== */
+  .hero{
+    padding:40px 20px 28px;text-align:center;
+    border-bottom:1px solid var(--line);
+    background:linear-gradient(180deg,rgba(91,140,255,.10),transparent);
+  }
+  .hero .kicker{font-size:13px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
+  .hero h1{margin:0 0 6px;font-size:clamp(26px,4vw,40px);font-weight:800;
+    background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;}
+  .hero .date{color:var(--muted);font-size:15px;margin-bottom:22px;}
+  .hero .stat-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
+  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 20px;min-width:120px;box-shadow:var(--shadow);}
+  .stat .num{font-size:30px;font-weight:800;color:var(--accent);line-height:1;}
+  .stat .lbl{font-size:13px;color:var(--muted);margin-top:6px;}
+
+  /* ===== Nav ===== */
+  .nav{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.82);backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);padding:12px 0;}
+  .nav-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
+  .nav a{text-decoration:none;font-size:14px;color:var(--muted);padding:7px 13px;border:1px solid var(--line);border-radius:999px;transition:.18s;white-space:nowrap;}
+  .nav a:hover{color:var(--text);border-color:var(--accent);background:var(--chip);}
+  .nav .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:middle;}
+  .nav .spacer{flex:1;}
+  .nav .status{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;}
+  .nav button{font:inherit;font-size:13px;cursor:pointer;color:var(--text);background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:7px 14px;transition:.18s;}
+  .nav button:hover{border-color:var(--accent2);}
+
+  /* ===== Banner ===== */
+  .banner{margin:22px auto 0;max-width:1180px;padding:12px 18px;border-radius:12px;font-size:14px;display:flex;gap:10px;align-items:center;border:1px solid var(--line);}
+  .banner.ok{background:rgba(62,224,192,.10);border-color:rgba(62,224,192,.4);color:#bff7ec;}
+  .banner.fallback{background:rgba(255,207,107,.10);border-color:rgba(255,207,107,.4);color:#ffe6b0;}
+
+  /* ===== Toolbar + domain filter ===== */
+  .toolbar{max-width:1180px;margin:22px auto 0;padding:0 20px;}
+  .toolbar input{width:100%;font:inherit;font-size:15px;color:var(--text);background:var(--bg-soft);
+    border:1px solid var(--line);border-radius:12px;padding:12px 16px;outline:none;transition:.18s;}
+  .toolbar input:focus{border-color:var(--accent2);}
+  .domain-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .dpill{font-size:13px;cursor:pointer;color:var(--muted);background:var(--chip);border:1px solid var(--line);
+    border-radius:999px;padding:6px 13px;transition:.18s;display:flex;align-items:center;gap:7px;user-select:none;}
+  .dpill .swatch{width:9px;height:9px;border-radius:50%;}
+  .dpill:hover{color:var(--text);}
+  .dpill.active{color:#0b1020;font-weight:700;border-color:transparent;}
+  .dpill.active .swatch{box-shadow:0 0 0 2px rgba(255,255,255,.5);}
+
+  /* ===== Sections ===== */
+  .section{margin-top:38px;}
+  .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;border-left:4px solid var(--accent);padding-left:12px;}
+  .section-head h2{margin:0;font-size:22px;font-weight:800;}
+  .section-head .count{color:var(--muted);font-size:14px;}
+  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;
+    display:flex;flex-direction:column;gap:10px;transition:.18s;position:relative;overflow:hidden;}
+  .card:hover{transform:translateY(-3px);background:var(--card-hover);border-color:var(--accent2);box-shadow:var(--shadow);}
+  .card .idx{position:absolute;top:14px;right:14px;font-size:13px;font-weight:700;color:var(--accent);
+    background:rgba(62,224,192,.12);border:1px solid rgba(62,224,192,.3);border-radius:8px;padding:2px 8px;}
+  .card .title{font-size:16px;font-weight:700;line-height:1.45;padding-right:48px;}
+  .card .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
+  .chip{font-size:12px;color:var(--muted);background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:3px 10px;}
+  .chip.src{color:var(--accent2);border-color:rgba(91,140,255,.4);}
+  .chip.dom{color:#0b1020;font-weight:600;border-color:transparent;}
+  .card .summary{font-size:14px;color:#cfdbf2;flex:1;}
+  .card .link{align-self:flex-start;text-decoration:none;font-size:13px;font-weight:600;color:var(--accent);
+    border:1px solid rgba(62,224,192,.35);border-radius:8px;padding:6px 12px;transition:.18s;}
+  .card .link:hover{background:rgba(62,224,192,.12);}
+  .card.hide{display:none;}
+
+  /* ===== Footer ===== */
+  .foot{margin-top:48px;padding:24px 20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px;line-height:1.8;}
+  .foot b{color:var(--text);}
+  .empty{text-align:center;color:var(--muted);padding:40px;display:none;}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="kicker">CSG Power Daily · 领域聚焦版</div>
+  <h1>南方电网电力资讯日报</h1>
+  <div class="date" id="heroDate">—</div>
+  <div class="stat-row" id="heroStats"></div>
+</header>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a href="#sec-model">🤖 模型发布/更新</a>
+    <a href="#sec-product">📦 产品发布/更新</a>
+    <a href="#sec-industry">📰 行业动态</a>
+    <a href="#sec-paper">📚 论文研究</a>
+    <a href="#sec-opinion">💡 技巧与观点</a>
+    <span class="spacer"></span>
+    <span class="status"><span class="dot" id="statusDot"></span><span id="statusText">初始化…</span></span>
+    <button id="refreshBtn" type="button">刷新</button>
+  </div>
+</nav>
+
+<div class="banner ok" id="banner" style="display:none;"></div>
+
+<div class="toolbar">
+  <input id="search" type="text" placeholder="🔍 按标题或摘要筛选（全局序号保持不变）…" autocomplete="off" />
+  <div class="domain-bar" id="domainBar"></div>
+</div>
+
+<main class="wrap" id="main"></main>
+
+<div class="empty" id="empty">没有匹配的条目。</div>
+
+<footer class="foot" id="foot"></footer>
+
+<script>
+/* =========================================================================
+   南方电网电力资讯日报 · 单文件仪表盘（领域聚焦版）
+   聚焦领域：电能质量、电力电子、智能电网、低压智能台区、配电网、
+            服务类、物资工具类、应急工具类。
+   数据为构建时联网聚合（南方电网官媒、人民日报、科技日报、央视、中国电
+   机工程学报、中国电力、中国能源报、界面新闻等公开来源），按五个固定版
+   块整理、全局连续编号，每条标注所属领域。
+   运行时：优先读取同目录固定地址 ./daily-report.json（由每日定时任务刷新，
+   网页地址不变）；读取失败或为空则回退内置「最新一期」数据；当日数据未生成
+   时回退最近一期。联网状态仅作提示，不影响数据加载。
+   ========================================================================= */
+
+const DATA_URL = "./daily-report.json"; // 部署后与页面同目录，地址固定；每天由定时任务重新生成
+
+const DOMAINS = [
+  {key:"电能质量",   color:"#ff8fab"},
+  {key:"电力电子",   color:"#ffb86b"},
+  {key:"智能电网",   color:"#5b8cff"},
+  {key:"低压智能台区",color:"#3ee0c0"},
+  {key:"配电网",     color:"#8b7bff"},
+  {key:"服务类",     color:"#6be0a0"},
+  {key:"物资工具类", color:"#f5d76e"},
+  {key:"应急工具类", color:"#ff6b6b"}
+];
+const DOMAIN_COLOR = Object.fromEntries(DOMAINS.map(d=>[d.key,d.color]));
+
+const EMBEDDED_REPORT = {
+  date: "2026-08-05",
+  sections: [
+    {
+      id:"model", name:"模型发布/更新", icon:"🤖",
+      items:[
+        { title:"南网“大瓦特·云睿”配网规划智能体入选WAIC十大镇馆之宝", source:"科技日报", domain:"智能电网", date:"2026年7月17日",
+          summary:"大瓦特·云睿入选WAIC十大镇馆之宝，10分钟生成配网规划方案。",
+          url:"https://www.stdaily.com/web/gdxw/2026-07/17/content_549211.html" },
+        { title:"南网“大瓦特—多模态2.0”通过中国信通院工业大模型评测", source:"人民日报", domain:"智能电网", date:"2026年7月21日",
+          summary:"大瓦特—多模态2.0通过信通院工业大模型评测，适配发输变配用全链条。",
+          url:"https://paper.people.com.cn/rmrb/pc/content/202607/21/content_30169986.html" },
+        { title:"南网“大瓦特·天象”气象大模型：1千里分辨率、15天预见期", source:"南方电网", domain:"智能电网", date:"2026年7月31日",
+          summary:"大瓦特·天象气象大模型分辨率1千里、预见期15天，气温偏差0.9℃。",
+          url:"https://www.csg.cn/epaper/epaper/nfdwb/html/2026-07/31/content_2365.htm" },
+        { title:"南方电网申请电力调度领域语义大模型训练方法专利", source:"金融界", domain:"智能电网", date:"2026年8月4日",
+          summary:"南网申请电力调度语义大模型训练专利，兼顾模型精度与实时效率。",
+          url:"https://m.jrj.com.cn/madapter/finance/2026/08/04162058009528.shtml" },
+        { title:"国家电网“光明电力大模型”转供方案采纳率超90%", source:"科技日报", domain:"智能电网", date:"2026年8月5日",
+          summary:"国家电网光明电力大模型转供方案采纳率超90%，秒级生成最优解。",
+          url:"https://www.stdaily.com/web/gdxw/2026-08/05/content_559440.html" }
+      ]
+    },
+    {
+      id:"product", name:"产品发布/更新", icon:"📦",
+      items:[
+        { title:"南方电网首套退役动力电池台区储能装置投运", source:"鑫椤资讯", domain:"低压智能台区", date:"2026年8月4日",
+          summary:"南网首套退役动力电池台区储能投运，破解农村低电压治理难题。",
+          url:"http://www.icbattery.com/news/show-htm-itemid-65441.html" },
+        { title:"国电南瑞发布“南瑞如意”微网组态化产品及能碳管理平台", source:"中国能源新闻网", domain:"智能电网", date:"2026年4月10日",
+          summary:"国电南瑞发布南瑞如意微网组态化产品及能碳管理平台，国际领先。",
+          url:"https://www.cnenergynews.cn/article/4R6crcNMnrU" },
+        { title:"国电南瑞发布“南瑞瑞元”企业级智能体平台", source:"中国能源新闻网", domain:"智能电网", date:"2026年4月10日",
+          summary:"南瑞瑞元企业级智能体平台发布，获信通院智能体平台5级认证。",
+          url:"https://www.cnenergynews.cn/article/4R6crcNMnrU" },
+        { title:"长江电工C-Smart 3.0 Pro AI开关柜亮相第四届链博会", source:"中国能源新闻网", domain:"电力电子", date:"2026年6月22日",
+          summary:"长江电工C-Smart 3.0 Pro AI开关柜亮相链博会，一键顺控提效70%。",
+          url:"https://cnenergynews.cn/article/4S5pcwoxTcA" },
+        { title:"南网智能巡检机器狗“吠云”预计8月出口智利", source:"南方电网", domain:"物资工具类", date:"2026年7月",
+          summary:"南网智能巡检机器狗吠云预计8月出口智利，已适配新工作场景。",
+          url:"https://paper.people.com.cn/rmrb/pc/content/202607/21/content_30169986.html" },
+        { title:"南网具身智脑基座大模型驱动巡检机器人试点", source:"南方电网", domain:"物资工具类", date:"2026年7月",
+          summary:"南网具身智脑基座大模型驱动巡检机器人试点，巡检时长压缩60%。",
+          url:"https://paper.people.com.cn/rmrb/pc/content/202607/21/content_30169986.html" },
+        { title:"国内首套配变增容调压调平衡装置投运", source:"中国能源报", domain:"电力电子", date:"2026年2月2日",
+          summary:"云南首套配变增容调压调平衡装置投运，柔性变换治理电能质量。",
+          url:"https://paper.people.com.cn/zgnyb/pc/content/202602/02/content_30138451.html" },
+        { title:"清远“电鸿”低压台区透明化解决方案获国际领先", source:"南方+/今日头条", domain:"低压智能台区", date:"2026年2月8日",
+          summary:"清远电鸿低压台区透明化方案获国际领先，实现光伏四可管控。",
+          url:"https://www.toutiao.com/article/7604498087906427398/" },
+        { title:"南网科技营配融合低压透明化解决方案亮相“陈村范式”", source:"网易", domain:"低压智能台区", date:"2026年4月9日",
+          summary:"南网科技营配融合低压透明化方案亮相，覆盖3万余台区百万用户。",
+          url:"https://c.m.163.com/news/a/KRHQV09405568W0A.html" }
+      ]
+    },
+    {
+      id:"industry", name:"行业动态", icon:"📰",
+      items:[
+        { title:"《新型电力系统建设“十五五”规划》印发", source:"央视新闻", domain:"智能电网", date:"2026年8月3日",
+          summary:"新型电力系统建设十五五规划印发，2030年非化石能源发电占比50%。",
+          url:"https://news.cctv.cn/2026/08/05/ARTIQeJRWWh4zKy8pDTIsq6r260805.shtml" },
+        { title:"深圳供电局“空天地”智能巡检完成APEC会议保电", source:"中国能源报", domain:"应急工具类", date:"2026年8月3日",
+          summary:"深圳供电局空天地智能巡检完成APEC林业部长级会议保电。",
+          url:"https://paper.people.com.cn/zgnyb/pc/content/202608/03/content_30173287.html" },
+        { title:"2026“7·26电力主题日”在杭州举办，电力AI进入价值创造阶段", source:"今日头条", domain:"智能电网", date:"2026年7月26日",
+          summary:"7·26电力主题日杭州举办，电力AI从技术验证迈向价值创造。",
+          url:"https://www.toutiao.com/article/7670358425036980788/" },
+        { title:"贵州晴隆160MW+200MW两大光伏项目并网发电", source:"UC/有驾", domain:"配电网", date:"2026年8月4日",
+          summary:"贵州晴隆160MW+200MW两大光伏项目并网，接入南方电网消纳。",
+          url:"http://m.uczzd.cn/ucnews/news?aid=2335432413830718311" },
+        { title:"威胜信息中标南方电网终端核心板定制化服务4797万元", source:"微信", domain:"物资工具类", date:"2026年8月5日",
+          summary:"威胜信息中标南网终端核心板定制服务4797万元，占营收2.4%。",
+          url:"http://mp.weixin.qq.com/s?__biz=MjM5OTIyMTQ4MQ==&mid=2652000243&idx=4&sn=37579647fa4656f9631b18af18ba9449" },
+        { title:"南方电网申请电缆界面多材料组分预测专利", source:"金融界", domain:"物资工具类", date:"2026年8月5日",
+          summary:"南网申请电缆界面多材料组分预测专利，提升智能运维检测精度。",
+          url:"https://finance.jrj.com.cn/2026/08/05132058022255.shtml" },
+        { title:"南方电网申请电力设备替代等效性联合评估专利", source:"金融界", domain:"物资工具类", date:"2026年8月4日",
+          summary:"南网申请电力设备替代等效性联合评估专利，提升评估鲁棒性。",
+          url:"https://m.jrj.com.cn/madapter/finance/2026/08/04191258013571.shtml" },
+        { title:"广东电网低压电能质量综合治理装置(UPQC)等框架招标中标", source:"南方电网供应链", domain:"电能质量", date:"2026年5月25日",
+          summary:"广东电网UPQC等电能质量治理装置框架招标中标，南网科技等入选。",
+          url:"https://www.bidding.csg.cn/zbhxrgs/1200430643.jhtml" },
+        { title:"南方电网解读供电质量提升专项行动(2026—2028)", source:"南方电网", domain:"服务类", date:"2026年6月2日",
+          summary:"南网解读供电质量提升专项行动，为500余家敏感用户供技术服务。",
+          url:"https://www.csg.cn/xwzx/2026/2026gsyw/202606/t20260602_355539.html" }
+      ]
+    },
+    {
+      id:"paper", name:"论文研究", icon:"📚",
+      items:[
+        { title:"基于Swin Transformer的电力系统暂态稳定评估", source:"中国电机工程学报", domain:"配电网", date:"2026年",
+          summary:"中国电机工程学报：基于Swin Transformer的电力系统暂态稳定评估。",
+          url:"http://ntps.epri.sgcc.com.cn/djgcxb/CN/Y2026/V46/I10" },
+        { title:"物理一致性时空图神经网络用于配电网拓扑检测与状态估计", source:"中国电机工程学报", domain:"配电网", date:"2026年",
+          summary:"中国电机工程学报：物理一致性时空图神经网络用于配网拓扑检测。",
+          url:"http://ntps.epri.sgcc.com.cn/djgcxb/CN/Y2026/V46/I11" },
+        { title:"基于行波传递函数差异矩阵的配电网故障定位方法", source:"中国电力", domain:"配电网", date:"2026年7月",
+          summary:"中国电力：基于行波传递函数差异矩阵的配电网故障定位新方法。",
+          url:"https://www.electricpower.com.cn/cn/article/2026/7" }
+      ]
+    },
+    {
+      id:"opinion", name:"技巧与观点", icon:"💡",
+      items:[
+        { title:"云南电科院电鸿智联配网直连直控透明化调控获应用标杆", source:"今日头条", domain:"配电网", date:"2026年",
+          summary:"云南电科院电鸿智联配网直连直控调控获数字中国创新大赛标杆。",
+          url:"https://www.toutiao.com/article/7633795934111351330/" },
+        { title:"昆明蛇形爬线巡检机器人上岗", source:"都市时报/今日头条", domain:"物资工具类", date:"2026年4月3日",
+          summary:"昆明官渡供电局自研蛇形爬线机器人上岗，自主巡检10千伏线路。",
+          url:"https://www.toutiao.com/article/7624487293012754950" },
+        { title:"钦州AI带电接火机器人首次“上岗”", source:"人民网/网易", domain:"物资工具类", date:"2026年5月19日",
+          summary:"钦州AI带电接火机器人首秀，远程精准完成引线搭接与线夹紧固。",
+          url:"https://www.163.com/dy/article/KT9KM6760530QRMB.html" },
+        { title:"电网具身智能近100亿采购(巡检/带电作业/应急救援)", source:"界面新闻/今日头条", domain:"应急工具类", date:"2026年4月22日",
+          summary:"电网具身智能采购近100亿，覆盖巡检带电作业应急救援仓储。",
+          url:"https://www.toutiao.com/article/7633243853994148386/" },
+        { title:"玉溪澄江低压透明配网+“南网在线”春节保供电", source:"搜狐", domain:"服务类", date:"2026年2月",
+          summary:"玉溪澄江低压透明配网+南网在线，春节保供电精准响应。",
+          url:"https://www.sohu.com/a/988799272_120578424" }
+      ]
+    }
+  ]
+};
+
+/* ---------- 工具函数 ---------- */
+function todayBeijingDateStr(){
+  return new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'long',day:'numeric'}).format(new Date());
+}
+function isTodayBeijing(dateStr){ return dateStr === todayBeijingDateStr(); }
+function fmtISODate(iso){
+  if(!iso) return '-';
+  const m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(iso);
+  if(!m) return iso;
+  return `${m[1]}年${parseInt(m[2],10)}月${parseInt(m[3],10)}日`;
+}
+
+/* ---------- 联网探测（不阻塞渲染） ---------- */
+async function probeInternet(){
+  const dot=document.getElementById('statusDot'), txt=document.getElementById('statusText');
+  try{
+    const ctrl=new AbortController(); const t=setTimeout(()=>ctrl.abort(),6000);
+    await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://www.csg.cn/xwzx/'),{signal:ctrl.signal});
+    clearTimeout(t); dot.style.background='var(--accent)'; txt.textContent='在线（已连接互联网）'; return true;
+  }catch(e){
+    dot.style.background='var(--warn)'; txt.textContent='离线（使用内置最新数据）'; return false;
+  }
+}
+
+/* ---------- 数据加载：远程优先，回退内置 ---------- */
+async function loadReport(){
+  try{
+    const res=await fetch(DATA_URL,{cache:'no-store'});
+    if(res.ok){
+      const data=await res.json();
+      if(data&&Array.isArray(data.sections)&&data.sections.length) return {data,live:true};
+    }
+  }catch(e){ /* 本地 file:// 或托管不可达时回退内置 */ }
+  return {data:EMBEDDED_REPORT,live:false};
+}
+
+/* ---------- 过滤状态 ---------- */
+const state={ domain:null, q:"" };
+
+/* ---------- 渲染 ---------- */
+function render(report, live){
+  let global=0; const flat=[];
+  report.sections.forEach(sec=>{
+    sec.items.forEach(it=>{ global++; flat.push({...it,sectionId:sec.id,g:global}); });
+  });
+
+  document.getElementById('heroDate').textContent = `报告日期：${fmtISODate(report.date)}（北京时间）`;
+
+  const total=flat.length;
+  const counts=report.sections.map(s=>({name:s.name,icon:s.icon,n:s.items.length}));
+  let html=`<div class="stat"><div class="num">${total}</div><div class="lbl">总条数</div></div>`;
+  counts.forEach(c=>{ html+=`<div class="stat"><div class="num">${c.n}</div><div class="lbl">${c.icon} ${c.name}</div></div>`; });
+  document.getElementById('heroStats').innerHTML=html;
+
+  // 领域统计（Hero 下方以筛选条呈现，这里仅计算）
+  const domCounts={}; DOMAINS.forEach(d=>domCounts[d.key]=0);
+  flat.forEach(f=>{ if(domCounts[f.domain]!==undefined) domCounts[f.domain]++; });
+
+  const banner=document.getElementById('banner'); const reportDateStr=fmtISODate(report.date);
+  if(isTodayBeijing(reportDateStr)){
+    banner.className='banner ok'; banner.style.display='flex';
+    banner.innerHTML=`✅ 今日（${todayBeijingDateStr()}）数据已生成，共 ${total} 条 · 仅含电能质量/电力电子/智能电网/低压智能台区/配电网/服务类/物资工具类/应急工具类 8 大领域 · 数据${live?'实时获取':'内置聚合'}。`;
+  }else{
+    banner.className='banner fallback'; banner.style.display='flex';
+    banner.innerHTML=`⚠️ 今日数据尚未生成，已回退展示最近一期（${reportDateStr}），共 ${total} 条。`;
+  }
+
+  // 正文
+  const main=document.getElementById('main'); let body='';
+  report.sections.forEach(sec=>{
+    body+=`<section class="section" id="sec-${sec.id}"><div class="section-head"><h2>${sec.icon} ${sec.name}</h2><span class="count">${sec.items.length} 条</span></div><div class="grid">`;
+    flat.filter(f=>f.sectionId===sec.id).forEach(f=>{
+      const dc=DOMAIN_COLOR[f.domain]||'#9fb0d0';
+      body+=`<article class="card" data-text="${(f.title+' '+f.summary).replace(/"/g,'')}" data-domain="${escapeAttr(f.domain)}">
+        <span class="idx">#${f.g}</span>
+        <div class="title">${escapeHtml(f.title)}</div>
+        <div class="meta">
+          <span class="chip dom" style="background:${dc}">${escapeHtml(f.domain)}</span>
+          <span class="chip src">${escapeHtml(f.source)}</span>
+          <span class="chip">🕒 ${escapeHtml(f.date)}</span>
+        </div>
+        <div class="summary">${escapeHtml(f.summary)}</div>
+        <a class="link" href="${escapeAttr(f.url)}" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
+      </article>`;
+    });
+    body+=`</div></section>`;
+  });
+  main.innerHTML=body;
+
+  // 领域筛选条
+  const bar=document.getElementById('domainBar');
+  let barHtml=`<span class="dpill ${state.domain===null?'active':''}" data-dom="__all" style="${state.domain===null?'background:var(--accent)':''}">全部</span>`;
+  DOMAINS.forEach(d=>{
+    const active=state.domain===d.key;
+    barHtml+=`<span class="dpill ${active?'active':''}" data-dom="${escapeAttr(d.key)}" style="${active?`background:${d.color}`:''}"><span class="swatch" style="background:${d.color}"></span>${d.key} <b>${domCounts[d.key]}</b></span>`;
+  });
+  bar.innerHTML=barHtml;
+  bar.querySelectorAll('.dpill').forEach(p=>{
+    p.addEventListener('click',()=>{
+      const v=p.getAttribute('data-dom'); state.domain=(v==='__all')?null:v; render(report,live);
+    });
+  });
+
+  // 页脚
+  const srcs=[...new Set(flat.map(f=>f.source))];
+  document.getElementById('foot').innerHTML=
+    `南方电网电力资讯日报 · 领域聚焦版<br>`+
+    `本页共 <b>${total}</b> 条资讯，按五固定版块分组、全局连续编号，并仅保留 `+
+    `<b>电能质量 / 电力电子 / 智能电网 / 低压智能台区 / 配电网 / 服务类 / 物资工具类 / 应急工具类</b> 八大领域。`+
+    `<br>数据源：${srcs.join('、')} 等公开报道（经联网检索聚合）。时间均为北京时间通俗格式。<br>`+
+    `<span style="opacity:.7">报告日期 ${fmtISODate(report.date)||'-'} · 数据${live?'实时获取':'内置聚合最新一期'}</span>`;
+
+  applyFilters();
+}
+
+function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+function escapeAttr(s){ return escapeHtml(s); }
+
+function applyFilters(){
+  const q=state.q.trim().toLowerCase();
+  let visible=0;
+  document.querySelectorAll('.card').forEach(card=>{
+    const hitQ = !q || (card.dataset.text||'').toLowerCase().includes(q);
+    const hitD = !state.domain || card.dataset.domain===state.domain;
+    const show = hitQ && hitD;
+    card.classList.toggle('hide', !show);
+    if(show) visible++;
+  });
+  document.getElementById('empty').style.display = visible ? 'none' : 'block';
+}
+
+/* ---------- 启动 ---------- */
+(async function init(){
+  const {data,live}=await loadReport();
+  render(data,live);
+  probeInternet();
+  document.getElementById('search').addEventListener('input',e=>{ state.q=e.target.value; applyFilters(); });
+  document.getElementById('refreshBtn').addEventListener('click',async()=>{
+    const {data:d,live:l}=await loadReport(); render(d,l); await probeInternet(); window.scrollTo({top:0,behavior:'smooth'});
+  });
+})();
+</script>
+</body>
+</html>
