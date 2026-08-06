@@ -48,6 +48,9 @@
   .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 20px;min-width:120px;box-shadow:var(--shadow);}
   .stat .num{font-size:30px;font-weight:800;color:var(--accent);line-height:1;}
   .stat .lbl{font-size:13px;color:var(--muted);margin-top:6px;}
+  .stat-link{cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;}
+  .stat-link:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 26px rgba(0,0,0,.38);}
+  .stat-link:active{transform:translateY(-1px);}
 
   /* ===== Nav ===== */
   .nav{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.82);backdrop-filter:blur(10px);
@@ -80,7 +83,7 @@
   .dpill.active .swatch{box-shadow:0 0 0 2px rgba(255,255,255,.5);}
 
   /* ===== Sections ===== */
-  .section{margin-top:38px;}
+  .section{margin-top:38px;scroll-margin-top:64px;}
   .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;border-left:4px solid var(--accent);padding-left:12px;}
   .section-head h2{margin:0;font-size:22px;font-weight:800;}
   .section-head .count{color:var(--muted);font-size:14px;}
@@ -118,11 +121,7 @@
 
 <nav class="nav">
   <div class="nav-inner">
-    <a href="#sec-model">🤖 模型发布/更新</a>
-    <a href="#sec-product">📦 产品发布/更新</a>
-    <a href="#sec-industry">📰 行业动态</a>
-    <a href="#sec-paper">📚 论文研究</a>
-    <a href="#sec-opinion">💡 技巧与观点</a>
+    <div class="nav-links" id="navLinks"></div>
     <span class="spacer"></span>
     <span class="status"><span class="dot" id="statusDot"></span><span id="statusText">初始化…</span></span>
     <button id="refreshBtn" type="button">刷新</button>
@@ -371,10 +370,16 @@ function render(report, live){
   document.getElementById('heroDate').textContent = `报告日期：${fmtISODate(report.date)}（北京时间）`;
 
   const total=flat.length;
-  const counts=report.sections.map(s=>({name:s.name,icon:s.icon,n:s.items.length}));
+  const counts=report.sections.map(s=>({id:s.id,name:s.name,icon:s.icon,n:s.items.length}));
   let html=`<div class="stat"><div class="num">${total}</div><div class="lbl">总条数</div></div>`;
-  counts.forEach(c=>{ html+=`<div class="stat"><div class="num">${c.n}</div><div class="lbl">${c.icon} ${c.name}</div></div>`; });
+  counts.forEach(c=>{ html+=`<div class="stat stat-link" data-sec="${c.id}" title="点击跳转到「${c.name}」板块"><div class="num">${c.n}</div><div class="lbl">${c.icon} ${c.name}</div></div>`; });
   document.getElementById('heroStats').innerHTML=html;
+  document.querySelectorAll('#heroStats .stat-link').forEach(el=>{
+    el.addEventListener('click',()=>scrollToSec(el.getAttribute('data-sec')));
+  });
+  // 锚点导航（动态生成，含全部版块，自动同步招投标等新增版块）
+  document.getElementById('navLinks').innerHTML =
+    report.sections.map(s=>`<a href="#sec-${s.id}">${s.icon} ${s.name}</a>`).join('');
 
   // 领域统计（Hero 下方以筛选条呈现，这里仅计算）
   const domCounts={}; DOMAINS.forEach(d=>domCounts[d.key]=0);
@@ -437,6 +442,10 @@ function render(report, live){
   applyFilters();
 }
 
+function scrollToSec(id){
+  const el=document.getElementById('sec-'+id);
+  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+}
 function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
 function escapeAttr(s){ return escapeHtml(s); }
 
