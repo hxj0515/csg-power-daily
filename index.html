@@ -289,6 +289,35 @@ const EMBEDDED_REPORT = {
           summary:"玉溪澄江低压透明配网+南网在线，春节保供电精准响应。",
           url:"https://www.sohu.com/a/988799272_120578424" }
       ]
+    },
+    {
+      id:"bidding", name:"招投标", icon:"📑",
+      items:[
+        { title:"贵州电网有限责任公司物资类2026年（OS2地级主站配网分析应用（成套））公开招标招标公告", source:"贵州电网公司", domain:"配电网", date:"2026年8月5日",
+          summary:"贵州电网物资类招标，采购OS2地级主站配网分析应用软件（成套），强化配电网智能分析。",
+          url:"https://www.bidding.csg.cn/zbgg/1200438357.jhtml" },
+        { title:"贵州电网有限责任公司服务类2026年到货抽检服务公开招标招标公告", source:"贵州电网公司", domain:"服务类", date:"2026年8月5日",
+          summary:"贵州电网服务类招标，面向2026年到货物资开展抽检服务，保障入网设备质量。",
+          url:"https://www.bidding.csg.cn/zbgg/1200438356.jhtml" },
+        { title:"贵州电网有限责任公司服务类2026年VI制作公开招标中标候选人公示", source:"贵州电网公司", domain:"服务类", date:"2026年8月5日",
+          summary:"贵州电网服务类招标中标候选人公示，2026年VI制作项目确定候选供应商。",
+          url:"https://www.bidding.csg.cn/zbhxrgs/1200438353.jhtml" },
+        { title:"广东电网公司2026年三相高稳定多功能电能表、计量自动化终端测试装置、互感器检定检验检测仪器装置等物资专项招标招标公告", source:"广东电网公司", domain:"电能质量", date:"2026年8月5日",
+          summary:"广东电网专项招标，采购三相高稳定多功能电能表、计量自动化终端及互感器检定检测仪器。",
+          url:"https://www.bidding.csg.cn/zbgg/1200438378.jhtml" },
+        { title:"2026年南网电算工程公司开发区数据中心蓄电池采购项目招标公告", source:"南方电网数字电网集团", domain:"物资工具类", date:"2026年8月5日",
+          summary:"南网电算工程公司招标采购开发区数据中心蓄电池，保障算力基础设施供电可靠。",
+          url:"https://www.bidding.csg.cn/zbgg/1200438377.jhtml" },
+        { title:"南网科研院稳定控制技术研究公开招标采购项目[CG1500022002318632]--变更文件--招标1", source:"南方电网科学研究院", domain:"智能电网", date:"2026年8月5日",
+          summary:"南网科研院稳定控制技术研究公开招标（变更），攻关电网安全稳定控制关键技术。",
+          url:"https://www.bidding.csg.cn/zbhxrgs/1200438376.jhtml" },
+        { title:"2026年南方电网数字电网集团（广东）有限公司网络链路安全防护设备框架采购招标公告", source:"南方电网数字电网集团（广东）", domain:"物资工具类", date:"2026年8月5日",
+          summary:"数字电网集团（广东）框架采购网络链路安全防护设备，夯实通信网络安全底座。",
+          url:"https://www.bidding.csg.cn/zbgg/1200438375.jhtml" },
+        { title:"南网科研院2026年6月电力电子专业科技类公开谈判采购项目采购公告", source:"南方电网科学研究院", domain:"电力电子", date:"2026年8月5日",
+          summary:"南网科研院电力电子专业科技类公开谈判采购，支撑电力电子方向科研攻关。",
+          url:"https://www.bidding.csg.cn/fzbgg/1200438374.jhtml" }
+      ]
     }
   ]
 };
@@ -400,7 +429,7 @@ function render(report, live){
   const srcs=[...new Set(flat.map(f=>f.source))];
   document.getElementById('foot').innerHTML=
     `南方电网电力资讯日报 · 领域聚焦版<br>`+
-    `本页共 <b>${total}</b> 条资讯，按五固定版块分组、全局连续编号，并仅保留 `+
+    `本页共 <b>${total}</b> 条资讯，按六固定版块分组、全局连续编号，并仅保留 `+
     `<b>电能质量 / 电力电子 / 智能电网 / 低压智能台区 / 配电网 / 服务类 / 物资工具类 / 应急工具类</b> 八大领域。`+
     `<br>数据源：${srcs.join('、')} 等公开报道（经联网检索聚合）。时间均为北京时间通俗格式。<br>`+
     `<span style="opacity:.7">报告日期 ${fmtISODate(report.date)||'-'} · 数据${live?'实时获取':'内置聚合最新一期'}</span>`;
