@@ -715,6 +715,7 @@ body.no-storage .data-actions {
   transition: opacity .2s;
 }
 .overlay.show { opacity: 1; }
+.overlay[hidden] { display: none !important; }
 .dialog {
   width: 100%;
   max-width: 420px;

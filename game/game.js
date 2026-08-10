@@ -2317,9 +2317,21 @@
     if (booted) return;
     booted = true;
     cacheEls();
-    if (!canvas || !ctx) { booted = false; return; }
     Profiles.load();
+    // 先绑定 UI 事件（不依赖 canvas），保证菜单/建档在任何环境下都能点。
     bindUI();
+    if (!canvas || !ctx) {
+      // 画布不可用（极个别环境）：菜单与建档可玩，棋盘无法渲染，给出提示后退出。
+      renderChip();
+      if (!Profiles.list.length) {
+        showScreen('profiles');
+        setTimeout(function () { openCreateProfile(true); }, 220);
+      } else {
+        showScreen('menu');
+        toast('当前环境不支持画布，棋盘功能暂不可用');
+      }
+      return;
+    }
     bindInput();
     // file:// 降级：探测态先应用一次，之后若运行中掉线由回调再应用
     var storageWasAvailable = LS.available;
