@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<title>电亮全城 · PowerLink</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<meta name="description" content="电亮全城 PowerLink —— 电力主题连线解谜小游戏。把发电站接到用电点，铺满全城不断电。纯静态、离线可玩、多档案存档。">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="format-detection" content="telephone=no">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bg-layer" aria-hidden="true">
+  <div class="bg-grid"></div>
+  <div class="bg-glow bg-glow-a"></div>
+  <div class="bg-glow bg-glow-b"></div>
+</div>
+
+<div id="app">
+
+  <!-- localStorage 不可用时常驻（file:// 直接双击 / 隐私模式 / 容量已满） -->
+  <div id="storage-warn" class="warn-bar" role="alert" hidden>
+    <span class="warn-ico" aria-hidden="true">
+      <svg viewBox="0 0 24 24" width="16" height="16"><path d="M12 3.2 22 20H2L12 3.2z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/><path d="M12 9.6v4.6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><circle cx="12" cy="17.2" r="1.15" fill="currentColor"/></svg>
+    </span>
+    <span id="storage-warn-text" class="warn-text"></span>
+    <button id="btn-warn-export" class="btn btn-attn warn-cta" type="button">导出存档</button>
+  </div>
+
+  <header id="topbar">
+    <button id="btn-back" class="icon-btn" type="button" hidden aria-label="返回上一层">
+      <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M15 5 8 12l7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </button>
+    <div id="top-title">
+      <span class="brand-bolt" aria-hidden="true">
+        <svg viewBox="0 0 24 24" width="18" height="18"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z" fill="#38e1ff"/></svg>
+      </span>
+      <span id="top-title-text">电亮全城</span>
+    </div>
+    <button id="profile-chip" class="profile-chip" type="button" aria-label="档案管理">
+      <span class="chip-avatar" id="chip-avatar"></span>
+      <span class="chip-name" id="chip-name">—</span>
+    </button>
+  </header>
+
+  <main id="screens">
+
+    <!-- ============ 主菜单 ============ -->
+    <section class="screen" id="screen-menu" aria-label="主菜单">
+      <div class="hero">
+        <h1 class="hero-title">电亮<span class="accent">全城</span></h1>
+        <p class="hero-sub">PowerLink · 把发电站接到用电点，铺满全城不断电</p>
+
+        <div class="hero-stats">
+          <div class="stat"><b id="stat-stars">0</b><span>获得星数</span></div>
+          <div class="stat"><b id="stat-clear">0</b><span>通关进度</span></div>
+          <div class="stat"><b id="stat-streak">0</b><span>每日连击</span></div>
+        </div>
+
+        <button class="btn-continue" id="btn-continue" type="button">
+          <span class="bc-main">继续闯关</span>
+          <span class="bc-sub" id="menu-continue-sub">下一关</span>
+        </button>
+      </div>
+
+      <div class="menu-grid">
+        <button class="menu-card" data-go="levels" type="button">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="3" width="7" height="7" rx="1.6" fill="#38e1ff"/><rect x="14" y="3" width="7" height="7" rx="1.6" fill="#2a3c63"/><rect x="3" y="14" width="7" height="7" rx="1.6" fill="#2a3c63"/><rect x="14" y="14" width="7" height="7" rx="1.6" fill="#38e1ff"/></svg>
+          </span>
+          <span class="mc-title">关卡选择</span>
+          <span class="mc-sub">60 关 · 4 个关卡包</span>
+        </button>
+
+        <button class="menu-card" data-go="daily" type="button">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><rect x="3" y="5" width="18" height="16" rx="2.5" fill="none" stroke="#ffb02e" stroke-width="1.8"/><path d="M3 10h18M8 3v4M16 3v4" stroke="#ffb02e" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="15.5" r="2.2" fill="#ffb02e"/></svg>
+          </span>
+          <span class="mc-title">每日挑战</span>
+          <span class="mc-sub" id="menu-daily-sub">每天一张新电网</span>
+        </button>
+
+        <button class="menu-card" data-go="profiles" type="button">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="9" cy="8" r="3.4" fill="#b07bff"/><path d="M2.8 20c0-3.4 2.8-5.6 6.2-5.6s6.2 2.2 6.2 5.6" fill="none" stroke="#b07bff" stroke-width="1.8" stroke-linecap="round"/><circle cx="17.5" cy="9.5" r="2.4" fill="#2a3c63"/></svg>
+          </span>
+          <span class="mc-title">档案管理</span>
+          <span class="mc-sub">多人存档 · 导入导出</span>
+        </button>
+
+        <button class="menu-card" data-go="settings" type="button">
+          <span class="mc-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22"><circle cx="12" cy="12" r="3.2" fill="none" stroke="#4ade5f" stroke-width="1.8"/><path d="M12 3v2.4M12 18.6V21M21 12h-2.4M5.4 12H3M18.4 5.6l-1.7 1.7M7.3 16.7l-1.7 1.7M18.4 18.4l-1.7-1.7M7.3 7.3 5.6 5.6" stroke="#4ade5f" stroke-width="1.8" stroke-linecap="round"/></svg>
+          </span>
+          <span class="mc-title">设置</span>
+          <span class="mc-sub">音效 · 动效 · 数据</span>
+        </button>
+      </div>
+
+      <div class="howto">
+        <h3>怎么玩</h3>
+        <ol>
+          <li>按住任意一个<b>发电站端点</b>，拖动画出电缆，松手结束。</li>
+          <li>同色两端接通即完成一条线路；线缆不能交叉，拖进别人的线会把它<b>从撞点起截断</b>。</li>
+          <li>全部接通得 <b>1★</b>；覆盖 ≥80% 得 <b>2★</b>；<b>铺满全盘</b>得 3★。步数不影响星级。</li>
+          <li>右键 / 长按端点可清空该色；随时可撤销、重来，没有失败。</li>
+          <li>用了<b>提示</b>本局封顶 2★；不用提示重玩一次，照样能拿回 3★。</li>
+          <li>关卡包按<b>累计星数</b>解锁：第 2 包 22★、第 3 包 50★、第 4 包 80★。</li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- ============ 关卡选择 ============ -->
+    <section class="screen" id="screen-levels" aria-label="关卡选择">
+      <div class="section-head">
+        <h2>闯关模式</h2>
+        <span class="progress-pill" id="levels-progress">0 / 180 ★</span>
+      </div>
+      <div id="level-wrap"></div>
+    </section>
+
+    <!-- ============ 每日挑战 ============ -->
+    <section class="screen" id="screen-daily" aria-label="每日挑战">
+      <div class="section-head"><h2>每日挑战</h2></div>
+      <div class="daily-card">
+        <div class="dc-top">
+          <div>
+            <div class="daily-date" id="daily-date">—</div>
+            <div class="daily-meta" id="daily-meta">—</div>
+          </div>
+          <div class="streak-box"><b id="daily-streak">0</b><span>连续天数</span></div>
+        </div>
+        <div class="daily-stars" id="daily-stars"></div>
+        <button class="btn btn-primary wide" id="btn-daily-play" type="button">开始今日电网</button>
+        <p class="tip">同一天全员同题：设备本地日期就是随机种子，你和同事拿到的是同一张图。</p>
+      </div>
+      <div class="section-head"><h3>最近 7 天</h3></div>
+      <div id="daily-history" class="daily-history"></div>
+      <p class="tip" id="daily-nomakeup"></p>
+    </section>
+
+    <!-- ============ 游戏 ============ -->
+    <section class="screen" id="screen-game" aria-label="游戏中">
+      <div class="game-head">
+        <div class="gh-left">
+          <div class="gh-title" id="game-level-name">—</div>
+          <div class="gh-sub" id="game-level-meta">—</div>
+        </div>
+        <div class="gh-stats">
+          <div class="gstat"><b id="hud-pairs">0/0</b><span>线路</span></div>
+          <div class="gstat"><b id="hud-cover">0%</b><span>覆盖</span></div>
+          <div class="gstat"><b id="hud-moves">0</b><span>步数</span></div>
+        </div>
+      </div>
+
+      <div class="board-wrap">
+        <canvas id="board" tabindex="0" role="application"
+                aria-label="电网棋盘。方向键移动光标，回车开始或结束铺线，Esc 取消，Z 撤销。"></canvas>
+      </div>
+
+      <div class="game-actions">
+        <button class="btn" id="btn-undo" type="button">撤销</button>
+        <button class="btn" id="btn-reset" type="button">重来</button>
+        <button class="btn" id="btn-hint" type="button">提示</button>
+        <button class="btn btn-ghost" id="btn-quit" type="button">退出</button>
+      </div>
+
+      <div class="legend" id="game-legend" aria-live="polite"></div>
+    </section>
+
+    <!-- ============ 档案管理 ============ -->
+    <section class="screen" id="screen-profiles" aria-label="档案管理">
+      <div class="section-head">
+        <h2>档案管理</h2>
+        <button class="btn btn-primary" id="btn-new-profile" type="button">+ 新建档案</button>
+      </div>
+      <div id="profile-list" class="profile-list"></div>
+
+      <div class="section-head"><h3>存档数据</h3></div>
+      <div class="data-actions">
+        <button class="btn" id="btn-export-one" type="button">导出当前档案</button>
+        <button class="btn" id="btn-export-all" type="button">导出全部档案</button>
+        <button class="btn" id="btn-import" type="button">导入 JSON</button>
+      </div>
+      <p class="tip">导出的 JSON 可以发给同事，对方导入后即可看到你的进度。合并规则：同 id 覆盖，新 id 追加，最多 6 个档案。</p>
+    </section>
+
+    <!-- ============ 设置 ============ -->
+    <section class="screen" id="screen-settings" aria-label="设置">
+      <div class="section-head"><h2>设置</h2></div>
+
+      <div class="setting-row">
+        <div class="sr-text"><b>音效</b><span>合闸、通电、通关提示音（WebAudio 实时合成，无音频文件）</span></div>
+        <label class="switch"><input type="checkbox" id="set-sound"><span class="track" aria-hidden="true"></span><span class="sr-only">音效开关</span></label>
+      </div>
+
+      <div class="setting-row">
+        <div class="sr-text"><b>减少动效</b><span>关闭流光、脉冲与发光动画，省电且更稳定</span></div>
+        <label class="switch"><input type="checkbox" id="set-motion"><span class="track" aria-hidden="true"></span><span class="sr-only">减少动效开关</span></label>
+      </div>
+
+      <div class="section-head"><h3>存档数据</h3></div>
+      <div class="data-actions">
+        <button class="btn" id="btn-set-export" type="button">导出当前档案</button>
+        <button class="btn" id="btn-set-import" type="button">导入 JSON</button>
+        <button class="btn btn-danger" id="btn-set-reset" type="button">清空当前档案进度</button>
+      </div>
+      <p class="tip" id="storage-note"></p>
+      <p class="tip muted">v1.0 · 纯静态离线可玩 · 无第三方依赖 · 无联网行为</p>
+    </section>
+
+  </main>
+</div>
+
+<!-- ============ 结算浮层 ============ -->
+<div class="overlay" id="overlay-result" hidden>
+  <div class="dialog result-dialog" role="dialog" aria-modal="true" aria-labelledby="result-title">
+    <div class="skyline" aria-hidden="true">
+      <i style="--h:38%;--d:0s"></i><i style="--h:62%;--d:.06s"></i><i style="--h:46%;--d:.12s"></i>
+      <i style="--h:78%;--d:.18s"></i><i style="--h:54%;--d:.24s"></i><i style="--h:88%;--d:.3s"></i>
+      <i style="--h:44%;--d:.36s"></i><i style="--h:66%;--d:.42s"></i><i style="--h:34%;--d:.48s"></i>
+      <i style="--h:72%;--d:.54s"></i>
+    </div>
+    <h2 id="result-title">送电成功！</h2>
+    <p id="result-sub" class="result-sub">—</p>
+    <div class="stars-big" id="result-stars"></div>
+    <div class="result-rows" id="result-rows"></div>
+    <div class="dialog-actions">
+      <button class="btn btn-ghost" id="btn-res-back" type="button">返回</button>
+      <button class="btn" id="btn-res-retry" type="button">再玩一次</button>
+      <button class="btn btn-primary" id="btn-res-next" type="button">下一关</button>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 通用弹窗 ============ -->
+<div class="overlay" id="overlay-modal" hidden>
+  <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <h3 id="modal-title">标题</h3>
+    <div id="modal-body"></div>
+    <div class="dialog-actions" id="modal-actions"></div>
+  </div>
+</div>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<input type="file" id="file-import" accept="application/json,.json,text/plain" hidden>
+
+<noscript><p style="color:#e6f0ff;padding:24px;text-align:center">本游戏需要启用 JavaScript 才能运行。</p></noscript>
+
+<script src="levels.js"></script>
+<script src="game.js"></script>
+</body>
+</html>
