@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#2E9E5B">
+  <title>电亮学堂 · 低压配电网知识闯关</title>
+  <meta name="description" content="《电亮学堂》——低压配电网安全知识闯关小游戏，一题一知识点，寓教于乐。">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- 背景装饰层（纯 CSS，无外部资源） -->
+  <div class="bg-layer" aria-hidden="true">
+    <div class="bg-blob bg-blob-a"></div>
+    <div class="bg-blob bg-blob-b"></div>
+    <div class="bg-grid"></div>
+  </div>
+
+  <!-- file:// / 隐私模式 / 容量满 降级提示条（默认隐藏） -->
+  <div id="storage-warn" class="warn-bar" role="alert" hidden>
+    <span class="warn-ico" aria-hidden="true">⚠️</span>
+    <span id="storage-warn-text" class="warn-text"></span>
+    <button id="btn-warn-export" class="btn btn-attn warn-cta" type="button">导出存档</button>
+  </div>
+
+  <!-- 顶部栏（各屏幕共用） -->
+  <header id="topbar">
+    <button id="btn-back" class="icon-btn" type="button" hidden aria-label="返回上一层">‹ 返回</button>
+    <div class="brand">
+      <span class="brand-bolt" aria-hidden="true">⚡</span>
+      <span id="top-title">电亮学堂</span>
+    </div>
+    <button id="profile-chip" class="profile-chip" type="button" aria-label="档案管理">
+      <span class="chip-avatar" id="chip-avatar" aria-hidden="true">⚡</span>
+      <span class="chip-name" id="chip-name">—</span>
+    </button>
+  </header>
+
+  <main id="screens">
+
+    <!-- ============ 档案选择 ============ -->
+    <section class="screen" id="screen-profiles" aria-label="档案选择">
+      <div class="screen-inner">
+        <div class="page-head">
+          <h1 class="page-title">选择档案</h1>
+          <p class="page-sub">多人本地存档 · 可导入导出备份</p>
+        </div>
+        <div id="profiles-list" class="profiles-list"></div>
+        <div class="profiles-actions">
+          <button class="btn btn-primary" id="btn-new-profile" type="button">＋ 新建档案</button>
+          <button class="btn btn-ghost" id="btn-import" type="button">📥 导入存档</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 主菜单 ============ -->
+    <section class="screen" id="screen-menu" aria-label="主菜单">
+      <div class="screen-inner">
+        <div class="hero">
+          <div class="hero-avatar" id="menu-avatar" aria-hidden="true">⚡</div>
+          <h1 class="hero-title">电亮<span class="accent">学堂</span></h1>
+          <p class="hero-sub" id="menu-sub">低压配电网知识闯关 · 一题一知识点</p>
+          <div class="hero-stats">
+            <div class="stat"><b id="stat-stars">0</b><span>获得星数</span></div>
+            <div class="stat"><b id="stat-clear">0</b><span>通关关卡</span></div>
+            <div class="stat"><b id="stat-daily">0</b><span>每日完成</span></div>
+          </div>
+        </div>
+        <div class="menu-grid">
+          <button class="menu-card" data-go="chapters" type="button">
+            <span class="mc-icon" aria-hidden="true">📚</span>
+            <span class="mc-title">章节闯关</span>
+            <span class="mc-sub" id="menu-chapters-sub">按知识点逐关突破</span>
+          </button>
+          <button class="menu-card" data-go="daily" type="button">
+            <span class="mc-icon" aria-hidden="true">📅</span>
+            <span class="mc-title">每日挑战</span>
+            <span class="mc-sub" id="menu-daily-sub">每天一张新题库</span>
+          </button>
+          <button class="menu-card" data-go="settings" type="button">
+            <span class="mc-icon" aria-hidden="true">⚙️</span>
+            <span class="mc-title">设置</span>
+            <span class="mc-sub">音效 · 减少动效 · 存档</span>
+          </button>
+          <button class="menu-card" data-go="profiles" type="button">
+            <span class="mc-icon" aria-hidden="true">👤</span>
+            <span class="mc-title">切换档案</span>
+            <span class="mc-sub">多人存档 · 导入导出</span>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 章节选择 ============ -->
+    <section class="screen" id="screen-chapters" aria-label="章节选择">
+      <div class="screen-inner">
+        <div class="page-head">
+          <h1 class="page-title">章节选择</h1>
+          <p class="page-sub" id="chapters-sub">累计星数解锁后续章节</p>
+        </div>
+        <div id="chapters-list" class="chapters-list"></div>
+      </div>
+    </section>
+
+    <!-- ============ 关卡选择 ============ -->
+    <section class="screen" id="screen-levels" aria-label="关卡选择">
+      <div class="screen-inner">
+        <div class="page-head">
+          <h1 class="page-title" id="levels-title">关卡选择</h1>
+          <p class="page-sub" id="levels-sub"></p>
+        </div>
+        <div id="levels-list" class="levels-list"></div>
+      </div>
+    </section>
+
+    <!-- ============ 答题 ============ -->
+    <section class="screen" id="screen-quiz" aria-label="答题">
+      <div class="screen-inner quiz-inner">
+        <div class="quiz-head">
+          <div class="quiz-progress">
+            <div class="quiz-progress-bar"><div id="quiz-progress-fill" class="quiz-progress-fill"></div></div>
+            <span id="quiz-progress-text" class="quiz-progress-text">1 / 8</span>
+          </div>
+          <button id="btn-pause" class="icon-btn" type="button" aria-label="暂停">⏸</button>
+        </div>
+        <div id="quiz-card" class="quiz-card" aria-live="polite"></div>
+        <div class="quiz-foot">
+          <button id="btn-submit" class="btn btn-primary btn-block" type="button" disabled>提交答案</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ 每日挑战 ============ -->
+    <section class="screen" id="screen-daily" aria-label="每日挑战">
+      <div class="screen-inner">
+        <div class="page-head">
+          <h1 class="page-title">每日挑战</h1>
+          <p class="page-sub" id="daily-sub">按本地日期生成 · 不补做往日</p>
+        </div>
+        <div id="daily-today" class="daily-today"></div>
+        <h2 class="section-h2">近期战绩</h2>
+        <div id="daily-history" class="daily-history"></div>
+      </div>
+    </section>
+
+    <!-- ============ 设置 ============ -->
+    <section class="screen" id="screen-settings" aria-label="设置">
+      <div class="screen-inner">
+        <div class="page-head">
+          <h1 class="page-title">设置</h1>
+          <p class="page-sub">当前档案：<span id="settings-profile-name">—</span></p>
+        </div>
+        <div class="settings-list">
+          <label class="setting-row">
+            <span class="setting-label">🔊 音效</span>
+            <span class="switch"><input type="checkbox" id="set-sound"><span class="track"></span></span>
+          </label>
+          <label class="setting-row">
+            <span class="setting-label">🌿 减少动效</span>
+            <span class="switch"><input type="checkbox" id="set-reduce"><span class="track"></span></span>
+          </label>
+          <div class="setting-row setting-row-btn">
+            <span class="setting-label">📤 导出当前档案</span>
+            <button class="btn btn-ghost" id="btn-export" type="button">导出</button>
+          </div>
+          <div class="setting-row setting-row-btn">
+            <span class="setting-label">📥 导入存档</span>
+            <button class="btn btn-ghost" id="btn-import2" type="button">导入</button>
+          </div>
+          <div class="setting-row setting-row-btn">
+            <span class="setting-label">🔄 切换档案</span>
+            <button class="btn btn-ghost" id="btn-switch" type="button">切换</button>
+          </div>
+          <div class="setting-row setting-row-btn">
+            <span class="setting-label">✏️ 改名 / 改色 / 改图标</span>
+            <button class="btn btn-ghost" id="btn-edit-profile" type="button">编辑</button>
+          </div>
+          <div class="setting-row setting-row-btn">
+            <span class="setting-label">🗑️ 删除当前档案</span>
+            <button class="btn btn-danger" id="btn-delete-profile" type="button">删除</button>
+          </div>
+        </div>
+        <p class="settings-note" id="settings-note"></p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ============ 建档 / 新建档案 弹窗（默认隐藏） ============ -->
+  <div class="overlay" id="overlay-create" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="create-title">
+      <h3 id="create-title" class="dialog-title">新建档案</h3>
+      <p class="dialog-desc">给自己取个名字，选个颜色和图标，开始闯关。</p>
+      <label class="field">
+        <span class="field-label">档案名</span>
+        <input id="create-name" class="input" type="text" maxlength="16" placeholder="例如：南方电网小李" autocomplete="off">
+      </label>
+      <div class="field">
+        <span class="field-label">主题色</span>
+        <div id="create-colors" class="swatch-row"></div>
+      </div>
+      <div class="field">
+        <span class="field-label">图标</span>
+        <div id="create-icons" class="icon-row"></div>
+      </div>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" id="btn-create-cancel" type="button">取消</button>
+        <button class="btn btn-primary" id="btn-create-ok" type="button">创建并开始</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 知识点卡片（底部上滑 sheet，默认隐藏） ============ -->
+  <div class="overlay overlay-sheet" id="overlay-knowledge" hidden>
+    <div class="sheet" role="dialog" aria-modal="true" aria-labelledby="knowledge-title">
+      <div class="sheet-grip" aria-hidden="true"></div>
+      <div class="sheet-head">
+        <span class="sheet-badge" aria-hidden="true">📘</span>
+        <h3 id="knowledge-title" class="sheet-title">知识点</h3>
+      </div>
+      <div id="knowledge-body" class="sheet-body"></div>
+      <div class="sheet-foot">
+        <button class="btn btn-primary btn-block" id="btn-knowledge-next" type="button">继续</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 结算弹窗（默认隐藏） ============ -->
+  <div class="overlay" id="overlay-result" hidden>
+    <div class="dialog result-dialog" role="dialog" aria-modal="true" aria-labelledby="result-title">
+      <h3 id="result-title" class="dialog-title">关卡完成</h3>
+      <div id="result-stars" class="stars-big" aria-label="获得星级"></div>
+      <p id="result-score" class="result-sub"></p>
+      <div id="result-rows" class="result-rows"></div>
+      <div class="dialog-actions">
+        <button class="btn btn-ghost" id="btn-result-levels" type="button">返回关卡</button>
+        <button class="btn btn-primary" id="btn-result-replay" type="button">再玩一次</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 暂停弹窗（默认隐藏） ============ -->
+  <div class="overlay" id="overlay-pause" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="pause-title">
+      <h3 id="pause-title" class="dialog-title">已暂停</h3>
+      <div class="dialog-actions dialog-actions-col">
+        <button class="btn btn-primary btn-block" id="btn-resume" type="button">继续答题</button>
+        <button class="btn btn-ghost btn-block" id="btn-restart" type="button">重开本关</button>
+        <button class="btn btn-ghost btn-block" id="btn-quit" type="button">退出到关卡</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ 通用确认 / 提示 弹窗（默认隐藏） ============ -->
+  <div class="overlay" id="overlay-modal" hidden>
+    <div class="dialog" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+      <h3 id="modal-title" class="dialog-title">提示</h3>
+      <div id="modal-body" class="modal-body"></div>
+      <div id="modal-actions" class="dialog-actions"></div>
+    </div>
+  </div>
+
+  <!-- ============ 导入文件选择（隐藏 input） ============ -->
+  <input id="import-file" type="file" accept="application/json,.json" hidden>
+
+  <!-- ============ Toast ============ -->
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+
+  <!-- 经典脚本：先 questions.js（定义 window.POWERLINK2_BANK），再 game.js -->
+  <script src="questions.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
