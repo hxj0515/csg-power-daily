@@ -718,7 +718,8 @@
 
     var ctrl = buildController(q, card);
     qz.ctrl = ctrl;
-    updateSubmit(false);
+    // 由各题型 buildController 自行调用 updateSubmit(...) 设置初始状态，
+    // 避免覆盖排序等题型在初始化时已经设好的启用逻辑。
   }
 
   function renderQuestionText(q) {
@@ -898,6 +899,7 @@
       if (j < 0 || j >= order.length) return;
       var t = order[pos]; order[pos] = order[j]; order[j] = t;
       Sound.ui(); render();
+      updateSubmit(true); // 排序题任何顺序都可提交
     }
     function bindDrag(item, pos) {
       item.addEventListener('dragstart', function (e) {
@@ -913,6 +915,7 @@
         var moved = order.splice(from, 1)[0];
         order.splice(pos, 0, moved);
         render();
+        updateSubmit(true);
       });
     }
     render();
