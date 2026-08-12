@@ -1,0 +1,179 @@
+/* =====================================================================
+ * 《三国塔防·烽火连城》PowerLink3 —— 样式（style.css）
+ * 国风鲜明卡通：宣纸米黄底、朱红/墨绿/靛蓝、楷体标题。
+ * 关键：任何 [hidden] 元素必须彻底隐藏，杜绝透明弹层吞点击。
+ * ===================================================================== */
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+[hidden] { display: none !important; }
+
+:root {
+  --paper: #f5ecd7;
+  --paper2: #efe3c6;
+  --ink: #2b2b2b;
+  --red: #c0392b;
+  --red-d: #9b2d20;
+  --green: #2e7d32;
+  --blue: #1565c0;
+  --gold: #d4a017;
+  --line: rgba(43, 43, 43, 0.15);
+}
+
+html, body {
+  height: 100%;
+  background:
+    radial-gradient(circle at 20% 10%, #fbf4e2, transparent 60%),
+    radial-gradient(circle at 80% 90%, #f0e6cb, transparent 60%),
+    var(--paper);
+  color: var(--ink);
+  font-family: "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+#app { min-height: 100%; display: flex; align-items: center; justify-content: center; padding: 14px; }
+
+/* ---------- 通用按钮 ---------- */
+.btn {
+  font: inherit; font-weight: 600; cursor: pointer;
+  border: 2px solid var(--ink); border-radius: 10px;
+  background: #fff; color: var(--ink);
+  padding: 9px 16px; transition: transform .06s, box-shadow .15s, background .15s;
+  box-shadow: 0 2px 0 rgba(0,0,0,.18);
+}
+.btn:hover { transform: translateY(-1px); }
+.btn:active { transform: translateY(1px); box-shadow: none; }
+.btn:disabled { opacity: .45; cursor: not-allowed; box-shadow: none; }
+.btn-primary { background: var(--red); color: #fff; border-color: var(--red-d); }
+.btn-go { background: var(--green); color: #fff; border-color: #1b5e20; }
+.btn-danger { background: #fff; color: var(--red); border-color: var(--red); }
+.btn-link { background: transparent; border-color: transparent; box-shadow: none; color: var(--blue); }
+.btn-link:hover { text-decoration: underline; }
+
+/* ---------- 屏幕 ---------- */
+.screen { width: 100%; max-width: 1000px; animation: fade .3s ease; }
+@keyframes fade { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+
+/* ---------- 主菜单 ---------- */
+.menu-wrap { text-align: center; padding: 40px 20px; }
+.game-title {
+  font-family: "KaiTi", "STKaiti", "楷体", serif;
+  font-size: 76px; letter-spacing: 10px; color: var(--red);
+  text-shadow: 3px 3px 0 #fff, 6px 6px 0 rgba(0,0,0,.12);
+}
+.game-sub { font-family: "KaiTi", "STKaiti", serif; font-size: 26px; color: var(--red-d); letter-spacing: 6px; margin-top: 4px; }
+.menu-tag { margin: 22px 0 30px; color: #6b5b43; font-size: 15px; }
+.menu-btns { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+.menu-btns .btn { min-width: 130px; font-size: 17px; padding: 12px 18px; }
+
+/* ---------- 面板通用 ---------- */
+.panel {
+  background: #fffdf6; border: 3px solid var(--ink); border-radius: 16px;
+  padding: 22px; box-shadow: 0 8px 0 rgba(0,0,0,.12);
+}
+.panel-title { font-family: "KaiTi", "STKaiti", serif; font-size: 30px; color: var(--red); margin-bottom: 16px; text-align: center; }
+
+/* ---------- 档案 ---------- */
+.profile-list { display: flex; flex-direction: column; gap: 10px; margin-bottom: 16px; }
+.hint { color: #8a7a5c; text-align: center; padding: 14px; }
+.profile-card {
+  display: flex; align-items: center; gap: 12px;
+  border: 2px solid var(--line); border-radius: 12px; padding: 12px 14px; background: #fff;
+}
+.pc-main { flex: 1; }
+.pc-name { font-size: 18px; font-weight: 700; }
+.pc-sub { color: #8a7a5c; font-size: 13px; margin-top: 2px; }
+.pc-actions { display: flex; gap: 8px; }
+.btn-sm { padding: 6px 10px; font-size: 13px; }
+.create-row { display: flex; gap: 10px; margin-top: 8px; }
+.inp {
+  flex: 1; font: inherit; padding: 9px 12px; border: 2px solid var(--ink);
+  border-radius: 10px; background: #fff;
+}
+
+/* ---------- 地图 ---------- */
+.map-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px; margin-bottom: 16px; }
+.map-card {
+  position: relative; border: 3px solid var(--ink); border-radius: 14px; overflow: hidden;
+  background: #fff; cursor: pointer; transition: transform .1s, box-shadow .15s;
+  box-shadow: 0 4px 0 rgba(0,0,0,.1);
+}
+.map-card:hover { transform: translateY(-3px); box-shadow: 0 7px 0 rgba(0,0,0,.12); }
+.map-card.locked { filter: grayscale(.7); opacity: .7; cursor: not-allowed; }
+.map-banner { height: 64px; display: flex; align-items: center; justify-content: center; font-size: 34px; }
+.map-name { font-family: "KaiTi", "STKaiti", serif; font-size: 24px; text-align: center; margin-top: 8px; color: var(--ink); }
+.map-sub { text-align: center; color: #8a7a5c; font-size: 13px; margin: 2px 8px 6px; }
+.map-stars { text-align: center; font-size: 22px; color: #d9c9a3; letter-spacing: 2px; }
+.map-stars .on { color: var(--gold); }
+.map-meta { text-align: center; color: #8a7a5c; font-size: 12px; padding-bottom: 10px; }
+.map-lock { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-size: 14px; color: #fff; background: rgba(0,0,0,.35); }
+
+/* ---------- 对局 ---------- */
+.game-head { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 10px; }
+.game-head-title { font-family: "KaiTi", "STKaiti", serif; font-size: 22px; color: var(--red); flex: 1; min-width: 160px; }
+.hud { display: flex; gap: 10px; flex-wrap: wrap; }
+.hud-item {
+  background: #fff; border: 2px solid var(--ink); border-radius: 18px;
+  padding: 5px 12px; font-weight: 700; font-size: 15px;
+}
+.head-btns { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.stage { position: relative; display: flex; justify-content: center; }
+#game-canvas {
+  width: 100%; max-width: 920px; height: auto; aspect-ratio: 920 / 552;
+  background: #e8f1f8; border: 3px solid var(--ink); border-radius: 12px;
+  box-shadow: 0 6px 0 rgba(0,0,0,.12); touch-action: none; cursor: pointer;
+}
+
+.tower-panel {
+  position: absolute; left: 50%; bottom: 12px; transform: translateX(-50%);
+  background: #fffdf6; border: 2px solid var(--ink); border-radius: 12px;
+  padding: 10px 14px; box-shadow: 0 4px 0 rgba(0,0,0,.15); min-width: 220px; text-align: center;
+}
+.tp-name { font-weight: 700; font-size: 16px; color: var(--red); }
+.tp-info { font-size: 13px; color: #5b4d36; margin: 6px 0 10px; line-height: 1.5; }
+.tp-btns { display: flex; gap: 10px; justify-content: center; }
+
+/* ---------- 底部坞 ---------- */
+.dock { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 12px; justify-content: center; }
+.dock-col { flex: 1; min-width: 280px; }
+.dock-label { font-size: 13px; color: #8a7a5c; margin-bottom: 6px; font-weight: 600; }
+.tower-palette, .skill-bar { display: flex; gap: 10px; flex-wrap: wrap; }
+.tw-btn, .sk-btn {
+  font: inherit; cursor: pointer; border: 2px solid var(--ink); border-radius: 12px;
+  background: #fff; padding: 8px 10px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 84px; position: relative; box-shadow: 0 3px 0 rgba(0,0,0,.12); transition: transform .06s;
+}
+.tw-btn:hover, .sk-btn:hover { transform: translateY(-2px); }
+.tw-btn.active, .sk-btn.active { background: #fff3d6; box-shadow: 0 0 0 3px var(--gold) inset; }
+.tw-glyph, .sk-glyph { font-size: 26px; }
+.tw-name, .sk-name { font-size: 13px; font-weight: 700; }
+.tw-cost { font-size: 12px; color: #b8860b; }
+.sk-btn { min-width: 96px; }
+.sk-btn.cooling { opacity: .55; }
+.sk-cd {
+  position: absolute; top: -8px; right: -8px; background: var(--red); color: #fff;
+  font-size: 12px; font-weight: 700; border-radius: 10px; padding: 1px 6px; min-width: 22px; text-align: center;
+}
+.sk-cd:empty { display: none; }
+
+/* ---------- 弹层 ---------- */
+.overlay {
+  position: fixed; inset: 0; background: rgba(20, 16, 10, .55);
+  display: flex; align-items: center; justify-content: center; z-index: 50; padding: 16px;
+}
+.overlay-card {
+  background: #fffdf6; border: 3px solid var(--ink); border-radius: 16px;
+  padding: 26px 30px; max-width: 460px; width: 100%; text-align: center;
+  box-shadow: 0 10px 0 rgba(0,0,0,.2); animation: pop .25s ease;
+}
+@keyframes pop { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+.om-title { font-family: "KaiTi", "STKaiti", serif; font-size: 34px; margin-bottom: 12px; }
+.om-win { color: var(--green); }
+.om-lose { color: var(--red); }
+.om-body { color: #5b4d36; font-size: 16px; margin-bottom: 20px; }
+.overlay-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
+
+@media (max-width: 560px) {
+  .game-title { font-size: 54px; }
+  .hud-item { font-size: 13px; padding: 4px 9px; }
+  .tw-btn, .sk-btn { min-width: 72px; }
+}
