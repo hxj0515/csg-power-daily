@@ -172,6 +172,23 @@ html, body {
 .om-body { color: #5b4d36; font-size: 16px; margin-bottom: 20px; }
 .overlay-btns { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; }
 
+/* ---------- 锦囊道具栏 ---------- */
+.item-bar { display: flex; gap: 10px; flex-wrap: wrap; }
+.it-btn {
+  font: inherit; cursor: pointer; border: 2px solid var(--ink); border-radius: 12px;
+  background: #fffdf6; padding: 8px 10px; display: flex; flex-direction: column; align-items: center; gap: 2px;
+  min-width: 84px; position: relative; box-shadow: 0 3px 0 rgba(0,0,0,.12); transition: transform .06s;
+}
+.it-btn:hover { transform: translateY(-2px); }
+.it-btn.used { opacity: .4; cursor: not-allowed; box-shadow: none; }
+.it-glyph { font-size: 24px; }
+.it-name { font-size: 12px; font-weight: 700; }
+.it-count { font-size: 12px; color: #b8860b; }
+
+/* ---------- 无尽烽火卡片 ---------- */
+.map-card.endless { border-style: dashed; }
+.map-card.endless .map-banner { background: linear-gradient(135deg, #c0392b, #7b241c); }
+
 @media (max-width: 560px) {
   .game-title { font-size: 54px; }
   .hud-item { font-size: 13px; padding: 4px 9px; }

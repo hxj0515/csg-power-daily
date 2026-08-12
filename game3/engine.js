@@ -31,6 +31,7 @@ window.PL3Engine = (function () {
     shoot: function () { this.tone(620, 0.05, 'square', 0.04); },
     fire: function () { this.tone(180, 0.18, 'sawtooth', 0.07); },
     frost: function () { this.tone(880, 0.12, 'sine', 0.05); },
+    thunder: function () { this.tone(740, 0.08, 'sawtooth', 0.05); this.tone(1180, 0.06, 'square', 0.04); },
     hit: function () { this.tone(300, 0.04, 'triangle', 0.03); },
     place: function () { this.tone(440, 0.08, 'square', 0.08); this.tone(660, 0.08, 'square', 0.06); },
     upgrade: function () { this.tone(523, 0.08, 'square', 0.08); this.tone(784, 0.1, 'square', 0.07); },
@@ -73,6 +74,12 @@ window.PL3Engine = (function () {
     this.selected = null;     // 选中的塔（UI 用）
     this.buildType = null;    // 当前建造中的塔类型
     this.skillTarget = null;  // 当前待选点的技能 id
+    this.endless = false;
+    this.curScale = 1;
+    this.buffTimer = 0; this.buffMul = 1;
+    this.shieldCharges = 0;
+    this._euid = 0;
+    this.items = [];
   }
 
   TDGame.prototype.init = function (map) {
@@ -82,16 +89,25 @@ window.PL3Engine = (function () {
     (map.blocked || []).forEach(function (c) { this.blocked[c[0] + ',' + c[1]] = true; }, this);
     this.towers = [];
     this.enemies = [];
-;    this.bolts = []; this.fx = []; this.floaters = [];
+    this.bolts = []; this.fx = []; this.floaters = [];
     this.selected = null; this.buildType = null; this.skillTarget = null;
-    this.waveIndex = 0;       // 已开始的波数
+    this.endless = !!map.endless;
+    this.curScale = map.hpScale;
+    this.buffTimer = 0; this.buffMul = 1;
+    this.shieldCharges = 0;
+    this._euid = 0;
+    this.waveIndex = 0;
     this.waveActive = false;
     this.spawnQueue = [];
     this.waveTimer = 0;
     this.goldEarned = 0;
+    this.items = D.ITEM_ORDER.map(function (id) {
+      var it = D.ITEMS[id];
+      return { id: id, name: it.name, glyph: it.glyph, desc: it.desc, count: D.START_ITEMS[id] || 0 };
+    });
     this.state = {
       gold: map.startGold, lives: map.startLives, maxLives: map.startLives,
-      waveIndex: 0, totalWaves: map.waves.length, waveActive: false,
+      waveIndex: 0, totalWaves: map.endless ? 999999 : map.waves.length, waveActive: false,
       status: 'ready', speed: 1, score: 0,
       canStartWave: true, enemiesAlive: 0,
       skills: D.SKILL_ORDER.map(function (id) {
@@ -112,9 +128,13 @@ window.PL3Engine = (function () {
       gold: s.gold, lives: s.lives, maxLives: s.maxLives,
       waveIndex: this.waveIndex, totalWaves: s.totalWaves, waveActive: this.waveActive,
       status: s.status, speed: s.speed, score: s.score,
-      canStartWave: !this.waveActive && s.status !== 'won' && s.status !== 'lost' && this.waveIndex < s.totalWaves,
+      canStartWave: !this.waveActive && s.status !== 'won' && s.status !== 'lost' && (this.endless || this.waveIndex < s.totalWaves),
       enemiesAlive: this.enemies.length,
       skills: s.skills.map(function (k) { return { id: k.id, name: k.name, glyph: k.glyph, cdLeft: k.cdLeft, ready: k.ready, color: k.color }; }),
+      items: this.items.map(function (it) { return { id: it.id, name: it.name, glyph: it.glyph, count: it.count, desc: it.desc }; }),
+      shield: this.shieldCharges,
+      buffTimer: this.buffTimer,
+      endless: this.endless,
       mapName: this.map ? this.map.name : ''
     };
   };
@@ -159,7 +179,7 @@ window.PL3Engine = (function () {
     var c = toPx(col, row);
     this.towers.push({
       type: typeId, def: def, col: col, row: row, x: c.x, y: c.y,
-      level: 0, cd: 0, id: 't' + (this.towers.length)
+      level: 0, cd: 0, id: 't' + (this.towers.length), synergy: 0
     });
     this.state.gold -= def.cost;
     Sound.place();
@@ -194,13 +214,17 @@ window.PL3Engine = (function () {
   /* ---- 波次 ---- */
   TDGame.prototype.startNextWave = function () {
     if (this.waveActive) return false;
-    if (this.waveIndex >= this.state.totalWaves) return false;
+    if (!this.endless && this.waveIndex >= this.state.totalWaves) return false;
     if (this.state.status === 'won' || this.state.status === 'lost') return false;
+    if (this.endless && this.waveIndex >= this.map.waves.length) {
+      this.map.waves.push(D.genEndlessWave(this.waveIndex + 1, this.map));
+    }
     var wave = this.map.waves[this.waveIndex];
     this.waveIndex++;
     this.waveActive = true;
     this.spawnQueue = wave.spawns.slice();
     this.waveTimer = 0;
+    this.curScale = wave.hpScale || this.map.hpScale;
     if (this.state.status === 'ready') this.state.status = 'playing';
     this._emit();
     return true;
@@ -208,7 +232,7 @@ window.PL3Engine = (function () {
 
   TDGame.prototype._spawnEnemy = function (spec) {
     var e = D.ENEMIES[spec.type];
-    var scale = this.map.hpScale;
+    var scale = this.curScale || this.map.hpScale;
     var hp = Math.round(e.hp * (e.boss ? scale * 1.0 : scale));
     var name = e.boss ? (spec.bossName || e.name) : e.name;
     var p0 = this.pts[0];
@@ -219,8 +243,10 @@ window.PL3Engine = (function () {
       baseSpeed: e.speed * CELL,
       gold: e.gold, armor: e.armor, boss: !!e.boss,
       slowTimer: 0, slowFactor: 1, stunTimer: 0,
+      burnTimer: 0, burnDps: 0,
       glyph: e.glyph, color: e.color,
-      radius: e.boss ? CELL * 0.42 : CELL * 0.30
+      radius: e.boss ? CELL * 0.42 : CELL * 0.30,
+      uid: 'e' + (++this._euid)
     });
   };
 
@@ -231,6 +257,17 @@ window.PL3Engine = (function () {
       if (this.state.skills[i].id === skillId) k = this.state.skills[i];
     if (!k || !k.ready) return false;
     var sdef = D.SKILLS[skillId];
+    if (sdef.kind === 'economy') {
+      // 开仓放粮：立即发金 + 全军攻速 buff，无需点地图
+      this.state.gold += (sdef.gold || 0);
+      this.goldEarned += (sdef.gold || 0);
+      if (sdef.buffDur) { this.buffTimer = sdef.buffDur; this.buffMul = sdef.buffMul || 1.3; }
+      this.fx.push({ kind: 'rain', x: D.W / 2, y: D.H / 2, r: 0, max: 0, color: sdef.color, life: 0.9, t: 0 });
+      k.cdLeft = k.cd; k.ready = false;
+      Sound.skill();
+      this._emit();
+      return true;
+    }
     var c = toPx(col, row);
     var r = sdef.radius * CELL;
     if (sdef.kind === 'aoe') {
@@ -250,18 +287,30 @@ window.PL3Engine = (function () {
     return true;
   };
 
+  /* ---- 锦囊道具 ---- */
+  TDGame.prototype.useItem = function (id) {
+    var it = null;
+    for (var i = 0; i < this.items.length; i++) if (this.items[i].id === id) it = this.items[i];
+    if (!it || it.count <= 0) return false;
+    if (id === 'shield') { this.shieldCharges += 1; }
+    else if (id === 'gold') { this.state.gold += 150; this.goldEarned += 150; }
+    else if (id === 'rally') { this.buffTimer = 8; this.buffMul = 1.3; }
+    it.count--;
+    Sound.skill();
+    this._emit();
+    return true;
+  };
+
   /* ---- 主循环更新 ---- */
   TDGame.prototype.update = function (dt) {
     if (!this.state) return;
     if (this.state.status !== 'playing' && this.state.status !== 'ready') {
-      // 仍推进特效淡出，但不再模拟战斗
       this._updateFx(dt);
       return;
     }
     var sdt = dt * this.state.speed;
     this._updateSkills(sdt);
 
-    // 生成敌人
     if (this.waveActive) {
       this.waveTimer += sdt;
       while (this.spawnQueue.length && this.spawnQueue[0].at <= this.waveTimer) {
@@ -274,10 +323,9 @@ window.PL3Engine = (function () {
     this._updateBolts(sdt);
     this._updateFx(sdt);
 
-    // 波次结算
     if (this.waveActive && this.spawnQueue.length === 0 && this.enemies.length === 0) {
       this.waveActive = false;
-      if (this.waveIndex >= this.state.totalWaves) {
+      if (!this.endless && this.waveIndex >= this.state.totalWaves) {
         this._win();
       }
       this._emit();
@@ -291,6 +339,10 @@ window.PL3Engine = (function () {
         if (k.cdLeft <= 0) { k.cdLeft = 0; k.ready = true; }
       }
     });
+    if (this.buffTimer > 0) {
+      this.buffTimer -= dt;
+      if (this.buffTimer <= 0) { this.buffTimer = 0; this.buffMul = 1; }
+    }
   };
 
   TDGame.prototype._updateEnemies = function (dt) {
@@ -304,6 +356,12 @@ window.PL3Engine = (function () {
         this.enemies.splice(i, 1);
         Sound.hit();
         continue;
+      }
+      // 点燃持续伤害
+      if (en.burnTimer > 0) {
+        en.burnTimer -= dt;
+        en.hp -= en.burnDps * dt;
+        if (en.hp <= 0) continue; // 下帧开头处理死亡奖励
       }
       // 眩晕
       if (en.stunTimer > 0) { en.stunTimer -= dt; continue; }
@@ -326,6 +384,13 @@ window.PL3Engine = (function () {
   };
 
   TDGame.prototype._reachBase = function (en, idx) {
+    if (this.shieldCharges > 0) {
+      this.shieldCharges--;
+      this.enemies.splice(idx, 1);
+      this.fx.push({ kind: 'block', x: this.pts[this.pts.length - 1].x, y: this.pts[this.pts.length - 1].y, t: 0, life: 0.7 });
+      this._emit();
+      return;
+    }
     var loss = en.boss ? 5 : 1;
     this.state.lives -= loss;
     this.enemies.splice(idx, 1);
@@ -337,7 +402,6 @@ window.PL3Engine = (function () {
   };
 
   TDGame.prototype._progress = function (en) {
-    // 用于选目标：越大越靠近基地
     if (en.wp >= this.pts.length) return 1e9;
     var a = this.pts[en.wp - 1] || this.pts[0];
     var b = this.pts[en.wp];
@@ -351,8 +415,18 @@ window.PL3Engine = (function () {
     this.towers.forEach(function (tw) {
       if (tw.cd > 0) tw.cd -= dt;
       var L = tw.def.levels[tw.level];
-      var range = L.range * CELL;
+      // 相邻同势力羁绊：每相邻 1 座 +12% 攻速，封顶 +36%
+      var syn = 0;
+      self.towers.forEach(function (o) {
+        if (o !== tw && o.def.faction === tw.def.faction) {
+          if (Math.abs(o.col - tw.col) <= 1 && Math.abs(o.row - tw.row) <= 1) syn += 0.12;
+        }
+      });
+      syn = Math.min(syn, 0.36);
+      tw.synergy = syn;
+      var rateMul = (1 + syn) * self.buffMul;
       // 选目标：射程内 progress 最大者
+      var range = L.range * CELL;
       var best = null, bestP = -1;
       self.enemies.forEach(function (en) {
         if (dist(tw.x, tw.y, en.x, en.y) <= range) {
@@ -362,21 +436,22 @@ window.PL3Engine = (function () {
       });
       if (!best) return;
       if (tw.cd > 0) return;
-      tw.cd = 1 / L.rate;
-      // 开火
+      tw.cd = 1 / (L.rate * rateMul);
       self._fire(tw, L, best, range);
     });
   };
 
   TDGame.prototype._fire = function (tw, L, target, range) {
     var def = tw.def;
+    var maxLv = tw.level === def.levels.length - 1;
     if (def.aoe) {
       var r = (def.aoe || 0.9) * CELL;
+      if (def.perk === 'siege' && maxLv) r *= 1.25;
       this.enemies.forEach(function (en) {
         if (dist(target.x, target.y, en.x, en.y) <= r) {
           var dmg = L.dmg * (1 - en.armor);
           en.hp -= dmg;
-          en.slowTimer = Math.max(en.slowTimer, 0); // 火塔不减速
+          if (def.perk === 'burn' && maxLv) { en.burnTimer = 3; en.burnDps = L.dmg * 0.4; }
           this.floaters.push({ x: en.x, y: en.y - 6, text: Math.round(dmg), color: '#ff7043', t: 0, life: 0.6 });
         }
       }, this);
@@ -386,13 +461,50 @@ window.PL3Engine = (function () {
       var dmg = L.dmg * (1 - target.armor);
       target.hp -= dmg;
       target.slowTimer = L.slowDur; target.slowFactor = L.slow;
+      if (def.perk === 'frostAura' && maxLv) {
+        var ra = 0.85 * CELL;
+        this.enemies.forEach(function (en) {
+          if (en !== target && dist(target.x, target.y, en.x, en.y) <= ra) {
+            en.slowTimer = Math.max(en.slowTimer, L.slowDur * 0.7);
+            en.slowFactor = L.slow;
+          }
+        });
+      }
       this.floaters.push({ x: target.x, y: target.y - 6, text: Math.round(dmg), color: '#90caf9', t: 0, life: 0.6 });
       this.bolts.push({ x1: tw.x, y1: tw.y, x2: target.x, y2: target.y, color: def.color, t: 0, life: 0.12 });
       Sound.frost();
+    } else if (def.chain) {
+      // 连锁闪电：从目标起逐跳，伤害衰减
+      var hops = def.chain + (def.perk === 'chainPlus' && maxLv ? 1 : 0);
+      var dmg0 = def.pierce ? L.dmg : L.dmg * (1 - target.armor);
+      var cur = target, prev = null, hitSet = {}, fall = def.chainFall || 0.7, dmg = dmg0;
+      for (var h = 0; h <= hops; h++) {
+        if (!cur || hitSet[cur.uid]) break;
+        hitSet[cur.uid] = true;
+        var dd = def.pierce ? dmg : dmg * (1 - cur.armor);
+        cur.hp -= dd;
+        this.floaters.push({ x: cur.x, y: cur.y - 6, text: Math.round(dd), color: '#ffe082', t: 0, life: 0.6 });
+        if (prev) this.bolts.push({ x1: prev.x, y1: prev.y, x2: cur.x, y2: cur.y, color: def.color, t: 0, life: 0.14 });
+        else this.bolts.push({ x1: tw.x, y1: tw.y, x2: cur.x, y2: cur.y, color: def.color, t: 0, life: 0.14 });
+        prev = cur;
+        var nx = null, nd = Infinity;
+        for (var k = 0; k < this.enemies.length; k++) {
+          var e2 = this.enemies[k];
+          if (hitSet[e2.uid]) continue;
+          var d2 = dist(cur.x, cur.y, e2.x, e2.y);
+          if (d2 < nd) { nd = d2; nx = e2; }
+        }
+        cur = nx; dmg *= fall;
+      }
+      Sound.thunder();
     } else {
+      // 单体（弓弩营 / 谋士营）
       var dmg2 = def.pierce ? L.dmg : L.dmg * (1 - target.armor);
+      var crit = false;
+      if (def.perk === 'crit' && maxLv && Math.random() < 0.25) { dmg2 *= 2; crit = true; }
+      if (def.perk === 'overload' && maxLv) dmg2 *= 1.3;
       target.hp -= dmg2;
-      this.floaters.push({ x: target.x, y: target.y - 6, text: Math.round(dmg2), color: def.pierce ? '#ce93d8' : '#fff', t: 0, life: 0.6 });
+      this.floaters.push({ x: target.x, y: target.y - 6, text: Math.round(dmg2), color: def.pierce ? '#ce93d8' : (crit ? '#ffd54f' : '#fff'), t: 0, life: 0.6 });
       this.bolts.push({ x1: tw.x, y1: tw.y, x2: target.x, y2: target.y, color: def.color, t: 0, life: 0.12 });
       Sound.shoot();
     }
@@ -443,16 +555,13 @@ window.PL3Engine = (function () {
   TDGame.prototype.render = function () {
     var ctx = this.ctx, map = this.map;
     if (!map) return;
-    // 背景
     var g = ctx.createLinearGradient(0, 0, 0, D.H);
     g.addColorStop(0, map.bgTop); g.addColorStop(1, map.bgBot);
     ctx.fillStyle = g; ctx.fillRect(0, 0, D.W, D.H);
-    // 网格
     ctx.strokeStyle = 'rgba(0,0,0,0.05)'; ctx.lineWidth = 1;
     for (var c = 0; c <= D.GRID.COLS; c++) { ctx.beginPath(); ctx.moveTo(c * CELL, 0); ctx.lineTo(c * CELL, D.H); ctx.stroke(); }
     for (var r = 0; r <= D.GRID.ROWS; r++) { ctx.beginPath(); ctx.moveTo(0, r * CELL); ctx.lineTo(D.W, r * CELL); ctx.stroke(); }
 
-    // 装饰格
     var self = this;
     Object.keys(this.blocked).forEach(function (key) {
       var p = key.split(','); var cc = toPx(+p[0], +p[1]);
@@ -463,40 +572,31 @@ window.PL3Engine = (function () {
       ctx.fillText('⛰️', cc.x, cc.y);
     });
 
-    // 道路折线
     ctx.strokeStyle = map.road; ctx.lineWidth = CELL * 0.82;
     ctx.lineJoin = 'round'; ctx.lineCap = 'round';
     ctx.beginPath();
     ctx.moveTo(this.pts[0].x, this.pts[0].y);
     for (var i = 1; i < this.pts.length; i++) ctx.lineTo(this.pts[i].x, this.pts[i].y);
     ctx.stroke();
-    // 路面中线
     ctx.strokeStyle = 'rgba(255,255,255,0.35)'; ctx.lineWidth = 3;
     ctx.setLineDash([10, 12]); ctx.stroke(); ctx.setLineDash([]);
 
-    // 起点 / 城池
     var start = this.pts[0], base = this.pts[this.pts.length - 1];
     ctx.font = (CELL * 0.55) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText('🚪', Math.max(12, start.x + CELL * 0.4), start.y);
     ctx.fillText('🏰', base.x, base.y);
 
-    // 建造预览
     if (this.buildType && this._hover) this._drawBuildPreview(ctx);
     if (this.skillTarget && this._hover) this._drawSkillPreview(ctx);
 
-    // 塔
     this.towers.forEach(function (tw) { self._drawTower(ctx, tw); });
-    // 敌人
     this.enemies.forEach(function (en) { self._drawEnemy(ctx, en); });
-    // 弹道
     this.bolts.forEach(function (b) {
       ctx.strokeStyle = b.color; ctx.globalAlpha = 1 - b.t / b.life; ctx.lineWidth = 3;
       ctx.beginPath(); ctx.moveTo(b.x1, b.y1); ctx.lineTo(b.x2, b.y2); ctx.stroke();
       ctx.globalAlpha = 1;
     });
-    // 特效
     this.fx.forEach(function (f) { self._drawFx(ctx, f); });
-    // 飘字
     this.floaters.forEach(function (f) {
       ctx.globalAlpha = 1 - f.t / f.life; ctx.fillStyle = f.color;
       ctx.font = 'bold 13px sans-serif'; ctx.textAlign = 'center';
@@ -521,6 +621,10 @@ window.PL3Engine = (function () {
       ctx.fillStyle = 'rgba(0,0,0,0.06)';
       ctx.beginPath(); ctx.arc(tw.x, tw.y, L.range * CELL, 0, Math.PI * 2); ctx.fill();
       ctx.strokeStyle = tw.def.color; ctx.lineWidth = 2; ctx.stroke();
+    } else if (tw.synergy > 0) {
+      // 羁绊光环：淡绿细环
+      ctx.strokeStyle = 'rgba(46,125,50,0.55)'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(tw.x, tw.y, CELL * 0.46, 0, Math.PI * 2); ctx.stroke();
     }
     var s = CELL * 0.40;
     ctx.fillStyle = tw.def.color;
@@ -528,7 +632,6 @@ window.PL3Engine = (function () {
     ctx.fillStyle = 'rgba(255,255,255,0.85)';
     ctx.font = (CELL * 0.5) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(tw.def.glyph, tw.x, tw.y);
-    // 等级星
     var stars = '';
     for (var i = 0; i <= tw.level; i++) stars += '★';
     ctx.fillStyle = '#f4c430'; ctx.font = '10px sans-serif';
@@ -536,24 +639,23 @@ window.PL3Engine = (function () {
   };
 
   TDGame.prototype._drawEnemy = function (ctx, en) {
-    // 身体
     ctx.fillStyle = en.color;
     ctx.beginPath(); ctx.arc(en.x, en.y, en.radius, 0, Math.PI * 2); ctx.fill();
     ctx.strokeStyle = 'rgba(0,0,0,0.25)'; ctx.lineWidth = 2; ctx.stroke();
-    // 字形
     ctx.font = (en.radius * 1.3) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(en.glyph, en.x, en.y);
-    // 减速蓝环
     if (en.slowTimer > 0) {
       ctx.strokeStyle = '#42a5f5'; ctx.lineWidth = 3;
       ctx.beginPath(); ctx.arc(en.x, en.y, en.radius + 3, 0, Math.PI * 2); ctx.stroke();
     }
-    // 眩晕星
+    if (en.burnTimer > 0) {
+      ctx.strokeStyle = '#ff7043'; ctx.lineWidth = 2;
+      ctx.beginPath(); ctx.arc(en.x, en.y, en.radius + 2, 0, Math.PI * 2); ctx.stroke();
+    }
     if (en.stunTimer > 0) {
       ctx.fillStyle = '#ffd54f'; ctx.font = '12px serif';
       ctx.fillText('💫', en.x, en.y - en.radius - 6);
     }
-    // 血条
     var w = en.radius * 2, hp = Math.max(0, en.hp / en.maxHp);
     ctx.fillStyle = 'rgba(0,0,0,0.4)'; ctx.fillRect(en.x - w / 2, en.y - en.radius - 9, w, 4);
     ctx.fillStyle = hp > 0.5 ? '#4caf50' : (hp > 0.25 ? '#ffb300' : '#e5484d');
@@ -574,6 +676,9 @@ window.PL3Engine = (function () {
     } else if (f.kind === 'leak') {
       ctx.globalAlpha = 1 - k; ctx.fillStyle = '#e5484d'; ctx.font = 'bold 18px sans-serif';
       ctx.textAlign = 'center'; ctx.fillText('城池受损!', f.x, f.y - 10 - k * 20); ctx.globalAlpha = 1;
+    } else if (f.kind === 'block') {
+      ctx.globalAlpha = 1 - k; ctx.fillStyle = '#2e7d32'; ctx.font = 'bold 18px sans-serif';
+      ctx.textAlign = 'center'; ctx.fillText('🛡️ 令牌护城!', f.x, f.y - 10 - k * 20); ctx.globalAlpha = 1;
     }
   };
 

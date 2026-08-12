@@ -95,19 +95,19 @@
   function renderMaps() {
     var box = $('map-list'); box.innerHTML = '';
     D.MAPS.forEach(function (m, idx) {
-      var unlocked = Save.isUnlocked(currentProfile.id, idx, D.MAPS);
+      var unlocked = m.endless ? true : Save.isUnlocked(currentProfile.id, idx, D.MAPS);
       var prog = (currentProfile.progress.maps || {})[m.id] || { stars: 0, best: 0, cleared: false };
       var stars = '';
       for (var i = 0; i < 3; i++) stars += '<span class="' + (i < prog.stars ? 'on' : '') + '">★</span>';
       var card = document.createElement('div');
-      card.className = 'map-card' + (unlocked ? '' : ' locked');
+      card.className = 'map-card' + (unlocked ? '' : ' locked') + (m.endless ? ' endless' : '');
       card.style.borderColor = m.theme;
       card.innerHTML =
-        '<div class="map-banner" style="background:' + m.theme + '">' + (unlocked ? '⚔️' : '🔒') + '</div>' +
+        '<div class="map-banner" style="background:' + m.theme + '">' + (unlocked ? (m.endless ? '🔥' : '⚔️') : '🔒') + '</div>' +
         '<div class="map-name">' + esc(m.name) + '</div>' +
         '<div class="map-sub">' + esc(m.sub) + '</div>' +
-        '<div class="map-stars">' + stars + '</div>' +
-        '<div class="map-meta">最高分 ' + (prog.best || 0) + ' · ' + m.waveCount + ' 波</div>' +
+        '<div class="map-stars">' + (m.endless ? '' : stars) + '</div>' +
+        '<div class="map-meta">' + (m.endless ? ('历史最佳 ' + (prog.best || 0) + ' 波') : ('最高分 ' + (prog.best || 0) + ' · ' + m.waveCount + ' 波')) + '</div>' +
         (unlocked ? '' : '<div class="map-lock">需先通关上一关</div>');
       if (unlocked) card.onclick = function () { startGame(idx); };
       box.appendChild(card);
@@ -125,9 +125,11 @@
     engine.init(map);
     buildTowerPalette();
     buildSkillBar();
+    buildItemBar();
     hideTowerPanel();
     engine.buildType = null; engine.skillTarget = null;
     updatePaletteActive();
+    updateSkillActive();
     E.Sound.init(); E.Sound.resume();
     startLoop();
   }
@@ -151,8 +153,21 @@
       var s = D.SKILLS[sid];
       var b = document.createElement('button'); b.className = 'sk-btn'; b.dataset.sk = sid;
       b.innerHTML = '<span class="sk-glyph">' + s.glyph + '</span><span class="sk-name">' + s.name + '</span><span class="sk-cd"></span>';
-      b.title = s.desc;
+      b.title = s.desc + (s.kind === 'economy' ? '（点击即放）' : '（点地图释放）');
       b.onclick = function () { selectSkill(sid); };
+      box.appendChild(b);
+    });
+  }
+  function buildItemBar() {
+    var box = $('item-bar'); if (!box) return; box.innerHTML = '';
+    D.ITEM_ORDER.forEach(function (iid) {
+      var it = D.ITEMS[iid];
+      var cnt = 0;
+      engine.items.forEach(function (x) { if (x.id === iid) cnt = x.count; });
+      var b = document.createElement('button'); b.className = 'it-btn'; b.dataset.it = iid;
+      b.title = it.desc;
+      b.innerHTML = '<span class="it-glyph">' + it.glyph + '</span><span class="it-name">' + it.name + '</span><span class="it-count">×' + cnt + '</span>';
+      b.onclick = function () { if (engine.useItem(iid)) { updateHud(); } };
       box.appendChild(b);
     });
   }
@@ -163,6 +178,12 @@
     updatePaletteActive(); updateSkillActive();
   }
   function selectSkill(sid) {
+    var sdef = D.SKILLS[sid];
+    if (sdef && sdef.kind === 'economy') {
+      // 经济技能：点击即放，无需选点
+      engine.castSkill(sid, 0, 0);
+      return;
+    }
     if (engine.skillTarget === sid) { engine.skillTarget = null; }
     else { engine.skillTarget = sid; engine.buildType = null; engine.selected = null; hideTowerPanel(); }
     updatePaletteActive(); updateSkillActive();
@@ -197,7 +218,6 @@
     }
     if (engine.buildType) {
       engine.placeTower(cell.col, cell.row, engine.buildType);
-      // 金币不足则退出建造模式
       if (engine.state.gold < D.TOWERS[engine.buildType].cost) { engine.buildType = null; updatePaletteActive(); }
       return;
     }
@@ -214,9 +234,13 @@
   function showTowerPanel(tw) {
     var def = tw.def, L = def.levels[tw.level];
     $('tp-name').textContent = def.name + ' · ' + (tw.level + 1) + ' 级';
-    $('tp-info').innerHTML = '伤害 ' + L.dmg + ' · 射程 ' + L.range.toFixed(1) +
-      (def.aoe ? ' · 范围' : def.frost ? ' · 减速' : def.pierce ? ' · 穿甲' : '') +
-      '<br>攻速 ' + L.rate.toFixed(2) + ' 次/秒';
+    var tags = def.aoe ? ' · 范围' : def.frost ? ' · 减速' : def.chain ? ' · 闪电' : def.pierce ? ' · 穿甲' : '';
+    var info = '伤害 ' + L.dmg + ' · 射程 ' + L.range.toFixed(1) + tags + '<br>攻速 ' + L.rate.toFixed(2) + ' 次/秒';
+    if (def.faction) info += '<br>势力 ' + def.faction;
+    if (tw.synergy > 0) info += '<br><span style="color:#2e7d32">⚔️ 羁绊攻速 +' + Math.round(tw.synergy * 100) + '%</span>';
+    if (def.perk && tw.level === def.levels.length - 1) info += '<br><b style="color:#c0392b">★ ' + (D.PERK_DESC[def.perk] || '') + '</b>';
+    else if (def.perk) info += '<br><span style="color:#8a7a5c">满级解锁：' + (D.PERK_DESC[def.perk] || '') + '</span>';
+    $('tp-info').innerHTML = info;
     var uc = engine.upgradeCost(tw);
     var upBtn = $('btn-upgrade');
     if (uc == null) { upBtn.textContent = '已满级'; upBtn.disabled = true; }
@@ -236,11 +260,11 @@
     if (!s) s = engine.getState();
     $('hud-gold').textContent = '💰 ' + s.gold;
     $('hud-lives').textContent = '🏰 ' + s.lives + '/' + s.maxLives;
-    $('hud-wave').textContent = '⚔️ 波次 ' + Math.min(s.waveIndex, s.totalWaves) + '/' + s.totalWaves;
+    if (s.endless) $('hud-wave').textContent = '⚔️ 坚守 ' + s.waveIndex + ' 波';
+    else $('hud-wave').textContent = '⚔️ 波次 ' + Math.min(s.waveIndex, s.totalWaves) + '/' + s.totalWaves;
     $('hud-score').textContent = '⭐ ' + s.score;
     $('btn-wave').disabled = !s.canStartWave;
-    $('btn-wave').textContent = s.waveActive ? '战斗中…' : (s.waveIndex >= s.totalWaves ? '已结束' : '出战 ▶');
-    // 技能冷却
+    $('btn-wave').textContent = s.waveActive ? '战斗中…' : '出战 ▶';
     s.skills.forEach(function (k) {
       var b = document.querySelector('.sk-btn[data-sk="' + k.id + '"]');
       if (!b) return;
@@ -248,7 +272,12 @@
       b.classList.toggle('cooling', !k.ready);
       b.querySelector('.sk-cd').textContent = k.ready ? '' : Math.ceil(k.cdLeft) + 's';
     });
-    // 升级按钮金币不足时禁用
+    if (s.items) s.items.forEach(function (it) {
+      var b = document.querySelector('.it-btn[data-it="' + it.id + '"]');
+      if (!b) return;
+      b.classList.toggle('used', it.count <= 0);
+      b.querySelector('.it-count').textContent = '×' + it.count;
+    });
     if (engine.selected && !$('tower-panel').hidden) {
       var uc = engine.upgradeCost(engine.selected);
       if (uc != null) $('btn-upgrade').disabled = engine.state.gold < uc;
@@ -259,6 +288,7 @@
   function onEnd(res) {
     if (lastEnd) return; lastEnd = res;
     var ov = $('overlay-msg');
+    var isEndless = D.MAPS[currentMapIdx].endless;
     if (res.result === 'won') {
       Save.recordClear(currentProfile.id, D.MAPS[currentMapIdx].id, res.stars, res.score);
       var next = currentMapIdx + 1;
@@ -271,7 +301,13 @@
     } else {
       $('om-title').textContent = '💀 城池失守';
       $('om-title').className = 'om-lose';
-      $('om-body').innerHTML = '撑过 ' + engine.state.waveIndex + ' 波　得分 ' + res.score;
+      var txt = '撑过 ' + engine.state.waveIndex + ' 波';
+      if (isEndless) {
+        Save.recordClear(currentProfile.id, 'endless', 0, engine.state.waveIndex);
+        var best = (currentProfile.progress.maps.endless || { best: 0 }).best;
+        txt += '　历史最佳 ' + best + ' 波';
+      }
+      $('om-body').innerHTML = txt + '　得分 ' + res.score;
       $('btn-next').hidden = true;
     }
     ov.hidden = false;
@@ -326,7 +362,6 @@
     $('btn-retry').onclick = retryGame;
     $('btn-tomaps').onclick = backToMaps;
 
-    // 首次交互恢复音频
     document.addEventListener('pointerdown', function once() {
       E.Sound.init(); E.Sound.resume(); document.removeEventListener('pointerdown', once);
     });
@@ -335,7 +370,5 @@
   window.addEventListener('DOMContentLoaded', function () {
     bind();
     show('screen-menu');
-    // 无档案时给个入口提示
-    if (!Save.loadProfiles().length) { /* 仍显示主菜单，点开始会进档案页 */ }
   });
 })();

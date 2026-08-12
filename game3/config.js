@@ -11,10 +11,11 @@ window.PL3_DATA = (function () {
   var W = GRID.COLS * GRID.CELL;   // 920
   var H = GRID.ROWS * GRID.CELL;   // 552
 
-  /* ---------------- 防御塔（4 种，各 3 级） ----------------
+  /* ---------------- 防御塔（6 种，各 3 级，含满级特技 perk） ----------------
    * range 单位=格；rate 单位=次/秒；dmg 单次伤害。
-   * fire=范围伤害(aoe 半径格)；frost=减速(slow 为速度倍率, slowDur 秒)；
-   * mage=pierce 穿透护甲。upgradeCost[i] 为升到第 i+2 级所需金币。
+   * aoe=范围伤害(半径格)；frost=减速(slow 速度倍率, slowDur 秒)；pierce=穿甲；
+   * chain=连锁闪电(跳数, chainFall=衰减)；perk=满级(3 级)解锁的专属特技。
+   * faction 用于「相邻同势力羁绊」攻速加成。
    */
   var TOWERS = {
     archer: {
@@ -25,7 +26,7 @@ window.PL3_DATA = (function () {
         { dmg: 24, range: 2.9, rate: 1.30 },
         { dmg: 42, range: 3.2, rate: 1.65 }
       ],
-      upgradeCost: [60, 110]
+      upgradeCost: [60, 110], perk: 'crit'
     },
     fire: {
       id: 'fire', name: '火攻营', faction: '吴', color: '#e5484d', glyph: '🔥',
@@ -35,7 +36,7 @@ window.PL3_DATA = (function () {
         { dmg: 18, range: 2.5, rate: 1.00 },
         { dmg: 28, range: 2.7, rate: 1.18 }
       ],
-      upgradeCost: [80, 140]
+      upgradeCost: [80, 140], perk: 'burn'
     },
     frost: {
       id: 'frost', name: '陷阵营', faction: '魏', color: '#2d7ff9', glyph: '🛡️',
@@ -45,7 +46,7 @@ window.PL3_DATA = (function () {
         { dmg: 9, range: 2.6, rate: 1.10, slow: 0.45, slowDur: 1.6 },
         { dmg: 14, range: 2.8, rate: 1.20, slow: 0.35, slowDur: 1.9 }
       ],
-      upgradeCost: [70, 120]
+      upgradeCost: [70, 120], perk: 'frostAura'
     },
     mage: {
       id: 'mage', name: '谋士营', faction: '汉', color: '#8e44ad', glyph: '📜',
@@ -55,12 +56,44 @@ window.PL3_DATA = (function () {
         { dmg: 52, range: 3.0, rate: 0.80 },
         { dmg: 82, range: 3.2, rate: 0.95 }
       ],
-      upgradeCost: [100, 160]
+      upgradeCost: [100, 160], perk: 'overload'
+    },
+    /* —— 新增：投石营（蜀，超远程范围爆发） —— */
+    catapult: {
+      id: 'catapult', name: '投石营', faction: '蜀', color: '#6d4c41', glyph: '🪨',
+      cost: 120, aoe: 1.15, desc: '超远程范围爆发，专破重甲与密集阵，攻速偏慢。',
+      levels: [
+        { dmg: 34, range: 3.6, rate: 0.55 },
+        { dmg: 56, range: 3.9, rate: 0.62 },
+        { dmg: 88, range: 4.2, rate: 0.72 }
+      ],
+      upgradeCost: [100, 170], perk: 'siege'
+    },
+    /* —— 新增：雷火营（吴，连锁闪电） —— */
+    thunder: {
+      id: 'thunder', name: '雷火营', faction: '吴', color: '#b8860b', glyph: '⚡',
+      cost: 105, chain: 2, chainFall: 0.7, desc: '连锁闪电跳跃灼敌，成群时越打越爽。',
+      levels: [
+        { dmg: 20, range: 2.8, rate: 0.90 },
+        { dmg: 34, range: 3.0, rate: 1.00 },
+        { dmg: 54, range: 3.2, rate: 1.15 }
+      ],
+      upgradeCost: [90, 150], perk: 'chainPlus'
     }
   };
-  var TOWER_ORDER = ['archer', 'fire', 'frost', 'mage'];
+  var TOWER_ORDER = ['archer', 'fire', 'frost', 'mage', 'catapult', 'thunder'];
 
-  /* ---------------- 敌人（6 种） ----------------
+  /* 满级特技(perk)中文说明，供 UI 展示 */
+  var PERK_DESC = {
+    crit: '满级暴击：25% 概率造成双倍伤害',
+    burn: '满级点燃：命中附加 3 秒持续灼烧',
+    frostAura: '满级寒霜：攻击溅射小范围减速',
+    overload: '满级过载：伤害提升 30%',
+    siege: '满级攻城：范围半径 +25%',
+    chainPlus: '满级连环：闪电额外跳跃 1 次'
+  };
+
+  /* ---------------- 敌人（6 种，沿用既有设定） ----------------
    * hp 基础血量；speed 格/秒；gold 击杀奖励；armor 伤害减免[0,1]；
    * boss 额外高血厚甲。color 阵营色环，glyph 卡通字形。
    */
@@ -73,7 +106,9 @@ window.PL3_DATA = (function () {
     boss:     { id: 'boss',     name: '名将', hp: 1300, speed: 0.9, gold: 130, armor: 0.30, color: '#b71c1c', glyph: '👑', boss: true }
   };
 
-  /* ---------------- 主动技能（2 个，点地图释放，有冷却） ---------------- */
+  /* ---------------- 主动技能（4 个，前 2 个点地图释放，后 2 个含经济类） ----------------
+   * kind: aoe=范围伤害, stun=眩晕, economy=开仓放粮(立即发金+短时全军攻速 buff，无需点地图)。
+   */
   var SKILLS = {
     fireStrike: {
       id: 'fireStrike', name: '火烧赤壁', glyph: '🔥', cd: 18, radius: 1.6, dmg: 130,
@@ -84,14 +119,35 @@ window.PL3_DATA = (function () {
       id: 'eightArray', name: '八阵图', glyph: '🌀', cd: 22, radius: 1.8, stun: 2.6,
       kind: 'stun', color: '#42a5f5',
       desc: '布下石阵，区域内敌军定身眩晕。'
+    },
+    /* —— 新增：草船借箭（大范围箭雨） —— */
+    arrowRain: {
+      id: 'arrowRain', name: '草船借箭', glyph: '🌧️', cd: 24, radius: 3.0, dmg: 90,
+      kind: 'aoe', color: '#7e57c2',
+      desc: '万箭齐发覆盖大片区域，压制成群敌军。'
+    },
+    /* —— 新增：屯田令（经济技能，点击即放） —— */
+    tuntian: {
+      id: 'tuntian', name: '屯田令', glyph: '💰', cd: 30, kind: 'economy',
+      gold: 150, buffDur: 8, buffMul: 1.3, color: '#f57f17',
+      desc: '开仓放粮：立即 +150 金，8 秒内全军攻速 +30%。'
     }
   };
-  var SKILL_ORDER = ['fireStrike', 'eightArray'];
+  var SKILL_ORDER = ['fireStrike', 'eightArray', 'arrowRain', 'tuntian'];
 
-  /* ---------------- 地图（3 张战役） ----------------
+  /* ---------------- 锦囊（对局内可点用的消耗道具，开局各送 1 个） ---------------- */
+  var ITEMS = {
+    shield: { id: 'shield', name: '免伤令牌', glyph: '🛡️', desc: '挡下一次敌军破城，城池不掉血。' },
+    gold:   { id: 'gold',   name: '天降横财', glyph: '💰', desc: '立即获得 150 金。' },
+    rally:  { id: 'rally',  name: '擂鼓助威', glyph: '🥁', desc: '8 秒内全军攻速 +30%。' }
+  };
+  var ITEM_ORDER = ['shield', 'gold', 'rally'];
+  var START_ITEMS = { shield: 1, gold: 1, rally: 1 };
+
+  /* ---------------- 地图（3 张战役 + 1 张无尽） ----------------
    * waypoints：路径折线（网格坐标 [col,row]，可越界表示出入口）。
    * blocked：不可建造的装饰格（山/水），仅影响可建造判定。
-   * hpScale：敌人血量整体缩放；waveCount：波次数。
+   * hpScale：敌人血量整体缩放；waveCount：波次数；endless：无尽模式。
    */
   var MAPS = [
     {
@@ -114,14 +170,22 @@ window.PL3_DATA = (function () {
       waypoints: [[-1,5],[2,5],[2,1],[7,1],[7,10],[12,10],[12,3],[17,3],[17,8],[19,8]],
       blocked: [[4,7],[5,7],[9,5],[10,5],[14,7],[15,7],[3,3],[4,3]],
       startGold: 265, startLives: 16, hpScale: 1.8, waveCount: 16, boss: '袁绍'
+    },
+    /* —— 新增：无尽烽火（无限波次，难度递增，永夜征战） —— */
+    {
+      id: 'endless', name: '无尽烽火', sub: '烽火连城 · 永夜征战', theme: '#c0392b',
+      bgTop: '#f3e7dc', bgBot: '#e2cfc0', road: '#b98a5e',
+      waypoints: [[-1,2],[4,2],[4,6],[9,6],[9,2],[14,2],[14,9],[19,9]],
+      blocked: [[6,9],[7,9],[11,5],[12,5],[16,4],[17,4],[2,9],[3,9]],
+      startGold: 260, startLives: 20, hpScale: 1.0, waveCount: 999999, endless: true, boss: '群雄'
     }
   ];
 
-  /* ---------------- 波次生成器 ----------------
-   * 依据地图 waveCount / hpScale 程序化生成，确定性（无随机）。
-   * 每波返回 { spawns:[{type,at,bossName?}], lead } —— at 为波内秒数。
+  /* ---------------- 波次生成器（战役，确定性无随机） ----------------
+   * 每波返回 { spawns:[{type,at,bossName?}], lead, hpScale } —— at 为波内秒数。
    */
   function genWaves(map) {
+    if (map.endless) return [];   // 无尽模式由引擎动态生成
     var waves = [];
     for (var w = 1; w <= map.waveCount; w++) {
       var groups = [];
@@ -144,20 +208,39 @@ window.PL3_DATA = (function () {
         }
       });
       spawns.sort(function (a, b) { return a.at - b.at; });
-      waves.push({ spawns: spawns, lead: 1.6 });
+      waves.push({ spawns: spawns, lead: 1.6, hpScale: map.hpScale });
     }
     return waves;
   }
 
-  // 预生成每张地图的波次
+  /* ---------------- 波次生成器（无尽，难度随波数递增） ---------------- */
+  function genEndlessWave(w, map) {
+    var scale = 1 + (w - 1) * 0.06;   // 每波血量 +6%
+    var groups = [];
+    groups.push({ type: 'infantry', count: 4 + Math.floor(w * 1.2), gap: 0.6, start: 0 });
+    groups.push({ type: 'cavalry', count: 2 + Math.floor(w * 0.8), gap: 0.5, start: 1.0 });
+    if (w >= 2) groups.push({ type: 'archer', count: 1 + Math.floor(w * 0.6), gap: 0.6, start: 1.8 });
+    if (w >= 3) groups.push({ type: 'heavy', count: 1 + Math.floor(w * 0.5), gap: 1.0, start: 2.6 });
+    if (w >= 4) groups.push({ type: 'ram', count: Math.floor(w / 4) + 1, gap: 1.8, start: 3.4 });
+    if (w % 5 === 0) groups.push({ type: 'boss', count: Math.floor(w / 5), gap: 1.2, start: 4.5, bossName: map.boss });
+    var spawns = [];
+    groups.forEach(function (g) {
+      for (var i = 0; i < g.count; i++) spawns.push({ type: g.type, at: g.start + i * g.gap, bossName: g.bossName });
+    });
+    spawns.sort(function (a, b) { return a.at - b.at; });
+    return { spawns: spawns, lead: 1.6, hpScale: scale };
+  }
+
+  // 预生成每张战役地图的波次（无尽地图留空，运行时动态追加）
   MAPS.forEach(function (m) { m.waves = genWaves(m); });
 
   return {
     GRID: GRID, W: W, H: H,
-    TOWERS: TOWERS, TOWER_ORDER: TOWER_ORDER,
+    TOWERS: TOWERS, TOWER_ORDER: TOWER_ORDER, PERK_DESC: PERK_DESC,
     ENEMIES: ENEMIES,
     SKILLS: SKILLS, SKILL_ORDER: SKILL_ORDER,
+    ITEMS: ITEMS, ITEM_ORDER: ITEM_ORDER, START_ITEMS: START_ITEMS,
     MAPS: MAPS,
-    genWaves: genWaves
+    genWaves: genWaves, genEndlessWave: genEndlessWave
   };
 })();
