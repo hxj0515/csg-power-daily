@@ -53,6 +53,17 @@ window.PL3Engine = (function () {
     return dist(px, py, a.x + t * dx, a.y + t * dy);
   }
 
+  /* 死亡爆裂粒子：从 (x,y) 向外飞散 n 个点 */
+  function makeBurst(x, y, color, n) {
+    var parts = [];
+    for (var i = 0; i < n; i++) {
+      var a = Math.random() * Math.PI * 2;
+      var v = 40 + Math.random() * 100;
+      parts.push({ x: x, y: y, vx: Math.cos(a) * v, vy: Math.sin(a) * v, r: 2 + Math.random() * 2.6 });
+    }
+    return parts;
+  }
+
   /* ---------------- 引擎主体 ---------------- */
   function TDGame(canvas, cb) {
     this.canvas = canvas;
@@ -95,6 +106,7 @@ window.PL3Engine = (function () {
     this.curScale = map.hpScale;
     this.buffTimer = 0; this.buffMul = 1;
     this.shieldCharges = 0;
+    this.autoWave = false; this.autoTimer = 0;
     this._euid = 0;
     this.waveIndex = 0;
     this.waveActive = false;
@@ -179,7 +191,7 @@ window.PL3Engine = (function () {
     var c = toPx(col, row);
     this.towers.push({
       type: typeId, def: def, col: col, row: row, x: c.x, y: c.y,
-      level: 0, cd: 0, id: 't' + (this.towers.length), synergy: 0
+      level: 0, cd: 0, id: 't' + (this.towers.length), synergy: 0, flash: 0, angle: 0
     });
     this.state.gold -= def.cost;
     Sound.place();
@@ -222,6 +234,7 @@ window.PL3Engine = (function () {
     var wave = this.map.waves[this.waveIndex];
     this.waveIndex++;
     this.waveActive = true;
+    this.autoTimer = 0;
     this.spawnQueue = wave.spawns.slice();
     this.waveTimer = 0;
     this.curScale = wave.hpScale || this.map.hpScale;
@@ -235,8 +248,9 @@ window.PL3Engine = (function () {
     var scale = this.curScale || this.map.hpScale;
     var hp = Math.round(e.hp * (e.boss ? scale * 1.0 : scale));
     var name = e.boss ? (spec.bossName || e.name) : e.name;
+    var ability = e.boss ? (D.BOSS_ABILITY[name] || 'armor') : null;
     var p0 = this.pts[0];
-    this.enemies.push({
+    var en = {
       type: spec.type, def: e, name: name,
       x: p0.x, y: p0.y, wp: 1,
       hp: hp, maxHp: hp,
@@ -246,7 +260,32 @@ window.PL3Engine = (function () {
       burnTimer: 0, burnDps: 0,
       glyph: e.glyph, color: e.color,
       radius: e.boss ? CELL * 0.42 : CELL * 0.30,
-      uid: 'e' + (++this._euid)
+      uid: 'e' + (++this._euid),
+      ability: ability, hitFlash: 0,
+      chargeTimer: 7, chargeT: 0, summonTimer: 5
+    };
+    if (ability === 'armor') en.armor = 0.6;   // 重甲型 BOSS 常态高减伤
+    this.enemies.push(en);
+  };
+
+  /* 在 BOSS 当前位置召唤小兵（summon 特技用） */
+  TDGame.prototype._spawnMinion = function (boss, type) {
+    var e = D.ENEMIES[type];
+    var scale = this.curScale || this.map.hpScale;
+    var hp = Math.round(e.hp * scale * 0.8);
+    var wp = Math.min(boss.wp, this.pts.length - 1);
+    this.enemies.push({
+      type: type, def: e, name: e.name,
+      x: boss.x, y: boss.y, wp: wp,
+      hp: hp, maxHp: hp,
+      baseSpeed: e.speed * CELL,
+      gold: e.gold, armor: e.armor, boss: false,
+      slowTimer: 0, slowFactor: 1, stunTimer: 0,
+      burnTimer: 0, burnDps: 0,
+      glyph: e.glyph, color: e.color,
+      radius: CELL * 0.30,
+      uid: 'e' + (++this._euid),
+      ability: null, hitFlash: 0, chargeTimer: 0, chargeT: 0, summonTimer: 0
     });
   };
 
@@ -330,6 +369,14 @@ window.PL3Engine = (function () {
       }
       this._emit();
     }
+    // 自动连续出战：波间 2 秒自动续战（战役胜利/失败不触发）
+    if (this.autoWave && this.state.status === 'playing' && !this.waveActive) {
+      var more = this.endless || this.waveIndex < this.state.totalWaves;
+      if (more) {
+        this.autoTimer += sdt;
+        if (this.autoTimer >= 2.0) { this.autoTimer = 0; this.startNextWave(); }
+      }
+    }
   };
 
   TDGame.prototype._updateSkills = function (dt) {
@@ -352,7 +399,8 @@ window.PL3Engine = (function () {
       if (en.hp <= 0) {
         this.state.gold += en.gold; this.goldEarned += en.gold;
         this.floaters.push({ x: en.x, y: en.y, text: '+' + en.gold, color: '#f4c430', t: 0, life: 0.8 });
-        this.fx.push({ kind: 'pop', x: en.x, y: en.y, r: en.radius, color: en.color, t: 0, life: 0.3 });
+        this.fx.push({ kind: 'burst', x: en.x, y: en.y, color: en.color, t: 0, life: 0.45,
+          parts: makeBurst(en.x, en.y, en.color, en.boss ? 14 : 7) });
         this.enemies.splice(i, 1);
         Sound.hit();
         continue;
@@ -363,10 +411,30 @@ window.PL3Engine = (function () {
         en.hp -= en.burnDps * dt;
         if (en.hp <= 0) continue; // 下帧开头处理死亡奖励
       }
+      // 受击闪白衰减
+      if (en.hitFlash > 0) en.hitFlash = Math.max(0, en.hitFlash - dt * 4);
       // 眩晕
       if (en.stunTimer > 0) { en.stunTimer -= dt; continue; }
+      // —— BOSS 名将特技 ——
+      if (en.boss && en.ability) {
+        if (en.chargeTimer > 0) en.chargeTimer -= dt;
+        if (en.summonTimer > 0) en.summonTimer -= dt;
+        if (en.ability === 'charge' || en.ability === 'mixed') {
+          if (en.chargeT > 0) en.chargeT -= dt;
+          else if (en.chargeTimer <= 0) {
+            en.chargeT = 1.6; en.chargeTimer = 7;
+            this.fx.push({ kind: 'ring', x: en.x, y: en.y, r: 0, max: en.radius * 2.6, color: '#ff5252', life: 0.5, t: 0 });
+          }
+        }
+        if ((en.ability === 'summon' || en.ability === 'mixed') && en.summonTimer <= 0) {
+          en.summonTimer = 5;
+          this._spawnMinion(en, 'infantry');
+          if (en.ability === 'mixed') this._spawnMinion(en, 'cavalry');
+        }
+      }
       // 减速
       var sp = en.baseSpeed;
+      if (en.chargeT > 0) sp *= 1.9;            // 冲锋提速
       if (en.slowTimer > 0) { en.slowTimer -= dt; sp *= en.slowFactor; }
       // 沿路径移动
       var target = this.pts[en.wp];
@@ -444,13 +512,15 @@ window.PL3Engine = (function () {
   TDGame.prototype._fire = function (tw, L, target, range) {
     var def = tw.def;
     var maxLv = tw.level === def.levels.length - 1;
+    tw.flash = 1;
+    tw.angle = Math.atan2(target.y - tw.y, target.x - tw.x);
     if (def.aoe) {
       var r = (def.aoe || 0.9) * CELL;
       if (def.perk === 'siege' && maxLv) r *= 1.25;
       this.enemies.forEach(function (en) {
         if (dist(target.x, target.y, en.x, en.y) <= r) {
           var dmg = L.dmg * (1 - en.armor);
-          en.hp -= dmg;
+          en.hp -= dmg; en.hitFlash = 1;
           if (def.perk === 'burn' && maxLv) { en.burnTimer = 3; en.burnDps = L.dmg * 0.4; }
           this.floaters.push({ x: en.x, y: en.y - 6, text: Math.round(dmg), color: '#ff7043', t: 0, life: 0.6 });
         }
@@ -459,7 +529,7 @@ window.PL3Engine = (function () {
       Sound.fire();
     } else if (def.frost) {
       var dmg = L.dmg * (1 - target.armor);
-      target.hp -= dmg;
+      target.hp -= dmg; target.hitFlash = 1;
       target.slowTimer = L.slowDur; target.slowFactor = L.slow;
       if (def.perk === 'frostAura' && maxLv) {
         var ra = 0.85 * CELL;
@@ -482,7 +552,7 @@ window.PL3Engine = (function () {
         if (!cur || hitSet[cur.uid]) break;
         hitSet[cur.uid] = true;
         var dd = def.pierce ? dmg : dmg * (1 - cur.armor);
-        cur.hp -= dd;
+        cur.hp -= dd; cur.hitFlash = 1;
         this.floaters.push({ x: cur.x, y: cur.y - 6, text: Math.round(dd), color: '#ffe082', t: 0, life: 0.6 });
         if (prev) this.bolts.push({ x1: prev.x, y1: prev.y, x2: cur.x, y2: cur.y, color: def.color, t: 0, life: 0.14 });
         else this.bolts.push({ x1: tw.x, y1: tw.y, x2: cur.x, y2: cur.y, color: def.color, t: 0, life: 0.14 });
@@ -503,7 +573,7 @@ window.PL3Engine = (function () {
       var crit = false;
       if (def.perk === 'crit' && maxLv && Math.random() < 0.25) { dmg2 *= 2; crit = true; }
       if (def.perk === 'overload' && maxLv) dmg2 *= 1.3;
-      target.hp -= dmg2;
+      target.hp -= dmg2; target.hitFlash = 1;
       this.floaters.push({ x: target.x, y: target.y - 6, text: Math.round(dmg2), color: def.pierce ? '#ce93d8' : (crit ? '#ffd54f' : '#fff'), t: 0, life: 0.6 });
       this.bolts.push({ x1: tw.x, y1: tw.y, x2: target.x, y2: target.y, color: def.color, t: 0, life: 0.12 });
       Sound.shoot();
@@ -626,9 +696,30 @@ window.PL3Engine = (function () {
       ctx.strokeStyle = 'rgba(46,125,50,0.55)'; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(tw.x, tw.y, CELL * 0.46, 0, Math.PI * 2); ctx.stroke();
     }
+    // 全军攻速 buff 金环
+    if (this.buffMul > 1) {
+      ctx.strokeStyle = 'rgba(244,192,16,0.85)'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(tw.x, tw.y, CELL * 0.48, 0, Math.PI * 2); ctx.stroke();
+    }
     var s = CELL * 0.40;
+    // 炮口（朝当前目标）
+    if (tw.angle != null) {
+      ctx.save();
+      ctx.translate(tw.x, tw.y); ctx.rotate(tw.angle);
+      ctx.fillStyle = 'rgba(40,30,20,0.85)';
+      ctx.fillRect(s * 0.55, -3, s * 0.95, 6);
+      ctx.restore();
+    }
     ctx.fillStyle = tw.def.color;
     this._roundRect(ctx, tw.x - s, tw.y - s, s * 2, s * 2, 8); ctx.fill();
+    // 开火闪光
+    if (tw.flash > 0) {
+      ctx.globalAlpha = tw.flash * 0.55;
+      ctx.fillStyle = '#fff';
+      ctx.beginPath(); ctx.arc(tw.x, tw.y, s * 0.72, 0, Math.PI * 2); ctx.fill();
+      ctx.globalAlpha = 1;
+      tw.flash = Math.max(0, tw.flash - 0.07);
+    }
     ctx.fillStyle = 'rgba(255,255,255,0.85)';
     ctx.font = (CELL * 0.5) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(tw.def.glyph, tw.x, tw.y);
@@ -642,6 +733,14 @@ window.PL3Engine = (function () {
     ctx.fillStyle = en.color;
     ctx.beginPath(); ctx.arc(en.x, en.y, en.radius, 0, Math.PI * 2); ctx.fill();
     ctx.strokeStyle = 'rgba(0,0,0,0.25)'; ctx.lineWidth = 2; ctx.stroke();
+    if (en.hitFlash > 0) {
+      ctx.fillStyle = 'rgba(255,255,255,' + (en.hitFlash * 0.6) + ')';
+      ctx.beginPath(); ctx.arc(en.x, en.y, en.radius, 0, Math.PI * 2); ctx.fill();
+    }
+    if (en.armor >= 0.5) {
+      ctx.strokeStyle = '#37474f'; ctx.lineWidth = 4;
+      ctx.beginPath(); ctx.arc(en.x, en.y, en.radius + 2, 0, Math.PI * 2); ctx.stroke();
+    }
     ctx.font = (en.radius * 1.3) + 'px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
     ctx.fillText(en.glyph, en.x, en.y);
     if (en.slowTimer > 0) {
@@ -651,6 +750,10 @@ window.PL3Engine = (function () {
     if (en.burnTimer > 0) {
       ctx.strokeStyle = '#ff7043'; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(en.x, en.y, en.radius + 2, 0, Math.PI * 2); ctx.stroke();
+    }
+    if (en.chargeT > 0) {
+      ctx.strokeStyle = 'rgba(255,82,82,0.85)'; ctx.lineWidth = 3;
+      ctx.beginPath(); ctx.arc(en.x, en.y, en.radius + 5, 0, Math.PI * 2); ctx.stroke();
     }
     if (en.stunTimer > 0) {
       ctx.fillStyle = '#ffd54f'; ctx.font = '12px serif';
@@ -672,6 +775,13 @@ window.PL3Engine = (function () {
     } else if (f.kind === 'pop') {
       ctx.globalAlpha = 1 - k; ctx.strokeStyle = f.color; ctx.lineWidth = 3;
       ctx.beginPath(); ctx.arc(f.x, f.y, f.r * (1 + k), 0, Math.PI * 2); ctx.stroke();
+      ctx.globalAlpha = 1;
+    } else if (f.kind === 'burst') {
+      var ba = 1 - k;
+      (f.parts || []).forEach(function (p) {
+        ctx.globalAlpha = ba; ctx.fillStyle = f.color;
+        ctx.beginPath(); ctx.arc(p.x + p.vx * f.t, p.y + p.vy * f.t, p.r, 0, Math.PI * 2); ctx.fill();
+      });
       ctx.globalAlpha = 1;
     } else if (f.kind === 'leak') {
       ctx.globalAlpha = 1 - k; ctx.fillStyle = '#e5484d'; ctx.font = 'bold 18px sans-serif';

@@ -106,6 +106,20 @@ window.PL3_DATA = (function () {
     boss:     { id: 'boss',     name: '名将', hp: 1300, speed: 0.9, gold: 130, armor: 0.30, color: '#b71c1c', glyph: '👑', boss: true }
   };
 
+  /* ---------------- BOSS 名将特技（按 bossName 映射） ----------------
+   * charge：周期冲锋，短暂大幅提速直扑城池；
+   * summon：周期召唤小兵（在自身当前位置生成步兵/轻骑）；
+   * armor ：常态重甲，伤害减免更高；
+   * mixed ：冲锋 + 召唤 双重威胁（无尽烽火群雄）。
+   */
+  var BOSS_ABILITY = {
+    '张郃': 'charge',   // 长坂坡
+    '曹操': 'summon',   // 赤壁
+    '袁绍': 'armor',    // 官渡
+    '张辽': 'charge',   // 合肥逍遥津
+    '群雄': 'mixed'     // 无尽烽火
+  };
+
   /* ---------------- 主动技能（4 个，前 2 个点地图释放，后 2 个含经济类） ----------------
    * kind: aoe=范围伤害, stun=眩晕, economy=开仓放粮(立即发金+短时全军攻速 buff，无需点地图)。
    */
@@ -144,7 +158,7 @@ window.PL3_DATA = (function () {
   var ITEM_ORDER = ['shield', 'gold', 'rally'];
   var START_ITEMS = { shield: 1, gold: 1, rally: 1 };
 
-  /* ---------------- 地图（3 张战役 + 1 张无尽） ----------------
+  /* ---------------- 地图（4 张战役 + 1 张无尽） ----------------
    * waypoints：路径折线（网格坐标 [col,row]，可越界表示出入口）。
    * blocked：不可建造的装饰格（山/水），仅影响可建造判定。
    * hpScale：敌人血量整体缩放；waveCount：波次数；endless：无尽模式。
@@ -155,29 +169,37 @@ window.PL3_DATA = (function () {
       bgTop: '#eaf6ec', bgBot: '#d6ecd9', road: '#caa472',
       waypoints: [[-1,2],[4,2],[4,6],[9,6],[9,2],[14,2],[14,9],[19,9]],
       blocked: [[6,9],[7,9],[11,5],[12,5],[16,4],[17,4],[2,9],[3,9]],
-      startGold: 230, startLives: 20, hpScale: 1.0, waveCount: 12, boss: '张郃'
+      startGold: 245, startLives: 20, hpScale: 1.0, waveCount: 12, boss: '张郃'
     },
     {
       id: 'chibi', name: '赤壁', sub: '火攻借风 · 锁船连舟', theme: '#c0392b',
       bgTop: '#e8f1f8', bgBot: '#cfe2f0', road: '#b98a5e',
       waypoints: [[-1,1],[3,1],[3,10],[9,10],[9,3],[15,3],[15,10],[19,10]],
       blocked: [[6,5],[7,5],[12,6],[13,6],[17,5],[18,5],[5,8],[6,8]],
-      startGold: 245, startLives: 18, hpScale: 1.35, waveCount: 14, boss: '曹操'
+      startGold: 260, startLives: 18, hpScale: 1.35, waveCount: 14, boss: '曹操'
     },
     {
       id: 'guandu', name: '官渡', sub: '以少胜多 · 乌巢奇袭', theme: '#8e44ad',
       bgTop: '#efeaf6', bgBot: '#ddd2ee', road: '#a98b6b',
       waypoints: [[-1,5],[2,5],[2,1],[7,1],[7,10],[12,10],[12,3],[17,3],[17,8],[19,8]],
       blocked: [[4,7],[5,7],[9,5],[10,5],[14,7],[15,7],[3,3],[4,3]],
-      startGold: 265, startLives: 16, hpScale: 1.8, waveCount: 16, boss: '袁绍'
+      startGold: 285, startLives: 16, hpScale: 1.8, waveCount: 16, boss: '袁绍'
     },
-    /* —— 新增：无尽烽火（无限波次，难度递增，永夜征战） —— */
+    /* —— 新增：合肥逍遥津（第 4 战，张辽威震） —— */
+    {
+      id: 'hefei', name: '合肥逍遥津', sub: '张辽威震 · 孙权败退', theme: '#1b5e20',
+      bgTop: '#e9f3ea', bgBot: '#cfe6d2', road: '#a98b6b',
+      waypoints: [[-1,3],[3,3],[3,8],[8,8],[8,2],[13,2],[13,9],[19,9]],
+      blocked: [[5,5],[6,5],[10,4],[11,4],[15,6],[16,6],[3,6],[4,6],[9,5],[10,5]],
+      startGold: 305, startLives: 15, hpScale: 2.35, waveCount: 18, boss: '张辽'
+    },
+    /* —— 无尽烽火（无限波次，难度递增，永夜征战） —— */
     {
       id: 'endless', name: '无尽烽火', sub: '烽火连城 · 永夜征战', theme: '#c0392b',
       bgTop: '#f3e7dc', bgBot: '#e2cfc0', road: '#b98a5e',
       waypoints: [[-1,2],[4,2],[4,6],[9,6],[9,2],[14,2],[14,9],[19,9]],
       blocked: [[6,9],[7,9],[11,5],[12,5],[16,4],[17,4],[2,9],[3,9]],
-      startGold: 260, startLives: 20, hpScale: 1.0, waveCount: 999999, endless: true, boss: '群雄'
+      startGold: 270, startLives: 20, hpScale: 1.0, waveCount: 999999, endless: true, boss: '群雄'
     }
   ];
 
@@ -195,10 +217,10 @@ window.PL3_DATA = (function () {
         groups.push({ type: 'cavalry', count: 4 + MAPS.indexOf(map) * 2, gap: 0.5, start: 1.5 });
         groups.push({ type: 'boss', count: 1, gap: 1, start: 4, bossName: map.boss });
       } else {
-        groups.push({ type: 'infantry', count: 3 + Math.floor(w * 1.4), gap: 0.7, start: 0 });
-        if (w >= 2) groups.push({ type: 'cavalry', count: 2 + Math.floor(w * 0.9), gap: 0.5, start: 1.2 });
-        if (w >= 3) groups.push({ type: 'archer', count: 1 + Math.floor(w * 0.7), gap: 0.6, start: 2.0 });
-        if (w >= 4) groups.push({ type: 'heavy', count: 1 + Math.floor((w - 3) * 0.6), gap: 1.2, start: 2.8 });
+        groups.push({ type: 'infantry', count: 3 + Math.floor(w * 1.3), gap: 0.7, start: 0 });
+        if (w >= 2) groups.push({ type: 'cavalry', count: 2 + Math.floor(w * 0.85), gap: 0.5, start: 1.2 });
+        if (w >= 3) groups.push({ type: 'archer', count: 1 + Math.floor(w * 0.65), gap: 0.6, start: 2.0 });
+        if (w >= 4) groups.push({ type: 'heavy', count: 1 + Math.floor((w - 3) * 0.55), gap: 1.2, start: 2.8 });
         if (w >= 6) groups.push({ type: 'ram', count: Math.floor((w - 4) / 3) + 1, gap: 2.0, start: 3.5 });
       }
       var spawns = [];
@@ -208,7 +230,9 @@ window.PL3_DATA = (function () {
         }
       });
       spawns.sort(function (a, b) { return a.at - b.at; });
-      waves.push({ spawns: spawns, lead: 1.6, hpScale: map.hpScale });
+      // 波间间隔随关卡推进，前期宽松后期紧张，节奏更顺
+      var lead = w <= 2 ? 2.2 : (w <= 5 ? 1.8 : 1.4);
+      waves.push({ spawns: spawns, lead: lead, hpScale: map.hpScale });
     }
     return waves;
   }
@@ -237,7 +261,7 @@ window.PL3_DATA = (function () {
   return {
     GRID: GRID, W: W, H: H,
     TOWERS: TOWERS, TOWER_ORDER: TOWER_ORDER, PERK_DESC: PERK_DESC,
-    ENEMIES: ENEMIES,
+    ENEMIES: ENEMIES, BOSS_ABILITY: BOSS_ABILITY,
     SKILLS: SKILLS, SKILL_ORDER: SKILL_ORDER,
     ITEMS: ITEMS, ITEM_ORDER: ITEM_ORDER, START_ITEMS: START_ITEMS,
     MAPS: MAPS,

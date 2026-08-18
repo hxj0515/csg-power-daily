@@ -167,7 +167,7 @@
       var b = document.createElement('button'); b.className = 'it-btn'; b.dataset.it = iid;
       b.title = it.desc;
       b.innerHTML = '<span class="it-glyph">' + it.glyph + '</span><span class="it-name">' + it.name + '</span><span class="it-count">×' + cnt + '</span>';
-      b.onclick = function () { if (engine.useItem(iid)) { updateHud(); } };
+      b.onclick = function () { if (engine.state.status === 'paused') return; if (engine.useItem(iid)) { updateHud(); } };
       box.appendChild(b);
     });
   }
@@ -178,6 +178,7 @@
     updatePaletteActive(); updateSkillActive();
   }
   function selectSkill(sid) {
+    if (engine.state.status === 'paused') return;
     var sdef = D.SKILLS[sid];
     if (sdef && sdef.kind === 'economy') {
       // 经济技能：点击即放，无需选点
@@ -209,6 +210,7 @@
   }
   function onCanvasClick(e) {
     E.Sound.resume();
+    if (engine.state.status === 'paused') return;
     var cell = canvasCell(e);
     if (engine.skillTarget) {
       if (engine.castSkill(engine.skillTarget, cell.col, cell.row)) {
@@ -237,6 +239,7 @@
     var tags = def.aoe ? ' · 范围' : def.frost ? ' · 减速' : def.chain ? ' · 闪电' : def.pierce ? ' · 穿甲' : '';
     var info = '伤害 ' + L.dmg + ' · 射程 ' + L.range.toFixed(1) + tags + '<br>攻速 ' + L.rate.toFixed(2) + ' 次/秒';
     if (def.faction) info += '<br>势力 ' + def.faction;
+    if (engine.buffMul > 1) info += '<br><span style="color:#d4a017">⚡ 全军攻速 buff 中</span>';
     if (tw.synergy > 0) info += '<br><span style="color:#2e7d32">⚔️ 羁绊攻速 +' + Math.round(tw.synergy * 100) + '%</span>';
     if (def.perk && tw.level === def.levels.length - 1) info += '<br><b style="color:#c0392b">★ ' + (D.PERK_DESC[def.perk] || '') + '</b>';
     else if (def.perk) info += '<br><span style="color:#8a7a5c">满级解锁：' + (D.PERK_DESC[def.perk] || '') + '</span>';
@@ -295,7 +298,9 @@
       var hasNext = next < D.MAPS.length;
       $('om-title').textContent = '🎉 大胜！';
       $('om-title').className = 'om-win';
-      $('om-body').innerHTML = '获得 ' + res.stars + ' 星　得分 ' + res.score + '　剩余城池 ' + res.lives;
+      var starHtml = '';
+      for (var si = 0; si < 3; si++) starHtml += '<span class="star-pop' + (si < res.stars ? ' lit' : '') + '" style="animation-delay:' + (si * 0.15) + 's">★</span>';
+      $('om-body').innerHTML = '<div class="star-row">' + starHtml + '</div>获得 ' + res.stars + ' 星　得分 ' + res.score + '　剩余城池 ' + res.lives;
       $('btn-next').hidden = !hasNext;
       $('btn-next').onclick = function () { startGame(next); };
     } else {
@@ -343,7 +348,14 @@
     $('btn-import').onclick = function () { $('file-import').click(); };
     $('file-import').onchange = function (e) { if (e.target.files[0]) importProfile(e.target.files[0]); e.target.value = ''; };
 
-    $('btn-wave').onclick = function () { engine.startNextWave(); };
+    $('btn-wave').onclick = function () { if (engine.state.status === 'paused') return; engine.startNextWave(); };
+    $('btn-auto').onclick = function () {
+      if (!engine) return;
+      engine.autoWave = !engine.autoWave;
+      $('btn-auto').textContent = engine.autoWave ? '自动：开' : '自动：关';
+      $('btn-auto').classList.toggle('on', engine.autoWave);
+      if (engine.autoWave && engine.state.status === 'ready') engine.startNextWave();
+    };
     $('btn-speed').onclick = function () {
       var sp = engine.state.speed === 1 ? 2 : 1; engine.setSpeed(sp);
       $('btn-speed').textContent = sp + '×';

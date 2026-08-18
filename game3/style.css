@@ -189,6 +189,12 @@ html, body {
 .map-card.endless { border-style: dashed; }
 .map-card.endless .map-banner { background: linear-gradient(135deg, #c0392b, #7b241c); }
 
+  .btn.on { background: var(--gold); color: #fff; border-color: #a87d0f; }
+  .star-row { font-size: 40px; letter-spacing: 6px; margin-bottom: 12px; }
+  .star-pop { color: #d9c9a3; display: inline-block; transform: scale(0.4); opacity: 0; }
+  .star-pop.lit { color: var(--gold); animation: starPop .4s ease forwards; text-shadow: 0 0 10px rgba(212,160,23,.6); }
+  @keyframes starPop { 0% { transform: scale(0.2) rotate(-30deg); opacity: 0; } 60% { transform: scale(1.25) rotate(8deg); opacity: 1; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
+
 @media (max-width: 560px) {
   .game-title { font-size: 54px; }
   .hud-item { font-size: 13px; padding: 4px 9px; }
