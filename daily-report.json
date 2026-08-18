@@ -1,6 +1,6 @@
 {
   "date": "2026-08-18",
-  "source": "南方电网官网（公司要闻/一线传真/媒体关注）、南网供应链统一服务平台、南网科研院、南网能源院、《南方电网技术》《电力电子技术》期刊及主流媒体涉南网报道联网聚合；仅收录南方电网体系，已剔除全部国家电网内容。8月18日晨联网检索：招投标平台已更新至8月17日，本期招投标版块基于平台首页与招标公告/中标候选人公示/非招标公告分类页实抓 60 条真实公告后筛选，20 条全部为 8 月 17 日当日真实公告（已剔除主网基建施工、送变电换流站建安、房建装修EPC、物业/传媒/宣传/车辆/药品/土地财务咨询等非清单项）。新增核实条目以 8 月 17 日南网科研院首次媒体开放日暨ESG报告与品牌成果发布为主线：“驭电赤兔”大模型（电网安全分析小时级压缩至分钟级）、“驭电乘风”电力装备仿真与数字孪生软件（昆柳龙直流工程实战检验）、“驭器新材”电缆绝缘料及屏蔽料（中国专利奖银奖）、“驭数慧芯”智能网关电能表核心模组、2025年度ESG报告获领先评级；另含中老联网老挝水电送大湾区约6亿千瓦时、南方电网满格护航海南第七届省运会、昆明供电局“电力指纹”识别电单车违规入户充电（均8月17日），以及汕尾海丰台区扩容破解低电压顽疾（8月13日）、汕头电网负荷首破600万千瓦（8月11日）、南网年中会大湾区30个高品质供电引领区（8月12日）、《电力电子技术》高比例电力电子装备配电网电压稳定综述（8月13日）。其余版块沿用近14天已核验真实资讯滚动聚合，均如实标注日期，宁少勿假、未编造。",
+  "source": "南方电网官网（公司要闻/一线传真/媒体关注）、南网供应链统一服务平台、南网科研院、南网能源院、《南方电网技术》《电力电子技术》期刊及主流媒体涉南网报道联网聚合；仅收录南方电网体系，已剔除全部国家电网内容。8月18日晨联网检索：招投标平台已更新至8月17日，本期招投标版块基于平台首页与招标公告/中标候选人公示/非招标公告分类页实抓 60 条真实公告后筛选，20 条全部为 8 月 17 日当日真实公告（已剔除主网基建施工、送变电换流站建安、房建装修EPC、物业/传媒/宣传/车辆/药品/土地财务咨询等非清单项）。新增核实条目以 8 月 17 日南网科研院首次媒体开放日暨ESG报告与品牌成果发布为主线：“驭电赤兔”大模型（电网安全分析小时级压缩至分钟级）、“驭电乘风”电力装备仿真与数字孪生软件（昆柳龙直流工程实战检验）、“驭器新材”电缆绝缘料及屏蔽料（中国专利奖银奖）、“驭数慧芯”智能网关电能表核心模组、2025年度ESG报告获领先评级；另含中老联网老挝水电送大湾区约6亿千瓦时、南方电网满格护航海南第七届省运会、昆明供电局“电力指纹”识别电单车违规入户充电（均8月17日），以及汕尾海丰台区扩容破解低电压顽疾（8月13日）、汕头电网负荷首破600万千瓦（8月11日）、南网年中会大湾区30个高品质供电引领区（8月12日）、《电力电子技术》高比例电力电子装备配电网电压稳定综述（8月13日）。其余版块沿用近14天已核验真实资讯滚动聚合，均如实标注日期，宁少勿假、未编造。（8月18日手动补更：按滚动窗口规则清除14天窗口外旧闻，六板块均保留近期可核验真实条目；论文研究板块收录近两周期刊文献与成果鉴定，宁少勿假。）",
   "sections": [
     {
       "id": "model",
@@ -14,6 +14,24 @@
           "date": "2026年8月17日",
           "summary": "媒体开放日展示“驭电赤兔”大模型，电网安全分析由小时级压缩至分钟级。",
           "url": "https://www.nfnews.com/content/EynGn4Bd3Z.html",
+          "sectionId": "model"
+        },
+        {
+          "title": "“大瓦特·云睿”获2026世界人工智能大会“镇馆之宝”",
+          "source": "南方电网·央广网",
+          "domain": "配电网",
+          "date": "2026年8月14日",
+          "summary": "配电网规划智能体从3000余项展品中脱颖而出，10分钟生成规划报告，累计诊断风险超万次。",
+          "url": "https://www.cnr.cn/gd/guangdonglueying/20260814/t20260814_527761554.shtml",
+          "sectionId": "model"
+        },
+        {
+          "title": "“小理”不眠 调度大厅里的“智慧”守护（大理电网原生电力专业大模型）",
+          "source": "南方电网报·大理供电局",
+          "domain": "智能电网",
+          "date": "2026年8月14日",
+          "summary": "“小理”聚焦日前计划检修、日内方式调整、突发故障处置三大场景，方案编制从小时级压缩至分钟级。",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/14/content_2517.htm",
           "sectionId": "model"
         },
         {
@@ -62,15 +80,6 @@
           "sectionId": "model"
         },
         {
-          "title": "深圳供电局部署本地化AI模型“灵曦”精准调控负荷",
-          "source": "南方电网深圳供电局·深圳新闻网",
-          "domain": "智能电网",
-          "date": "2026年8月5日",
-          "summary": "“灵曦”负荷预测实时联动虚拟电厂管理中心，识别重过载风险并精准调用资源。",
-          "url": "https://www.sznews.com/news/content/mb/2026-08/05/content_32141472.htm",
-          "sectionId": "model"
-        },
-        {
           "title": "深圳供电局“防灾AI驾驶舱”等119名“数字员工”上岗",
           "source": "南方电网深圳供电局·人民日报海外版",
           "domain": "应急工具类",
@@ -89,15 +98,6 @@
           "sectionId": "model"
         },
         {
-          "title": "电压暂降“AI侦探”上岗（科技日报全文）",
-          "source": "南网科研院",
-          "domain": "电能质量",
-          "date": "2026年8月2日",
-          "summary": "深度学习加生成式大模型五环节链路，数小时分析压缩至几分钟，全流程自动化。",
-          "url": "https://www.stdaily.com/web/gdxw/2026-08/02/content_557993.html",
-          "sectionId": "model"
-        },
-        {
           "title": "南方电网通用航空输电线路通道红外智能巡检技术开发启动",
           "source": "南网供应链平台",
           "domain": "智能电网",
@@ -107,84 +107,12 @@
           "sectionId": "model"
         },
         {
-          "title": "云南玉溪供电局“配变智能管家”上线",
-          "source": "南方电网云南电网·云南网",
-          "domain": "低压智能台区",
-          "date": "2026年7月24日",
-          "summary": "智能体三级架构自动识别重过载、三相不平衡、低电压，已预警异常400余起。",
-          "url": "https://m.yunnan.cn/system/2026/07/24/034095024.shtml",
-          "sectionId": "model"
-        },
-        {
-          "title": "云南德宏供电局“智能交费智检员”上线投运",
-          "source": "南方电网云南电网",
-          "domain": "服务类",
-          "date": "2026年7月20日",
-          "summary": "首款自主研发数字辅助员工，覆盖停复电全流程巡检校验处置闭环。",
-          "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_3986a6b16ff56952",
-          "sectionId": "model"
-        },
-        {
-          "title": "南方电网公司举办首届风险探针模型大赛",
-          "source": "南方电网",
+          "title": "深圳供电局部署本地化AI模型“灵曦”精准调控负荷",
+          "source": "南方电网深圳供电局·深圳新闻网",
           "domain": "智能电网",
-          "date": "2026年7月21日",
-          "summary": "以模型大赛牵引风险探针算法创新，推动数智化安全风险识别能力提升。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260721_356396.html",
-          "sectionId": "model"
-        },
-        {
-          "title": "探针寻隐患 数智守安全",
-          "source": "南方电网",
-          "domain": "智能电网",
-          "date": "2026年7月21日",
-          "summary": "风险探针模型在安全生产场景落地，实现隐患由人工排查转向智能预判。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260721_356399.html",
-          "sectionId": "model"
-        },
-        {
-          "title": "南网在线“小赫兹”智能体正式上线",
-          "source": "南网在线",
-          "domain": "服务类",
-          "date": "2026年6月23日",
-          "summary": "面向客户服务场景的智能体上线，提升线上办电咨询响应效率。",
-          "url": "https://www.csg.cn/xwzx/2026/2026yxcz/202606/t20260623_355872.html",
-          "sectionId": "model"
-        },
-        {
-          "title": "大瓦特智力全开精准预判负荷",
-          "source": "南方电网",
-          "domain": "智能电网",
-          "date": "2026年6月5日",
-          "summary": "大瓦特大模型应用于负荷预测，支撑迎峰度夏精准研判与调度决策。",
-          "url": "https://www.csg.cn/xwzx/2026/2026yxcz/202606/t20260605_355602.html",
-          "sectionId": "model"
-        },
-        {
-          "title": "大瓦特—多模态2.0通过信通院工业大模型评测",
-          "source": "南方电网",
-          "domain": "智能电网",
-          "date": "2026年7月17日",
-          "summary": "自研电力专属多模态大模型成行业首款通过中国信通院成熟度评测模型，日均十万级推理。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260717_356348.html",
-          "sectionId": "model"
-        },
-        {
-          "title": "“大瓦特·云睿”获2026世界人工智能大会“镇馆之宝”",
-          "source": "南方电网·央广网",
-          "domain": "配电网",
-          "date": "2026年8月14日",
-          "summary": "配电网规划智能体从3000余项展品中脱颖而出，10分钟生成规划报告，累计诊断风险超万次。",
-          "url": "https://www.cnr.cn/gd/guangdonglueying/20260814/t20260814_527761554.shtml",
-          "sectionId": "model"
-        },
-        {
-          "title": "电力具身智能机器人矩阵亮相世界人工智能大会",
-          "source": "南方电网",
-          "domain": "智能电网",
-          "date": "2026年7月17日",
-          "summary": "具身智能机器人获ICRA挑战赛奖，已在深圳广州变电站部署开展巡检作业。",
-          "url": "https://www.toutiao.com/article/7663373702842614335",
+          "date": "2026年8月5日",
+          "summary": "“灵曦”负荷预测实时联动虚拟电厂管理中心，识别重过载风险并精准调用资源。",
+          "url": "https://www.sznews.com/news/content/mb/2026-08/05/content_32141472.htm",
           "sectionId": "model"
         }
       ]
@@ -294,6 +222,24 @@
           "sectionId": "product"
         },
         {
+          "title": "广西电网智能综合保护装置规模化落地 覆盖千余座变电站",
+          "source": "中国能源报·南方电网广西电网公司",
+          "domain": "电力电子",
+          "date": "2026年8月10日",
+          "summary": "装置可自动识别电网运行状态、随工况匹配最优保护程序，秒级隔离故障，全程无需人工干预。",
+          "url": "https://paper.people.com.cn/zgnyb/pc/content/202608/10/content_30174602.html",
+          "sectionId": "product"
+        },
+        {
+          "title": "便携式电线杆综合性能检测仪落地推广",
+          "source": "科技日报·广州南网科研技术有限责任公司",
+          "domain": "物资工具类",
+          "date": "2026年8月10日",
+          "summary": "采用冲击弹性波无损检测技术，不开挖、不登杆即可对混凝土电杆开展全方位快速“体检”。",
+          "url": "https://www.toutiao.com/article/7672383214485029391/",
+          "sectionId": "product"
+        },
+        {
           "title": "深圳投运“胶囊”电房与防水浸中低压配电设备",
           "source": "南方电网报",
           "domain": "应急工具类",
@@ -318,60 +264,6 @@
           "date": "2026年8月4日",
           "summary": "云浮塔脚村台区末端电压由181伏升至200伏以上，成本降低60%、工期缩短80%。",
           "url": "https://news.bjx.com.cn/html/20260804/1506992.shtml",
-          "sectionId": "product"
-        },
-        {
-          "title": "全国首个海陆一体柔直工程“海上心脏”完成浮托安装",
-          "source": "南方电网广东电网·科技日报",
-          "domain": "电力电子",
-          "date": "2026年7月27日",
-          "summary": "阳江三山岛海上风电柔直换流站上部组块完成浮托安装，电力电子装备实现突破。",
-          "url": "https://app.kjrb.com.cn/app/template/displayTemplate/news/newsDetail/7/553978.html?isShare=true",
-          "sectionId": "product"
-        },
-        {
-          "title": "南方电网建成全国首批能源行业可信数据空间",
-          "source": "南方电网",
-          "domain": "智能电网",
-          "date": "2026年7月28日",
-          "summary": "能源行业可信数据空间落地，支撑电力数据安全流通与价值挖掘。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260728_356506.html",
-          "sectionId": "product"
-        },
-        {
-          "title": "国内首例考虑多工序动态耦合的电网—钢铁供需互动完成测试验证",
-          "source": "南方电网",
-          "domain": "智能电网",
-          "date": "2026年7月28日",
-          "summary": "高耗能工序与电网互动模型完成实测验证，拓展需求侧灵活资源调节能力。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260728_356500.html",
-          "sectionId": "product"
-        },
-        {
-          "title": "深圳供电局“电网防灾减灾一张图”可视化指挥系统投用",
-          "source": "南方电网深圳供电局",
-          "domain": "应急工具类",
-          "date": "2026年7月25日",
-          "summary": "每5分钟刷新万余网格气象，视觉大模型AI驾驶舱实现外飘物树障秒级预警。",
-          "url": "https://www.toutiao.com/article/7666345238927032866/",
-          "sectionId": "product"
-        },
-        {
-          "title": "汕尾投运首台双层双公变箱式变压器",
-          "source": "南方电网广东电网·新华社",
-          "domain": "配电网",
-          "date": "2026年7月20日",
-          "summary": "双层立体集成设计，单点位两台800千伏安变压器并列运行，破解狭窄巷道扩容难题。",
-          "url": "https://www.toutiao.com/article/7664408630132818484",
-          "sectionId": "product"
-        },
-        {
-          "title": "广州海珠低压柔直技术改善城中村末端电压",
-          "source": "南方电网广东电网·南方日报",
-          "domain": "低压智能台区",
-          "date": "2026年7月21日",
-          "summary": "土华村4682户低压用户，低压跳闸与低电压告警分别下降约10%和31%。",
-          "url": "https://epaper.nfnews.com/nfdaily/html/202607/21/content_10176310.html?origin=5",
           "sectionId": "product"
         }
       ]
@@ -569,6 +461,15 @@
       "icon": "📚",
       "items": [
         {
+          "title": "南网科研院两项科技成果通过鉴定 均达国际领先水平",
+          "source": "科技日报·南方电网科学研究院",
+          "domain": "电力电子",
+          "date": "2026年8月14日",
+          "summary": "柔性直流广域频谱过电压理论、高比例电力电子化系统谐波与振荡综合治理两项成果鉴定达国际领先，已应用于南澳、昆柳龙等工程。",
+          "url": "https://www.stdaily.com/web/gdxw/2026-08/14/content_564246.html",
+          "sectionId": "paper"
+        },
+        {
           "title": "含高比例电力电子装备的配电网电压稳定分析与调控技术研究综述",
           "source": "《电力电子技术》·武汉大学与广东电网广州供电局",
           "domain": "电力电子",
@@ -578,174 +479,39 @@
           "sectionId": "paper"
         },
         {
-          "title": "基于光学纹影系统的自由燃烧气体电弧流场特性及其演变",
-          "source": "《南方电网技术》",
-          "domain": "电力电子",
-          "date": "2026年8月3日",
-          "summary": "搭建高分辨光学纹影平台，观测SF6、N2、CO2自由燃弧流场结构差异。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1291036570954212012",
-          "sectionId": "paper"
-        },
-        {
-          "title": "面向新能源消纳提升的乡村配电网电氢协同调度策略",
-          "source": "《南方电网技术》",
-          "domain": "配电网",
-          "date": "2026年7月20日",
-          "summary": "数据-知识混合驱动电氢协同调度，提升乡村分布式新能源消纳。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/2026-01-300001",
-          "sectionId": "paper"
-        },
-        {
-          "title": "面向城市电网的柔直互济系统时序生产模拟优化与综合评估",
-          "source": "《南方电网技术》",
-          "domain": "电力电子",
-          "date": "2026年6月24日",
-          "summary": "多区域柔直互联时序生产模拟与效益评估，提升城市电网互济能力。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260116001",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于故障首行波主频分量的同塔双回直流输电线路单端保护",
-          "source": "《南方电网技术》",
-          "domain": "电力电子",
-          "date": "2026年6月24日",
-          "summary": "以首行波主频分量构建判据，耐受过渡电阻强、整定简便。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260221001",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于改进TD3的农村微电网源网荷储优化运行策略",
-          "source": "《南方电网技术》",
-          "domain": "低压智能台区",
-          "date": "2026年6月24日",
-          "summary": "改进TD3注意力评论家网络，优化含沼气农村微电网源网荷储运行。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260126003",
-          "sectionId": "paper"
-        },
-        {
-          "title": "弱电网下单相并网逆变器次同步谐振的改进锁相环抑制方法及稳定性分析",
-          "source": "《南方电网技术》",
-          "domain": "电能质量",
-          "date": "2026年6月24日",
-          "summary": "惯性-阻尼与RoCoF自适应融合锁相环，抑制次同步谐振降谐波。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260122002",
-          "sectionId": "paper"
-        },
-        {
-          "title": "含数据中心的综合能源系统两阶段鲁棒调度方法",
-          "source": "《南方电网技术》",
+          "title": "基于可解释强化学习的充电站安全快速需求响应策略",
+          "source": "《电力系统自动化》·南方电网科学研究院",
           "domain": "智能电网",
-          "date": "2026年6月22日",
-          "summary": "将数据中心算力时空可转移转为柔性负荷，缓解电网调峰压力。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20251101005",
+          "date": "2026年8月10日",
+          "summary": "南网科研院团队提出基于可解释强化学习的充电站安全快速需求响应策略，提升响应速度与可解释性。",
+          "url": "https://ima.qq.com/wiki/?shareId=2c1fb8b246cb63466cdee2c57c40dad1fdf88db624bf6696e3852932c9c5a309&mediaId=pdf_af6c23b6f3b8dce93a2c9ed383581660_e77ac6783df7e8a2b24118b01fc4f31e7493954899550123&action=openDetailDrawer&webFrom=10000171",
           "sectionId": "paper"
         },
         {
-          "title": "基于负载无功功率匹配需求的双馈风电机组高电压穿越控制策略",
-          "source": "《南方电网技术》",
+          "title": "基于均温效应的并联IGBT动静态复合均流控制方法",
+          "source": "《电力电子技术》·广东电网规划研究中心",
           "domain": "电力电子",
-          "date": "2026年6月17日",
-          "summary": "基于无功匹配的双馈风机高电压穿越控制，抑制过流与直流过压。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20251016002",
+          "date": "2026年8月5日",
+          "summary": "利用IGBT模块内部NTC热敏电阻观测温度差，动静态双阶段补偿，电流不平衡度控制在5%以内。",
+          "url": "https://publish.cnki.net/journal/portal/dldz/client/paper/ffa8742c363fe424defe25618bfb8187",
           "sectionId": "paper"
         },
         {
-          "title": "基于深度学习的乡村综合能源系统短期负荷预测",
-          "source": "《南方电网技术》",
-          "domain": "配电网",
-          "date": "2026年6月17日",
-          "summary": "VMD-Informer-BiGRU提升乡村综合能源系统短期负荷预测精度。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20251121001",
-          "sectionId": "paper"
-        },
-        {
-          "title": "集成冷-电共享储能站与数据中心的多微网系统协同规划方法",
-          "source": "《南方电网技术》",
-          "domain": "低压智能台区",
-          "date": "2026年6月17日",
-          "summary": "冷电混合共享储能耦合LNG冷能与数据中心制冷，多微网协同规划。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260106005",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于多因素耦合动态贝叶斯网络的柱上开关可靠性退化预测",
-          "source": "《南方电网技术》",
-          "domain": "配电网",
-          "date": "2026年6月17日",
-          "summary": "融合真空度与电流重合度DBN模型，预测柱上开关可靠性退化。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20251015004",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于BGLinformer和LightGBM误差修正的规模化分布式光伏并网点电压预测",
-          "source": "《南方电网技术》",
-          "domain": "电能质量",
-          "date": "2026年6月17日",
-          "summary": "BGLinformer加LightGBM误差修正，提升分布式光伏电压预测精度。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20250930006",
-          "sectionId": "paper"
-        },
-        {
-          "title": "计及碳减排收益的电动汽车多聚合商日前竞价博弈协同优化方法",
-          "source": "《南方电网技术》",
-          "domain": "服务类",
-          "date": "2026年6月16日",
-          "summary": "MADDPG多聚合商协同优化，计及碳减排收益的电能量与碳市场竞价。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260225002",
-          "sectionId": "paper"
-        },
-        {
-          "title": "考虑控制切换的交直流输配系统静态电压稳定裕度计算",
-          "source": "《南方电网技术》",
-          "domain": "电能质量",
-          "date": "2026年6月16日",
-          "summary": "引入离散变量描述开关投切与控制切换，计算交直流输配SVSM。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260416005",
-          "sectionId": "paper"
-        },
-        {
-          "title": "面向新型配电网的电压调控技术及挑战综述",
-          "source": "《南方电网技术》",
-          "domain": "配电网",
-          "date": "2026年6月16日",
-          "summary": "梳理分层分区调压架构，综述电力电子变压器等柔性互联调压装备。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260320005",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于负刚度装置的电力变压器隔震层位移控制技术",
-          "source": "《南方电网技术》",
+          "title": "带电作业机器人螺栓二次拧紧策略",
+          "source": "《电子设计工程》·南方电网科技项目",
           "domain": "物资工具类",
-          "date": "2026年6月16日",
-          "summary": "负刚度放大阻尼器控制隔震层位移，提升变压器抗震安全。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260206002",
+          "date": "2026年8月5日",
+          "summary": "蒙特卡洛仿真预测密贴点预紧力范围，预紧力最大绝对偏差由34.57%降至2.83%，为带电检修智能化提供依据。",
+          "url": "https://d.wanfangdata.com.cn/periodical/dzsjgc202615037",
           "sectionId": "paper"
         },
         {
-          "title": "基于HHT-RP-ResNet34的多类型台区漏电故障检测方法",
-          "source": "《南方电网技术》",
-          "domain": "低压智能台区",
-          "date": "2026年6月10日",
-          "summary": "HHT时频融合深度学习，检测多类型台区剩余电流漏电故障。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260227001",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于安全域的水下压缩空气储能自适应控制策略",
-          "source": "《南方电网技术》",
+          "title": "基于时空复杂度分析的海量电力流式数据并行计算方法",
+          "source": "《电子设计工程》·南方电网科技项目",
           "domain": "智能电网",
-          "date": "2026年5月30日",
-          "summary": "基于安全域跟踪边界，水下压缩空气储能变工况自适应控制。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260306001",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于两级故障穿越控制的构网型逆变器暂态过电流快速抑制策略",
-          "source": "《南方电网技术》",
-          "domain": "电力电子",
-          "date": "2026年5月30日",
-          "summary": "两级故障穿越控制兼顾限流与同步，提升构网型逆变器故障穿越。",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/temp.20260302005",
+          "date": "2026年8月5日",
+          "summary": "PSTN与SIP构建数据存储框架结合时空卷积网络，存储速率较主流算法提升51.36%。",
+          "url": "https://d.wanfangdata.com.cn/periodical/dzsjgc202615032",
           "sectionId": "paper"
         }
       ]
@@ -870,69 +636,6 @@
           "date": "2026年8月4日",
           "summary": "解读年中工作会议五个“定力”，指向柔性主网、韧性配网、弹性微网体系。",
           "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260804_356592.html",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "人民日报：空调开26摄氏度最省电吗（有问有答）",
-          "source": "南方电网·人民日报",
-          "domain": "服务类",
-          "date": "2026年8月3日",
-          "summary": "解析空调温度设定与耗电关系，给出居民节约用电实用建议。",
-          "url": "https://www.peopleapp.com/column/30052829003-500007630767",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "人民日报：人工智能加速发展，如何推进算电协同？",
-          "source": "南方电网·人民日报",
-          "domain": "智能电网",
-          "date": "2026年7月23日",
-          "summary": "探讨算力负荷接入与绿电直连路径，提出算电协同发展思路。",
-          "url": "https://www.peopleapp.com/column/30052722814-500007610396",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "把安全生产这根弦绷得紧而又紧",
-          "source": "南方电网",
-          "domain": "应急工具类",
-          "date": "2026年7月23日",
-          "summary": "强调迎峰度夏与汛期叠加下的安全生产责任落实。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260723_356418.html",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "安全就是竞争力",
-          "source": "南方电网",
-          "domain": "应急工具类",
-          "date": "2026年7月21日",
-          "summary": "论述安全生产与企业竞争力关系，强调风险前置管控理念。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260721_356398.html",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "电力先行强算力 协同创新保度夏",
-          "source": "南方电网",
-          "domain": "智能电网",
-          "date": "2026年7月21日",
-          "summary": "算力负荷快速增长背景下的保供与协同创新实践思考。",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260721_356401.html",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "新华社：新型电网是张什么网，怎么建",
-          "source": "南方电网·新华社",
-          "domain": "智能电网",
-          "date": "2026年7月20日",
-          "summary": "阐释新型电网内涵，强调实时感知、智能分析与协同控制能力建设。",
-          "url": "https://h.xinhuaxmt.com/vh512/share/13204577?docid=13204577&newstype=1001&d=1352770&channel=weixin",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "以投资精准度论成效",
-          "source": "南方电网",
-          "domain": "配电网",
-          "date": "2026年7月14日",
-          "summary": "提出电网投资应以精准度而非规模论成效，提高配网投资效益。",
-          "url": "https://www.csg.cn/xwzx/2026/2026yxcz/202607/t20260714_356315.html",
           "sectionId": "opinion"
         }
       ]
