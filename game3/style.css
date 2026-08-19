@@ -195,6 +195,30 @@ html, body {
   .star-pop.lit { color: var(--gold); animation: starPop .4s ease forwards; text-shadow: 0 0 10px rgba(212,160,23,.6); }
   @keyframes starPop { 0% { transform: scale(0.2) rotate(-30deg); opacity: 0; } 60% { transform: scale(1.25) rotate(8deg); opacity: 1; } 100% { transform: scale(1) rotate(0); opacity: 1; } }
 
+/* ---------- 下一波敌情预览 ---------- */
+.nextwave {
+  margin: 8px auto 4px; max-width: 920px; background: #fffdf6;
+  border: 2px solid var(--ink); border-radius: 12px; padding: 6px 14px;
+  font-size: 13px; color: #5b4d36; text-align: center; line-height: 1.7;
+  box-shadow: 0 3px 0 rgba(0,0,0,.1);
+}
+.nextwave.boss { border-color: var(--red); background: #fdf1ef; }
+.nw-item {
+  display: inline-block; background: #f2ead6; border: 1px solid var(--line);
+  border-radius: 10px; padding: 1px 8px; margin: 0 2px; font-weight: 700;
+}
+.nw-item.boss { background: #fde8e6; border-color: var(--red); }
+.nw-boss { color: var(--red); font-weight: 800; animation: bossBlink 1s ease infinite; }
+@keyframes bossBlink { 0%, 100% { opacity: 1; } 50% { opacity: .45; } }
+
+/* ---------- 静音态与新纪录 ---------- */
+.btn.muted { opacity: .55; }
+.record-new {
+  font-size: 22px; color: var(--gold); font-weight: 800; letter-spacing: 2px;
+  animation: recordIn .5s ease; margin-bottom: 6px;
+}
+@keyframes recordIn { 0% { transform: scale(.5); opacity: 0; } 60% { transform: scale(1.15); } 100% { transform: scale(1); opacity: 1; } }
+
 @media (max-width: 560px) {
   .game-title { font-size: 54px; }
   .hud-item { font-size: 13px; padding: 4px 9px; }

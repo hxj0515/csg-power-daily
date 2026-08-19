@@ -12,7 +12,7 @@ window.PL3Engine = (function () {
 
   /* ---------------- 轻量音效（WebAudio 合成） ---------------- */
   var Sound = {
-    ctx: null, enabled: true,
+    ctx: null, enabled: true, _lastShoot: 0,
     init: function () {
       if (this.ctx) return;
       try { this.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch (e) { this.ctx = null; }
@@ -28,7 +28,13 @@ window.PL3Engine = (function () {
       o.connect(g); g.connect(this.ctx.destination);
       o.start(t); o.stop(t + dur);
     },
-    shoot: function () { this.tone(620, 0.05, 'square', 0.04); },
+    /* 攻击音效限流：塔多时不至于每发都响（80ms 合并） */
+    shoot: function () {
+      var now = Date.now();
+      if (now - this._lastShoot < 80) return;
+      this._lastShoot = now;
+      this.tone(620, 0.05, 'square', 0.04);
+    },
     fire: function () { this.tone(180, 0.18, 'sawtooth', 0.07); },
     frost: function () { this.tone(880, 0.12, 'sine', 0.05); },
     thunder: function () { this.tone(740, 0.08, 'sawtooth', 0.05); this.tone(1180, 0.06, 'square', 0.04); },
@@ -120,7 +126,7 @@ window.PL3Engine = (function () {
     this.state = {
       gold: map.startGold, lives: map.startLives, maxLives: map.startLives,
       waveIndex: 0, totalWaves: map.endless ? 999999 : map.waves.length, waveActive: false,
-      status: 'ready', speed: 1, score: 0,
+      status: 'ready', speed: 1, score: 0, kills: 0,
       canStartWave: true, enemiesAlive: 0,
       skills: D.SKILL_ORDER.map(function (id) {
         var s = D.SKILLS[id];
@@ -139,7 +145,7 @@ window.PL3Engine = (function () {
     return {
       gold: s.gold, lives: s.lives, maxLives: s.maxLives,
       waveIndex: this.waveIndex, totalWaves: s.totalWaves, waveActive: this.waveActive,
-      status: s.status, speed: s.speed, score: s.score,
+      status: s.status, speed: s.speed, score: s.score, kills: s.kills,
       canStartWave: !this.waveActive && s.status !== 'won' && s.status !== 'lost' && (this.endless || this.waveIndex < s.totalWaves),
       enemiesAlive: this.enemies.length,
       skills: s.skills.map(function (k) { return { id: k.id, name: k.name, glyph: k.glyph, cdLeft: k.cdLeft, ready: k.ready, color: k.color }; }),
@@ -241,6 +247,32 @@ window.PL3Engine = (function () {
     if (this.state.status === 'ready') this.state.status = 'playing';
     this._emit();
     return true;
+  };
+
+  /* 下一波敌情预览：返回 { waveIdx, counts:[{type,count,boss,bossName}], isBossWave }
+   * 战役读取预生成波次；无尽动态生成（不污染 waves 数组）。全部打完后返回 null。 */
+  TDGame.prototype.getNextWaveInfo = function () {
+    if (this.state.status === 'won' || this.state.status === 'lost') return null;
+    var wave;
+    if (this.endless) {
+      if (this.waveIndex >= this.map.waves.length) {
+        wave = D.genEndlessWave(this.waveIndex + 1, this.map);
+      } else {
+        wave = this.map.waves[this.waveIndex];
+      }
+    } else {
+      if (this.waveIndex >= this.state.totalWaves) return null;
+      wave = this.map.waves[this.waveIndex];
+    }
+    var tally = {}, boss = null;
+    wave.spawns.forEach(function (sp) {
+      tally[sp.type] = (tally[sp.type] || 0) + 1;
+      if (sp.bossName) boss = sp.bossName;
+    });
+    var counts = Object.keys(tally).map(function (t) {
+      return { type: t, count: tally[t] };
+    });
+    return { waveIdx: this.waveIndex + 1, counts: counts, isBossWave: !!boss, bossName: boss };
   };
 
   TDGame.prototype._spawnEnemy = function (spec) {
@@ -398,6 +430,7 @@ window.PL3Engine = (function () {
       // 死亡
       if (en.hp <= 0) {
         this.state.gold += en.gold; this.goldEarned += en.gold;
+        this.state.kills++;
         this.floaters.push({ x: en.x, y: en.y, text: '+' + en.gold, color: '#f4c430', t: 0, life: 0.8 });
         this.fx.push({ kind: 'burst', x: en.x, y: en.y, color: en.color, t: 0, life: 0.45,
           parts: makeBurst(en.x, en.y, en.color, en.boss ? 14 : 7) });
@@ -759,10 +792,21 @@ window.PL3Engine = (function () {
       ctx.fillStyle = '#ffd54f'; ctx.font = '12px serif';
       ctx.fillText('💫', en.x, en.y - en.radius - 6);
     }
-    var w = en.radius * 2, hp = Math.max(0, en.hp / en.maxHp);
-    ctx.fillStyle = 'rgba(0,0,0,0.4)'; ctx.fillRect(en.x - w / 2, en.y - en.radius - 9, w, 4);
+    var w = en.boss ? en.radius * 2.8 : en.radius * 2;
+    var hp = Math.max(0, en.hp / en.maxHp);
+    var barY = en.boss ? en.y - en.radius - 14 : en.y - en.radius - 9;
+    ctx.fillStyle = 'rgba(0,0,0,0.45)'; ctx.fillRect(en.x - w / 2, barY, w, en.boss ? 7 : 4);
     ctx.fillStyle = hp > 0.5 ? '#4caf50' : (hp > 0.25 ? '#ffb300' : '#e5484d');
-    ctx.fillRect(en.x - w / 2, en.y - en.radius - 9, w * hp, 4);
+    ctx.fillRect(en.x - w / 2, barY, w * hp, en.boss ? 7 : 4);
+    if (en.boss) {
+      // BOSS 姓名牌
+      ctx.font = 'bold 12px serif'; ctx.textAlign = 'center'; ctx.textBaseline = 'alphabetic';
+      ctx.fillStyle = 'rgba(0,0,0,0.55)';
+      var nw = ctx.measureText(en.name).width + 10;
+      this._roundRect(ctx, en.x - nw / 2, barY - 20, nw, 16, 6); ctx.fill();
+      ctx.fillStyle = '#ffd54f'; ctx.font = 'bold 11px serif';
+      ctx.fillText(en.name, en.x, barY - 8);
+    }
   };
 
   TDGame.prototype._drawFx = function (ctx, f) {

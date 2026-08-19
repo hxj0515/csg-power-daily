@@ -49,7 +49,8 @@ window.PL3Save = (function () {
     var prof = {
       id: id, name: (name || ('将军' + (list.length + 1))).slice(0, 16),
       createdAt: Date.now(),
-      progress: { maps: {} }
+      progress: { maps: {} },
+      stats: { kills: 0, gold: 0 }
     };
     list.push(prof);
     saveProfiles(list);
@@ -67,6 +68,16 @@ window.PL3Save = (function () {
     var p = getProfile(id);
     if (!p) return;
     p.name = (name || p.name).slice(0, 16);
+    saveProfiles(loadProfiles().map(function (x) { return x.id === id ? p : x; }));
+  }
+
+  // 累计战绩统计（总击杀 / 总缴金），旧存档无 stats 时自动补齐
+  function addStats(id, kills, gold) {
+    var p = getProfile(id);
+    if (!p) return;
+    if (!p.stats) p.stats = { kills: 0, gold: 0 };
+    p.stats.kills += (kills || 0);
+    p.stats.gold += (gold || 0);
     saveProfiles(loadProfiles().map(function (x) { return x.id === id ? p : x; }));
   }
 
@@ -119,6 +130,7 @@ window.PL3Save = (function () {
     loadProfiles: loadProfiles, loadCurrent: loadCurrent, saveCurrent: saveCurrent,
     getProfile: getProfile, createProfile: createProfile, deleteProfile: deleteProfile,
     renameProfile: renameProfile, recordClear: recordClear, isUnlocked: isUnlocked,
+    addStats: addStats,
     exportJSON: exportJSON, importJSON: importJSON
   };
 })();

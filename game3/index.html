@@ -61,9 +61,13 @@
           <button id="btn-speed" class="btn">1×</button>
           <button id="btn-auto" class="btn">自动：关</button>
           <button id="btn-pause" class="btn">暂停</button>
+          <button id="btn-sound" class="btn">🔊</button>
           <button id="btn-quit" class="btn btn-link">退出</button>
         </div>
       </div>
+
+      <!-- 下一波敌情预览 -->
+      <div id="next-wave" class="nextwave" hidden></div>
 
       <div class="stage">
         <canvas id="game-canvas" width="920" height="552"></canvas>
@@ -119,8 +123,8 @@
           · 6 系防御塔（弓弩/火攻/陷阵营/谋士/投石/雷火）各 3 级，满级解锁专属特技。<br>
           · 4 个主动技能：火烧赤壁·八阵图·草船借箭·屯田令（开仓放粮）。<br>
           · 相邻同势力塔触发「羁绊」攻速加成，布阵有讲究。<br>
-          · 3 场战役 + 1 张「无尽烽火」无限波次；锦囊道具随时助战。<br>
-          · 按剩余城池评 1–3 星，通关解锁下一关。
+          · 4 场战役 + 1 张「无尽烽火」无限波次；锦囊道具随时助战。<br>
+          · 按剩余城池评 1–3 星，通关解锁下一关；支持键盘快捷键（1-6 选塔 / QWER 技能 / 空格出战 / P 暂停）。
         </div>
         <div class="overlay-btns"><button class="btn btn-primary" onclick="this.parentNode.parentNode.parentNode.hidden=true">知道了</button></div>
       </div>

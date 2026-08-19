@@ -31,10 +31,12 @@
         if (p.progress.maps[k].cleared) cleared++;
         totalStars += (p.progress.maps[k].stars || 0);
       });
+      var st = p.stats || { kills: 0, gold: 0 };
       var card = document.createElement('div'); card.className = 'profile-card';
       card.innerHTML =
         '<div class="pc-main"><div class="pc-name">🎖️ ' + esc(p.name) + '</div>' +
-        '<div class="pc-sub">通关 ' + cleared + '/' + D.MAPS.length + ' · 累计 ★' + totalStars + '</div></div>' +
+        '<div class="pc-sub">通关 ' + cleared + '/' + D.MAPS.length + ' · 累计 ★' + totalStars +
+        ' · ⚔️ 杀敌 ' + st.kills + ' · 💰 缴金 ' + st.gold + '</div></div>' +
         '<div class="pc-actions">' +
         '<button class="btn btn-go" data-enter="' + p.id + '">进入</button>' +
         '<button class="btn btn-sm" data-export="' + p.id + '">导出</button>' +
@@ -285,6 +287,25 @@
       var uc = engine.upgradeCost(engine.selected);
       if (uc != null) $('btn-upgrade').disabled = engine.state.gold < uc;
     }
+    // 下一波敌情预览（仅内容变化时重绘，避免每帧重排）
+    var nw = engine.getNextWaveInfo();
+    var nwEl = $('next-wave');
+    if (!nw) { if (!nwEl.hidden) nwEl.hidden = true; }
+    else {
+      var key = nw.waveIdx + (nw.isBossWave ? 'B' + nw.bossName : '') + nw.counts.map(function (c) { return c.type + c.count; }).join(',');
+      if (nwEl.getAttribute('data-key') !== key) {
+        nwEl.setAttribute('data-key', key);
+        nwEl.hidden = false;
+        nwEl.className = 'nextwave' + (nw.isBossWave ? ' boss' : '');
+        var h = '下一波 <b>' + nw.waveIdx + '</b>　';
+        nw.counts.forEach(function (c) {
+          var ed = D.ENEMIES[c.type];
+          h += '<span class="nw-item' + (ed.boss ? ' boss' : '') + '">' + ed.glyph + '×' + c.count + '</span> ';
+        });
+        if (nw.isBossWave) h += '<span class="nw-boss">👑 名将 ' + esc(nw.bossName) + ' 来袭！</span>';
+        nwEl.innerHTML = h;
+      }
+    }
   }
 
   /* ---- 胜负 ---- */
@@ -293,14 +314,17 @@
     var ov = $('overlay-msg');
     var isEndless = D.MAPS[currentMapIdx].endless;
     if (res.result === 'won') {
-      Save.recordClear(currentProfile.id, D.MAPS[currentMapIdx].id, res.stars, res.score);
+      var improved = Save.recordClear(currentProfile.id, D.MAPS[currentMapIdx].id, res.stars, res.score);
+      Save.addStats(currentProfile.id, engine.state.kills || 0, engine.goldEarned || 0);
       var next = currentMapIdx + 1;
       var hasNext = next < D.MAPS.length;
       $('om-title').textContent = '🎉 大胜！';
       $('om-title').className = 'om-win';
       var starHtml = '';
       for (var si = 0; si < 3; si++) starHtml += '<span class="star-pop' + (si < res.stars ? ' lit' : '') + '" style="animation-delay:' + (si * 0.15) + 's">★</span>';
-      $('om-body').innerHTML = '<div class="star-row">' + starHtml + '</div>获得 ' + res.stars + ' 星　得分 ' + res.score + '　剩余城池 ' + res.lives;
+      $('om-body').innerHTML = '<div class="star-row">' + starHtml + '</div>' +
+        (improved ? '<div class="record-new">🏆 新纪录！</div>' : '') +
+        '获得 ' + res.stars + ' 星　得分 ' + res.score + '　剩余城池 ' + res.lives;
       $('btn-next').hidden = !hasNext;
       $('btn-next').onclick = function () { startGame(next); };
     } else {
@@ -308,9 +332,13 @@
       $('om-title').className = 'om-lose';
       var txt = '撑过 ' + engine.state.waveIndex + ' 波';
       if (isEndless) {
-        Save.recordClear(currentProfile.id, 'endless', 0, engine.state.waveIndex);
+        var improvedE = Save.recordClear(currentProfile.id, 'endless', 0, engine.state.waveIndex);
+        Save.addStats(currentProfile.id, engine.state.kills || 0, engine.goldEarned || 0);
         var best = (currentProfile.progress.maps.endless || { best: 0 }).best;
         txt += '　历史最佳 ' + best + ' 波';
+        if (improvedE) txt += '　🏆 新纪录！';
+      } else {
+        Save.addStats(currentProfile.id, engine.state.kills || 0, engine.goldEarned || 0);
       }
       $('om-body').innerHTML = txt + '　得分 ' + res.score;
       $('btn-next').hidden = true;
@@ -319,6 +347,10 @@
   }
   function retryGame() { $('overlay-msg').hidden = true; startGame(currentMapIdx); }
   function backToMaps() { $('overlay-msg').hidden = true; if (engine) { engine.state.status = 'menu'; } stopLoop(); renderMaps(); show('screen-maps'); }
+  function togglePause() {
+    engine.togglePause();
+    $('btn-pause').textContent = engine.state.status === 'paused' ? '继续' : '暂停';
+  }
 
   /* ---- 主循环 ---- */
   var lastT = 0;
@@ -342,7 +374,7 @@
     $('btn-about').onclick = function () { $('overlay-about').hidden = false; };
     $('overlay-about').onclick = function () { this.hidden = true; };
     $('btn-back-menu').onclick = function () { show('screen-menu'); };
-    $('btn-back-profiles').onclick = function () { show('screen-menu'); };
+    $('btn-back-profiles').onclick = function () { show('screen-profiles'); };
     $('btn-create').onclick = createProfile;
     $('profile-name').addEventListener('keydown', function (e) { if (e.key === 'Enter') createProfile(); });
     $('btn-import').onclick = function () { $('file-import').click(); };
@@ -357,17 +389,21 @@
       if (engine.autoWave && engine.state.status === 'ready') engine.startNextWave();
     };
     $('btn-speed').onclick = function () {
-      var sp = engine.state.speed === 1 ? 2 : 1; engine.setSpeed(sp);
+      var sp = engine.state.speed === 1 ? 2 : engine.state.speed === 2 ? 3 : 1;
+      engine.setSpeed(sp);
       $('btn-speed').textContent = sp + '×';
     };
-    $('btn-pause').onclick = function () {
-      engine.togglePause();
-      $('btn-pause').textContent = engine.state.status === 'paused' ? '继续' : '暂停';
+    $('btn-pause').onclick = togglePause;
+    $('btn-sound').onclick = function () {
+      E.Sound.enabled = !E.Sound.enabled;
+      $('btn-sound').textContent = E.Sound.enabled ? '🔊' : '🔇';
+      $('btn-sound').classList.toggle('muted', !E.Sound.enabled);
     };
     $('btn-quit').onclick = backToMaps;
     $('game-canvas').addEventListener('click', onCanvasClick);
-    $('game-canvas').addEventListener('mousemove', onCanvasMove);
-    $('game-canvas').addEventListener('mouseleave', function () { if (engine) engine.setHover(-99, -99); });
+    // pointer 事件：桌面鼠标与触屏统一支持建造预览
+    $('game-canvas').addEventListener('pointermove', onCanvasMove);
+    $('game-canvas').addEventListener('pointerleave', function () { if (engine) engine.setHover(-99, -99); });
 
     $('btn-upgrade').onclick = doUpgrade;
     $('btn-sell').onclick = doSell;
@@ -376,6 +412,35 @@
 
     document.addEventListener('pointerdown', function once() {
       E.Sound.init(); E.Sound.resume(); document.removeEventListener('pointerdown', once);
+    });
+
+    /* ---- 键盘快捷键（对局中生效） ----
+     * 1-6 选塔 / Q W E R 放技能 / 空格 出战 / P 暂停 / U 升级 / S 出售 / X 退出 / Esc 取消 */
+    document.addEventListener('keydown', function (e) {
+      var t = e.target;
+      if (t && (t.tagName === 'INPUT' || t.tagName === 'TEXTAREA')) return;
+      if (!engine || $('screen-game').hidden) return;
+      if (engine.state.status === 'paused' && e.code !== 'KeyP' && e.code !== 'Escape') return;
+      var code = e.code;
+      if (code === 'Space') { e.preventDefault(); engine.startNextWave(); return; }
+      if (code === 'KeyP') { togglePause(); return; }
+      if (code === 'KeyX') { backToMaps(); return; }
+      if (code === 'Escape') {
+        engine.buildType = null; engine.skillTarget = null; engine.selected = null;
+        hideTowerPanel(); updatePaletteActive(); updateSkillActive();
+        return;
+      }
+      if (code === 'KeyU') { doUpgrade(); return; }
+      if (code === 'KeyS') { doSell(); return; }
+      if (code === 'KeyQ' || code === 'KeyW' || code === 'KeyE' || code === 'KeyR') {
+        var smap = { KeyQ: 0, KeyW: 1, KeyE: 2, KeyR: 3 };
+        selectSkill(D.SKILL_ORDER[smap[code]]);
+        return;
+      }
+      if (/^Digit[1-6]$/.test(code)) {
+        var idx = +code.slice(5) - 1;
+        if (D.TOWER_ORDER[idx]) selectBuild(D.TOWER_ORDER[idx]);
+      }
     });
   }
 
