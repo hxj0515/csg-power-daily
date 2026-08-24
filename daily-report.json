@@ -1,6 +1,6 @@
 {
-  "date": "2026-08-23",
-  "source": "每日全新快照·时序降序版（信源矩阵：南网官网/南网供应链/主流媒体/学术期刊/南网科研院与能源院）。本期为2026-08-23全量替换，收录当日检索真实条目，已过滤国网主体。",
+  "date": "2026-08-24",
+  "source": "每日全新快照·时序降序版（信源矩阵：南网官网/南网供应链/主流媒体/《南方电网技术》2026年第7期/南网科研院与能源院）。本期为2026-08-24全量替换，收录当日检索真实条目并已过滤国网主体；招投标板块因平台周末未发新公告，沿用最近一期（8/21-8/22）真实公告快照。",
   "sections": [
     {
       "id": "model",
@@ -8,182 +8,38 @@
       "icon": "🤖",
       "items": [
         {
-          "title": "全栈闭环：大瓦特多模态2.0与具身智能机器人",
-          "source": "电知网",
-          "url": "https://www.dlzstp.com/res/info/2083153314918449154",
-          "date": "2026年8月21日",
-          "summary": "南方电网构建“算力底座—行业大模型—场景智能体—现场终端”全栈自主技术闭环。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "南方电网印发“人工智能+”高质量发展行动意见 布局电力AI新蓝图",
+          "title": "云南电网构建标准体系重塑变电运维范式",
           "source": "南网报",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356927.html",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
           "date": "2026年8月21日",
-          "summary": "明确2028年建成电力AI数据知识底座，迭代“大瓦特”模型矩阵，场景不少于800个。",
+          "summary": "云南电网以标准体系重塑变电运维范式，提质增效智能运维。",
           "domain": "智能电网",
           "sectionId": "model"
         },
         {
-          "title": "南方电网以人工智能驱动“六网协同”探路",
-          "source": "北极星",
-          "url": "https://news.bjx.com.cn/html/20260821/1509536.shtml",
+          "title": "南方电网公司举办“知行大讲堂”第七讲 立足“六网”协同打造新型电网枢纽",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356924.html",
           "date": "2026年8月21日",
-          "summary": "“大瓦特·天象”气象大模型分辨率1千米、预见期15天，天衍负荷预测效率为人工10倍。",
+          "summary": "第七讲聚焦六网协同，解码新型电网重要枢纽建设路径。",
           "domain": "智能电网",
           "sectionId": "model"
         },
         {
-          "title": "算电协同技术联合研究院揭牌 算电AI融合攻关",
-          "source": "证券日报",
-          "url": "https://www.toutiao.com/article/7675639877224137268/",
-          "date": "2026年8月19日",
-          "summary": "五方共建联合研究院聚焦数据中心绿电直连与源网荷储协同，攻关算电融合技术。",
+          "title": "从空间共享到价值共创 电网与通信网协同的破局与前路",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356926.html",
+          "date": "2026年8月21日",
+          "summary": "解读电网与通信网协同，为六网协同破局提供前路思考。",
           "domain": "智能电网",
           "sectionId": "model"
         },
         {
-          "title": "人工智能深入电网核心业务 规划决策迈向“智能驱动”",
-          "source": "新华财经",
-          "url": "https://m.cnfin.com/hg-lb//zixun/20260818/4456566_1.html",
+          "title": "江小涓到南方电网公司调研电鸿与可信数据空间发展",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356893.html",
           "date": "2026年8月18日",
-          "summary": "“大瓦特·云睿”累计支撑超万条馈线智能诊断，规划效率提升80%，方案实用率超95%。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "牵手“数字人” 广州配网抢修指挥官投用",
-          "source": "南方工报",
-          "url": "https://www.toutiao.com/article/7675186148255203875/",
-          "date": "2026年8月18日",
-          "summary": "“大瓦特-配网抢修指挥官”研判故障用时从15分钟降至2分钟，自动生成抢修作战图。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "“大瓦特·云睿”获选世界人工智能大会“镇馆之宝”",
-          "source": "中国能源报",
-          "url": "https://www.toutiao.com/article/7674991305306554906",
-          "date": "2026年8月17日",
-          "summary": "配电网规划智能体从1100余家企业3000余项展品突围，成唯一入选的中央企业成果。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "南网能源院发布《电网企业“AI+管理”白皮书》",
-          "source": "科学网",
-          "url": "https://wap.sciencenet.cn/mobile.php?cat=T&id=569843&mobile=1&type=detail",
-          "date": "2026年8月14日",
-          "summary": "论坛发布年度系列报告，首次系统提出电网企业“AI+管理”理论框架与实践体系。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "虚拟电厂AI减压 深圳管理平台接入容量510万千瓦",
-          "source": "中经网",
-          "url": "https://www.cei.cn//defaultsite/s/article/2026/08/13/4b4ff607-9d914745-019f-f8a4b64e-323f_2026.html",
-          "date": "2026年8月13日",
-          "summary": "深圳虚拟电厂管理平台接入61家运营商、1.4万余用户，实时可调负荷超140万千瓦。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "绿电装机激增 新型电网重“改”更重“智”",
-          "source": "中国日报",
-          "url": "https://qiye.chinadaily.com.cn/a/202608/12/WS6a7be4d7a310d709c2fc2c37.html",
-          "date": "2026年8月12日",
-          "summary": "南方电网战略级专家梁凌宇表示AI智能优化与动态调节适配新型电力系统运行需求。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "推动“六网”协同落地见效 数智赋能",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "公司部署抢先机塑优势锻长板，将“六网”协同作为培育第二增长曲线战略机遇。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "“看不见”的电厂 深圳虚拟电厂+AI模型天璇-灵曦",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2492.htm",
-          "date": "2026年8月11日",
-          "summary": "央视报道深圳将虚拟电厂与人工智能深度结合，用电高峰有效缓解电网运行压力。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "季明彬调研“六网”协同 电碳算协同实践",
-          "source": "南网报",
-          "url": "https://csg.cn/m/xwzx/nwyw/202608/t20260807_356734.html",
-          "date": "2026年8月7日",
-          "summary": "季明彬赴广州棠下电力运维中心调研“多站融合”与电碳算协同实践探索情况。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "电压暂降“AI侦探”上岗 驭数慧识系统试点",
-          "source": "南网科研院",
-          "url": "https://csg.cn/xwzx/2026/2026gsyw/202608/t20260807_356669.html",
-          "date": "2026年8月7日",
-          "summary": "“驭数慧识”电压暂降智能分析系统在五省区试点，研判与专家结论一致率超90%。",
-          "domain": "电能质量",
-          "sectionId": "model"
-        },
-        {
-          "title": "深圳率先构建城市数字孪生电网平台",
-          "source": "深圳晚报",
-          "url": "https://www.toutiao.com/article/7670489749588623926/",
-          "date": "2026年8月5日",
-          "summary": "深圳在全国率先将城市多元数据深度融于数字孪生电网模型，完整复刻超大城市电网。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "深圳供电局AI模型“灵曦”与117名数字员工迎峰度夏",
-          "source": "深圳晚报",
-          "url": "https://www.toutiao.com/article/7670489749588623926/",
-          "date": "2026年8月5日",
-          "summary": "深圳供电局117名“数字员工”覆盖18业务域292个岗位，人机协同护航超大城市电网。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "南网自研智能体“大瓦特·云睿”亮相世界人工智能大会",
-          "source": "新华网",
-          "url": "http://gd.xinhuanet.com/20260804/3806cf157e1d425f8fa3aff81047f6b6/c.html",
-          "date": "2026年8月4日",
-          "summary": "云南电网联合南网数研院研发AI原生配网规划智能体，将数天规划时长缩至十分钟。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "锚定“十五五”新航向 南网报部署AI赋能新型电网",
-          "source": "南网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2424.htm",
-          "date": "2026年8月4日",
-          "summary": "年中工作会强调以数智技术实现电网全息感知、精准控制，引领绿色低碳标准输出。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "中国南方电网携电力AI成果亮相WAIC 首发多模态2.0",
-          "source": "自动化网",
-          "url": "https://www.zidonghua.com.cn/CECTF/ShowInME/226847.html",
-          "date": "2026年8月3日",
-          "summary": "首发“大瓦特-多模态2.0”电力多模态大模型，建成国内首个行业级电碳算协同系统。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "广东电网AI调度员“大瓦特-天璇-明月”全省推广",
-          "source": "新浪网",
-          "url": "https://www.sina.cn/news/detail/5327859859850841.html",
-          "date": "2026年8月3日",
-          "summary": "国内首个多智能体协作架构省级电网AI调度员核心模块，攻克大模型“幻觉”难题。",
+          "summary": "江小涓调研南网电鸿操作系统与南方能源行业可信数据空间建设进展。",
           "domain": "智能电网",
           "sectionId": "model"
         }
@@ -195,183 +51,111 @@
       "icon": "📦",
       "items": [
         {
-          "title": "陆丰甲西镇迎来“一镇一站”供电新格局",
-          "source": "南方+",
-          "url": "https://www.toutiao.com/article/7676475862010626601/",
-          "date": "2026年8月21日",
-          "summary": "110kV双岭变10kV新出线带电投运，破解供电半径过长、转供困难等网架短板。",
-          "domain": "配电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "海陆空齐发 电力“超能特工”组团出道",
-          "source": "中国电力报",
-          "url": "https://weibo.com/3938812452/5334388881228404",
-          "date": "2026年8月21日",
-          "summary": "南方电网立体电力机器人作业矩阵覆盖空中、地面、海洋，解锁电网运维新方式。",
-          "domain": "物资工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "南方电网多款自研机器人亮相世界机器人大会",
-          "source": "南方都市报",
-          "url": "https://www.toutiao.com/article/7676095198895636992/",
-          "date": "2026年8月20日",
-          "summary": "“知行者1号”“吠云”机器狗“小蓝鸟”无人机“南蛟1号”集中展示立体作业矩阵。",
-          "domain": "物资工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "贵州毕节七星关供电局电网改造升级“电”亮乡村",
-          "source": "天眼新闻",
-          "url": "https://www.toutiao.com/article/7676117614371815986",
-          "date": "2026年8月20日",
-          "summary": "燕子口镇开展10kV林对线专项改造，更换避雷器、令克，补齐农村电网短板。",
-          "domain": "配电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "大理宾川防汛应急保电 守护汛期可靠用电",
-          "source": "腾讯新闻",
-          "url": "https://new.qq.com/rain/a/20260820A0BC6K00?refer=cp_1009",
-          "date": "2026年8月20日",
-          "summary": "宾川供电局启动应急备战，全域排查配网隐患，先复电后完善守护群众用电。",
-          "domain": "应急工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "算力爆发催热柔性电网 南网科技固态变压器商业化提速",
-          "source": "证券时报",
-          "url": "https://www.stcn.com/article/detail/4088581.html",
-          "date": "2026年8月19日",
-          "summary": "固态变压器已在东莞安华数据中心实现国内首个兆瓦级电力电子变压器供电案例。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "算电协同研究院揭牌 南网科技固态变压器意向订单签约",
-          "source": "证券日报",
-          "url": "https://www.toutiao.com/article/7675639877224137268/",
-          "date": "2026年8月19日",
-          "summary": "南网科技与6家单位完成固态变压器(SST)意向订单签约，商业化迈出关键一步。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "南网科技发布“柔性电网”系列产品",
-          "source": "中证网",
-          "url": "https://www.cs.com.cn/ssgs/01/2026/08/19/detail_2026081910032374.html",
-          "date": "2026年8月19日",
-          "summary": "以碳化硅全链条技术为核心，覆盖SiC功率模块、柔直调压、固态变压器等五大产品线。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "云南玉溪“十五五”首座220kV智能变电站投运",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/18/content_2568.htm",
-          "date": "2026年8月18日",
-          "summary": "220kV橘乡输变电工程投运，较计划提前60天，满足华宁新增负荷与光伏上网需求。",
-          "domain": "配电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "广西迎峰度夏 主配网协同支撑民生与产业用电",
+          "title": "平陆运河三大枢纽实现双电源供电",
           "source": "中新网",
-          "url": "https://www.toutiao.com/article/7673875836009529883/",
-          "date": "2026年8月14日",
-          "summary": "500kV钦州电厂三期接入、220kV平峤牵线投产；治理158台过载配变、1269低电压台区。",
+          "url": "https://www.gx.chinanews.com.cn/kjny",
+          "date": "2026年8月22日",
+          "summary": "世纪工程装上电力双引擎，通航进入全速冲刺。",
           "domain": "配电网",
           "sectionId": "product"
         },
         {
-          "title": "贵州德江供电局攻坚配网改造 惠民守护清凉",
-          "source": "德江网",
-          "url": "https://dejiangwang.gov.cn/bmdt/202608/20260813_35454632.shtml",
-          "date": "2026年8月13日",
-          "summary": "新增更换大容量变压器12台，改造老旧线路13.5公里，惠及12村1500余户。",
-          "domain": "配电网",
+          "title": "完成贵州首次220千伏线路无人机模拟带电安装避雷器作业",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "贵州电网首次以无人机模拟带电安装避雷器，提升作业安全性。",
+          "domain": "应急工具类",
           "sectionId": "product"
         },
         {
-          "title": "6架无人机联吊780公斤刷新电网施工纪录",
-          "source": "北京市科委",
-          "url": "https://www.ncsti.gov.cn/kjdt/kjrd/202608/t20260812_252838.html",
-          "date": "2026年8月12日",
-          "summary": "云南送变电完成6机协同重载吊运，今年以来无人机运材突破1.5万吨居全国首位。",
+          "title": "世界第一高桥有了“永不间断”的智慧大脑",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "北盘江大桥“智慧大脑”保障照明与保电，南网赋能。",
           "domain": "物资工具类",
           "sectionId": "product"
         },
         {
-          "title": "铁皮漂浮物重创吉隆供电设施 政企联动抢修",
-          "source": "网易",
-          "url": "https://dy.163.com/article/L3VVENFH05509XK5.html",
-          "date": "2026年8月10日",
-          "summary": "台风“红霞”致110kV吉隆变电站失压，惠州供电局调配69台应急发电车保民生。",
+          "title": "南方电网首次应用基坑气承式膜技术",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356922.html",
+          "date": "2026年8月21日",
+          "summary": "巨型工地“防护罩”防尘降噪，破解邻避痛点。",
+          "domain": "物资工具类",
+          "sectionId": "product"
+        },
+        {
+          "title": "国内首次多根110千伏接枝聚丙烯电缆联合回路试验成功",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356921.html",
+          "date": "2026年8月21日",
+          "summary": "南网突破聚丙烯电缆接枝工艺，提升电缆绝缘与施工水平。",
+          "domain": "物资工具类",
+          "sectionId": "product"
+        },
+        {
+          "title": "广东广州：电力线缆迁改入地赋能城市更新",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "广州电力线缆迁改入地，赋能城市更新与电网升级。",
+          "domain": "配电网",
+          "sectionId": "product"
+        },
+        {
+          "title": "高空走线“把脉” 全力冲刺投产",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "高空走线巡检把脉，重点工程冲刺投产。",
+          "domain": "物资工具类",
+          "sectionId": "product"
+        },
+        {
+          "title": "带电作业智能装备销售逾千万元",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "南网带电作业智能装备销售突破千万元，规模应用提速。",
+          "domain": "物资工具类",
+          "sectionId": "product"
+        },
+        {
+          "title": "藏粤直流工程实现国内首次海拔4000米以上电力无人机规模化吊运",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356925.html",
+          "date": "2026年8月21日",
+          "summary": "藏粤直流线路首次在海拔4000米以上开展无人机规模化吊运施工。",
+          "domain": "物资工具类",
+          "sectionId": "product"
+        },
+        {
+          "title": "参与海岛电力抢险通信保障演练",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "南网参与海岛电力抢险通信保障演练，锤炼应急能力。",
           "domain": "应急工具类",
           "sectionId": "product"
         },
         {
-          "title": "云南永善220kV都宁变电站投运 首座",
-          "source": "南网报",
-          "url": "https://ima.qq.com/wiki/?shareId=4960bc8edd55593ab556726da942e2ee6594c51335aa6bf49b41bca68dc65f41&mediaId=markdown_2e04463237ae77a7c2d4132e34c65281_b50afcf748798fd3257c2d1c3de335d77469710987767754",
-          "date": "2026年8月7日",
-          "summary": "永善县首座220kV变电站投运，供电距离缩至15千米，形成双回路供电格局。",
+          "title": "广西崇左友谊关口岸双电源升级改造工程正式投运",
+          "source": "中国电力报",
+          "url": "https://www.toutiao.com/article/7675684907327046179",
+          "date": "2026年8月19日",
+          "summary": "千年雄关供电“双保险”，跨境贸易保电更可靠。",
           "domain": "配电网",
           "sectionId": "product"
         },
         {
-          "title": "云南昆明110kV玉龙寺柔性总装智能变电站投产",
-          "source": "昆明信息港",
-          "url": "https://www.toutiao.com/article/7671077664135987758/",
-          "date": "2026年8月7日",
-          "summary": "全省首座二次设备柔性总装变电站，实现“即插即用”，单套屏柜调试缩短2至3天。",
-          "domain": "智能电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "国产电压源型抽水蓄能静止变频器(SFC)入选硬核成果",
-          "source": "科技日报",
-          "url": "http://www.es.csg.cn/news/mtgz/202608/t20260807_21889.html",
-          "date": "2026年8月7日",
-          "summary": "南网储能联合中车株洲所研制，谐波畸变率仅0.9%，整体技术达国际领先水平。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "羊城6项主网度夏重点工程完工",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2427.htm",
-          "date": "2026年8月4日",
-          "summary": "广州供电局完成花地三主变、磨碟洲至柳园线路等6项工程，提升迎峰度夏承载力。",
-          "domain": "配电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "深圳推进“六百二零”攻坚 胶囊电房等抗灾设备",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2415.htm",
-          "date": "2026年8月4日",
-          "summary": "对194个水浸隐患点“一点一策”治理，推广防水浸“胶囊”电房构建防汛保供体系。",
-          "domain": "应急工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "陆川两回10kV线路新建工程竣工投运",
-          "source": "人民网",
-          "url": "https://gx.people.com.cn/BIG5/n2/2026/0806/c179409-41661067.html",
-          "date": "2026年8月4日",
-          "summary": "界垌站清秀线等两回线路投运，优化区域网架，提升清秀、良厚等村供电可靠性。",
-          "domain": "配电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "南方电网首套退役动力电池台区储能装置投运",
-          "source": "数字储能",
-          "url": "https://www.desn.com.cn/news/show-2183928.html",
-          "date": "2026年8月3日",
-          "summary": "广东电科院联合云浮供电局开发，变废为宝破解农村台区低电压治理难题。",
-          "domain": "低压智能台区",
+          "title": "广西崇左供电局“输电线路封网作业机器人”测试成功",
+          "source": "中新网",
+          "url": "https://www.gx.chinanews.com.cn/kjny",
+          "date": "2026年8月19日",
+          "summary": "输电智能化施工“机器代人”取得重要突破。",
+          "domain": "物资工具类",
           "sectionId": "product"
         }
       ]
@@ -382,183 +166,156 @@
       "icon": "📰",
       "items": [
         {
-          "title": "凝聚能源智慧 引领绿色未来 能源发展论坛综述",
+          "title": "中老500千伏联网工程（老挝段）配套230千伏输变电工程获老挝工贸部荣誉",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/18/content_2576.htm",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "中老联网老挝段配套工程获老挝工贸部荣誉表彰。",
+          "domain": "配电网",
+          "sectionId": "industry"
+        },
+        {
+          "title": "智汇北部湾 电通丝路心",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "北部湾电力互联互通，丝路能源合作深化。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "越南永新公司“VTPC1”取得越南商标注册",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "南网海外项目“VTPC1”获越南商标注册，品牌出海。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "以ESG赋能智利可持续发展",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "南网海外ESG实践赋能智利可持续发展。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "深圳供电局协助秘鲁博路兹公司搭建计量通信规约体系",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "深圳供电局助力秘鲁企业搭建计量通信规约体系。",
+          "domain": "智能电网",
+          "sectionId": "industry"
+        },
+        {
+          "title": "南方电网公司与云南省政府签署“十五五”全面深化战略合作框架协议",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356943.html",
+          "date": "2026年8月21日",
+          "summary": "滇粤携手推进绿电智算与电力国际合作，共促十五五发展。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "南方电网公司举办2026年资本运营中高级管理人员培训班",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356923.html",
+          "date": "2026年8月21日",
+          "summary": "南网举办资本运营培训，服务战新产业发展。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "老挝青年媒体记者到访澜湄国际公司",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "老挝青年媒体记者到访澜湄国际，增进能源合作认知。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "江西：新长征路上的“光”与“心”",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356929.html",
+          "date": "2026年8月21日",
+          "summary": "江西红色老区电力变迁，照亮光明与初心。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "构建近零碳物流示范体系",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "南网构建近零碳物流示范，绿色供应链再升级。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "白俄罗斯通信与信息化部到访南网数研院",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "白俄罗斯通信与信息化部到访，深化数字电网国际合作。",
+          "domain": "智能电网",
+          "sectionId": "industry"
+        },
+        {
+          "title": "“总书记的祝福，我们真正收到了”回访贵州化屋村",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356928.html",
+          "date": "2026年8月21日",
+          "summary": "回访贵州化屋村，电网赋能乡村振兴结硕果。",
+          "domain": "服务类",
+          "sectionId": "industry"
+        },
+        {
+          "title": "走进深交所现场研学 提升合规意识和风险防控能力",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356890.html",
           "date": "2026年8月18日",
-          "summary": "2026年南方电网能源发展论坛广州举行，汇聚各方专家共议全球能源变革大势。",
+          "summary": "南网走进深交所研学，提升合规与风控意识。",
           "domain": "服务类",
           "sectionId": "industry"
         },
         {
-          "title": "高温“烤”验 广西电网迎峰度夏保供",
-          "source": "广西日报",
-          "url": "https://ssw.gxrb.com.cn/json/interface/epaper/api.php?code=008&date=2026-08-18&name=gxrb&xuhao=2",
+          "title": "南方电网与国家电网举行会谈",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356919.html",
           "date": "2026年8月18日",
-          "summary": "广西电网以“主网托底、配网补短板”组合拳，御气温之热、托发展之势。",
-          "domain": "配电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "刘巍出席南方电网能源发展论坛 发布八项研究成果",
-          "source": "南网报",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356891.html",
-          "date": "2026年8月14日",
-          "summary": "论坛发布《全球领先企业创新发展报告》等八项成果，智汇能源创领未来。",
+          "summary": "双方签署新型电网建设战略合作框架协议，共推十五五落地。",
           "domain": "服务类",
           "sectionId": "industry"
         },
         {
-          "title": "抓实电网提质与定点帮扶 刘巍广西调研",
+          "title": "南方电网公司与中国气象局召开战略合作交流会议",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2510.htm",
-          "date": "2026年8月11日",
-          "summary": "刘巍到广西电网调研乡村振兴与电网规划，推动配电网“强网架、补短板”三年攻坚。",
-          "domain": "配电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "深圳用电营商环境交出“开放互联”新答卷",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "深圳以“开放互联”理念优化用电营商环境，提升办电效率与客户获得感。",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356892.html",
+          "date": "2026年8月18日",
+          "summary": "为能源气象融合打造样板，提升防灾减灾能力。",
           "domain": "服务类",
           "sectionId": "industry"
         },
         {
-          "title": "上半年南方区域核发绿证3.32亿个",
+          "title": "南方电网公司举办2026年安全文化节",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "南方区域绿证年度交易量再创新纪录，绿色发展相关市场机制持续健全。",
-          "domain": "服务类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "三门岛微电网“成长记” 绿电账本",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "南方电网智能微电网之海岛生存法则，以绿电支撑离岛可靠供电。",
-          "domain": "低压智能台区",
-          "sectionId": "industry"
-        },
-        {
-          "title": "全国首个 广东7月用电量突破千亿千瓦时",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "广东成为全国首个单月用电量突破千亿千瓦时的省份，彰显经济韧性与活力。",
-          "domain": "服务类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南网储能天生桥二级水电站汛期首次泄洪",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "天生桥二级水电站2026年汛期首次泄洪，保障流域水电安全度汛。",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356894.html",
+          "date": "2026年8月18日",
+          "summary": "南网举办安全文化节，筑牢安全生产群众基础。",
           "domain": "应急工具类",
           "sectionId": "industry"
         },
         {
-          "title": "南方电网公司与佛山市委市政府会谈",
+          "title": "南方电网公司党组与驻南方电网纪检监察组召开沟通会商会议",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2490.htm",
-          "date": "2026年8月11日",
-          "summary": "钱朝阳、季明彬与佛山市委市政府会谈，共推新型电力系统装备与新型储能产业合作。",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356918.html",
+          "date": "2026年8月18日",
+          "summary": "全面从严治党会商，护航企业高质量发展。",
           "domain": "服务类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "海南出台十条措施支持加快电力项目规划建设",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "海南推出十条措施，支持加快电力项目规划、建设审批与落地实施。",
-          "domain": "配电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "勐海供电局闻汛而动筑牢汛期保电防线",
-          "source": "德宏网",
-          "url": "https://www.edehong.com/xinwen/znlgc/2026/0810/263446.html",
-          "date": "2026年8月10日",
-          "summary": "勐海供电局拉网式巡检沿河低洼台区，联合消防紧急隔离涉水触电隐患。",
-          "domain": "应急工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "揭阳供电局智慧巡检迎高温护清凉",
-          "source": "南方+",
-          "url": "https://www.toutiao.com/article/7672390894603764258/",
-          "date": "2026年8月10日",
-          "summary": "揭阳供电局“人防+技防”筑牢电网防线，无人机机巡专班排查设备发热与鸟巢。",
-          "domain": "智能电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "央视报道深圳虚拟电厂为用电高峰“减压”",
-          "source": "南网50Hz",
-          "url": "https://www.toutiao.com/article/7671181906674713126",
-          "date": "2026年8月8日",
-          "summary": "央视《新闻联播》报道深圳将虚拟电厂与人工智能深度结合缓解电网压力。",
-          "domain": "服务类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "深圳多措并举迎峰度夏 14项保供举措",
-          "source": "深圳新闻网",
-          "url": "https://www.sznews.com/news/content/mb/2026-08/05/content_32141472.htm",
-          "date": "2026年8月5日",
-          "summary": "深圳供电局统筹14项保供举措，数智化赋能电网运行保障城市平稳运转。",
-          "domain": "服务类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "自研数智化“审票员”上岗 无人机智能巡检全域覆盖",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2424.htm",
-          "date": "2026年8月4日",
-          "summary": "营销领域实现无人机智能巡检全域覆盖，数智化“审票员”提升作业质效。",
-          "domain": "智能电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "镇龙乡党员突击队台风抢修 守护万家灯火",
-          "source": "今日头条",
-          "url": "https://www.toutiao.com/article/7670101094608945704/",
-          "date": "2026年8月4日",
-          "summary": "南宁供电局突击队连续奋战13昼夜，打通全镇复电主通道恢复供电。",
-          "domain": "应急工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "深圳首基电力防灾减灾综合监测塔建成投运",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2424.htm",
-          "date": "2026年8月4日",
-          "summary": "深圳建成首基电力防灾减灾综合监测塔，提升台风等极端工况监测能力。",
-          "domain": "应急工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "多元储能产业集群建设技术研讨会暨人才培育交流会在穗召开",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2424.htm",
-          "date": "2026年8月4日",
-          "summary": "会议聚焦多元储能产业集群建设与技术人才培养，赋能新型电力系统。",
-          "domain": "物资工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "500kV云谷变电站首条服务重点数据中心电力送出工程开工",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2424.htm",
-          "date": "2026年8月4日",
-          "summary": "该工程直接服务重点数据中心用户，支撑算力产业绿色高效用电。",
-          "domain": "智能电网",
           "sectionId": "industry"
         }
       ]
@@ -569,183 +326,156 @@
       "icon": "📚",
       "items": [
         {
-          "title": "南网科研院配电运维与风险管控技术成果达国际领先",
-          "source": "南方+",
-          "url": "https://www.toutiao.com/article/7676430216742306354/",
-          "date": "2026年8月21日",
-          "summary": "多模态信息融合配电系统风险辨识技术通过鉴定，已在十余省份10kV配网应用。",
-          "domain": "配电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南网科研院配电系统风险辨识成套装备研发应用",
-          "source": "南方+",
-          "url": "https://www.toutiao.com/article/7676430216742306354/",
-          "date": "2026年8月21日",
-          "summary": "研发智能检测与巡检成套装备及软件平台，构建“感知-推演-运维”技术链。",
-          "domain": "物资工具类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南方电网人工智能研究院组建与AI安全治理",
-          "source": "南网报",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356927.html",
-          "date": "2026年8月21日",
-          "summary": "“人工智能+”意见提出组建人工智能研究院，健全全生命周期安全管控体系。",
-          "domain": "智能电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "全球首个算电协同领域国际标准成功立项",
-          "source": "腾讯新闻",
-          "url": "https://new.qq.com/rain/a/20260820A03ZPM00?refer=cp_1009",
-          "date": "2026年8月20日",
-          "summary": "我国牵头制定的全球首个算电协同国际标准成功立项，南网算电实践提供支撑。",
-          "domain": "智能电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南网科研院低压配电全域感知与高品质供电技术国际领先",
-          "source": "南方+",
-          "url": "https://www.toutiao.com/article/7676040751712649769/",
-          "date": "2026年8月20日",
-          "summary": "面向复杂源荷的低压配电系统全域感知关键技术及装备实现规模应用。",
-          "domain": "低压智能台区",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南网科技碳化硅柔性电网产品体系通过鉴定",
-          "source": "中证网",
-          "url": "https://www.cs.com.cn/ssgs/01/2026/08/19/detail_2026081910032374.html",
-          "date": "2026年8月19日",
-          "summary": "基于全自研碳化硅平台形成柔性配电网、微电网、算电协同三大场景产品矩阵。",
-          "domain": "电力电子",
-          "sectionId": "paper"
-        },
-        {
-          "title": "云南玉溪智能变电站智能化施工技术总结",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/18/content_2568.htm",
-          "date": "2026年8月18日",
-          "summary": "橘乡变采用多项智能化施工技术，全过程安全零责任事故较计划提前60天。",
-          "domain": "配电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南网科研院两项科技成果达国际领先水平",
-          "source": "中国能源报",
-          "url": "https://paper.people.com.cn/zgnyb/pc/content/202608/17/content_30175932.html",
-          "date": "2026年8月17日",
-          "summary": "柔性直流过电压防护与高比例电力电子化谐波振荡治理两项成果均达国际领先。",
-          "domain": "电力电子",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南网科研院成果突破风光大规模并网稳定性难题",
-          "source": "新华财经",
-          "url": "https://www.cnfin.com/cmjj-lb/detail/20260814/4455422_1.html",
-          "date": "2026年8月14日",
-          "summary": "谐波与振荡综合治理技术应用于南网直流工程，支撑沙戈荒、海上风电外送。",
-          "domain": "电力电子",
-          "sectionId": "paper"
-        },
-        {
-          "title": "广西电网迎峰度夏主配网协同技术实践",
-          "source": "中新网",
-          "url": "https://www.toutiao.com/article/7673875836009529883/",
-          "date": "2026年8月14日",
-          "summary": "广西电网主网“骨架”与配网“毛细血管”更结实，投资89亿元同比增42%。",
-          "domain": "配电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "变压器绝缘状态智能诊断技术国际领先",
-          "source": "南网报",
-          "url": "https://csg.cn/xwzx/2026/2026yxcz/202608/t20260814_356819.html",
-          "date": "2026年8月14日",
-          "summary": "南网超高压贵阳局牵头攻关，授权发明专利20项，发表SCI论文5篇、EI 10篇。",
-          "domain": "物资工具类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "云南送变电无人机多机联吊技术获行业创新奖",
-          "source": "北京市科委",
-          "url": "https://www.ncsti.gov.cn/kjdt/kjrd/202608/t20260812_252838.html",
-          "date": "2026年8月12日",
-          "summary": "云南送变电掌握厘米级三维建模与多机联吊技术，获电力无人机技术创新奖。",
-          "domain": "物资工具类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "深圳虚拟电厂AI调度“天璇-灵曦”模型应用研究",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2492.htm",
-          "date": "2026年8月11日",
-          "summary": "AI模型识别设备重过载风险，提供虚拟电厂调度策略，提升调节潜力。",
-          "domain": "服务类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于可解释强化学习的充电站安全快速需求响应策略",
-          "source": "电力系统自动化",
-          "url": "https://ima.qq.com/wiki/?shareId=2c1fb8b246cb63466cdee2c57c40dad1fdf88db624bf6696e3852932c9c5a309&mediaId=pdf_af6c23b6f3b8dce93a2c9ed383581660_e77ac6783df7e8a2b24118b01fc4f31e7493954899550123",
-          "date": "2026年8月10日",
-          "summary": "南网科研院肖勇等发表于《电力系统自动化》，提出充电站安全快速需求响应策略。",
-          "domain": "服务类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南网储能抽水蓄能静止变频器(SFC)技术达国际领先",
-          "source": "科技日报",
-          "url": "http://www.es.csg.cn/news/mtgz/202608/t20260807_21889.html",
-          "date": "2026年8月7日",
-          "summary": "国产电压源型SFC经权威鉴定整体达国际领先，加速新能源消纳与电网稳定。",
-          "domain": "电力电子",
-          "sectionId": "paper"
-        },
-        {
-          "title": "南方电网电碳算一体化协同运营系统落地五省区",
-          "source": "自动化网",
-          "url": "https://www.zidonghua.com.cn/CECTF/ShowInME/226847.html",
-          "date": "2026年8月3日",
-          "summary": "建成国内首个行业级电碳算一体化协同运营系统，碳排放测算精度至分钟级。",
-          "domain": "智能电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "广东电网AI调度员“明月”多智能体架构研究",
-          "source": "新浪网",
-          "url": "https://www.sina.cn/news/detail/5327859859850841.html",
-          "date": "2026年8月3日",
-          "summary": "基于“大瓦特-天璇”底座研发，攻克大模型“幻觉”，建成省地一体化电子图书馆。",
-          "domain": "智能电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "Multi-Virtual Power Plant Market Trading Method",
+          "title": "MW级固体重力储能系统设计及多机协同运行策略",
           "source": "南网技术",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/EN/1294606595145351349",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.011",
+          "date": "2026年8月",
+          "summary": "MW级固体重力储能系统设计与多机协同运行策略。",
+          "domain": "电力电子",
+          "sectionId": "paper"
+        },
+        {
+          "title": "图像与前三天微气象融合驱动的架空线路覆冰类型预测",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.014",
+          "date": "2026年8月",
+          "summary": "图像融合微气象的GSM-XGBoost覆冰类型预测准确。",
+          "domain": "应急工具类",
+          "sectionId": "paper"
+        },
+        {
+          "title": "适应逆变电源并网的工频变化量距离保护动作优化策略",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.003",
+          "date": "2026年8月",
+          "summary": "控保协同恢复无源网络，提升距离保护可靠性。",
+          "domain": "电力电子",
+          "sectionId": "paper"
+        },
+        {
+          "title": "考虑灵活性资源的多园区能量共享优化运行",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.012",
+          "date": "2026年8月",
+          "summary": "多园区能量共享模型协调灵活资源，降成本减峰谷。",
+          "domain": "配电网",
+          "sectionId": "paper"
+        },
+        {
+          "title": "考虑风电场无功功率潜力的风电集群接入电网双层无功优化",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.010",
+          "date": "2026年8月",
+          "summary": "风电集群无功潜力双层优化，降网损稳电压。",
+          "domain": "智能电网",
+          "sectionId": "paper"
+        },
+        {
+          "title": "考虑多重因素的空调虚拟储能响应潜力评估与分层优先排序控制",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.008",
+          "date": "2026年8月",
+          "summary": "空调虚拟储能潜力评估与分层优先排序调控策略。",
+          "domain": "服务类",
+          "sectionId": "paper"
+        },
+        {
+          "title": "考虑电动汽车出行链的园区综合能源系统低碳经济运行研究",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.007",
+          "date": "2026年8月",
+          "summary": "电动汽车出行链驱动园区综合能源低碳经济运行。",
+          "domain": "服务类",
+          "sectionId": "paper"
+        },
+        {
+          "title": "级联H桥电池储能系统SoC均衡与暂态电压冲击抑制控制策略",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.001",
+          "date": "2026年8月",
+          "summary": "提出复合SoC均衡与冲击电压抑制控制策略，提升储能性能。",
+          "domain": "电力电子",
+          "sectionId": "paper"
+        },
+        {
+          "title": "基于主从博弈的售电商电能量合同履约风险柔性处置技术",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.013",
+          "date": "2026年8月",
+          "summary": "主从博弈柔性处置售电商合同履约风险，降成本。",
+          "domain": "服务类",
+          "sectionId": "paper"
+        },
+        {
+          "title": "基于小世界理论及改进蜣螂算法的分布式电源规划方法",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.009",
+          "date": "2026年8月",
+          "summary": "改进蜣螂算法优化分布式电源选址定容规划。",
+          "domain": "配电网",
+          "sectionId": "paper"
+        },
+        {
+          "title": "基于深度强化学习的双模通信超帧时隙分配算法",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.006",
+          "date": "2026年8月",
+          "summary": "深度强化学习优化双模通信时隙，提吞吐量降时延。",
+          "domain": "智能电网",
+          "sectionId": "paper"
+        },
+        {
+          "title": "基于奇异谱分析和改进密度峰值聚类的电力负荷曲线聚类方法",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.005",
+          "date": "2026年8月",
+          "summary": "奇异谱分析融合改进密度峰值聚类，负荷曲线聚类更准。",
+          "domain": "智能电网",
+          "sectionId": "paper"
+        },
+        {
+          "title": "基于低刚度隔振的电力电容器本体减振降噪技术",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.002",
+          "date": "2026年8月",
+          "summary": "低刚度隔振系统有效降低电力电容器低频振动噪声。",
+          "domain": "电力电子",
+          "sectionId": "paper"
+        },
+        {
+          "title": "海岛配电网应对风灾灵活资源动态应急优化调控",
+          "source": "南网技术",
+          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2026.07.004",
+          "date": "2026年8月",
+          "summary": "台风下海岛微电网多目标应急优化，减损保稳定。",
+          "domain": "应急工具类",
+          "sectionId": "paper"
+        },
+        {
+          "title": "考虑控制切换的交直流输配系统静态电压稳定裕度计算",
+          "source": "南网技术",
+          "url": "https://www.dlzstp.com/res/info/2071916304740421633",
           "date": "2026年7月",
-          "summary": "《南方电网技术》刊发多虚拟电厂演化-Stackelberg混合博弈市场交易方法论文。",
-          "domain": "服务类",
+          "summary": "考虑控制切换的交直流输配系统电压稳定裕度计算。",
+          "domain": "电能质量",
           "sectionId": "paper"
         },
         {
-          "title": "车-路-网耦合下配电网安全经济运行策略研究",
+          "title": "面向新型配电网的电压调控技术及挑战综述",
           "source": "南网技术",
-          "url": "https://nfdwjs.csg.cn/joweb/nfdw/EN/1294604937304752288",
-          "date": "2026年7月",
-          "summary": "《南方电网技术》刊发车-路-网耦合下配电网安全经济运行策略研究论文。",
-          "domain": "配电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "《南方电网技术》2026年第6期“面向碳减排”专刊出版",
-          "source": "南网技术",
-          "url": "https://nfdwjs.csg.cn/",
+          "url": "https://www.dlzstp.com/res/info/2071916304740421633",
           "date": "2026年6月",
-          "summary": "第20卷第6期出版“面向碳减排的电力系统优化运行与市场机制设计”专刊。",
-          "domain": "智能电网",
+          "summary": "综述新型配电网电压调控架构、装备与理论方法。",
+          "domain": "配电网",
+          "sectionId": "paper"
+        },
+        {
+          "title": "基于电-碳协同优化的柔性互联配电网可靠性评估",
+          "source": "南网技术",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/current",
+          "date": "2026年6月",
+          "summary": "E-SOP电-碳协同可靠性评估方法应对新挑战。",
+          "domain": "配电网",
           "sectionId": "paper"
         }
       ]
@@ -756,182 +486,65 @@
       "icon": "💡",
       "items": [
         {
-          "title": "从“送电的网”跃升为“数智之网”",
-          "source": "电知网",
-          "url": "https://www.dlzstp.com/res/info/2083153314918449154",
+          "title": "推进电源结构优化调整 加快形成绿色低碳电力供给格局",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
           "date": "2026年8月21日",
-          "summary": "评论认为人工智能正重塑电网生产方式，驱动新型电网向综合平台演进。",
-          "domain": "智能电网",
+          "summary": "观察认为应优化电源结构，加快绿色低碳供给。",
+          "domain": "服务类",
           "sectionId": "opinion"
         },
         {
-          "title": "布局电力AI发展新蓝图",
+          "title": "南方电网公司与云南省政府签署“十五五”战略合作框架协议",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2632.htm",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356943.html",
           "date": "2026年8月21日",
-          "summary": "解读南方电网“人工智能+”高质量发展行动意见，系统部署算力、模型、数据等七项任务。",
-          "domain": "智能电网",
+          "summary": "滇粤携手推进绿电智算与电力国际合作路径。",
+          "domain": "服务类",
           "sectionId": "opinion"
         },
         {
-          "title": "算电协同研究院揭牌 打通科研产业资本转化通道",
-          "source": "北极星",
-          "url": "https://news.bjx.com.cn/html/20260820/1509355.shtml",
-          "date": "2026年8月20日",
-          "summary": "评论认为五方共建联合研究院将打通技术研发到产业落地全链条，赋能装备产业升级。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "全球首个算电协同国际标准立项的战略意义",
-          "source": "腾讯新闻",
-          "url": "https://new.qq.com/rain/a/20260820A03ZPM00?refer=cp_1009",
-          "date": "2026年8月20日",
-          "summary": "评论认为国际标准立项彰显我国算电协同技术话语权与产业引领力。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "算力爆发催热柔性电网 装备产业迎机遇",
-          "source": "证券时报",
-          "url": "https://www.stcn.com/article/detail/4088581.html",
-          "date": "2026年8月19日",
-          "summary": "评论指出AI算力负荷增长推动供电系统升级，SST等柔性装备进入产业竞速。",
-          "domain": "电力电子",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "虚拟电厂：从能调节走向可靠调节",
+          "title": "南方电网公司举办“知行大讲堂”第七讲 立足“六网”协同",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/18/content_2577.htm",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260821_356924.html",
+          "date": "2026年8月21日",
+          "summary": "解码六网协同，打造新型电网重要枢纽路径。",
+          "domain": "智能电网",
+          "sectionId": "opinion"
+        },
+        {
+          "title": "“电耀阿佤山”五年记",
+          "source": "南网报",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/21/content_2617.htm",
+          "date": "2026年8月21日",
+          "summary": "电网赋能阿佤山五年巨变，乡村振兴样本。",
+          "domain": "服务类",
+          "sectionId": "opinion"
+        },
+        {
+          "title": "在协同发展中拓展新空间",
+          "source": "南网报",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356896.html",
           "date": "2026年8月18日",
-          "summary": "观点指出需完善市场准入、技术标准与调用机制，筑牢规范发展制度底座。",
+          "summary": "评论指出在协同发展中拓展新空间，服务大局开新局。",
           "domain": "服务类",
           "sectionId": "opinion"
         },
         {
-          "title": "凝聚能源智慧 引领绿色未来",
+          "title": "围绕“五个一批”精准发力 提速服务“六网”协同高质量发展",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/18/content_2576.htm",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202608/t20260818_356897.html",
           "date": "2026年8月18日",
-          "summary": "综述能源发展论坛专家观点，江小涓、李立浧等纵论能源强国与新型电网建设。",
-          "domain": "服务类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "促进虚拟电厂价值跃迁 激发用电侧灵活资源潜力",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/18/content_2577.htm",
-          "date": "2026年8月18日",
-          "summary": "建议以商业模式创新与制度机制完善推动虚拟电厂从试点迈向规模化发展。",
-          "domain": "服务类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "多机联吊破解山区电网建设痛点",
-          "source": "北京市科委",
-          "url": "https://www.ncsti.gov.cn/kjdt/kjrd/202608/t20260812_252838.html",
-          "date": "2026年8月12日",
-          "summary": "观察认为无人机绿色机械化施工兼顾工程提速与高原山地生态保护。",
-          "domain": "物资工具类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "做优“第一曲线” 发展“第二曲线” 当好战新产业排头兵",
-          "source": "南网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2476.htm",
-          "date": "2026年8月11日",
-          "summary": "南网产业发展集团部署七项重点工作，开辟增量空间服务重大战略。",
-          "domain": "服务类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "抓实电网提质与定点帮扶 赋能乡村全面振兴",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2510.htm",
-          "date": "2026年8月11日",
-          "summary": "评论强调以电网提档升级与产业帮扶巩固拓展脱贫攻坚成果。",
-          "domain": "配电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "以战略定力应变局开新局 一体推进“三个新型”建设",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "各单位贯彻落实年中工作会精神，做优“第一曲线”发展“第二曲线”。",
-          "domain": "服务类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "碳电协同进入“算账时代”",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "观察指出碳电协同从理念走向量化核算，支撑绿色低碳价值创造。",
+          "summary": "评论解读五个一批提速六网协同落地见效。",
           "domain": "智能电网",
           "sectionId": "opinion"
         },
         {
-          "title": "三门岛微电网“成长记” 海岛绿电生存法则",
+          "title": "从年中会读懂南方电网“十五五”战略航向",
           "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "以三门岛微电网实践解读智能微电网在离岛场景的自平衡自安全运行。",
-          "domain": "低压智能台区",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "抢先机塑优势锻长板 推动“六网”协同落地见效",
-          "source": "南网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2472.htm",
-          "date": "2026年8月11日",
-          "summary": "评论指出“六网”协同是培育第二增长曲线的重要战略机遇。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "加快电力科技创新 以新质生产力赋能新型电力系统",
-          "source": "南网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-08/11/content_2501.htm",
-          "date": "2026年8月11日",
-          "summary": "汤广福院士解读《新型电力系统建设“十五五”规划》，强调科技创新引领结构性重塑。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "纲举目张 全面推进新型电力系统建设",
-          "source": "南网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-08/07/content_2437.htm",
-          "date": "2026年8月7日",
-          "summary": "解读《规划》部署，推动抽水蓄能、新型储能与车网融合互动协调发展。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "全面推进“六百二零”攻坚行动 打造现代化配电网",
-          "source": "南网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2415.htm",
+          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2422.htm",
           "date": "2026年8月4日",
-          "summary": "评论认为攻坚行动致力于打造供电强、抗灾强、承载强的现代化配电网。",
-          "domain": "配电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "锚定“十五五”新航向 奋楫世界一流新征程",
-          "source": "南网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-08/04/content_2424.htm",
-          "date": "2026年8月4日",
-          "summary": "从年中会读懂南方电网“十五五”战略航向，加快迈向世界一流企业。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "年中会评论丨潮头立定向前行",
-          "source": "南网50Hz",
-          "url": "https://www.toutiao.com/article/7669790295537484339",
-          "date": "2026年8月3日",
-          "summary": "解读南网年中工作会五个“定力”，以确定性战略赢得发展主动的方法论。",
+          "summary": "解读十五五战略航向，三个新型支撑能源强国。",
           "domain": "智能电网",
           "sectionId": "opinion"
         }
@@ -947,98 +560,125 @@
           "source": "广西电网",
           "url": "https://www.bidding.csg.cn/zbhxrgs/1200440054.jhtml",
           "date": "2026年8月22日",
-          "summary": "南网供应链平台广西电网公司发布广西电网公司2026年第四批省级物资集中公开招标…。",
+          "summary": "广西电网第四批省级物资集中招标中标公示发布。",
           "domain": "物资工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "云南电网有限责任公司2026年通信专业基建工程项目施工及监理专项采购（公开招标）（招标编号：CG0500022002363872） 招标文件澄清回复汇总公告…",
+          "title": "云南电网有限责任公司2026年通信专业基建工程项目施工及监理专项采购中标公示",
           "source": "云南电网",
           "url": "https://www.bidding.csg.cn/zbhxrgs/1200440078.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台云南电网公司发布云南电网有限责任公司2026年通信专业基建工程项…。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "云南电网有限责任公司2026年第三批科技项目服务、物资合并类专项采购（公开招标）（招标编号：CG0500022002365762） 招标文件澄清回复汇总公告…",
-          "source": "云南电网",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200440063.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台云南电网公司发布云南电网有限责任公司2026年第三批科技项目服务…。",
-          "domain": "物资工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "云南电网有限责任公司2026年第二批科技项目服务类专项采购（公开招标）（招标编号：CG0500022002365685） 招标文件澄清回复汇总公告（编号：0…",
-          "source": "云南电网",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200440071.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台云南电网公司发布云南电网有限责任公司2026年第二批科技项目服务…。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "云南电网有限责任公司2026年第3批规划专题咨询研究服务类专项采购（公开招标）招标公告",
-          "source": "云南电网",
-          "url": "https://www.bidding.csg.cn/zbgg/1200440049.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台云南电网公司发布云南电网有限责任公司2026年第3批规划专题咨询…。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "云南电网有限责任公司2026年第1批电力物资类整合框架采购（公开询比）采购公告",
-          "source": "云南电网",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200440042.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台云南电网公司发布云南电网有限责任公司2026年第1批电力物资类整…。",
-          "domain": "物资工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "适应新型电力系统的新型配电系统可靠性评价机制研究专项招标招标公告",
-          "source": "广东电网",
-          "url": "https://www.bidding.csg.cn/zbgg/1200440067.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台广东电网公司发布适应新型电力系统的新型配电系统可靠性评价机制研究…。",
+          "summary": "云南电网通信专业基建工程施工及监理专项采购。",
           "domain": "配电网",
           "sectionId": "bidding"
         },
         {
-          "title": "南网能源院2026年第一批电力价格研究咨询项目采购公告",
-          "source": "南网能源发展研究",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200439982.jhtml",
+          "title": "云南电网有限责任公司2026年第三批科技项目服务、物资合并类专项采购中标公示",
+          "source": "云南电网",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200440063.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网能源发布南网能源院2026年第一批电力价格研究咨询项目采…。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "南方电网数字电网集团（海南）有限公司2026年数据中心现场实施技术服务公开招标项目招标公告",
-          "source": "南网数字电网集团",
-          "url": "https://www.bidding.csg.cn/zbgg/1200440031.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网数字发布南方电网数字电网集团（海南）有限公司2026年数…。",
+          "summary": "云南电网第三批科技与物资合并类专项采购中标。",
           "domain": "物资工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "南方电网数字电网集团（海南）有限公司2026年流媒体平台改造公开招标项目招标公告",
-          "source": "南网数字电网集团",
-          "url": "https://www.bidding.csg.cn/zbgg/1200440033.jhtml",
+          "title": "云南电网有限责任公司2026年第二批科技项目服务类专项采购中标公示",
+          "source": "云南电网",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200440071.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网数字发布南方电网数字电网集团（海南）有限公司2026年流…。",
+          "summary": "云南电网第二批科技项目服务类专项采购中标。",
           "domain": "智能电网",
           "sectionId": "bidding"
         },
         {
-          "title": "南方电网澜湄国际能源有限责任公司2026年ESG（环境、社会及治理）报告编制及海外ESG课题研究服务类专项采购（公开询比采购）[CG200006200237…",
-          "source": "南网澜湄国际能源",
+          "title": "云南电网有限责任公司2026年第3批规划专题咨询研究服务类专项采购招标公告",
+          "source": "云南电网",
+          "url": "https://www.bidding.csg.cn/zbgg/1200440049.jhtml",
+          "date": "2026年8月21日",
+          "summary": "云南电网第3批规划专题咨询研究服务类招标。",
+          "domain": "智能电网",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "云南电网有限责任公司2026年第1批电力物资类整合框架采购（公开询比）公告",
+          "source": "云南电网",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200440042.jhtml",
+          "date": "2026年8月21日",
+          "summary": "云南电网第一批电力物资类整合框架采购公告。",
+          "domain": "物资工具类",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南网能源院2026年第一批电力价格研究咨询项目采购公告",
+          "source": "南网能源院",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200439982.jhtml",
+          "date": "2026年8月21日",
+          "summary": "南网能源院第一批电力价格研究咨询项目采购。",
+          "domain": "服务类",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南方电网数字电网科技（广东）有限公司数字新能源事业部智能巡检系统配套设备采购",
+          "source": "数研广东",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200440024.jhtml",
+          "date": "2026年8月21日",
+          "summary": "数研广东智能巡检系统配套设备采购公告。",
+          "domain": "物资工具类",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南方电网数字电网集团有限公司2026-2027年信通公司网络安全保障综合服务招标",
+          "source": "数研集团",
+          "url": "https://www.bidding.csg.cn/zbgg/1200440022.jhtml",
+          "date": "2026年8月21日",
+          "summary": "数研集团信通公司网络安全保障综合服务招标。",
+          "domain": "智能电网",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南方电网数字电网集团（海南）有限公司2026年数据中心现场实施技术服务招标公告",
+          "source": "数研海南",
+          "url": "https://www.bidding.csg.cn/zbgg/1200440031.jhtml",
+          "date": "2026年8月21日",
+          "summary": "数研海南数据中心现场实施技术服务公开招标。",
+          "domain": "智能电网",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南方电网数字电网集团（海南）有限公司2026年流媒体平台改造招标公告",
+          "source": "数研海南",
+          "url": "https://www.bidding.csg.cn/zbgg/1200440033.jhtml",
+          "date": "2026年8月21日",
+          "summary": "数研海南流媒体平台改造公开招标项目公告。",
+          "domain": "物资工具类",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南方电网数字电网集团（广东）有限公司云环境流量检测及溯源研究专项采购招标",
+          "source": "数研广东",
+          "url": "https://www.bidding.csg.cn/zbgg/1200440020.jhtml",
+          "date": "2026年8月21日",
+          "summary": "数研广东云环境流量检测及溯源研究专项采购。",
+          "domain": "智能电网",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南方电网数字电网集团（广东）有限公司负载均衡设备框架采购澄清公告",
+          "source": "数研广东",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200440066.jhtml",
+          "date": "2026年8月21日",
+          "summary": "数研广东负载均衡设备框架采购澄清公告。",
+          "domain": "物资工具类",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "南方电网澜湄国际能源有限责任公司2026年ESG报告编制及海外ESG课题研究服务",
+          "source": "澜湄国际",
           "url": "https://www.bidding.csg.cn/zbhxrgs/1200440069.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网澜湄发布南方电网澜湄国际能源有限责任公司2026年ESG…。",
-          "domain": "智能电网",
+          "summary": "澜湄国际ESG报告编制及海外课题研究服务采购。",
+          "domain": "服务类",
           "sectionId": "bidding"
         },
         {
@@ -1046,7 +686,7 @@
           "source": "南网",
           "url": "https://www.bidding.csg.cn/zbhxrgs/1200440038.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网公司发布南方电网公司2026年主网一次设备第三批批次招标…。",
+          "summary": "南网主网一次设备第三批批次招标中标公示。",
           "domain": "物资工具类",
           "sectionId": "bidding"
         },
@@ -1055,7 +695,7 @@
           "source": "南网",
           "url": "https://www.bidding.csg.cn/zbhxrgs/1200440065.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网公司发布南方电网公司2026年信息类软硬件设备第一批框架…。",
+          "summary": "南网信息类软硬件设备第一批框架招标中标。",
           "domain": "物资工具类",
           "sectionId": "bidding"
         },
@@ -1064,125 +704,98 @@
           "source": "南网",
           "url": "https://www.bidding.csg.cn/zbhxrgs/1200440036.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网公司发布南方电网公司2026年充电桩第一批框架招标项目中…。",
+          "summary": "南网充电桩第一批框架招标中标公示发布。",
           "domain": "服务类",
           "sectionId": "bidding"
         },
         {
-          "title": "海南电网有限责任公司2026年基于战略协同的穿透式运监考核体系建设服务专项公开招标项目中标公示",
+          "title": "海南电网有限责任公司2026年基于战略协同的穿透式运监考核体系建设服务专项中标公示",
           "source": "海南电网",
           "url": "https://www.bidding.csg.cn/zbhxrgs/1200440032.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台海南电网公司发布海南电网有限责任公司2026年基于战略协同的穿透…。",
+          "summary": "海南电网穿透式运监考核体系服务专项中标公示。",
           "domain": "智能电网",
           "sectionId": "bidding"
         },
         {
-          "title": "海南电网能源发展有限公司2026-2027年考勤设备框架公开询比项目(二次采购)采购公告",
+          "title": "海南电网能源发展有限公司2026-2027年考勤设备框架公开询比采购公告",
           "source": "海南电网",
           "url": "https://www.bidding.csg.cn/fzbgg/1200440075.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台海南电网公司发布海南电网能源发展有限公司2026-2027年考勤…。",
+          "summary": "海南电网能源发展考勤设备框架公开询比公告。",
           "domain": "物资工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "贵州黔能企业有限责任公司物资类2026-2027年水电站电气设备框架采购公开谈判（三次采购）采购公告",
-          "source": "贵州电网",
+          "title": "贵州黔能企业有限责任公司物资类2026-2027年水电站电气设备框架采购（三次）",
+          "source": "贵州黔能",
           "url": "https://www.bidding.csg.cn/fzbgg/1200440073.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台贵州电网公司发布贵州黔能企业有限责任公司物资类2026-2027…。",
+          "summary": "贵州黔能水电站电气设备框架采购三次公告。",
           "domain": "物资工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "贵州黔能企业有限责任公司工程类2026年天生桥电站大坝防洪应急处理工程公开谈判采购公告",
-          "source": "贵州电网",
+          "title": "贵州黔能企业有限责任公司工程类2026年天生桥电站大坝防洪应急处理工程采购",
+          "source": "贵州黔能",
           "url": "https://www.bidding.csg.cn/fzbgg/1200440068.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台贵州电网公司发布贵州黔能企业有限责任公司工程类2026年天生桥电…。",
+          "summary": "贵州黔能天生桥电站大坝防洪应急处理工程采购。",
           "domain": "应急工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "贵州黔能企业有限责任公司工程类2026-2027年水电检修技改及抢修施工、监理框架招标招标公告",
-          "source": "贵州电网",
+          "title": "贵州黔能企业有限责任公司工程类2026-2027年水电检修技改及抢修施工监理框架招标",
+          "source": "贵州黔能",
           "url": "https://www.bidding.csg.cn/zbgg/1200440040.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台贵州电网公司发布贵州黔能企业有限责任公司工程类2026-2027…。",
+          "summary": "贵州黔能水电检修技改及抢修施工监理框架招标。",
           "domain": "应急工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "贵州黔能企业有限责任公司服务类2026-2027年大坝安全鉴定（含勘察设计）技术咨询服务框架招标招标公告",
-          "source": "贵州电网",
+          "title": "贵州黔能企业有限责任公司服务类2026-2027年大坝安全鉴定技术咨询服务框架招标",
+          "source": "贵州黔能",
           "url": "https://www.bidding.csg.cn/zbgg/1200440041.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台贵州电网公司发布贵州黔能企业有限责任公司服务类2026-2027…。",
-          "domain": "智能电网",
+          "summary": "贵州黔能大坝安全鉴定技术咨询框架招标公告。",
+          "domain": "应急工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "贵州电力建设监理咨询有限责任公司服务类2027-2028年监理技术辅助服务框架招标招标公告",
+          "title": "贵州电力建设监理咨询有限责任公司服务类2027-2028年监理技术辅助服务框架招标",
           "source": "贵州电网",
           "url": "https://www.bidding.csg.cn/zbgg/1200440064.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台贵州电网公司发布贵州电力建设监理咨询有限责任公司服务类2027-…。",
-          "domain": "智能电网",
+          "summary": "贵州电网监理技术辅助服务框架招标公告。",
+          "domain": "物资工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "贵州电力建设监理咨询有限责任公司服务类2026年第二批OEM代工服务公开招标招标公告",
+          "title": "贵州电力建设监理咨询有限责任公司服务类2026年第二批OEM代工服务招标公告",
           "source": "贵州电网",
           "url": "https://www.bidding.csg.cn/zbgg/1200440039.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台贵州电网公司发布贵州电力建设监理咨询有限责任公司服务类2026年…。",
-          "domain": "智能电网",
+          "summary": "贵州电网第二批OEM代工服务公开招标公告。",
+          "domain": "物资工具类",
           "sectionId": "bidding"
         },
         {
-          "title": "2026年南网数研院4U级/小型级硬件装置委托加工公开谈判采购项目采购公告",
-          "source": "南网数字电网研究",
+          "title": "广东电网公司适应新型电力系统的新型配电系统可靠性评价机制研究招标",
+          "source": "广东电网",
+          "url": "https://www.bidding.csg.cn/zbgg/1200440067.jhtml",
+          "date": "2026年8月21日",
+          "summary": "广东电网新型配电系统可靠性评价机制研究招标。",
+          "domain": "配电网",
+          "sectionId": "bidding"
+        },
+        {
+          "title": "2026年南网数研院4U级/小型级硬件装置委托加工公开谈判采购项目",
+          "source": "数研院",
           "url": "https://www.bidding.csg.cn/fzbgg/1200439940.jhtml",
           "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网数字发布2026年南网数研院4U级/小型级硬件装置委托加…。",
+          "summary": "南网数研院硬件装置委托加工公开谈判采购。",
           "domain": "物资工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026年南方电网数字电网科技（广东）有限公司数字新能源事业部智能巡检系统配套设备采购项目采购公告",
-          "source": "南网数字电网集团",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200440024.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网数字发布2026年南方电网数字电网科技（广东）有限公司数…。",
-          "domain": "物资工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026年南方电网数字电网集团（广东）有限公司云环境流量检测及溯源研究专项采购项目招标公告",
-          "source": "南网数字电网集团",
-          "url": "https://www.bidding.csg.cn/zbgg/1200440020.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网数字发布2026年南方电网数字电网集团（广东）有限公司云…。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026年南方电网数字电网集团（广东）有限公司负载均衡设备框架采购[CG2100022002333732]澄清公告（一）",
-          "source": "南网数字电网集团",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200440066.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网数字发布2026年南方电网数字电网集团（广东）有限公司负…。",
-          "domain": "物资工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026-2027年信通公司网络安全保障综合服务项目招标公告",
-          "source": "南网数字电网集团",
-          "url": "https://www.bidding.csg.cn/zbgg/1200440022.jhtml",
-          "date": "2026年8月21日",
-          "summary": "南网供应链平台南方电网数字发布2026-2027年信通公司网络安全保障综合服务…。",
-          "domain": "智能电网",
           "sectionId": "bidding"
         }
       ]
