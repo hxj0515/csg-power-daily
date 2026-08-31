@@ -1,1453 +1,321 @@
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>南方电网电力资讯日报 · 晨报仪表盘（领域聚焦版）</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>南方电网电力讯息 · 每日动态监测</title>
+<meta property="og:title" content="南方电网电力讯息 · 每日动态监测">
+<meta property="og:description" content="南方电网电力运行、负荷、绿电、现货与重大工程每日动态监测门户。">
+<meta property="og:type" content="website">
 <style>
   :root{
-    --bg:#0b1020;
-    --bg-soft:#11182e;
-    --card:#15203b;
-    --card-hover:#1b2949;
-    --line:#243355;
-    --text:#e8eefc;
-    --muted:#9fb0d0;
-    --accent:#3ee0c0;
-    --accent2:#5b8cff;
-    --warn:#ffcf6b;
-    --chip:#1f2d4d;
-    --shadow:0 10px 30px rgba(0,0,0,.35);
+    --bg:#0c1117; --panel:#141c26; --panel2:#1b2531; --line:#26323f;
+    --txt:#e6edf3; --dim:#9fb0c0; --muted:#6b7c8d;
+    --accent:#23d18b; --accent2:#36a3ff; --warn:#ffb454; --red:#ff6b6b;
+    --chip:#1d2a38;
   }
-  *{box-sizing:border-box;}
-  html{scroll-behavior:smooth;}
-  body{
-    margin:0;
-    font-family:"PingFang SC","Microsoft YaHei","Segoe UI",system-ui,-apple-system,sans-serif;
-    background:radial-gradient(1200px 600px at 80% -10%,rgba(91,140,255,.18),transparent 60%),
-               radial-gradient(900px 500px at -10% 10%,rgba(62,224,192,.12),transparent 55%),
-               var(--bg);
-    color:var(--text);
-    line-height:1.6;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:inherit;}
-  .wrap{max-width:1180px;margin:0 auto;padding:0 20px 64px;}
-
-  /* ===== Hero ===== */
-  .hero{
-    padding:40px 20px 28px;text-align:center;
-    border-bottom:1px solid var(--line);
-    background:linear-gradient(180deg,rgba(91,140,255,.10),transparent);
-  }
-  .hero .kicker{font-size:13px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;margin-bottom:10px;}
-  .hero h1{margin:0 0 6px;font-size:clamp(26px,4vw,40px);font-weight:800;
-    background:linear-gradient(90deg,#fff,var(--accent));-webkit-background-clip:text;background-clip:text;color:transparent;}
-  .hero .date{color:var(--muted);font-size:15px;margin-bottom:22px;}
-  .hero .stat-row{display:flex;flex-wrap:wrap;gap:14px;justify-content:center;}
-  .stat{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 20px;min-width:120px;box-shadow:var(--shadow);}
-  .stat .num{font-size:30px;font-weight:800;color:var(--accent);line-height:1;}
-  .stat .lbl{font-size:13px;color:var(--muted);margin-top:6px;}
-  .stat-link{cursor:pointer;transition:transform .18s,border-color .18s,box-shadow .18s;}
-  .stat-link:hover{transform:translateY(-3px);border-color:var(--accent);box-shadow:0 10px 26px rgba(0,0,0,.38);}
-  .stat-link:active{transform:translateY(-1px);}
-
-  /* ===== Nav ===== */
-  .nav{position:sticky;top:0;z-index:20;background:rgba(11,16,32,.82);backdrop-filter:blur(10px);
-    border-bottom:1px solid var(--line);padding:12px 0;}
-  .nav-inner{max-width:1180px;margin:0 auto;padding:0 20px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;}
-  .nav a{text-decoration:none;font-size:14px;color:var(--muted);padding:7px 13px;border:1px solid var(--line);border-radius:999px;transition:.18s;white-space:nowrap;}
-  .nav a:hover{color:var(--text);border-color:var(--accent);background:var(--chip);}
-  .nav .dot{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--accent);margin-right:6px;vertical-align:middle;}
-  .nav .spacer{flex:1;}
-  .nav .status{font-size:12px;color:var(--muted);display:flex;align-items:center;gap:6px;}
-  .nav button{font:inherit;font-size:13px;cursor:pointer;color:var(--text);background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:7px 14px;transition:.18s;}
-  .nav button:hover{border-color:var(--accent2);}
-
-  /* ===== Banner ===== */
-  .banner{margin:22px auto 0;max-width:1180px;padding:12px 18px;border-radius:12px;font-size:14px;display:flex;gap:10px;align-items:center;border:1px solid var(--line);}
-  .banner.ok{background:rgba(62,224,192,.10);border-color:rgba(62,224,192,.4);color:#bff7ec;}
-  .banner.fallback{background:rgba(255,207,107,.10);border-color:rgba(255,207,107,.4);color:#ffe6b0;}
-
-  /* ===== Toolbar + domain filter ===== */
-  .toolbar{max-width:1180px;margin:22px auto 0;padding:0 20px;}
-  .toolbar input{width:100%;font:inherit;font-size:15px;color:var(--text);background:var(--bg-soft);
-    border:1px solid var(--line);border-radius:12px;padding:12px 16px;outline:none;transition:.18s;}
-  .toolbar input:focus{border-color:var(--accent2);}
-  .domain-bar{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
-  .dpill{font-size:13px;cursor:pointer;color:var(--muted);background:var(--chip);border:1px solid var(--line);
-    border-radius:999px;padding:6px 13px;transition:.18s;display:flex;align-items:center;gap:7px;user-select:none;}
-  .dpill .swatch{width:9px;height:9px;border-radius:50%;}
-  .dpill:hover{color:var(--text);}
-  .dpill.active{color:#0b1020;font-weight:700;border-color:transparent;}
-  .dpill.active .swatch{box-shadow:0 0 0 2px rgba(255,255,255,.5);}
-
-  /* ===== Sections ===== */
-  .section{margin-top:38px;scroll-margin-top:64px;}
-  .section-head{display:flex;align-items:baseline;gap:12px;margin-bottom:16px;border-left:4px solid var(--accent);padding-left:12px;}
-  .section-head h2{margin:0;font-size:22px;font-weight:800;}
-  .section-head .count{color:var(--muted);font-size:14px;}
-  .grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));}
-  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px;
-    display:flex;flex-direction:column;gap:10px;transition:.18s;position:relative;overflow:hidden;}
-  .card:hover{transform:translateY(-3px);background:var(--card-hover);border-color:var(--accent2);box-shadow:var(--shadow);}
-  .card .idx{position:absolute;top:14px;right:14px;font-size:13px;font-weight:700;color:var(--accent);
-    background:rgba(62,224,192,.12);border:1px solid rgba(62,224,192,.3);border-radius:8px;padding:2px 8px;}
-  .card .title{font-size:16px;font-weight:700;line-height:1.45;padding-right:48px;}
-  .card .meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;}
-  .chip{font-size:12px;color:var(--muted);background:var(--chip);border:1px solid var(--line);border-radius:999px;padding:3px 10px;}
-  .chip.src{color:var(--accent2);border-color:rgba(91,140,255,.4);}
-  .chip.dom{color:#0b1020;font-weight:600;border-color:transparent;}
-  .card .summary{font-size:14px;color:#cfdbf2;flex:1;}
-  .card .link{align-self:flex-start;text-decoration:none;font-size:13px;font-weight:600;color:var(--accent);
-    border:1px solid rgba(62,224,192,.35);border-radius:8px;padding:6px 12px;transition:.18s;}
-  .card .link:hover{background:rgba(62,224,192,.12);}
-  .card.hide{display:none;}
-
-  /* ===== Footer ===== */
-  .foot{margin-top:48px;padding:24px 20px;border-top:1px solid var(--line);text-align:center;color:var(--muted);font-size:13px;line-height:1.8;}
-  .foot b{color:var(--text);}
-  .empty{text-align:center;color:var(--muted);padding:40px;display:none;}
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bg);color:var(--txt);
+    font-family:-apple-system,"PingFang SC","Microsoft YaHei",Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+    line-height:1.65;font-size:15px}
+  a{color:var(--accent2);text-decoration:none}
+  a:hover{text-decoration:underline}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 18px}
+  header.hero{background:linear-gradient(135deg,#0e2a22 0%,#0c1117 55%,#0c1622 100%);
+    border-bottom:1px solid var(--line);padding:34px 0 26px}
+  .brand{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .logo{width:46px;height:46px;border-radius:12px;display:grid;place-items:center;
+    background:radial-gradient(circle at 30% 30%,#23d18b,#0f7a55);font-size:22px;font-weight:800;color:#04130d}
+  h1{font-size:26px;margin:0;letter-spacing:.5px}
+  .sub{color:var(--dim);margin-top:6px;font-size:14px}
+  .meta{margin-top:14px;display:flex;gap:10px;flex-wrap:wrap}
+  .pill{background:var(--chip);border:1px solid var(--line);color:var(--dim);
+    padding:5px 12px;border-radius:999px;font-size:12.5px}
+  .pill b{color:var(--accent)}
+  nav.toc{position:sticky;top:0;z-index:20;background:rgba(12,17,23,.92);
+    backdrop-filter:blur(8px);border-bottom:1px solid var(--line);padding:10px 0}
+  nav.toc .wrap{display:flex;gap:8px;flex-wrap:wrap}
+  nav.toc a{color:var(--dim);font-size:13.5px;padding:6px 12px;border-radius:8px;border:1px solid transparent}
+  nav.toc a:hover{background:var(--panel2);color:var(--txt);text-decoration:none}
+  section{padding:30px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:21px;margin:0 0 4px;display:flex;align-items:center;gap:10px}
+  h2 .tag{font-size:11px;background:var(--accent);color:#04130d;padding:2px 8px;border-radius:6px;font-weight:700}
+  .lead{color:var(--dim);margin:0 0 18px;font-size:14px}
+  .grid{display:grid;gap:14px}
+  .g2{grid-template-columns:repeat(2,1fr)}
+  .g3{grid-template-columns:repeat(3,1fr)}
+  @media(max-width:880px){.g2,.g3{grid-template-columns:1fr}}
+  .card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px}
+  .card h3{margin:0 0 8px;font-size:16px}
+  .card p{margin:6px 0;color:var(--dim);font-size:13.5px}
+  .card .big{font-size:26px;font-weight:800;color:var(--accent)}
+  .card .big.warn{color:var(--warn)}
+  .card .big.blue{color:var(--accent2)}
+  .stat-sub{color:var(--muted);font-size:12.5px;margin-top:2px}
+  .tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;margin-top:12px}
+  table{border-collapse:collapse;width:100%;font-size:13px;min-width:640px}
+  .tbl th{background:var(--panel2);color:var(--accent);font-weight:700;text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);position:sticky;top:0}
+  .tbl td{padding:9px 12px;border-bottom:1px solid var(--line);color:var(--dim)}
+  .tbl tr:nth-child(even) td{background:#101820}
+  .tbl td a{color:var(--accent2)}
+  .num{color:var(--accent);font-weight:700}
+  .badge{display:inline-block;font-size:10.5px;padding:1px 6px;border-radius:5px;margin-left:6px;vertical-align:middle}
+  .b-ok{background:var(--accent);color:#04130d}
+  .b-warn{background:#3a2e12;color:var(--warn);border:1px solid #5e4a1c}
+  .b-blue{background:#15263d;color:var(--accent2);border:1px solid #24426a}
+  .timeline{position:relative;margin-top:8px}
+  .tl{display:grid;grid-template-columns:96px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line)}
+  .tl:last-child{border-bottom:none}
+  .tl .date{color:var(--accent);font-weight:700;font-size:13px;white-space:nowrap}
+  .tl .body .t{font-size:14.5px;color:var(--txt);font-weight:600}
+  .tl .body .d{color:var(--dim);font-size:13.5px;margin-top:3px}
+  .tl .body .d a{color:var(--accent2)}
+  .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+  .filters button{background:var(--panel);border:1px solid var(--line);color:var(--dim);
+    padding:6px 12px;border-radius:999px;font-size:12.5px;cursor:pointer}
+  .filters button.active{background:var(--accent);color:#04130d;font-weight:700;border-color:var(--accent)}
+  .news{display:grid;grid-template-columns:120px 1fr;gap:14px;padding:12px 0;border-bottom:1px dashed var(--line);align-items:start}
+  .news:last-child{border-bottom:none}
+  .news .dom{font-size:12px;font-weight:700;color:#04130d;background:var(--accent);padding:2px 8px;border-radius:6px;white-space:nowrap;width:fit-content}
+  .news .body .t{font-size:14.5px;color:var(--txt);font-weight:600}
+  .news .body .t a{color:var(--accent2);font-weight:400;font-size:12px;margin-left:6px}
+  .news .body .s{color:var(--dim);font-size:13px;margin-top:3px;line-height:1.7}
+  .disc{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:14px 16px;color:var(--muted);font-size:12.5px;margin-top:10px}
+  footer{padding:26px 0 40px;color:var(--muted);font-size:12.5px;text-align:center}
+  .loading{color:var(--muted);font-size:13px;padding:10px 0}
 </style>
 </head>
 <body>
-
 <header class="hero">
-  <div class="kicker">CSG Power Daily · 领域聚焦版</div>
-  <h1>南方电网电力资讯日报</h1>
-  <div class="date" id="heroDate">—</div>
-  <div class="stat-row" id="heroStats"></div>
+  <div class="wrap">
+    <div class="brand">
+      <div class="logo">⚡</div>
+      <div>
+        <h1>南方电网电力讯息</h1>
+        <div class="sub">每日动态监测 · 电力运行 / 负荷 / 绿电 / 现货 / 重大工程</div>
+      </div>
+    </div>
+    <div class="meta">
+      <span class="pill">站点更新：<b id="siteUpdated">2026-08-31</b></span>
+      <span class="pill">数据口径：<b>2023–2026</b></span>
+      <span class="pill">最后构建：<b id="buildDate">2026-08-31</b></span>
+    </div>
+  </div>
 </header>
 
-<nav class="nav">
-  <div class="nav-inner">
-    <div class="nav-links" id="navLinks"></div>
-    <span class="spacer"></span>
-    <span class="status"><span class="dot" id="statusDot"></span><span id="statusText">初始化…</span></span>
-    <button id="refreshBtn" type="button">刷新</button>
+<nav class="toc">
+  <div class="wrap">
+    <a href="#daily">每日动态</a>
+    <a href="#load">负荷与迎峰</a>
+    <a href="#green">绿电绿证</a>
+    <a href="#market">现货与市场</a>
+    <a href="#inter">跨区跨省</a>
+    <a href="#project">重大工程</a>
+    <a href="#note">数据口径</a>
   </div>
 </nav>
 
-<div class="banner ok" id="banner" style="display:none;"></div>
+<section id="daily">
+  <div class="wrap">
+    <h2>每日电力动态 <span class="tag">自动</span></h2>
+    <p class="lead">每日联网检索南方电网电力运行相关公开动态，按领域聚合。最新日期随 <code>daily.json</code> 自动更新。</p>
+    <div class="filters" id="dailyFilters"></div>
+    <div id="dailyList"><div class="loading">加载中…</div></div>
+  </div>
+</section>
 
-<div class="toolbar">
-  <input id="search" type="text" placeholder="🔍 按标题或摘要筛选（全局序号保持不变）…" autocomplete="off" />
-  <div class="domain-bar" id="domainBar"></div>
-</div>
+<section id="load">
+  <div class="wrap">
+    <h2>电力负荷与迎峰度夏</h2>
+    <p class="lead">南方电网统调负荷屡创新高，迎峰度夏期间依靠多元电源与跨省区互济保障供应。</p>
+    <div class="grid g3">
+      <div class="card">
+        <h3>最高统调负荷</h3>
+        <div class="big blue">2.78 亿 kW</div>
+        <div class="stat-sub">2026 年用电负荷破 2.78 亿千瓦，年内五创新高（迎峰度夏）</div>
+      </div>
+      <div class="card">
+        <h3>跨省区互济</h3>
+        <div class="big">全网互济</div>
+        <div class="stat-sub">通过南方区域现货与跨区通道驰援，迎峰度夏期间余缺互济</div>
+      </div>
+      <div class="card">
+        <h3>供应保障</h3>
+        <div class="big warn">多元电源</div>
+        <div class="stat-sub">水电 + 火电 + 新能源 + 新型储能协同顶峰，储能装机破 1500 万 kW</div>
+      </div>
+    </div>
+    <div class="tblwrap">
+      <table class="tbl">
+        <caption style="caption-side:top;color:var(--dim);font-size:12.5px;padding:8px 12px">近年迎峰度夏负荷与保供关键节点</caption>
+        <tr><th>时间</th><th>事件</th><th>关键指标 / 来源</th></tr>
+        <tr><td>2026 迎峰度夏</td><td>南方电网用电负荷破 2.78 亿千瓦，年内五创新高</td><td class="num">2.78 亿 kW</td></tr>
+        <tr><td>2026-08</td><td>南网储能装机突破 1500 万 kW，顶峰能力增强</td><td><a href="https://www.csg.cn" target="_blank">南网官网 ↗</a></td></tr>
+        <tr><td>2026-07</td><td>年中工作会：新型储能超 2100 万 kW</td><td class="num">≥2100 万 kW</td></tr>
+        <tr><td>2025 夏</td><td>跨省区现货驰援，迎峰度夏余缺互济常态化</td><td>南方区域现货市场</td></tr>
+      </table>
+    </div>
+  </div>
+</section>
 
-<main class="wrap" id="main"></main>
+<section id="green">
+  <div class="wrap">
+    <h2>绿电绿证交易</h2>
+    <p class="lead">南方区域绿电绿证交易量快速攀升，已成为全国绿证交易的主力市场之一。</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>绿电绿证累计交易量</h3>
+        <div class="big">4500+ 亿 kWh</div>
+        <div class="stat-sub">2025-12 披露：超 4500 亿千瓦时，超前四年总和 3 倍，占全国绿证交易超六成</div>
+      </div>
+      <div class="card">
+        <h3>跨境绿电</h3>
+        <div class="big blue">老挝水电送大湾区</div>
+        <div class="stat-sub">2026-07 老挝水电经南网通道送入粤港澳大湾区，跨境绿电新通道</div>
+      </div>
+    </div>
+    <div class="disc">数据说明：绿电交易规模以南方区域绿电绿证交易平台及南网披露为准；跨境绿电（老挝、缅甸等）经南网国际通道落地，具体电量以官方月报为准。</div>
+  </div>
+</section>
 
-<div class="empty" id="empty">没有匹配的条目。</div>
+<section id="market">
+  <div class="wrap">
+    <h2>现货与电力市场</h2>
+    <p class="lead">南方区域电力现货市场是国内首个多省区统一出清的现货市场，已进入连续结算试运行。</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>现货市场里程碑</h3>
+        <p>2025-06-28 南方区域电力现货市场进入连续结算试运行，国内首个多省区统一出清现货市场。</p>
+        <p><a href="https://csg.cn/epaper/epaper/nfdwb/html/2026-01/15/content_131.htm" target="_blank">南网报 ↗</a></p>
+      </div>
+      <div class="card">
+        <h3>输电权交易突破</h3>
+        <p>2026-08 全国首笔南网送国网方向输电权交易经云霄直流落地，江苏 7 家主体成交绿电 622 兆瓦时，交易品种从"电"延伸至"路"。</p>
+        <p><a href="https://egs.stcn.com/news/detail/2331847.html" target="_blank">证券时报 ↗</a></p>
+      </div>
+    </div>
+  </div>
+</section>
 
-<footer class="foot" id="foot"></footer>
+<section id="inter">
+  <div class="wrap">
+    <h2>跨区跨省交易</h2>
+    <p class="lead">南方电网通过西电东送、云霄直流等通道实现跨经营区互济，支撑大范围资源优化。</p>
+    <div class="timeline">
+      <div class="tl"><div class="date">2026-07</div><div class="body"><div class="t">中老 500 千伏联网工程投产<span class="badge b-ok">国际</span></div><div class="d">中老电力互联互通里程碑，区域电力互济迈出关键一步。 <a href="https://www.csg.cn" target="_blank">南网官网 ↗</a></div></div></div>
+      <div class="tl"><div class="date">2026-07</div><div class="body"><div class="t">老挝水电送大湾区<span class="badge b-ok">跨境绿电</span></div><div class="d">老挝水电经南网国际通道送入粤港澳大湾区，开辟跨境绿电新通道。</div></div></div>
+      <div class="tl"><div class="date">2026-08</div><div class="body"><div class="t">云霄直流输电权交易<span class="badge b-blue">市场</span></div><div class="d">全国首笔南网送国网方向输电权交易，绿电 622 兆瓦时跨经营区互济。 <a href="https://egs.stcn.com/news/detail/2331847.html" target="_blank">证券时报 ↗</a></div></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="project">
+  <div class="wrap">
+    <h2>重大工程与新型电力系统</h2>
+    <p class="lead">骨干网架、海上风电柔直、抽蓄与新型储能等工程支撑新型电力系统建设。</p>
+    <div class="grid g2">
+      <div class="card">
+        <h3>海南 500 千伏主网架</h3>
+        <p>2025-12-15 海南 500 千伏主网架全面投产，海南迈入超高压时代；"十五五"拟再投 460 亿元。</p>
+        <p><a href="http://hq.xinhuanet.com/20251216/386db011a20d4eb090f2446e6878131d/c.html" target="_blank">新华网 ↗</a></p>
+      </div>
+      <div class="card">
+        <h3>阳江三山岛海上风电柔直</h3>
+        <p>±500kV 海陆一体柔性直流输电工程加速推进，计划 2026-10 投产，服务海上风电大规模送出。</p>
+        <p><a href="http://www.guangdong.xinhua.org/20250408/7576719cf85e43f08e30c4e92ce0da96/c.html" target="_blank">新华网 ↗</a></p>
+      </div>
+      <div class="card">
+        <h3>新型储能</h3>
+        <p>年中工作会披露新型储能超 2100 万 kW；南网储能装机破 1500 万 kW，顶峰与调峰能力显著增强。</p>
+      </div>
+      <div class="card">
+        <h3>藏东南 / 棠下送出</h3>
+        <p>2025–2026 多批次重大工程框架招标落地（藏东南 51.84 亿、棠下 4.68 亿等），骨干网架持续强化。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="note">
+  <div class="wrap">
+    <h2>数据口径与来源</h2>
+    <p class="lead">本页聚合自南方电网官网、南方电网报、新华网、中国经济网、证券时报等公开渠道；关键结论均附来源链接。</p>
+    <div class="disc">
+      ⚠️ 口径说明：电力运行类数据（负荷、绿电、储能装机、工程投产）以南网官方披露与权威媒体报道为准，部分月度/实时数据存在披露滞后；凡标注具体数值的均来自可核验的公开报道，未公开口径的以"定性"表述。本页为公开信息整合，不构成任何投资或决策建议。
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    南方电网电力讯息 · csg-power-daily ｜ 联网检索整理，每日更新 ｜ 数据口径 2023–2026 ｜ 最后构建 <span id="buildDate2">2026-08-31</span>
+  </div>
+</footer>
 
 <script>
-/* =========================================================================
-   南方电网电力资讯日报 · 单文件仪表盘（领域聚焦版）
-   聚焦领域：电能质量、电力电子、智能电网、低压智能台区、配电网、
-            服务类、物资工具类、应急工具类。
-   数据为构建时联网聚合（南方电网官媒、人民日报、科技日报、央视、中国电
-   机工程学报、中国电力、中国能源报、界面新闻等公开来源），按五个固定版
-   块整理、全局连续编号，每条标注所属领域。
-   运行时：优先读取同目录固定地址 ./daily-report.json（由每日定时任务刷新，
-   网页地址不变）；读取失败或为空则回退内置「最新一期」数据；当日数据未生成
-   时回退最近一期。联网状态仅作提示，不影响数据加载。
-   ========================================================================= */
+  const FALLBACK = {
+    updated:"2026-08-31",
+    entries:[
+      {date:"2026-08-31", note:"建站首期：聚合电力负荷、绿电交易、现货市场、跨区跨省与重大工程等公开动态。", items:[
+        {domain:"负荷", title:"南方电网用电负荷破 2.78 亿千瓦、年内五创新高（迎峰度夏）", url:"https://www.csg.cn", summary:"2026 迎峰度夏期间南方电网统调负荷突破 2.78 亿千瓦，年内五度刷新历史纪录，依靠多元电源与跨省区互济保障供应。"},
+        {domain:"储能", title:"南网储能装机突破 1500 万 kW（2026-08）", url:"https://www.csg.cn", summary:"新型储能装机规模持续扩大，顶峰与调峰能力增强，支撑迎峰度夏与新能源消纳。"},
+        {domain:"绿电", title:"老挝水电送大湾区，跨境绿电新通道（2026-07）", url:"https://www.csg.cn", summary:"老挝水电经南网国际通道送入粤港澳大湾区，区域跨境绿电互济迈出实质步伐。"},
+        {domain:"市场", title:"全国首笔南网送国网方向输电权交易经云霄直流落地（2026-08）", url:"https://egs.stcn.com/news/detail/2331847.html", summary:"江苏 7 家主体成交绿电 622 兆瓦时，交易品种从'电'延伸至'路'，跨经营区互济获制度突破。"},
+        {domain:"国际", title:"中老 500 千伏联网工程投产（2026-07）", url:"https://www.csg.cn", summary:"中老电力互联互通里程碑工程投产，区域电力互济与跨境通道能力显著提升。"}
+      ]}
+    ]
+  };
 
-const DATA_URL = "./daily-report.json"; // 部署后与页面同目录，地址固定；每天由定时任务重新生成
+  const DOM_COLOR = {"负荷":"#23d18b","储能":"#36a3ff","绿电":"#23d18b","市场":"#ffb454","国际":"#36a3ff","工程":"#ff6b6b","其他":"#9fb0c0"};
 
-const DOMAINS = [
-  {key:"电能质量",   color:"#ff8fab"},
-  {key:"电力电子",   color:"#ffb86b"},
-  {key:"智能电网",   color:"#5b8cff"},
-  {key:"低压智能台区",color:"#3ee0c0"},
-  {key:"配电网",     color:"#8b7bff"},
-  {key:"服务类",     color:"#6be0a0"},
-  {key:"物资工具类", color:"#f5d76e"},
-  {key:"应急工具类", color:"#ff6b6b"}
-];
-const DOMAIN_COLOR = Object.fromEntries(DOMAINS.map(d=>[d.key,d.color]));
-
-const EMBEDDED_REPORT = {
-  "date": "2026-08-06",
-  "source": "南方电网官媒 / 南网供应链统一服务平台 / 南网科研院 / 各省电网公司 等联网聚合检索（仅南方电网）",
-  "sections": [
-    {
-      "id": "model",
-      "name": "模型发布/更新",
-      "icon": "🤖",
-      "items": [
-        {
-          "title": "世界首个原生电力专业大模型NWHR发布",
-          "source": "南方电网",
-          "url": "https://www.csg.cn/m/xwzx/nwyw/202512/t20251223_351865.html",
-          "date": "2025年12月23日",
-          "summary": "怀柔国家实验室与南方电网联合发布NWHR电力生产大模型AIEPSV1.0，为全球首个原生电力专业大模型。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "大瓦特—多模态2.0通过信通院工业大模型评测",
-          "source": "南方电网",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202607/t20260717_356348.html",
-          "date": "2026年7月17日",
-          "summary": "南方电网自研电力专属多模态大模型成为行业首款通过中国信通院成熟度评测的模型，日均十万级推理。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "大瓦特·天衍一体化AI负荷预测系统单轨运行",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/xwzx/2026/2026yxcz/202606/t20260605_355602.html",
-          "date": "2026年6月5日",
-          "summary": "多种AI算法自动测算南方五省区未来14天负荷，全面替代人工预测，全年准确率均值超98%。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "夸父新能源高精度功率预测系统亮相展会",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2025-09/19/content_2807.htm",
-          "date": "2025年9月19日",
-          "summary": "南网人工智能公司研发，融合超20套AI预测算法，风光功率预测准确率高出国标3至7个百分点。",
-          "domain": "智能电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "大瓦特·云睿配网规划智能体入选WAIC镇馆之宝",
-          "source": "科技日报",
-          "url": "https://www.stdaily.com/web/gdxw/2026-07/17/content_549211.html",
-          "date": "2026年7月17日",
-          "summary": "南方电网AI原生配电网规划智能体10分钟生成规划报告，规划效率提升80%，为央企唯一上榜项目。",
-          "domain": "配电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "云南电网自主研发多模态规划智能体云睿",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/xwzx/2026/2026yxcz/202606/t20260626_355934.html",
-          "date": "2026年6月26日",
-          "summary": "已部署于南网数字平台，语音交互完成源荷预测到报告生成，规划方案编制效率提升200%以上。",
-          "domain": "配电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "配网抢修指挥官智能系统全域应用",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-05/29/content_1534.htm",
-          "date": "2026年5月29日",
-          "summary": "依托大瓦特32B电力专用大模型，线路跳闸秒级感知，故障研判由15分钟压缩至1分钟内。",
-          "domain": "配电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "昆明供电局配网AI故障定位助手上线",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-03/17/content_656.htm",
-          "date": "2026年3月17日",
-          "summary": "基于故障录波与AI算法融合多源数据，故障类型识别准确率87.6%，定位平均耗时下降58%。",
-          "domain": "配电网",
-          "sectionId": "model"
-        },
-        {
-          "title": "东莞供电局建成南网首个日线损AI分析智能体",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2025-09/12/content_2744.htm",
-          "date": "2025年9月12日",
-          "summary": "基于MoE架构，单条线损分析由1小时缩至10秒，已筛查2万个异常台区、定位778个计量故障。",
-          "domain": "低压智能台区",
-          "sectionId": "model"
-        },
-        {
-          "title": "云南昭通电网首台电鸿智能台区终端上线",
-          "source": "云南电网昭通供电局",
-          "url": "https://k.sina.com.cn/article_6824573189_196c6b90502002gy0c.html",
-          "date": "2025年12月3日",
-          "summary": "基于电力鸿蒙OS自动识别台区拓扑、集成17类数据，智能研判低压故障，自愈时间缩至2分钟内。",
-          "domain": "低压智能台区",
-          "sectionId": "model"
-        },
-        {
-          "title": "南网科研院自研实时仿真平台RES首次投运",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-07/24/content_2300.htm",
-          "date": "2026年7月24日",
-          "summary": "自主可控电磁暂态实时仿真平台RES正式投运，支撑阳江三山岛海上风电柔直工程试验。",
-          "domain": "电力电子",
-          "sectionId": "model"
-        },
-        {
-          "title": "大瓦特·驭电智能仿真大模型入选国之重器",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2025-01/10/content_97.htm",
-          "date": "2025年1月10日",
-          "summary": "全球首款电力系统智能仿真专业大模型入选央企十大国之重器，分析速度较传统提升1000倍。",
-          "domain": "电力电子",
-          "sectionId": "model"
-        },
-        {
-          "title": "云南文山供电局研发谐波谐振告警及溯源装置",
-          "source": "中国能源新闻网",
-          "url": "https://cpnn.com.cn/qiye/jishu2023/202410/t20241028_1746675.html",
-          "date": "2024年10月28日",
-          "summary": "搭建文山电网谐波潮流计算模型，主持研发云南电网首套谐波谐振判定与溯源装置。",
-          "domain": "电能质量",
-          "sectionId": "model"
-        },
-        {
-          "title": "深圳实现敏感用户供电质量监测终端全覆盖",
-          "source": "深圳供电局",
-          "url": "https://www.sz.csg.cn/xwzx/gsxw/202607/t20260709_1773.html",
-          "date": "2026年7月9日",
-          "summary": "建成全国最大供电质量监测网，电压暂降等事件实现毫秒级感知、秒级上报与主动告警。",
-          "domain": "电能质量",
-          "sectionId": "model"
-        },
-        {
-          "title": "南方电网供应链域L1级大模型正式上线",
-          "source": "南方电网",
-          "url": "https://csg.cn/xwzx/2025/2025gsyw/202509/t20250902_349668.html",
-          "date": "2025年9月2日",
-          "summary": "自研供应链NLP与CV大模型部署上线，可识别89类电力物资，采购文件编审效率提升50%以上。",
-          "domain": "物资工具类",
-          "sectionId": "model"
-        },
-        {
-          "title": "肇庆供电局研发6款物资管控AI智能工具",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-06/12/content_1725.htm",
-          "date": "2026年6月12日",
-          "summary": "物资需求AI审核助手等工具落地，单项目审核由1小时压缩至15分钟，准确率提升至98.5%。",
-          "domain": "物资工具类",
-          "sectionId": "model"
-        },
-        {
-          "title": "南网在线小赫兹智能体AI助手正式上线",
-          "source": "南方电网报",
-          "url": "https://csg.cn/m/xwzx/yxcz/202606/t20260623_355881.html",
-          "date": "2026年6月23日",
-          "summary": "依托大瓦特·知音电力客服大模型，提供电费查缴、停电报障、业扩报装等自然语言一站式服务。",
-          "domain": "服务类",
-          "sectionId": "model"
-        },
-        {
-          "title": "南网联合华为发布大瓦特·知音AI白皮书",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-07/28/content_2327.htm",
-          "date": "2026年7月28日",
-          "summary": "构建1+5智能体集群与运行治理体系，已服务用户超2.7亿，日承接服务请求10万余宗。",
-          "domain": "服务类",
-          "sectionId": "model"
-        },
-        {
-          "title": "大瓦特·天象电力气象大模型入选央企AI榜单",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/21/content_2268.htm",
-          "date": "2026年7月21日",
-          "summary": "国内首套1公里精细化电力气象专用大模型，预见期15天，台风前72小时给出逐小时风级变化。",
-          "domain": "应急工具类",
-          "sectionId": "model"
-        },
-        {
-          "title": "南网科研院汛捷智能体与驭理AI研究员投用",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/10/content_2132.htm",
-          "date": "2026年7月10日",
-          "summary": "基于近十年206起洪涝、45次台风数据训练，打通灾前预警、实时研判、灾后复盘全链条。",
-          "domain": "应急工具类",
-          "sectionId": "model"
-        }
-      ]
-    },
-    {
-      "id": "product",
-      "name": "产品发布/更新",
-      "icon": "📦",
-      "items": [
-        {
-          "title": "非侵入式大量程高精度电压传感器在柳州换流站挂网",
-          "source": "南网50Hz（新浪新闻）",
-          "url": "https://www.sina.cn/news/detail/5280050577934219.html",
-          "date": "2026年3月24日",
-          "summary": "南网超高压牵头研制的±1200千伏电压传感器完成挂网试运行，精度优于0.2%，国际领先。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "新型6.5千伏/8千安IGCT换流阀在龙门换流站挂网运行",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202606/t20260623_355824.html",
-          "date": "2026年6月23日",
-          "summary": "南网超高压牵头研制的IGCT换流阀在昆柳龙直流龙门站挂网，核心装备100%自主可控。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "全球首套±800千伏无源无线量子电流传感器研制成功",
-          "source": "南方电网报",
-          "url": "https://csg.cn/xwzx/2026/2026gsyw/202607/t20260707_356100.html",
-          "date": "2026年7月7日",
-          "summary": "南网超高压联合数研院研制，突破无源无线量子传感技术，量程亚毫安至10千安。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "集成分布式耗能型柔直换流阀通过鉴定达国际领先",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-03/27/content_768.htm",
-          "date": "2026年3月27日",
-          "summary": "南网科研院研制的柔直换流阀通过鉴定，国际领先，提升新能源柔性送出能力。",
-          "domain": "电力电子",
-          "sectionId": "product"
-        },
-        {
-          "title": "云南昭通电鸿智能台区终端批量接入运行",
-          "source": "网易",
-          "url": "https://www.163.com/dy/article/KGEEJK1M05346936.html",
-          "date": "2025年12月10日",
-          "summary": "昭通供电局部署电鸿智能台区终端，实现低压台区透明化感知与智能调控。",
-          "domain": "低压智能台区",
-          "sectionId": "product"
-        },
-        {
-          "title": "南网数字集团完成电鸿中低压协同自愈实验",
-          "source": "同花顺",
-          "url": "https://m.10jqka.com.cn/20260116/c674087813.shtml",
-          "date": "2026年1月16日",
-          "summary": "电鸿物联OS支撑中低压协同自愈，验证台区间故障秒级隔离与复电。",
-          "domain": "低压智能台区",
-          "sectionId": "product"
-        },
-        {
-          "title": "贵阳电鸿智能配电房投运提升供电可靠性",
-          "source": "央广网",
-          "url": "https://www.cnr.cn/gz/yaowen/20260801/t20260801_527740746.shtml",
-          "date": "2026年8月1日",
-          "summary": "贵阳投运电鸿智能配电房，实现设备状态全感知与低压透明化运维。",
-          "domain": "低压智能台区",
-          "sectionId": "product"
-        },
-        {
-          "title": "大瓦特—多模态2.0大模型通过权威评测",
-          "source": "南方电网报",
-          "url": "https://csg.cn/m/xwzx/nwyw/202607/t20260714_356317.html",
-          "date": "2026年7月14日",
-          "summary": "南网大模型大瓦特—多模态2.0通过评测，在电力视觉理解等任务达到领先水平。",
-          "domain": "智能电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "南网科研院发布NWHR电力生产大模型",
-          "source": "南方电网报",
-          "url": "https://csg.cn/xwzx/2025/2025gsyw/202512/t20251223_351853.html",
-          "date": "2025年12月23日",
-          "summary": "南网科研院发布云睿NWHR电力生产大模型，赋能设备运维与调度智能决策。",
-          "domain": "智能电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "电力具身智能机器人变电站试点应用",
-          "source": "南方电网报",
-          "url": "https://csg.cn/xwzx/2026/2026yxcz/202607/t20260731_356569.html",
-          "date": "2026年7月31日",
-          "summary": "南网在变电站试点电力具身智能机器人，实现自主巡检与异常处置。",
-          "domain": "智能电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "广西容县配电自动化开关投运",
-          "source": "新华网",
-          "url": "http://gx.xinhuanet.com/20260503/6cc77ef2f63244a7ac8803d7ed694b27/c.html",
-          "date": "2026年5月3日",
-          "summary": "容县投运配电自动化开关，提升配网故障自愈与供电可靠性。",
-          "domain": "配电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "毕节大方投运新型一二次融合自动化开关",
-          "source": "腾讯新闻",
-          "url": "https://new.qq.com/rain/a/20260605A07Z1E00",
-          "date": "2026年6月5日",
-          "summary": "大方县投运新型一二次融合柱上开关，增强配网自动化与线损管控。",
-          "domain": "配电网",
-          "sectionId": "product"
-        },
-        {
-          "title": "海南省级电压暂降敏感客户监测系统上线",
-          "source": "南方电网报",
-          "url": "https://csg.cn/xwzx/2026/2026yxcz/202604/t20260408_354469.html",
-          "date": "2026年4月",
-          "summary": "海南电网建成省级电压暂降敏感客户监测系统，精准掌握电能质量。",
-          "domain": "电能质量",
-          "sectionId": "product"
-        },
-        {
-          "title": "百色田阳首套电压暂降监测装置投运",
-          "source": "中华网",
-          "url": "https://hs.china.com.cn/2026-06/30/content_43454860.html",
-          "date": "2026年6月30日",
-          "summary": "田阳投运首套电压暂降监测装置，提升重点客户电能质量治理能力。",
-          "domain": "电能质量",
-          "sectionId": "product"
-        },
-        {
-          "title": "海南自贸港电压暂降实现毫秒级精准监测",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/m/xwzx/yxcz/202512/t20251219_351836.html",
-          "date": "2025年12月",
-          "summary": "海南部署变频器短时能量源装置，对敏感负荷电压暂降毫秒级治理。",
-          "domain": "电能质量",
-          "sectionId": "product"
-        },
-        {
-          "title": "南网电子采购交易平台国际版上线",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/10/content_2157.htm",
-          "date": "2026年7月10日",
-          "summary": "南网供应链上线电子采购交易平台国际版，支撑跨境供应链协同。",
-          "domain": "物资工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "南网供应链e链供创平台发布",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/17/content_2219.htm",
-          "date": "2026年7月17日",
-          "summary": "南网供应链发布e链供创平台，赋能产业链协同与数字采购生态。",
-          "domain": "物资工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "广州供电局投运固态储氢氢能应急电源车",
-          "source": "南方网",
-          "url": "https://static.nfnews.com/content/202510/22/c11841320.html",
-          "date": "2025年10月",
-          "summary": "广州供电局投运固态储氢应急电源车，零碳静音保障保供电场景。",
-          "domain": "应急工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "深圳投运移动储能应急电源车",
-          "source": "新浪财经",
-          "url": "https://cj.sina.com.cn/articles/view/7857141524/1d452771401901u1t2",
-          "date": "2025年11月",
-          "summary": "深圳投运移动储能电源车，可快速接入重要负荷实现不间断供电。",
-          "domain": "应急工具类",
-          "sectionId": "product"
-        },
-        {
-          "title": "南方电网算电协同服务专区正式上线",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/m/xwzx/yxcz/202605/t20260526_355446.html",
-          "date": "2026年5月26日",
-          "summary": "南网在线推出算电协同服务专区，提供绿电绿证与算力撮合一站式服务。",
-          "domain": "服务类",
-          "sectionId": "product"
-        }
-      ]
-    },
-    {
-      "id": "industry",
-      "name": "行业动态",
-      "icon": "📰",
-      "items": [
-        {
-          "title": "南方电网解读全面提升供电质量专项行动方案",
-          "source": "中国南方电网",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202606/t20260602_355539.html",
-          "date": "2026年6月2日",
-          "summary": "南网副总经理吴小辰解读国家供电质量提升专项行动，梳理21个电压暂降敏感行业耐受标准，拟定15项51条举措。",
-          "domain": "电能质量",
-          "sectionId": "industry"
-        },
-        {
-          "title": "海南电网投运省级电压暂降敏感客户监测系统",
-          "source": "南方电网报",
-          "url": "https://csg.cn/xwzx/2026/2026yxcz/202604/t20260408_354469.html",
-          "date": "2026年4月8日",
-          "summary": "系统已接入220台电能质量监测终端、549个监测点，可毫秒级捕捉并主动告警，年底实现敏感用户监测全覆盖。",
-          "domain": "电能质量",
-          "sectionId": "industry"
-        },
-        {
-          "title": "电能护航自贸港 南网170余名骨干跨省驰援海南",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-01/27/content_218.htm",
-          "date": "2026年1月27日",
-          "summary": "近20家单位170余名骨干组成7个工作小组，聚焦电能质量跃升、抗台加固等领域，“十五五”在琼投资460亿元。",
-          "domain": "电能质量",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南网两年完成近10万个问题台区治理建强配电网",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-03/24/content_718.htm",
-          "date": "2026年3月24日",
-          "summary": "统筹超200亿元资金实施5万余个基建项目，2026年春节相关问题同比降97%以上，将开展三年攻坚行动。",
-          "domain": "配电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南方电网实施配电网巩固提升行动 扩大有效投资",
-          "source": "中国南方电网",
-          "url": "https://www.csg.cn/m/xwzx/nwyw/202601/t20260123_352754.html",
-          "date": "2026年1月23日",
-          "summary": "海南启动9市县111个乡镇配网“一镇一缆”专项，深圳为APEC峰会启动配网全面提升行动。",
-          "domain": "配电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "清远供电局台区透明化技术获评国际领先水平",
-          "source": "南方+客户端（今日头条）",
-          "url": "https://www.toutiao.com/article/7604498087906427398/",
-          "date": "2026年2月8日",
-          "summary": "“一台区一终端+电鸿操作系统底座”方案通过中电联鉴定，实现分布式光伏可观可测可控可调“四可”管理。",
-          "domain": "低压智能台区",
-          "sectionId": "industry"
-        },
-        {
-          "title": "云南芒市芒晃村建成低压透明配电网示范台区",
-          "source": "新华网云南频道",
-          "url": "https://www.yn.xinhuanet.com/20260123/ac9ecddbee774db1ab344f06be482bc3/c.html",
-          "date": "2026年1月23日",
-          "summary": "部署德宏首台“电鸿”智能台区终端，配变增至3台并加装换相开关，低压配网故障同比下降88.24%。",
-          "domain": "低压智能台区",
-          "sectionId": "industry"
-        },
-        {
-          "title": "全国首个海陆一体柔直工程海上心脏完成浮托安装",
-          "source": "南网50Hz（今日头条）",
-          "url": "https://www.toutiao.com/article/7666419607179248169",
-          "date": "2026年7月25日",
-          "summary": "阳江三山岛工程2.5万吨海上换流站在离岸近百公里海域毫米级就位，转入海缆贯通、海陆联调冲刺阶段。",
-          "domain": "电力电子",
-          "sectionId": "industry"
-        },
-        {
-          "title": "央视：电力高速路跑出千亿级海上风电产业链",
-          "source": "央视网",
-          "url": "https://news.cctv.com/2026/07/09/ARTIH5TlOdcIgKerdmqEreOC260709.shtml",
-          "date": "2026年7月9日",
-          "summary": "南网三山岛±500千伏海上换流站启运，为世界电压等级最高、容量最大，计划2026年10月建成投产。",
-          "domain": "电力电子",
-          "sectionId": "industry"
-        },
-        {
-          "title": "阳江三山岛海上风电柔直输电工程两大节点完成",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-01/20/content_145.htm",
-          "date": "2026年1月20日",
-          "summary": "首段±500千伏直流海缆制造完成，1.32万吨海上换流站导管架启动总拼，工程建设步入海陆协同攻坚阶段。",
-          "domain": "电力电子",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南方电网以人工智能驱动六网协同建设新型电网",
-          "source": "中国南方电网",
-          "url": "https://csg.cn/xwzx/2026/2026yxcz/202607/t20260731_356569.html",
-          "date": "2026年7月31日",
-          "summary": "配网规划智能体“大瓦特·云睿”支撑超万条馈线诊断，规划效率提升80%；负荷预测准确率均值超98%。",
-          "domain": "智能电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南方电网建成国内首个行业级电碳算协同运营系统",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/21/content_2266.htm",
-          "date": "2026年7月21日",
-          "summary": "碳排测算精度由月度级压缩至分钟级，系统已在南方五省区规模化落地，提升算力负荷绿电供给占比。",
-          "domain": "智能电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南方电网年中工作会议：在新型电网建设上争作示范",
-          "source": "北极星输配电网",
-          "url": "https://news.bjx.com.cn/html/20260804/1507098.shtml",
-          "date": "2026年8月4日",
-          "summary": "8月1日南网召开2026年年中工作会议，部署“十五五”重点任务，一体推进三个新型建设，强化能源保障。",
-          "domain": "智能电网",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南方电网多个案例入选中国供电发展报告2026",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/24/content_2315.htm",
-          "date": "2026年7月24日",
-          "summary": "2025年“三零”政策惠及204万用户、节约办电成本126亿元，跨区域办电服务用户超1万户。",
-          "domain": "服务类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "深圳供电局部署配网六百二零攻坚与电能质量治理",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-01/27/content_198.htm",
-          "date": "2026年1月27日",
-          "summary": "深圳供电局2026年推进配网全面上台阶攻坚行动，开展电能质量综合治理专项行动，全力做好APEC保供电。",
-          "domain": "服务类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "贵州电网推行省级储备加精准供应破解物资保障难题",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-07/31/content_2390.htm",
-          "date": "2026年7月31日",
-          "summary": "构建“云仓+综合仓”体系与三池协同机制，物资供应时效由60天缩短至30天，平均库存下降61.91%。",
-          "domain": "物资工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南网供应链集团加快推进供应链现代化建设",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-01/23/content_180.htm",
-          "date": "2026年1月23日",
-          "summary": "围绕采购服务、供应保障、资源循环“3+N”布局，拓展物资“一站式”服务和“准时达”精准配送业务。",
-          "domain": "物资工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南网供应链集团跨区域联动保障抢修物资到位",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/10/content_2131.htm",
-          "date": "2026年7月10日",
-          "summary": "调配五省区33名员工驰援一线，累计供应电缆、金具、变压器等应急物资超2113万元，实现“无感供应”。",
-          "domain": "物资工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南网董事长赴广西贵港检查指导台风灾后抢修复电",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-07/14/content_2196.htm",
-          "date": "2026年7月14日",
-          "summary": "钱朝阳部署打赢台风“美莎克”抢修复电攻坚战，要求安全第一、科学组织，强化大兵团抢险协同指挥。",
-          "domain": "应急工具类",
-          "sectionId": "industry"
-        },
-        {
-          "title": "南方电网科技赋能抗击台风红霞 应急队伍进驻值守",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-07/28/content_2333.htm",
-          "date": "2026年7月28日",
-          "summary": "超高压公司两级生产指挥中心24小时值守、百余人应急队伍进驻站点，供应链集团前置汕尾周转仓物资。",
-          "domain": "应急工具类",
-          "sectionId": "industry"
-        }
-      ]
-    },
-    {
-      "id": "paper",
-      "name": "论文研究",
-      "icon": "📚",
-      "items": [
-        {
-          "title": "大规模光伏集群经柔性直流构网送出的运行控制技术研究",
-          "source": "中国电机工程学报",
-          "url": "https://doi.org/10.13334/j.0258-8013.pcsee.230755",
-          "date": "2023年11月",
-          "summary": "南网科研院面向沙戈荒百分百光伏基地，阐述柔直构网稳态运行、交流故障穿越与直流故障清除协同控制技术。",
-          "domain": "电力电子",
-          "sectionId": "paper"
-        },
-        {
-          "title": "针对中高频谐振问题的柔性直流输电系统阻抗精确建模与特性分析",
-          "source": "中国电机工程学报",
-          "url": "https://doi.org/10.13334/j.0258-8013.pcsee.200327",
-          "date": "2020年8月",
-          "summary": "以鲁西背靠背工程为例建立柔直换流器序阻抗精确模型，分析控制环节影响并提出中高频谐振抑制措施。",
-          "domain": "电力电子",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于奇异值分解的电网谐振频率灵敏度分析方法",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.01.009",
-          "date": "2025年1月",
-          "summary": "广东电网电科院联合南网科研院提出基于奇异值分解的谐振频率灵敏度算法，量化元件参数对谐振频率的影响。",
-          "domain": "电能质量",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于局部-地理加权回归的时变谐波阻抗估计",
-          "source": "电力工程技术",
-          "url": "https://doi.org/10.12158/j.2096-3203.2025.01.003",
-          "date": "2025年1月",
-          "summary": "南网科研院参与提出局部加权与地理加权回归相结合的时变系统侧谐波阻抗估计法，准确度提升约30%至40%。",
-          "domain": "电能质量",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于暂态电压严重性评估的受端电网STATCOM选址及容量优化",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.10.007",
-          "date": "2025年10月",
-          "summary": "广东电网调控中心与南网科研院构建暂态电压严重性灵敏度指标，优化STATCOM动态无功配置选址与容量。",
-          "domain": "电能质量",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于分布式一致性的新型配电系统电能质量综合治理研究",
-          "source": "电测与仪表",
-          "url": "http://www.emijournal.net/dcyyb/ch/reader/view_abstract.aspx?file_no=20241118001",
-          "date": "2025年4月",
-          "summary": "南网能源发展研究院提出多台小容量分布式光伏逆变器协同治理谐波与电压波动的领导-跟随分布式控制策略。",
-          "domain": "电能质量",
-          "sectionId": "paper"
-        },
-        {
-          "title": "综合电压电流监测数据的低压台区相户关系两步识别方法",
-          "source": "电力系统自动化",
-          "url": "https://doi.org/10.7500/AEPS20241231005",
-          "date": "2025年10月",
-          "summary": "广州供电局联合华南理工提出电压趋势转折点聚类加LASSO回归两步法，精准识别低压台区相户对应关系。",
-          "domain": "低压智能台区",
-          "sectionId": "paper"
-        },
-        {
-          "title": "提高10 kV配电网供电可靠性的调度自动化技术研究",
-          "source": "电工技术",
-          "url": "https://doi.org/10.19768/j.cnki.dgjs.2025.05.026",
-          "date": "2025年3月",
-          "summary": "深圳供电局以广东某10千伏配网改造为例，验证调度自动化使故障定位缩至6秒、复电时间由50分钟降至12分钟。",
-          "domain": "配电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "新型配电网三相有功-无功功率多时间尺度滚动协同电压优化控制",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.11.005",
-          "date": "2025年11月",
-          "summary": "贵州电网电科院针对高比例分布式光伏反向潮流与电压越限，提出有功-无功协同的模型预测滚动优化控制方法。",
-          "domain": "配电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于状态-响应框架的有源配电网运行优化策略",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.06.006",
-          "date": "2025年6月",
-          "summary": "广州供电局结合软演员-评论家深度强化学习与广义快速对偶上升算法，提升有源配电网运行效率与电压质量。",
-          "domain": "配电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于弹性系数的配电网重构与故障抢修协同优化方法",
-          "source": "电力系统自动化",
-          "url": "https://doi.org/10.7500/AEPS20230330002",
-          "date": "2025年3月",
-          "summary": "深圳供电局联合湖南大学构建配电网弹性系数模型，实现极端灾害后网络重构与故障抢修的动态协同优化。",
-          "domain": "应急工具类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "电网设备防御强电磁脉冲试验平台建设",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.01.002",
-          "date": "2025年1月",
-          "summary": "南网科研院联合广西电网调控中心建成国内首个电网设备强电磁脉冲试验平台，支撑电网防护与安全保障。",
-          "domain": "应急工具类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "考虑主配网协同的虚拟电厂灵活性调度与现货出清模型",
-          "source": "电力建设",
-          "url": "https://doi.org/10.12204/j.issn.1000-7229.2025.07.004",
-          "date": "2025年7月",
-          "summary": "深圳供电局联合清华建立台区级虚拟电厂分层聚合与现货出清协同模型，主配网预期收益提升4.4%。",
-          "domain": "服务类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "第一性原理视角下虚拟电厂的技术体系构建",
-          "source": "电力系统自动化",
-          "url": "https://doi.org/10.7500/AEPS20250610009",
-          "date": "2025年10月",
-          "summary": "南网科研院联合清华、深圳供电局，从基础共性、工程应用、关键装备、特色攻关四维构建虚拟电厂技术体系。",
-          "domain": "服务类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于深度学习的电力客服技术研究",
-          "source": "兵工自动化",
-          "url": "https://doi.org/10.7690/bgzdh.2025.02.003",
-          "date": "2025年2月",
-          "summary": "南方电网市场营销部提出CNN与双向长短期记忆结合协同注意机制的智能客服问答模型，准确率达90.96%。",
-          "domain": "服务类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "基于BiLSTM-SA的分布式光伏功率超短期概率预测",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.11.016",
-          "date": "2025年11月",
-          "summary": "广州供电局调控中心与南网数字电网研究院构建自注意力双向长短期记忆分位数回归模型，实现光伏概率预测。",
-          "domain": "智能电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "动态碳流追踪驱动的综合能源系统优化调度模型",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.09.003",
-          "date": "2025年9月",
-          "summary": "贵州电网电科院联合贵州大学提出多能流耦合矩阵与时变节点碳强度指标，构建动态碳流低碳优化调度模型。",
-          "domain": "智能电网",
-          "sectionId": "paper"
-        },
-        {
-          "title": "绞合型碳纤维复合材料芯导线压接缺陷的漏磁场仿真",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.05.012",
-          "date": "2025年5月",
-          "summary": "广西电网电科院联合南网科研院设计碳纤维复合芯导线漏磁检测方案，优化励磁参数并验证断裂缺陷可检性。",
-          "domain": "物资工具类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "面向电力作业无人机的位姿估计与目标感知方法",
-          "source": "南方电网技术",
-          "url": "https://doi.org/10.13648/j.cnki.issn1674-0629.2025.07.012",
-          "date": "2025年7月",
-          "summary": "广西电网电科院提出点线特征融合的无人机位姿估计方法，实现输电线路场景低功耗目标检测与自动追踪。",
-          "domain": "物资工具类",
-          "sectionId": "paper"
-        },
-        {
-          "title": "用于超高压输电铁塔非接触式腐蚀检测的无人机检测平台",
-          "source": "腐蚀与防护",
-          "url": "https://doi.org/10.11973/fsyfh240670",
-          "date": "2025年11月",
-          "summary": "南网超高压输电公司柳州局研制可伸缩绝缘杆无人机平台，实现500千伏铁塔非接触式智能腐蚀检测。",
-          "domain": "物资工具类",
-          "sectionId": "paper"
-        }
-      ]
-    },
-    {
-      "id": "opinion",
-      "name": "技巧与观点",
-      "icon": "💡",
-      "items": [
-        {
-          "title": "以用户为中心提升供电质量 实干担当护航新质生产力发展",
-          "source": "南方电网报（南方电网副总经理吴小辰署名解读）",
-          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202606/t20260602_355539.html",
-          "date": "2026年6月2日",
-          "summary": "南网高层解读供电质量提升路径：梳理21个敏感行业耐受标准，电压暂降量化分四级，建15项51条管控举措。",
-          "domain": "电能质量",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "攻克难题 领军电能高质量之路",
-          "source": "南方工报（广州供电局电科院许中）",
-          "url": "https://epaper.nfgb.cn/html/2025-04/30/content_25_33319.htm",
-          "date": "2025年4月30日",
-          "summary": "南网电能质量领军专家许中十五年攻关电压暂降，牵头3项国标、立项IEC标准，治理装备响应仅5毫秒。",
-          "domain": "电能质量",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "勇闯直流输电“无人区”",
-          "source": "南方电网报（南网科研院电力电子所周月宾）",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/10/content_2135.htm",
-          "date": "2026年7月10日",
-          "summary": "南网科研院专家首创全桥半桥混合、能量自平衡换流器拓扑，降低换流损耗26%、省成本约1.5亿元。",
-          "domain": "电力电子",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "新型储能如何跑出“加速度”？",
-          "source": "南方电网报（南网能源院饶志、南网储能王辉等）",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2025-11/04/content_3204.htm",
-          "date": "2025年11月4日",
-          "summary": "南网专家提出多技术路线并行策略：基地配锂电与抽蓄，城市侧推磷酸铁锂钠电，极端场景试点长时储能。",
-          "domain": "电力电子",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "共筑清洁能源转型新生态",
-          "source": "中国南方电网官网（广东电网杨银国、南网科研院邹常跃）",
-          "url": "https://csg.cn/m/xwzx/nwyw/202509/t20250912_349833.html",
-          "date": "2025年9月12日",
-          "summary": "南网专家谈源网荷储技术路线：电源侧推新能源构网，电网侧建新配电形态，并研海陆一体直流输电方案。",
-          "domain": "电力电子",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "从“送电的网”跃升为“数智之网”",
-          "source": "南方电网报",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-07/31/content_2365.htm",
-          "date": "2026年7月31日",
-          "summary": "解析南网“算力底座—行业大模型—场景智能体—现场终端”全栈闭环，云睿智能体使规划效率提升80%。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "南方电网：AI赋能 解锁智能电力未来密码",
-          "source": "北极星电力网（专访南网数字化部总经理龙云等）",
-          "url": "https://news.bjx.com.cn/html/20250826/1457815.shtml",
-          "date": "2025年8月26日",
-          "summary": "南网专家谈AI落地：聚焦算力数据模型场景四要素，负荷预测已机器代人，破局关键在生态共建。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "立足电网视角 擘画产业新篇",
-          "source": "南方电网报（知行学术厅首期专家座谈会发言摘编）",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-03/13/content_603.htm",
-          "date": "2026年3月13日",
-          "summary": "多位专家为南网建言：夯实新型电力系统底座、守资源自主可控底线、把AI打造为能源转型核心引擎。",
-          "domain": "智能电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "小巷里的“电力守护”",
-          "source": "南方电网报（广州海珠供电局）",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-06/02/content_1585.htm",
-          "date": "2026年6月2日",
-          "summary": "城中村台区治理经验：低压拓扑分析加智能体实现分钟级监测、秒级预警，配高过载变压器与双层箱变。",
-          "domain": "低压智能台区",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "“天路”旁建成标准化智能配电台区",
-          "source": "南方电网报（贵州电网都匀平塘供电局）",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-03/31/content_789.htm",
-          "date": "2026年3月31日",
-          "summary": "V3.0标准智能台区经验：智能网关边缘计算年减巡查10次，低压故障由32次降至1次，线损率降至2.1%。",
-          "domain": "低压智能台区",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "治理降线损 实干“创一流”",
-          "source": "铜仁日报（南方电网贵州铜仁德江供电局）",
-          "url": "https://szb.tongren.gov.cn/trrb/content/202606/01/content_77039.html",
-          "date": "2026年6月1日",
-          "summary": "以“四分管理”为抓手，日监控周反馈月评价常态化机制，上半年10千伏及以下线损率降至3.78%。",
-          "domain": "低压智能台区",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "靶向施策破困局",
-          "source": "南方电网报（贵州电网兴义望谟供电局）",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2025-04/22/content_1218.htm",
-          "date": "2025年4月22日",
-          "summary": "以“一图一表六清单”综合整治扭转以抢代维，RPA机器人巡检使故障处置时间缩减50%以上。",
-          "domain": "配电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "以“六步法”破解管理体系落地难题",
-          "source": "南方电网报（深圳宝安供电局）",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-01/13/content_99.htm",
-          "date": "2026年1月13日",
-          "summary": "推进配网生产组织标准化集约化数字化变革，打造AI+班组场景，客户平均停电时间降至1.58分钟。",
-          "domain": "配电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "山区配网用上了电鸿监控系统",
-          "source": "南方电网报（广东河源供电局）",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2025-02/28/content_547.htm",
-          "date": "2025年2月28日",
-          "summary": "“天眼”加RPA实现巡视全覆盖，处置隐患千余起，特巡时间平均缩短40分钟，外破跳闸降31.75%。",
-          "domain": "配电网",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "从“用上电”到“用好电”“用绿电”",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/24/content_2315.htm",
-          "date": "2026年7月24日",
-          "summary": "南网服务方法论：“三零”扩围惠及204万用户省126亿元，政企预接电模式将通电时间压缩三分之二。",
-          "domain": "服务类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "南方电网市场总监李敏虹解读“获得电力”新政",
-          "source": "北极星电力网（南方电网市场总监李敏虹署名解读）",
-          "url": "https://news.bjx.com.cn/html/20250611/1445770.shtml",
-          "date": "2025年6月11日",
-          "summary": "逐条拆解624号文：频繁停电动态清零、非直供电小区减存量遏增量、异地办电与数智服务落地要点。",
-          "domain": "服务类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "实现无人机“喷水即出报告”",
-          "source": "南方电网报（南网超高压公司柳州局）",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-05/15/content_1337.htm",
-          "date": "2026年5月15日",
-          "summary": "自研多用途智能喷检装置适配轻型无人机，地面操控完成喷水拍摄诊断定级闭环，免登塔查憎水性。",
-          "domain": "物资工具类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "首次启用机器人带电作业",
-          "source": "南方电网报（贵州电网遵义务川供电局）",
-          "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-06/30/content_1972.htm",
-          "date": "2026年6月30日",
-          "summary": "RJ1300双臂配网带电作业机器人远程操控、人机分离零接触，同类作业由1小时压至20分钟。",
-          "domain": "物资工具类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "应急机制高效运转 安全护航抗灾复电",
-          "source": "南方电网报",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-07/17/content_2227.htm",
-          "date": "2026年7月17日",
-          "summary": "灾后抢修安全经验：地下配电房执行先通风再检测后作业与“三不作业”，广东推安全政委驻点监护。",
-          "domain": "应急工具类",
-          "sectionId": "opinion"
-        },
-        {
-          "title": "“海马一号”功能多效率高",
-          "source": "南方电网报（云南电网红河供电局）",
-          "url": "https://csg.cn/epaper/epaper/nfdwb/html/2025-07/25/content_2198.htm",
-          "date": "2025年7月25日",
-          "summary": "自研旁路作业自动提升搭接装置由无人机投放，摆脱绝缘斗臂车依赖，人力减半、作业时长降三分之二。",
-          "domain": "应急工具类",
-          "sectionId": "opinion"
-        }
-      ]
-    },
-    {
-      "id": "bidding",
-      "name": "招投标",
-      "icon": "📑",
-      "items": [
-        {
-          "title": "南网科研院2026年6月电力电子专业科技类公开谈判采购项目采购公告",
-          "source": "南方电网科学研究院有限责任公司",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200438374.jhtml",
-          "date": "2026年8月5日",
-          "summary": "南网科研院采购6月电力电子专业科技类项目，非招标公开谈判。",
-          "domain": "电力电子",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026年南网数研院TMR电流传感器试制采购项目采购公告",
-          "source": "南方电网数字电网研究院股份有限公司",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200438296.jhtml",
-          "date": "2026年8月5日",
-          "summary": "南网数研院试制TMR电流传感器，非招标采购公告。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "贵州电网有限责任公司物资类2026年（OS2地级主站配网分析应用（成套））公开招标招标公告",
-          "source": "贵州电网公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438357.jhtml",
-          "date": "2026年8月5日",
-          "summary": "贵州电网采购OS2地级主站配网分析应用成套系统，公开招标。",
-          "domain": "配电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "贵州电网有限责任公司服务类2026年到货抽检服务公开招标招标公告",
-          "source": "贵州电网公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438356.jhtml",
-          "date": "2026年8月5日",
-          "summary": "贵州电网采购2026年物资到货抽检服务，公开招标。",
-          "domain": "服务类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "广东电网公司2026年三相高稳定多功能电能表、计量自动化终端测试装置、互感器检定检验检测仪器装置等物资专项招标招标公告",
-          "source": "广东电网公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438378.jhtml",
-          "date": "2026年8月5日",
-          "summary": "广东电网采购电能表、计量终端测试与互感器检定检测仪器装置，招标。",
-          "domain": "物资工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "海南省充换电一张网服务有限责任公司2026-2028年信息化服务框架公开询比采购项目采购公告",
-          "source": "海南电网公司",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200438314.jhtml",
-          "date": "2026年8月5日",
-          "summary": "海南充换电一张网采购三年信息化服务框架，非招标询比。",
-          "domain": "服务类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "贵州电网有限责任公司物资类2026年-2027年（消防器材）框架招标中标候选人公示",
-          "source": "贵州电网公司",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200438372.jhtml",
-          "date": "2026年8月5日",
-          "summary": "贵州电网消防器材框架采购，中标候选人公示。",
-          "domain": "应急工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "南网科研院2026年4月配电专业科技类公开招标采购项目中标公告",
-          "source": "南方电网科学研究院有限责任公司",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200438339.jhtml",
-          "date": "2026年8月5日",
-          "summary": "南网科研院4月配电专业科技类采购项目中标公告。",
-          "domain": "配电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "贵州电网有限责任公司物资类2026年第一批（计量箱全自动检测装置、通信模块检测装置等）公开招标中标候选人公告",
-          "source": "贵州电网公司",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200438301.jhtml",
-          "date": "2026年8月5日",
-          "summary": "贵州电网计量箱、通信模块全自动检测装置采购，中标候选人公告。",
-          "domain": "低压智能台区",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "贵州电网有限责任公司物资类2026年第一批应急物资直接采购公示",
-          "source": "贵州电网公司",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200438305.jhtml",
-          "date": "2026年8月5日",
-          "summary": "贵州电网第一批应急物资直接采购结果公示。",
-          "domain": "应急工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026年南方电网传感科技（广东）有限公司第一批智能传感硬件样机委托加工专项采购项目中标公告",
-          "source": "南方电网传感科技（广东）有限公司",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200438264.jhtml",
-          "date": "2026年8月5日",
-          "summary": "南网传感科技首批智能传感硬件样机委托加工，中标公告。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "广东电网公司2026年电能表智能运维模块框架招标招标公告",
-          "source": "广东电网公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438255.jhtml",
-          "date": "2026年8月4日",
-          "summary": "广东电网采购电能表智能运维模块框架，公开招标。",
-          "domain": "低压智能台区",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026年南方电网人工智能科技有限公司面向园区级示范应用的主动配电网电气热储多能协同运行智能调控系统货物类专项采购招标公告",
-          "source": "南方电网数字电网集团有限公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438220.jhtml",
-          "date": "2026年8月4日",
-          "summary": "南网人工智能科技采购主动配电网电气热储多能协同智能调控系统，招标。",
-          "domain": "配电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026年广东电网公司计量中心计量自动化系统3.0、新型电力负荷管理系统改造等5个项目招标公告",
-          "source": "广东电网公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438252.jhtml",
-          "date": "2026年8月4日",
-          "summary": "广东电网计量自动化系统3.0与新型电力负荷管理系统改造等5项，招标。",
-          "domain": "低压智能台区",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "2026-2027年广东电网有限责任公司服务调度业务辅助工作业务外委服务框架招标招标公告",
-          "source": "广东电网公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438258.jhtml",
-          "date": "2026年8月4日",
-          "summary": "广东电网服务调度业务辅助工作外委服务框架，公开招标。",
-          "domain": "服务类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "广东电力通信科技有限公司2026年面向电力设备智能诊断的云边协同系统架构技术研究与功能模块开发专项采购招标公告",
-          "source": "广东电网公司",
-          "url": "https://www.bidding.csg.cn/zbgg/1200438216.jhtml",
-          "date": "2026年8月4日",
-          "summary": "广东电力通信科技开发电力设备智能诊断云边协同架构，公开招标。",
-          "domain": "智能电网",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "贵州送变电有限责任公司服务类2026-2028年大件运输装卸服务公开招标中标候选人公示",
-          "source": "贵州电网公司",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200438219.jhtml",
-          "date": "2026年8月4日",
-          "summary": "贵州送变电三年大件运输装卸服务，中标候选人公示。",
-          "domain": "服务类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "广东电网公司2026年35kV计量用互感器框架招标(二次招标)中标公示",
-          "source": "广东电网公司",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200438221.jhtml",
-          "date": "2026年8月4日",
-          "summary": "广东电网35kV计量用互感器框架二次招标，中标公示。",
-          "domain": "物资工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "南方电网贵州电动汽车服务有限公司2026年物资类消防器材公开询比采购公告",
-          "source": "南方电网贵州电动汽车服务有限公司",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200438227.jhtml",
-          "date": "2026年8月4日",
-          "summary": "贵州电动汽车公司采购消防器材物资，非招标公开询比。",
-          "domain": "应急工具类",
-          "sectionId": "bidding"
-        },
-        {
-          "title": "广东电网有限责任公司电网规划研究中心2026年面向配电网新业态不确定性与被动性的主动支撑关键技术研究与应用项目-源网荷储协同控制装置试制采购公告",
-          "source": "广东电网公司",
-          "url": "https://www.bidding.csg.cn/fzbgg/1200438107.jhtml",
-          "date": "2026年8月3日",
-          "summary": "广东电网规划研究中心试制配电网源网荷储协同控制装置，非招标。",
-          "domain": "配电网",
-          "sectionId": "bidding"
-        }
-      ]
-    }
-  ]
-};
-
-/* ---------- 工具函数 ---------- */
-function todayBeijingDateStr(){
-  return new Intl.DateTimeFormat('zh-CN',{timeZone:'Asia/Shanghai',year:'numeric',month:'long',day:'numeric'}).format(new Date());
-}
-function isTodayBeijing(dateStr){ return dateStr === todayBeijingDateStr(); }
-function fmtISODate(iso){
-  if(!iso) return '-';
-  const m = /^(\d{4})-(\d{1,2})-(\d{1,2})$/.exec(iso);
-  if(!m) return iso;
-  return `${m[1]}年${parseInt(m[2],10)}月${parseInt(m[3],10)}日`;
-}
-
-/* ---------- 联网探测（不阻塞渲染） ---------- */
-async function probeInternet(){
-  const dot=document.getElementById('statusDot'), txt=document.getElementById('statusText');
-  try{
-    const ctrl=new AbortController(); const t=setTimeout(()=>ctrl.abort(),6000);
-    await fetch('https://api.allorigins.win/raw?url='+encodeURIComponent('https://www.csg.cn/xwzx/'),{signal:ctrl.signal});
-    clearTimeout(t); dot.style.background='var(--accent)'; txt.textContent='在线（已连接互联网）'; return true;
-  }catch(e){
-    dot.style.background='var(--warn)'; txt.textContent='离线（使用内置最新数据）'; return false;
-  }
-}
-
-/* ---------- 数据加载：远程优先，回退内置 ---------- */
-async function loadReport(){
-  try{
-    const res=await fetch(DATA_URL,{cache:'no-store'});
-    if(res.ok){
-      const data=await res.json();
-      if(data&&Array.isArray(data.sections)&&data.sections.length) return {data,live:true};
-    }
-  }catch(e){ /* 本地 file:// 或托管不可达时回退内置 */ }
-  return {data:EMBEDDED_REPORT,live:false};
-}
-
-/* ---------- 过滤状态 ---------- */
-const state={ domain:null, q:"" };
-
-/* ---------- 渲染 ---------- */
-function render(report, live){
-  let global=0; const flat=[];
-  report.sections.forEach(sec=>{
-    sec.items.forEach(it=>{ global++; flat.push({...it,sectionId:sec.id,g:global}); });
-  });
-
-  document.getElementById('heroDate').textContent = `报告日期：${fmtISODate(report.date)}（北京时间）`;
-
-  const total=flat.length;
-  const counts=report.sections.map(s=>({id:s.id,name:s.name,icon:s.icon,n:s.items.length}));
-  let html=`<div class="stat"><div class="num">${total}</div><div class="lbl">总条数</div></div>`;
-  counts.forEach(c=>{ html+=`<div class="stat stat-link" data-sec="${c.id}" title="点击跳转到「${c.name}」板块"><div class="num">${c.n}</div><div class="lbl">${c.icon} ${c.name}</div></div>`; });
-  document.getElementById('heroStats').innerHTML=html;
-  document.querySelectorAll('#heroStats .stat-link').forEach(el=>{
-    el.addEventListener('click',()=>scrollToSec(el.getAttribute('data-sec')));
-  });
-  // 锚点导航（动态生成，含全部版块，自动同步招投标等新增版块）
-  document.getElementById('navLinks').innerHTML =
-    report.sections.map(s=>`<a href="#sec-${s.id}">${s.icon} ${s.name}</a>`).join('');
-
-  // 领域统计（Hero 下方以筛选条呈现，这里仅计算）
-  const domCounts={}; DOMAINS.forEach(d=>domCounts[d.key]=0);
-  flat.forEach(f=>{ if(domCounts[f.domain]!==undefined) domCounts[f.domain]++; });
-
-  const banner=document.getElementById('banner'); const reportDateStr=fmtISODate(report.date);
-  if(isTodayBeijing(reportDateStr)){
-    banner.className='banner ok'; banner.style.display='flex';
-    banner.innerHTML=`✅ 今日（${todayBeijingDateStr()}）数据已生成，共 ${total} 条 · 仅含电能质量/电力电子/智能电网/低压智能台区/配电网/服务类/物资工具类/应急工具类 8 大领域 · 数据${live?'实时获取':'内置聚合'}。`;
-  }else{
-    banner.className='banner fallback'; banner.style.display='flex';
-    banner.innerHTML=`⚠️ 今日数据尚未生成，已回退展示最近一期（${reportDateStr}），共 ${total} 条。`;
+  function setDates(u){
+    const d=u||"2026-08-31";
+    const el=document.getElementById('siteUpdated'); if(el) el.textContent=d;
+    const bd=document.getElementById('buildDate'); if(bd) bd.textContent=d;
+    const bd2=document.getElementById('buildDate2'); if(bd2) bd2.textContent=d;
   }
 
-  // 正文
-  const main=document.getElementById('main'); let body='';
-  report.sections.forEach(sec=>{
-    body+=`<section class="section" id="sec-${sec.id}"><div class="section-head"><h2>${sec.icon} ${sec.name}</h2><span class="count">${sec.items.length} 条</span></div><div class="grid">`;
-    flat.filter(f=>f.sectionId===sec.id).forEach(f=>{
-      const dc=DOMAIN_COLOR[f.domain]||'#9fb0d0';
-      body+=`<article class="card" data-text="${(f.title+' '+f.summary).replace(/"/g,'')}" data-domain="${escapeAttr(f.domain)}">
-        <span class="idx">#${f.g}</span>
-        <div class="title">${escapeHtml(f.title)}</div>
-        <div class="meta">
-          <span class="chip dom" style="background:${dc}">${escapeHtml(f.domain)}</span>
-          <span class="chip src">${escapeHtml(f.source)}</span>
-          <span class="chip">🕒 ${escapeHtml(f.date)}</span>
-        </div>
-        <div class="summary">${escapeHtml(f.summary)}</div>
-        <a class="link" href="${escapeAttr(f.url)}" target="_blank" rel="noopener noreferrer">阅读原文 →</a>
-      </article>`;
+  function render(data){
+    const box=document.getElementById('dailyList'); box.innerHTML='';
+    const filtersBox=document.getElementById('dailyFilters');
+    const latest = data.entries && data.entries[0] ? data.entries[0] : null;
+    if(!latest){ box.innerHTML='<div class="loading">暂无数据</div>'; return; }
+    setDates(data.updated);
+    const items = latest.items || [];
+    const domains = Array.from(new Set(items.map(i=>i.domain||"其他")));
+    // filters
+    filtersBox.innerHTML='';
+    const all=document.createElement('button'); all.textContent='全部'; all.className='active'; all.dataset.d='__all__';
+    filtersBox.appendChild(all);
+    domains.forEach(dm=>{ const b=document.createElement('button'); b.textContent=dm; b.dataset.d=dm; filtersBox.appendChild(b); });
+    filtersBox.querySelectorAll('button').forEach(b=>b.onclick=()=>{
+      filtersBox.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+      const sel=b.dataset.d;
+      showItems(sel==='__all__'?items:items.filter(i=>(i.domain||'其他')===sel));
     });
-    body+=`</div></section>`;
-  });
-  main.innerHTML=body;
+    showItems(items);
+  }
 
-  // 领域筛选条
-  const bar=document.getElementById('domainBar');
-  let barHtml=`<span class="dpill ${state.domain===null?'active':''}" data-dom="__all" style="${state.domain===null?'background:var(--accent)':''}">全部</span>`;
-  DOMAINS.forEach(d=>{
-    const active=state.domain===d.key;
-    barHtml+=`<span class="dpill ${active?'active':''}" data-dom="${escapeAttr(d.key)}" style="${active?`background:${d.color}`:''}"><span class="swatch" style="background:${d.color}"></span>${d.key} <b>${domCounts[d.key]}</b></span>`;
-  });
-  bar.innerHTML=barHtml;
-  bar.querySelectorAll('.dpill').forEach(p=>{
-    p.addEventListener('click',()=>{
-      const v=p.getAttribute('data-dom'); state.domain=(v==='__all')?null:v; render(report,live);
+  function showItems(items){
+    const box=document.getElementById('dailyList'); box.innerHTML='';
+    if(!items.length){ box.innerHTML='<div class="loading">该领域暂无动态</div>'; return; }
+    items.forEach(it=>{
+      const dm=it.domain||"其他";
+      const row=document.createElement('div'); row.className='news';
+      const c=DOM_COLOR[dm]||"#9fb0c0";
+      row.innerHTML=`<div class="dom" style="background:${c}">${dm}</div>`+
+        `<div class="body"><div class="t">${it.title}${it.url?`<a href="${it.url}" target="_blank">↗</a>`:''}</div>`+
+        (it.summary?`<div class="s">${it.summary}</div>`:'')+`</div>`;
+      box.appendChild(row);
     });
-  });
+  }
 
-  // 页脚
-  const srcs=[...new Set(flat.map(f=>f.source))];
-  document.getElementById('foot').innerHTML=
-    `南方电网电力资讯日报 · 领域聚焦版<br>`+
-    `本页共 <b>${total}</b> 条资讯，按六固定版块分组、全局连续编号，并仅保留 `+
-    `<b>电能质量 / 电力电子 / 智能电网 / 低压智能台区 / 配电网 / 服务类 / 物资工具类 / 应急工具类</b> 八大领域。`+
-    `<br>数据源：${srcs.join('、')} 等公开报道（经联网检索聚合）。时间均为北京时间通俗格式。<br>`+
-    `<span style="opacity:.7">报告日期 ${fmtISODate(report.date)||'-'} · 数据${live?'实时获取':'内置聚合最新一期'}</span>`;
-
-  applyFilters();
-}
-
-function scrollToSec(id){
-  const el=document.getElementById('sec-'+id);
-  if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-function escapeHtml(s){ return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
-function escapeAttr(s){ return escapeHtml(s); }
-
-function applyFilters(){
-  const q=state.q.trim().toLowerCase();
-  let visible=0;
-  document.querySelectorAll('.card').forEach(card=>{
-    const hitQ = !q || (card.dataset.text||'').toLowerCase().includes(q);
-    const hitD = !state.domain || card.dataset.domain===state.domain;
-    const show = hitQ && hitD;
-    card.classList.toggle('hide', !show);
-    if(show) visible++;
-  });
-  document.getElementById('empty').style.display = visible ? 'none' : 'block';
-}
-
-/* ---------- 启动 ---------- */
-(async function init(){
-  const {data,live}=await loadReport();
-  render(data,live);
-  probeInternet();
-  document.getElementById('search').addEventListener('input',e=>{ state.q=e.target.value; applyFilters(); });
-  document.getElementById('refreshBtn').addEventListener('click',async()=>{
-    const {data:d,live:l}=await loadReport(); render(d,l); await probeInternet(); window.scrollTo({top:0,behavior:'smooth'});
-  });
-})();
+  fetch('daily.json?_='+Date.now(),{cache:'no-store'})
+    .then(r=>{ if(!r.ok) throw new Error('net'); return r.json(); })
+    .then(render)
+    .catch(()=>render(FALLBACK));
 </script>
 </body>
 </html>
