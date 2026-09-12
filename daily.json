@@ -1,6 +1,120 @@
 {
- "updated": "2026-09-11",
+ "updated": "2026-09-12",
  "entries": [
+  {
+   "date": "2026-09-12",
+   "note": "南方电网每日情报·2026年9月12日全新快照（模型7/产品8/行业20/论文12/观点8/招标31，共86条）",
+   "items": [
+    {
+     "domain": "负荷",
+     "title": "“大瓦特安全可信多模态大模型服务—V2.0”通过信通院首批大模型安全围栏评测",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2881.htm",
+     "summary": "五大维度20余项测试一次性达标获最高等级，已面向全网开放推理能力。"
+    },
+    {
+     "domain": "负荷",
+     "title": "广东电网“企业大脑”知识服务平台获2026 China MIKE卓越大奖",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2886.htm",
+     "summary": "四级联动知识库覆盖19个专业领域，归集超50万份文档服务9万余名员工。"
+    },
+    {
+     "domain": "其他",
+     "title": "季明彬调研南网数字集团 推动电鸿规模化推广应用",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2883.htm",
+     "summary": "要求电鸿从试点示范走向规模推广，加快构建行业共建共享产业生态。"
+    },
+    {
+     "domain": "其他",
+     "title": "全国首个高原电力传感领域国家标准立项获批",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2884.htm",
+     "summary": "南网超高压牵头，构建高原传感终端“测—评”一体化技术规范。"
+    },
+    {
+     "domain": "工程",
+     "title": "云南陆良供电局带电作业投运新型户外真空智能断路器",
+     "url": "https://m.yunnan.cn/system/2026/09/11/034149736.shtml",
+     "summary": "毫秒级定位故障并隔离区段，实现从全线停电到分段隔离的转变。"
+    },
+    {
+     "domain": "绿电",
+     "title": "阳江三山岛海上风电柔直工程江门古澜换流站阀厅安装调试完毕",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2887.htm",
+     "summary": "3000兆瓦枢纽完成换流阀等全部高压设备安装，进入站系统调试。"
+    },
+    {
+     "domain": "国际",
+     "title": "APEC适应高比例新能源的新型电力系统研究与实践路径研讨会在京举办",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260911_357246.html",
+     "summary": "国家能源局指导、南方电网主办、南网能源院承办，多国代表共商转型路径。"
+    },
+    {
+     "domain": "国际",
+     "title": "《构建适应高比例新能源的新型电力系统推荐解决方案》发布",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260911_357245.html",
+     "summary": "APEC“中国年”能源领域东道主自主贡献之一，由南网与南网能源院牵头编制。"
+    },
+    {
+     "domain": "负荷",
+     "title": "粤港澳大湾区与京津冀首次实现跨区域办电",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260911_357240.html",
+     "summary": "深圳宝安供电局为北京企业在深项目送电，实现就近受理跨网协办。"
+    },
+    {
+     "domain": "其他",
+     "title": "基于增强图卷积神经网络的机房环境运行状态识别方法",
+     "url": "https://d.wanfangdata.com.cn/periodical/dzsjgc202617032",
+     "summary": "南方电网科技项目资助，运行状态概率曲线与真实工况完全吻合。"
+    },
+    {
+     "domain": "绿电",
+     "title": "高比例风电接入下基于结构-运行协同的黑启动动态分区与滚动恢复优化",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1297581325871776122",
+     "summary": "《南方电网技术》网络首发，贪婪-Benders分解提升恢复收敛效率。"
+    },
+    {
+     "domain": "储能",
+     "title": "面向新能源消纳提升的乡村配电网电氢协同调度策略",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/j.cnki.issn1674-0629.2026.08.004",
+     "summary": "南网科研院成果，提出乡村配电网电氢协同提升新能源消纳路径。"
+    },
+    {
+     "domain": "工程",
+     "title": "共探新型电力系统建设路径 共绘亚太能源转型新蓝图",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2879.htm",
+     "summary": "方案从源网荷储协同、数智赋能、政策支撑、互联互通四维给出路径。"
+    },
+    {
+     "domain": "工程",
+     "title": "“十五五”输电通道建设密集谋划 省间互济将达1.2亿千瓦",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2872.htm",
+     "summary": "送端省份密集谋划外送通道，黔川渝湘向区域能源枢纽转变。"
+    },
+    {
+     "domain": "其他",
+     "title": "黔电何以有为——贵州电网树立和践行正确政绩观综述",
+     "url": "https://csg.cn/epaper/epaper/nfdwb/html/2026-09/11/content_2862.htm",
+     "summary": "覆盖53个党委、1500多个支部，以“三本台账”闭环推动学习教育。"
+    },
+    {
+     "domain": "市场",
+     "title": "南网科研院全自主化多物理场仿真软件公开招标",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442181.jhtml",
+     "summary": "面向仿真分析软件自主可控，支撑电网多物理场计算研究。"
+    },
+    {
+     "domain": "负荷",
+     "title": "2026年广州供电局科技项目第三批：电流非接触测量、配电网仿真、5G-A",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442297.jhtml",
+     "summary": "科技项目涵盖配电网仿真与电力专用5G-A等方向。"
+    },
+    {
+     "domain": "市场",
+     "title": "南方电网供应链集团采购AI数字员工建设公开招标",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442355.jhtml",
+     "summary": "以AI数字员工提升采购业务自动化与智能化水平。"
+    }
+   ]
+  },
   {
    "date": "2026-09-11",
    "note": "南方电网每日情报·2026年9月11日全新快照（模型8/产品7/行业23/论文6/观点8/招标35，共87条）",
