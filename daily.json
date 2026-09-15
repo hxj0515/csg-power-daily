@@ -1,6 +1,138 @@
 {
- "updated": "2026-09-14",
+ "updated": "2026-09-15",
  "entries": [
+  {
+   "date": "2026-09-15",
+   "note": "南方电网每日情报精选（模型/产品/行业/论文/观点/招投标全量快照）",
+   "items": [
+    {
+     "domain": "其他",
+     "title": "第八届电力调度AI应用大赛公告（电网AI潮流计算）",
+     "url": "https://www.csg.cn/xwzx/qygg/202609/t20260914_357275.html",
+     "summary": "南网总调等四家单位联合发布赛事公告，9月23日前报名回执"
+    },
+    {
+     "domain": "储能",
+     "title": "南网储能AI+能源应用案例入围AI能源实践典型案例名录",
+     "url": "http://www.es.csg.cn/news/gsxw/202609/t20260914_21976.html",
+     "summary": "人工智能赋能抽水蓄能运行检修一体化应用获权威认可"
+    },
+    {
+     "domain": "负荷",
+     "title": "大瓦特安全可信多模态大模型服务V2.0通过信通院安全围栏评测",
+     "url": "https://www.csg.cn/m/xwzx/nwyw/202609/t20260911_357254.html",
+     "summary": "五大维度20余项专项测试全部一次性达标，获评最高等级"
+    },
+    {
+     "domain": "工程",
+     "title": "国内首个海陆一体柔直工程在江门完成陆上心脏体检",
+     "url": "https://www.toutiao.com/article/7685237722281263643",
+     "summary": "±500千伏古澜换流站完成全部高压设备调试验收进入站系统调试"
+    },
+    {
+     "domain": "市场",
+     "title": "2026年南方电网数字电网科技（广东）有限公司数字配用电事业部7月份框架采购项目招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442623.jhtml",
+     "summary": "南网数字科技开展数字配用电事业部7月份框架采购"
+    },
+    {
+     "domain": "工程",
+     "title": "国内首条±320千伏绿色环保聚丙烯绝缘直流电缆通过型式试验",
+     "url": "https://news.bjx.com.cn/html/20260911/1512487.shtml",
+     "summary": "南网科研院联合珠海供电局等单位研发，导体运行温度达90℃"
+    },
+    {
+     "domain": "储能",
+     "title": "肇庆浪江抽蓄电站机组第四次设计联络会召开",
+     "url": "http://www.es.csg.cn/news/gsxw/202609/t20260914_21974.html",
+     "summary": "定变速机组调试大纲达成一致，标志进入启动试运行关键阶段"
+    },
+    {
+     "domain": "负荷",
+     "title": "海南电网启动防风防汛Ⅱ级应急响应",
+     "url": "https://www.cnr.cn/hn/sxxw/20260914/t20260914_527813652.shtml",
+     "summary": "集结76支4132人应急队伍，调配中压发电车29台、低压发电车36台"
+    },
+    {
+     "domain": "其他",
+     "title": "融合多源数据与CNN-Transformer的变压器励磁涌流瞬态磁场预测",
+     "url": "http://www.zgydq.com/zh/article/doi/10.13296/j.1001-1609.hva.2026.09.019",
+     "summary": "贵州电网遵义供电局联合贵州大学，获南网科技项目资助"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网有限责任公司江门供电局2026至2027年度电力工程防洪评估服务框架招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442514.jhtml",
+     "summary": "江门供电局采购2026至2027年度电力工程防洪评估服务"
+    },
+    {
+     "domain": "工程",
+     "title": "深圳电力防灾减灾综合监测塔建成投运",
+     "url": "https://www.toutiao.com/article/7684262652964569635",
+     "summary": "集主动防雷与智能感知于一体，可搭载5G基站实现一塔多能"
+    },
+    {
+     "domain": "其他",
+     "title": "纳米晶中频变压器振动来源及非正弦激励下噪声特性研究",
+     "url": "http://www.zgydq.com/zh/article/doi/10.13296/j.1001-1609.hva.2026.09.020",
+     "summary": "广东电网珠海供电局与电科院联合西安交大，获广东电网科技项目资助"
+    },
+    {
+     "domain": "负荷",
+     "title": "昆明供电局分场景打造中低压透明配网样本",
+     "url": "http://www.yppta.com.cn/pc/front/cms/articleDetail?articleId=305ce91dace811f18cbf00163e0d22fc",
+     "summary": "船房社区建成可远程巡维操作复电的数字化配电网"
+    },
+    {
+     "domain": "市场",
+     "title": "2026年南方电网数据平台与安全（广东）有限公司企业知识工程关键技术研究与工具研发项目公开招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442619.jhtml",
+     "summary": "南网数据平台与安全公司招标企业知识工程关键技术与工具研发"
+    },
+    {
+     "domain": "工程",
+     "title": "季明彬：电力网络安全已成为大国博弈的新战场",
+     "url": "https://news.qq.com/rain/a/20260914A08BER00",
+     "summary": "南网已建成省市两级网络安全监测预警中枢，漏洞检出率超92%"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网有限责任公司江门供电局2026年经济型高压直流断路器紧凑化集成与样机研制材料采购招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442618.jhtml",
+     "summary": "江门供电局采购经济型高压直流断路器紧凑化集成与样机研制材料"
+    },
+    {
+     "domain": "工程",
+     "title": "柔性直流系统送受端频率耦合控制方法与稳定性分析",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1256571344951320660",
+     "summary": "提出柔直送受端频率耦合控制并建立交直流状态空间模型"
+    },
+    {
+     "domain": "市场",
+     "title": "深圳供电局有限公司2026年配网设备、工器具类（生产指挥大屏幕系统（配网用）、抽水机）第一批次物资专项公开招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442580.jhtml",
+     "summary": "深圳供电局招标配网设备与工器具，含配网生产指挥大屏幕"
+    },
+    {
+     "domain": "工程",
+     "title": "柔直钢铁乐高体检：7000根光纤零衰减、主功率器件100%国产",
+     "url": "https://www.ccedia.com/finance_detail/1549128609419223040.html",
+     "summary": "江门供电局柔直专班一年多写650余篇学习日志搭建运维体系"
+    },
+    {
+     "domain": "市场",
+     "title": "广州供电局电科院新型电力系统电能质量真型实验平台建设施工项目招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442577.jhtml",
+     "summary": "广州供电局电科院建设新型电力系统电能质量真型实验平台"
+    },
+    {
+     "domain": "工程",
+     "title": "乌东德清洁电力千里送电背后的刀脊铁塔与昆北换流站",
+     "url": "https://www.ccedia.com/finance_detail/1548061760990494720.html",
+     "summary": "101.5米高、165.36吨铁塔建于悬崖，无人机激光雷达做全身CT"
+    }
+   ]
+  },
   {
    "date": "2026-09-14",
    "note": "南方电网每日情报精选·时序降序版",
