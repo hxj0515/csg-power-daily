@@ -1,6 +1,120 @@
 {
- "updated": "2026-09-15",
+ "updated": "2026-09-16",
  "entries": [
+  {
+   "date": "2026-09-16",
+   "note": "南方电网每日情报精选",
+   "items": [
+    {
+     "domain": "负荷",
+     "title": "AI调度员“上岗”一年记：天璇—灵曦大模型实现真替真用",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/15/content_2888.htm",
+     "summary": "深圳配网调度日均信号750条降至50条内，10千伏自愈复电1.5分钟。"
+    },
+    {
+     "domain": "其他",
+     "title": "从经验调度到智慧调度：云南电网“大瓦特—天璇”多智能体",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/15/content_2889.htm",
+     "summary": "主站作业风险辨识准确率98%，人工工作量降50%至60%。"
+    },
+    {
+     "domain": "负荷",
+     "title": "南方电网亮相2026国际数字能源展 六大数字方向成果集中展示",
+     "url": "https://www.nfnews.com/content/WyjqDjVQo0.html",
+     "summary": "以超大城市电网全面数智化为主线，首次体系化展示虚拟电厂。"
+    },
+    {
+     "domain": "绿电",
+     "title": "全网首套钠离子电池储能装置在深圳城中村落地运行",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260915_357280.html",
+     "summary": "台区变压器负载率由93.6%降至79.5%，施工周期仅15天。"
+    },
+    {
+     "domain": "工程",
+     "title": "±320千伏绿色环保聚丙烯绝缘直流电缆通过型式试验",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/15/content_2890.htm",
+     "summary": "国内首次在高压直流电缆采用热塑性聚丙烯绝缘并完成系统考核。"
+    },
+    {
+     "domain": "绿电",
+     "title": "广州七大500千伏供电片区实现黑启动功能全覆盖",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/15/content_2918.htm",
+     "summary": "“半固态电池+超级电容”级联储能改造，黑启动机组达624.5万千瓦。"
+    },
+    {
+     "domain": "工程",
+     "title": "书写羊城高质量发展电力答卷",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260915_357287.html",
+     "summary": "广州供电局以绣花功夫改造老城电网，建成AI办电与供电+生态。"
+    },
+    {
+     "domain": "绿电",
+     "title": "新能源装机五年增长五倍 海南“风光”何以成为电力主角",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260915_357286.html",
+     "summary": "海南新能源装机突破1271万千瓦，占总装机比重达50.1%。"
+    },
+    {
+     "domain": "工程",
+     "title": "季明彬到海南电网公司调研460工程、“一镇一缆”建设",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260915_357281.html",
+     "summary": "深入变电站与居民小区配电室，调研抄表到户改造等重点工程。"
+    },
+    {
+     "domain": "负荷",
+     "title": "GIS内X射线诱导带电粒子源项与放电敏感区关联模拟",
+     "url": "http://www.zgydq.com/zh/article/doi/10.13296/j.1001-1609.hva.2026.09.010",
+     "summary": "云南电网电科院成果，基于Geant4建立GIS真型粒子输运模型揭示预电离规律。"
+    },
+    {
+     "domain": "其他",
+     "title": "计及智能投资选项的多阶段输配电协同扩展规划",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1299019899011916645",
+     "summary": "机器学习加速多割Benders分解，配网站投资成本分别降32%、41%。"
+    },
+    {
+     "domain": "市场",
+     "title": "高比例风电接入下基于结构-运行协同的黑启动动态分区与滚动恢复优化",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1297581325871776122",
+     "summary": "构建风电可用率因子与多阶段自适应滚动优化框架，贪婪Benders求解。"
+    },
+    {
+     "domain": "负荷",
+     "title": "「六网」协同：从一块智能网关电能表看多网协同如何落地",
+     "url": "https://www.toutiao.com/article/7685777965703119411/",
+     "summary": "“驭数慧芯”搭载电鸿系统，把计量点升级为六网协同测控节点。"
+    },
+    {
+     "domain": "工程",
+     "title": "深圳探路：一座塔背后的“双网合力”",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260915_357283.html",
+     "summary": "电力防灾减灾综合监测塔集主动防雷与智能感知，可搭载5G基站。"
+    },
+    {
+     "domain": "工程",
+     "title": "兴义供电局以小切口轻量化工具推进22个数智场景建设",
+     "url": "https://m.10jqka.com.cn/20260915/c679916093.shtml",
+     "summary": "以低成本快部署方法建设e报表、RPA机器人与AI工具场景。"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电力通信科技有限公司2026年AI赋能云管边端协同的多模态故障诊断装置零部件物资专项采购招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442813.jhtml",
+     "summary": "广东电网公司发布"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网有限责任公司佛山供电局2026年第一批科技物资类（1个科技项目设备试制）专项招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442811.jhtml",
+     "summary": "广东电网公司发布"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网公司2026年高强度钢芯耐热铝合金绞线专项招标(二次招标)招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200442810.jhtml",
+     "summary": "广东电网公司发布"
+    }
+   ]
+  },
   {
    "date": "2026-09-15",
    "note": "南方电网每日情报精选（模型/产品/行业/论文/观点/招投标全量快照）",
