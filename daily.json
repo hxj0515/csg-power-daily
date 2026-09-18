@@ -1,6 +1,132 @@
 {
- "updated": "2026-09-16",
+ "updated": "2026-09-18",
  "entries": [
+  {
+   "date": "2026-09-18",
+   "note": "南方电网每日情报精选·全新快照",
+   "items": [
+    {
+     "domain": "其他",
+     "title": "人民网：南方电网人工智能公司总经理谈电力智能化新路径",
+     "url": "https://finance.people.com.cn/n1/2026/0918/c1004-40800798.html",
+     "summary": "南网AI公司总经理徐键撰文，介绍大瓦特模型体系与双重校验机制"
+    },
+    {
+     "domain": "其他",
+     "title": "遵义供电局“AI智巢平台”搭载63个数字员工与4类智能体",
+     "url": "https://news.qq.com/rain/a/20260917A0CFVA00",
+     "summary": "年节约工时超3万小时，等效替代15名值班人员，编制仅10人"
+    },
+    {
+     "domain": "工程",
+     "title": "“数智员工”助推遵义电网转型升级",
+     "url": "https://finance.sina.com.cn/jjxw/2026-09-17/doc-inisapnm4359421.shtml",
+     "summary": "AI智策平台形成六大数字工程师，年节约工时3.5万小时"
+    },
+    {
+     "domain": "工程",
+     "title": "国内首套20千伏中压直降暂态电能质量治理装置横琴投运",
+     "url": "https://www.cpem.org.cn/list2/119454.html",
+     "summary": "5.5毫秒切换响应，集成暂态补偿、稳态调压、无功补偿、谐波治理"
+    },
+    {
+     "domain": "负荷",
+     "title": "曲靖配网首台10千伏调压变实现调度远程遥控调压",
+     "url": "https://www.cpem.org.cn/list2/119458.html",
+     "summary": "调压操作由1小时压缩至1分钟，效率提升90%以上"
+    },
+    {
+     "domain": "工程",
+     "title": "南方电网首套20千伏中压直降暂态电能质量治理装置投运",
+     "url": "https://www.nfnews.com/content/r6d5mkvpoE.html",
+     "summary": "电压暂降严重性指标严控在5%以内，用户零感知"
+    },
+    {
+     "domain": "储能",
+     "title": "斯拓恩碧山站新型储能电站项目在黄埔正式动工",
+     "url": "https://news.dayoo.com/gzrbrmt/202609/18/170628_55004850.htm",
+     "summary": "总功率100兆瓦、容量200兆瓦时，2027年6月并网商运"
+    },
+    {
+     "domain": "国际",
+     "title": "广东电网主动探路“六网协同” 建设首批协同试点示范",
+     "url": "https://www.cnr.cn/gd/meiliguangdong/20260917/t20260917_527817011.shtml",
+     "summary": "韶关配套投资8.63亿元，新增变电容量1296兆伏安"
+    },
+    {
+     "domain": "工程",
+     "title": "我国首个海陆一体柔直输电工程陆上通道全线贯通",
+     "url": "https://www.toutiao.com/article/7686290619144208905/",
+     "summary": "三山岛柔直江门段贯通，预计10月投产后年送60亿千瓦时"
+    },
+    {
+     "domain": "其他",
+     "title": "计及阻塞集中度的输电网双层扩展规划方法",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1306639086156865791",
+     "summary": "提出阻塞集中度指标，KKT转化单层混合整数规划求解"
+    },
+    {
+     "domain": "绿电",
+     "title": "面向新能源消纳提升的乡村配电网电氢协同调度策略",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/j.cnki.issn1674-0629.2026.08.004",
+     "summary": "XGBoost+BiLSTM预测加氢需求，电—交双层滚动优化"
+    },
+    {
+     "domain": "负荷",
+     "title": "基于双层博弈理论的差异化乡村多微能网协同功率调度",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/j.cnki.issn1674-0629.2026.08.005",
+     "summary": "Stackelberg博弈，柔性负荷分级调节平抑功率波动"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网：六网协同核心是能源流数据流物质流高效流转",
+     "url": "https://life.dayoo.com/money/202609/17/154563_55004610.htm",
+     "summary": "东莞供电局与水务局签合作框架，现代化水网耦合新型电网"
+    },
+    {
+     "domain": "储能",
+     "title": "葛洲坝三公司与南网储能座谈 共拓广西区域新型储能",
+     "url": "https://newenergy.in-en.com/html/newenergy-2457030.shtml",
+     "summary": "三方围绕电力系统适配、资源消纳与建设运营协同交换意见"
+    },
+    {
+     "domain": "国际",
+     "title": "APEC北京能源会议周：南网分享新型电力系统中国实践",
+     "url": "https://www.toutiao.com/article/7684587353758908974/",
+     "summary": "牵头编制的解决方案为APEC中国年5项自主贡献成果之一"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网公司2026年第二批预制舱配电房专项招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200443152.jhtml",
+     "summary": "招标公告｜广东电网公司｜低压智能台区"
+    },
+    {
+     "domain": "市场",
+     "title": "广州宇阳电力科技有限公司2026年8月用电技术专业计量类第一批公开招标采购项目招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200443145.jhtml",
+     "summary": "招标公告｜广东电网公司｜低压智能台区"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网公司2026年电能质量监测装置框架招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200443143.jhtml",
+     "summary": "招标公告｜广州供电局｜电能质量"
+    },
+    {
+     "domain": "市场",
+     "title": "2027-2028年广州供电局变电站二次设备维保服务框架公开招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200443142.jhtml",
+     "summary": "招标公告｜广西电网公司｜配电网"
+    },
+    {
+     "domain": "绿电",
+     "title": "2026年南方电网数字电网科技（广东）有限公司数字新能源事业部8月份公开招标框架采购项目招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200443135.jhtml",
+     "summary": "招标公告｜昆明电力交易中心｜智能电网"
+    }
+   ]
+  },
   {
    "date": "2026-09-16",
    "note": "南方电网每日情报精选",
