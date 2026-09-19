@@ -1,6 +1,120 @@
 {
- "updated": "2026-09-18",
+ "updated": "2026-09-19",
  "entries": [
+  {
+   "date": "2026-09-19",
+   "note": "南方电网每日情报精选（9月19日快照）",
+   "items": [
+    {
+     "domain": "储能",
+     "title": "南网科技取得基于柔性互联的协同充电控制方法及系统专利",
+     "url": "https://finance.sina.com.cn/stock/aigc/zl/2026-09-15/doc-inirwmwe3700545.shtml",
+     "summary": "调度协同储能与电动汽车功率，提升用电高峰电网稳定性"
+    },
+    {
+     "domain": "绿电",
+     "title": "100%新能源柔性直流送出系统的低频振荡机理及抑制方法",
+     "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1300829668500627934",
+     "summary": "南网科研院参与，改进Heffron-Phillips模型揭示振荡机理"
+    },
+    {
+     "domain": "市场",
+     "title": "南网供应链集团AI采购监管方案获人工智能应用大赛一等奖",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/18/content_2967.htm",
+     "summary": "以AI穿透式监管提升供应链采购合规与风险识别能力"
+    },
+    {
+     "domain": "国际",
+     "title": "南方电网AI输电缺陷识别大模型在老挝落地应用",
+     "url": "https://www.news.cn/20260918/1defb80706874921803beea86f43ec11/c.html",
+     "summary": "大模型已处理2.6万张巡检图，精准识别0.36万处设备缺陷"
+    },
+    {
+     "domain": "工程",
+     "title": "贵州遵义供电局无人机机巢进变电站 实现巡检\"人机分离\"",
+     "url": "https://www.chinanews.com/cj/shipin/2026/09-18/news1069317.shtml",
+     "summary": "机巢部署变电站，办公室操控即可覆盖3公里巡检范围"
+    },
+    {
+     "domain": "负荷",
+     "title": "闻汛而动战洪灾 争分夺秒送光明",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/18/content_2950.htm",
+     "summary": "汛情应急抢修纪实，最快速度恢复受灾区域供电"
+    },
+    {
+     "domain": "其他",
+     "title": "南网能源举办\"AI+核心能力\"技术交流会 赋能综合能源",
+     "url": "https://stock.10jqka.com.cn/20260918/c680078176.shtml",
+     "summary": "展示AI+高效冷站、节能工具包、虚拟电厂、投资可研四大场景"
+    },
+    {
+     "domain": "储能",
+     "title": "南网储能阳江抽水蓄能电站获中国土木工程詹天佑奖",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/18/content_2951.htm",
+     "summary": "工程技术创新与建设质量获行业最高荣誉认可"
+    },
+    {
+     "domain": "绿电",
+     "title": "广东电网有限责任公司2026年计量设备电气性能试验装置、光伏断路器测试装置公开谈判采购公告",
+     "url": "https://www.bidding.csg.cn/fzbgg/1200443324.jhtml",
+     "summary": "非招标公告｜广东电网公司｜物资工具类"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网公司2026年SF6气体综合分析仪、10kV站用变兼接地变、声级计及校准器等专项公开谈判(二次采购)采购公告",
+     "url": "https://www.bidding.csg.cn/fzbgg/1200443310.jhtml",
+     "summary": "非招标公告｜广东电网公司｜电能质量"
+    },
+    {
+     "domain": "国际",
+     "title": "南网国际公司荣获中电联2026年度电力创新奖一等奖",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/18/content_2953.htm",
+     "summary": "跨境电网互联互通与国际业务创新能力获权威认定"
+    },
+    {
+     "domain": "工程",
+     "title": "南网超高压高导热环氧树脂干式变压器投运 打破国外垄断",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/18/content_2952.htm",
+     "summary": "35千伏/10兆伏安产品温升低于国标10K，综合成本降三成"
+    },
+    {
+     "domain": "负荷",
+     "title": "海南电网调集444人成建制队伍支援五指山保亭抢修复电",
+     "url": "https://hn.news.163.com/26/0916/09/L6UHTT5F042598V7.html",
+     "summary": "跨区域调集抢修力量并调运17类217个应急装备"
+    },
+    {
+     "domain": "其他",
+     "title": "南方电网智能体实现电网规划分钟级生成与调度秒级预演",
+     "url": "https://www.financialnews.com.cn/2026-09/18/content_457347.html",
+     "summary": "依托海量场景数据沉淀，破解电力AI可解释性与落地难痛点"
+    },
+    {
+     "domain": "市场",
+     "title": "贵州电网有限责任公司2026年物资类应用防火墙公开谈判(二次采购)采购公告",
+     "url": "https://www.bidding.csg.cn/fzbgg/1200443327.jhtml",
+     "summary": "非招标公告｜贵州电网公司｜物资工具类"
+    },
+    {
+     "domain": "国际",
+     "title": "季明彬参加2026能源绿色发展大会暨国际数字能源展开幕式",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260918_357340.html",
+     "summary": "与各方共商能源绿色低碳转型与数字能源产业协同"
+    },
+    {
+     "domain": "工程",
+     "title": "深圳\"虚拟电厂\"小镇投运 接入可调资源超510万千瓦",
+     "url": "https://www.sznews.com/news/content/2026-09/17/content_32173578.htm",
+     "summary": "分布式光伏、储能、充电设施连点成片，毫秒级源网荷储互动"
+    },
+    {
+     "domain": "负荷",
+     "title": "这20%，关键时刻能\"刹车\"",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/18/content_2966.htm",
+     "summary": "解读需求侧响应能力在电网尖峰时刻的兜底价值"
+    }
+   ]
+  },
   {
    "date": "2026-09-18",
    "note": "南方电网每日情报精选·全新快照",
