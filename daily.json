@@ -1,6 +1,180 @@
 {
- "updated": "2026-09-25",
+ "updated": "2026-09-26",
  "entries": [
+  {
+   "date": "2026-09-26",
+   "note": "南方电网每日情报精选 24 条",
+   "items": [
+    {
+     "domain": "其他",
+     "title": "南方电网“大瓦特”模型体系累计调用超200亿次 支撑八大业务域",
+     "url": "https://www.toutiao.com/article/7689363294083203599/",
+     "summary": "L0基础层、L1领域层、L2场景层加智能体，覆盖发输变配用调规划企管。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "其他",
+     "title": "世界首套±800千伏特高压直流量子电流传感器在南网实现量产",
+     "url": "https://csg.cn/xwzx/2026/2026gsyw/202609/t20260925_357472.html",
+     "summary": "量程1毫安至10千安，精度0.06%FS，已在云南新松换流站稳定运行。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "国际",
+     "title": "中老联合运行管理委员会成立 共筑跨境电网安全运行机制",
+     "url": "https://csg.cn/xwzx/2026/2026gsyw/202609/t20260925_357471.html",
+     "summary": "建立中老跨境电网联合运行与协同保障常态化机制。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "负荷",
+     "title": "广东电网计量中心：复杂度分量自适应分解与局部门控Mamba负荷预测",
+     "url": "https://www.mdpi.com/1996-1073/19/19/4568",
+     "summary": "用户级短期负荷预测，平均误差较现有方法下降约11%。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "储能",
+     "title": "深圳供电局：全国首个超大城市全电压等级自愈体系与车网互动",
+     "url": "https://finance.sina.com.cn/jjxw/2026-09-24/doc-inisxtav8199719.shtml",
+     "summary": "91%故障停电用户1分钟内自动复电，供电可靠率99.999%。",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "市场",
+     "title": "深圳供电局有限公司2026年主网一次设备类（550kVSF6罐式断路器）第五批次物资专项公开招标招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200444094.jhtml",
+     "summary": "招标公告｜深圳供电局有限公司｜物资工具类",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "负荷",
+     "title": "南网超高压广州局海口分局：深耕海缆特色 打造自贸港能源标杆",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/25/content_3023.htm",
+     "summary": "以海缆运维质量专长支撑海南自贸港能源供应保障。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "工程",
+     "title": "南方电网召开9月基建月度例会暨作业安全风险管控部署会",
+     "url": "https://csg.cn/xwzx/2026/2026gsyw/202609/t20260925_357470.html",
+     "summary": "要求严守质量安全底线，以高标准建设现代化电网工程。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "负荷",
+     "title": "广州供电局：时间分解快速鲁棒对偶动态规划提升实时调度效率",
+     "url": "https://energyinnovationreview.com/2026/09/23/huangs-tdrddp-cuts-real-time-dispatch-time-tenfold",
+     "summary": "TDRDDP方法使省级电网实时调度计算效率提升一个数量级。",
+     "date": "2026年9月23日"
+    },
+    {
+     "domain": "其他",
+     "title": "汕头濠江供电局：从用电管理者向“用能管家”转型的电能质量服务",
+     "url": "https://gd.news.163.com/shantou/26/0923/09/L7GJAACV04179HUT.html",
+     "summary": "建立电能质量敏感用户清单，一企一册分级保障海缆登陆站。",
+     "date": "2026年9月23日"
+    },
+    {
+     "domain": "市场",
+     "title": "海南电网有限责任公司2026年第六批物资类专项公开招标项目招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200444096.jhtml",
+     "summary": "招标公告｜海南电网公司｜物资工具类",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "其他",
+     "title": "电网“大瓦特”让“无感停电”成日常 营配协同智能体落地",
+     "url": "https://www.163.com/dy/article/L7M9P33U05129QAF.html",
+     "summary": "AI+电鸿完成故障识别、定位、派单、通知闭环，停电先于报修处置。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "其他",
+     "title": "银线织就同心结 电流激荡共富梦 南网以可靠电力铸牢民族共同体",
+     "url": "https://csg.cn/xwzx/2026/2026gsyw/202609/t20260925_357474.html",
+     "summary": "以可靠电力筑牢民族团结根基，服务民族地区高质量发展。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "绿电",
+     "title": "云南电网临沧供电局：分布式电源接入下自适应保护在线评估校正",
+     "url": "https://energyinnovationreview.com/2026/09/20/luos-adaptive-grid-fix-outsmarts-der-protection-blind-spots",
+     "summary": "多目标骨干粒子群+K-means，消除配网保护定值死区。",
+     "date": "2026年9月20日"
+    },
+    {
+     "domain": "其他",
+     "title": "季明彬：“十五五”将主要依靠增量调节资源支撑电力系统平衡",
+     "url": "https://new.qq.com/rain/a/20260922A08BW000",
+     "summary": "南方区域将新增风光2亿千瓦，高峰稳定出力占比仅4%。",
+     "date": "2026年9月22日"
+    },
+    {
+     "domain": "市场",
+     "title": "2026年南方电网人工智能公司基于一二次动态协调的配网终端优化配置技术研究采购招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200444124.jhtml",
+     "summary": "招标公告｜南方电网数字电网集团有限｜配电网",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "工程",
+     "title": "广东电网中山供电局：数智化构建“三全三化”质量管理新范式",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/25/content_3024.htm",
+     "summary": "以数智化手段贯通质量全过程管控，输出可复制管理范式。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "负荷",
+     "title": "国内首台35千伏多馈线电能质量柔性控制装备在梧州试运行",
+     "url": "https://gx.people.com.cn/n2/2026/0924/c347802-41706935.html",
+     "summary": "集潮流转供、谐波补偿、无功调节于一体，服务藤县陶瓷产业园。",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "负荷",
+     "title": "新型电力系统电能质量扰动治理关键技术综述及展望",
+     "url": "https://epjournal.csee.org.cn/zh/article/doi/10.13334/j.0258-8013.pcsee.250424",
+     "summary": "南网数研院参与，梳理治理装置、优化配置与协同控制路径。",
+     "date": "2026年9月"
+    },
+    {
+     "domain": "储能",
+     "title": "共筑新型电力系统 服务能源强国建设 崇礼论坛成功举办",
+     "url": "https://www.toutiao.com/article/7688378724659528218",
+     "summary": "南网提出聚力安全固本、价值共创、六网协同、电鸿赋能。",
+     "date": "2026年9月22日"
+    },
+    {
+     "domain": "国际",
+     "title": "越南永新燃煤电厂一期项目2026年第二季度备品备件采购项目(二次招标)招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200444131.jhtml",
+     "summary": "招标公告｜南方电网国际有限责任公司｜物资工具类",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "储能",
+     "title": "广东电网东莞供电局：用“质量”为湾区智能电网升级提速",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/25/content_3026.htm",
+     "summary": "以质量强企牵引湾区智能电网建设，输出标准化建设模式。",
+     "date": "2026年9月25日"
+    },
+    {
+     "domain": "工程",
+     "title": "广西贺州供电局压板在线监测装置累计销售超4000套",
+     "url": "https://finance.sina.com.cn/money/bond/2026-09-24/doc-iniswvxm0579989.shtml",
+     "summary": "双路电磁感应技术精准识别压板状态，销售额达850万元。",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "绿电",
+     "title": "山海间的“电力答卷”：广西电网服务广西高质量发展观察",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/25/content_3050.htm",
+     "summary": "从绿电消纳到东盟合作，全景呈现广西电网发展成效。",
+     "date": "2026年9月25日"
+    }
+   ]
+  },
   {
    "date": "2026-09-25",
    "note": "南方电网每日情报精选 26 条",
