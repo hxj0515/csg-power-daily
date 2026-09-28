@@ -1,6 +1,173 @@
 {
- "updated": "2026-09-27",
+ "updated": "2026-09-28",
  "entries": [
+  {
+   "date": "2026-09-28",
+   "note": "南方电网每日情报精选 23 条",
+   "items": [
+    {
+     "domain": "其他",
+     "title": "贵州安顺供电局上线6项核心业务自动监测数字员工",
+     "url": "http://gz.news.cn/20260926/068f2e5f4bc3404dbca4b8ba9f0d89df/c.html",
+     "summary": "数字员工覆盖停电预告警等业务，单班次工作量减少30%，人工错漏率降至0",
+     "date": "2026年9月26日"
+    },
+    {
+     "domain": "工程",
+     "title": "云南带电作业机器人实现配网应用全覆盖",
+     "url": "https://news.10jqka.com.cn/20260923/c680230040.shtml",
+     "summary": "15个地市局规模化应用，已完成7类带电作业场景机器人测试落地",
+     "date": "2026年9月23日"
+    },
+    {
+     "domain": "负荷",
+     "title": "广州前9月受理用电报装容量突破1200万千伏安",
+     "url": "https://gzdaily.dayoo.com/pc/html/2026-09/28/content_866_915620.htm",
+     "summary": "同比增长15.29%，完成送电容量超1000万千伏安、增长34.25%",
+     "date": "2026年9月28日"
+    },
+    {
+     "domain": "其他",
+     "title": "高压电器：阀组件晶闸管结温计算方法研究",
+     "url": "https://www.zgydq.com/zh/article/doi/10.13296/j.1001-1609.hva.2026.09.023",
+     "summary": "考虑并联冷却水路支路长度差异，南方电网系单位成果，62卷9期",
+     "date": "2026年9月16日"
+    },
+    {
+     "domain": "负荷",
+     "title": "曲靖麒麟供电局配网自愈有效覆盖率提升至92%",
+     "url": "https://society.yunnan.cn/system/2026/09/23/034158920.shtml",
+     "summary": "完成29台配电自动化断路器搬迁调试，非故障区域秒级自愈复电",
+     "date": "2026年9月23日"
+    },
+    {
+     "domain": "市场",
+     "title": "2026-2028年广东电网电力科学研究院变电站设备监测系统网络安全检测框架招标招标公告",
+     "url": "https://www.bidding.csg.cn//zbgg/1200444078.jhtml",
+     "summary": "招标公告｜广东电网公司｜智能电网",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "工程",
+     "title": "云南电网配网带电作业从\"人工硬干\"转向\"智能巧干\"",
+     "url": "https://www.cnenergynews.cn/article/4TKapVZ5Abc",
+     "summary": "依托30余项配套科研项目与6项自主核心专利研发多款智能装备",
+     "date": "2026年9月23日"
+    },
+    {
+     "domain": "其他",
+     "title": "南网科技股东南网能创询价转让1129.4万股",
+     "url": "https://epaper.cs.com.cn/zgzqb/html/2026-09/28/nw.D110000zgzqb_20260928_4-B066.htm",
+     "summary": "转让价45.68元/股，持股比例由9.25%降至7.25%",
+     "date": "2026年9月28日"
+    },
+    {
+     "domain": "负荷",
+     "title": "广东电网调度中心团队发表VSC-HVDC混联控制策略研究",
+     "url": "https://energyinnovationreview.com/2026/09/11/baos-hvdc-hybrid-control-revives-weak-grids",
+     "summary": "串并联跟网/构网混合控制，故障最低电压由0.3提升至0.8标称值",
+     "date": "2026年9月11日"
+    },
+    {
+     "domain": "国际",
+     "title": "中老两国联合运行管理委员会成立共筑跨境电网机制",
+     "url": "https://www.sohu.com/a/1080037184_123753",
+     "summary": "建立定期会商、信息共享、联合分析、风险研判等六项长效机制",
+     "date": "2026年9月23日"
+    },
+    {
+     "domain": "市场",
+     "title": "云南电网有限责任公司2026年-2027年第一批生产配网专业服务类专项采购（公开招标）招标公告",
+     "url": "https://www.bidding.csg.cn//zbgg/1200444070.jhtml",
+     "summary": "招标公告｜云南电网公司｜配电网",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "负荷",
+     "title": "深圳供电局部署119名\"数字员工\"赋能2000多名员工",
+     "url": "https://www.toutiao.com/article/7689036394185900587",
+     "summary": "覆盖生产运维等18个领域，年智能巡视8.5亿次，业务办理超50万单",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "工程",
+     "title": "贵州毕节220千伏奢华Ⅰ、Ⅱ回供电线路投运送电",
+     "url": "https://finance.sina.com.cn/jjxw/2026-09-28/doc-initimtr9787450.shtml",
+     "summary": "全长17.394公里，为毕节磷煤化工一体化项目提供电力生命线",
+     "date": "2026年9月28日"
+    },
+    {
+     "domain": "负荷",
+     "title": "供用电：状态感知驱动的配电网集群划分方法",
+     "url": "http://www.qikanvip.com/qkml/175956.html",
+     "summary": "广州供电局与南网科研院提出首领灰狼优化算法与三维指标体系",
+     "date": "2026年7月"
+    },
+    {
+     "domain": "其他",
+     "title": "深圳供电局举办\"算电协同·绿动未来\"绿色算力交流活动",
+     "url": "https://www.csg.cn/epaper/epaper/nfdwb/html/2026-09/22/content_2972.htm",
+     "summary": "调研30家算力中心，现场答疑电力保障与电算协同等10余项问题",
+     "date": "2026年9月22日"
+    },
+    {
+     "domain": "市场",
+     "title": "《南方能源观察》杂志社有限公司2027-2030年杂志发行服务项目招标公告",
+     "url": "https://www.bidding.csg.cn//zbgg/1200444056.jhtml",
+     "summary": "招标公告｜南方电网数字传媒科技有限公司｜服务类",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "储能",
+     "title": "广州供电局AI办电智能体调用电子证照超25.3万次",
+     "url": "https://finance.sina.com.cn/roll/2026-09-24/doc-inisxtat5151816.shtml",
+     "summary": "小微企业平均办电时长压缩至5个工作日以内，落地\"三零三省\"服务",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "工程",
+     "title": "国内首个2吨级载重系留气球在藏粤直流试运行",
+     "url": "https://www.toutiao.com/article/7688143122131452470",
+     "summary": "直径25米体积8000立方米，可在4000米陡峭山脊吊运输电塔材",
+     "date": "2026年9月22日"
+    },
+    {
+     "domain": "绿电",
+     "title": "深圳供电局谋划粤东清洁能源送深多端柔直工程",
+     "url": "https://www.sznews.com/news/content/2026-09/07/content_32165821.htm",
+     "summary": "线路超300公里输电容量800万千瓦，计划2029年开工建设",
+     "date": "2026年9月7日"
+    },
+    {
+     "domain": "市场",
+     "title": "2026年南方电网数字电网集团信息通信科技有限公司劳务服务框架采购项目招标公告",
+     "url": "https://www.bidding.csg.cn//zbgg/1200444015.jhtml",
+     "summary": "招标公告｜南方电网数字电网集团有限公司｜服务类",
+     "date": "2026年9月24日"
+    },
+    {
+     "domain": "储能",
+     "title": "南网\"大瓦特\"模型体系累计调用量超200亿次",
+     "url": "https://www.hkcd.com.hk/hkcdweb/content/2026/09/23/content_8776793.html",
+     "summary": "通专融合四层架构，支撑发输变配用调度规划企管全业务域AI场景",
+     "date": "2026年9月23日"
+    },
+    {
+     "domain": "储能",
+     "title": "广州番禺供电局用户侧储能柔性增容方案投运",
+     "url": "https://huacheng.gz-cmc.com/pages/2026/09/22/a7b8b4483fe249c9955b44a3ac8b65fd.html",
+     "summary": "三台储能柜375千瓦放电能力，以储能削峰替代变压器扩容改造",
+     "date": "2026年9月22日"
+    },
+    {
+     "domain": "其他",
+     "title": "中秋国庆假期南方五省区充电总电量预测突破1.1亿度",
+     "url": "https://new.qq.com/rain/a/20260927A0B7SY00",
+     "summary": "南网部署15台移动充电车，广东超6000座充电场站完成特巡特维",
+     "date": "2026年9月27日"
+    }
+   ]
+  },
   {
    "date": "2026-09-27",
    "note": "南方电网每日情报精选 24 条",
