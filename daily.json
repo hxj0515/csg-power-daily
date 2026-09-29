@@ -1,6 +1,120 @@
 {
- "updated": "2026-09-28",
+ "updated": "2026-09-29",
  "entries": [
+  {
+   "date": "2026-09-29",
+   "note": "每日全新快照·时序降序版（2026-09-29）｜南方电网体系六板块精选18条",
+   "items": [
+    {
+     "domain": "负荷",
+     "title": "贵阳商业用电量中秋假期同比增长超一成",
+     "url": "https://finance.sina.com.cn/jjxw/2026-09-29/doc-initmuyn2597503.shtml",
+     "summary": "贵阳供电区域假期商业用电3381万千瓦时，同比增13.4%"
+    },
+    {
+     "domain": "负荷",
+     "title": "昌江供电多措并举筑牢双节电力保障网",
+     "url": "https://changjiang.hainan.gov.cn/changjiang/jrcj/202609/73a6033beeee4ec991c1b9f4692eb063.shtml",
+     "summary": "投入63人次巡检40回线路，消除缺陷45处更换配变6台"
+    },
+    {
+     "domain": "负荷",
+     "title": "三亚供电局18支抢修队待命保供电",
+     "url": "https://www.sanya.gov.cn/sanyasite/zwdt/202609/4e82c01bc7bb44ee9e49cf3abe9e15cc.shtml",
+     "summary": "组建18支抢修队290人，配应急电源车21辆保双节用电"
+    },
+    {
+     "domain": "负荷",
+     "title": "南方电网贵州电网公司多举措保障国庆假期用电可靠",
+     "url": "http://gz.news.cn/20260928/dc62067ab88143f3ab77af7c9da3b716/c.html",
+     "summary": "16支应急抢修队700余人待命，95个重要场所一对一值守"
+    },
+    {
+     "domain": "负荷",
+     "title": "双节自驾出行忙 南方五省区充电电量预计破1.1亿度",
+     "url": "https://www.toutiao.com/article/7690469177143870003/",
+     "summary": "南网产业集团预计五省区充电总电量破1.1亿度，10月1日现单日峰值"
+    },
+    {
+     "domain": "储能",
+     "title": "储能并网提质增效 根治低压顽疾 贵港分布式储能投运",
+     "url": "http://www.ggqt.gov.cn/xxgk/gzdt/zfxxgkgzdtzwxx/t28171869.shtml",
+     "summary": "10千伏下南线2090千瓦时分布式储能根治末端15台区低电压"
+    },
+    {
+     "domain": "市场",
+     "title": "广东电网有限责任公司2026年广东省交通能源融合基础数据摸查及配电网承载能力分析等4个专题专项招标项目招标公告",
+     "url": "https://www.bidding.csg.cn/zbgg/1200444256.jhtml",
+     "summary": "招标公告｜广东电网公司｜智能电网"
+    },
+    {
+     "domain": "工程",
+     "title": "南网数研院液冷算力系统PUE低至1.086 电碳算协同提速",
+     "url": "https://static.cninfo.com.cn/finalpage/2026-09-28/1225584827.PDF",
+     "summary": "浸没式液冷PUE低至1.086，高能效算力一体机入选广州首台套"
+    },
+    {
+     "domain": "工程",
+     "title": "跑出量子科技产业化加速度 800千伏特高压直流量子电流传感器量产",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260925_357472.html",
+     "summary": "世界首套800千伏特高压直流量子电流传感器量产，精度0.06%"
+    },
+    {
+     "domain": "工程",
+     "title": "自主研发“机器蛇”实现供电线路智能巡检",
+     "url": "https://www.stdaily.com/web/gdxw/2026-09/27/content_588800.html",
+     "summary": "昆明官渡供电局蛇形爬线巡检机器人自主越障，填补人机巡检盲区"
+    },
+    {
+     "domain": "工程",
+     "title": "南方电网首套中压直降场景暂态电能质量治理装置在横琴投运",
+     "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260901_357061.html",
+     "summary": "5.5毫秒切换响应，电压暂降严重性严控5%以内"
+    },
+    {
+     "domain": "工程",
+     "title": "让中国柔直技术走向世界前沿《你好!南网科学家》走近周月宾",
+     "url": "https://k.sina.com.cn/article_5953189932_162d6782c06704zkve.html",
+     "summary": "南网科研院柔直技术从追赶到领跑，藏粤直流换流阀损耗低于1%"
+    },
+    {
+     "domain": "其他",
+     "title": "深圳电网装上“智慧大脑” 超大城市数字电网自主思考",
+     "url": "https://sztqb.sznews.com/PC/content/202609/29/content_3481339.html",
+     "summary": "91%故障1分钟内自动复电，119名数字员工年巡视8.5亿次"
+    },
+    {
+     "domain": "其他",
+     "title": "以新型电网建设促进“六网”协同发展",
+     "url": "https://news.qq.com/rain/a/20260929A02AHE00",
+     "summary": "钱朝阳署名文章，以六网协同赋能多网绿色发展与价值兑现"
+    },
+    {
+     "domain": "其他",
+     "title": "广州114款大模型走进车间电网矿山一线",
+     "url": "https://m.21jingji.com/article/20260928/herald/b24b58a1796ca07f1cdb5212149302e7.html",
+     "summary": "大瓦特累计调用超200亿次，覆盖发输变配用调度规划企管"
+    },
+    {
+     "domain": "其他",
+     "title": "100%新能源柔性直流送出系统的低频振荡机理及抑制方法",
+     "url": "https://nfdwjs.csg.cn/gateway-web/en/manuscriptDetail.html?journalId=60&serialNum=92-97",
+     "summary": "南网科研院黄莹等，第20卷第8期，揭示构网型电源振荡机理"
+    },
+    {
+     "domain": "其他",
+     "title": "电力系统稳态分析与决策的人工智能模型：物理融合与泛化能力提升",
+     "url": "http://ntps.epri.sgcc.com.cn/dwjs/CN/10.13335/j.1000-3673.pst.2026.0507",
+     "summary": "南网科研院郑外生等，融合物理约束提升AI模型泛化能力"
+    },
+    {
+     "domain": "其他",
+     "title": "广东电网率先在南方电网区域内建设首批“六网协同”试点示范",
+     "url": "https://www.jingjiribao.cn/static/detail.jsp?id=684224",
+     "summary": "韶关算力园区电碳算协同，2030年基本建成大湾区六网体系"
+    }
+   ]
+  },
   {
    "date": "2026-09-28",
    "note": "南方电网每日情报精选 23 条",
