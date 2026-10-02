@@ -1,6 +1,132 @@
 {
-  "updated": "2026-10-01",
+  "updated": "2026-10-02",
   "entries": [
+    {
+      "date": "2026-10-02",
+      "note": "每日全新快照·时序降序版（国庆假期·南网体系）",
+      "items": [
+        {
+          "domain": "工程",
+          "title": "深圳电网装上智慧大脑 供电可靠率达99.999%",
+          "url": "https://m.sfccn.com/2026/9-29/yMMDE0NzNfMjI1NTUyMA.html",
+          "summary": "数字孪生+空天地巡检，91%故障1分钟自复电"
+        },
+        {
+          "domain": "工程",
+          "title": "广州114款大模型上岗 南方电网“大瓦特”调用超200亿次",
+          "url": "https://m.21jingji.com/article/20260928/herald/b24b58a1796ca07f1cdb5212149302e7.html",
+          "summary": "大瓦特覆盖发输变配用全业务域AI场景"
+        },
+        {
+          "domain": "工程",
+          "title": "世界首套±800千伏特高压直流量子电流传感器量产",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260925_357472.html",
+          "summary": "精度0.06%FS，打破高端金刚石进口依赖"
+        },
+        {
+          "domain": "负荷",
+          "title": "全网首套钠离子电池储能装置深圳城中村落地运行",
+          "url": "https://csg.cn/xwzx/2026/2026gsyw/202609/t20260915_357280.html",
+          "summary": "以储代改柔性扩容，台区负载率降至79.5%"
+        },
+        {
+          "domain": "负荷",
+          "title": "南方电网投入5万余人全力保障国庆假期电力供应",
+          "url": "https://www.toutiao.com/article/7691685144712823332/",
+          "summary": "AI滚动研判气象新能源与负荷走势"
+        },
+        {
+          "domain": "负荷",
+          "title": "广西国庆保电“不打烊” 上万人值班值守",
+          "url": "https://www.toutiao.com/article/7691278793285042728/",
+          "summary": "70座服务区56座景区充电桩隐患排查"
+        },
+        {
+          "domain": "负荷",
+          "title": "南方电网全力做好秋检运维与秋收保供工作",
+          "url": "http://www.sasac.gov.cn/n2588025/n13790238/n16406218/c35963311/content.html",
+          "summary": "线路杆塔升级保秋粮颗粒归仓"
+        },
+        {
+          "domain": "负荷",
+          "title": "云南金平35千伏茨通坝变电站扩容投运 容量提升60%",
+          "url": "https://www.toutiao.com/article/7689121603058745875/",
+          "summary": "补齐边境乡镇民生与产业用电短板"
+        },
+        {
+          "domain": "工程",
+          "title": "南网储能两项成果荣获2026年度电力创新奖二等奖",
+          "url": "https://t.cj.sina.cn/articles/view/5952915705/162d248f906703ox4m",
+          "summary": "抽蓄多导叶控制与机器视觉识别获奖"
+        },
+        {
+          "domain": "负荷",
+          "title": "南网储能本质安全型低压智能开关技术达国际领先",
+          "url": "http://www.es.csg.cn/news/gsxw/202609/t20260903_21955.html",
+          "summary": "漏电精度自诊断优于IEC国际标准"
+        },
+        {
+          "domain": "负荷",
+          "title": "阳江供电局国庆保电特巡特维护航群众文化活动",
+          "url": "https://www.nfnews.com/content/834p0mMP3d.html",
+          "summary": "43个保电场点二级值班带班值守"
+        },
+        {
+          "domain": "负荷",
+          "title": "东莞供电局坚守保电一线护航国庆万家灯火",
+          "url": "https://www.163.com/dy/article/L85TM0T20534AAOK.html",
+          "summary": "人巡机巡红外测温筑牢节日防线"
+        },
+        {
+          "domain": "负荷",
+          "title": "韶关供电局以“低压透镜”平台替代人海战术",
+          "url": "https://www.csg.cn/xwzx/2026/2026yxcz/202609/t20260929_357514.html",
+          "summary": "低压设备巡视工时月减5200小时"
+        },
+        {
+          "domain": "负荷",
+          "title": "电力灯塔点亮广州白云城中村 低压透明化示范",
+          "url": "http://www.gd.xinhuanet.com/20260921/a20c58edeff74c04837aaa3372898753/c.html",
+          "summary": "SPLC+电鸿秒级采集台区虚拟电厂闭环"
+        },
+        {
+          "domain": "工程",
+          "title": "南方总调新型储能调度运行全景监视技术研发",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444600.jhtml",
+          "summary": "招标公告"
+        },
+        {
+          "domain": "负荷",
+          "title": "2026-2028年广东电网输配电线路线行维护项目框架招标",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444720.jhtml",
+          "summary": "招标公告"
+        },
+        {
+          "domain": "负荷",
+          "title": "深圳供电局网格-馈线-台区三级协同可靠性治理体系",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444647.jhtml",
+          "summary": "招标公告"
+        },
+        {
+          "domain": "市场",
+          "title": "鼎和财险可信数据空间保险数据产品建设采购",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444556.jhtml",
+          "summary": "采购公告｜服务类"
+        },
+        {
+          "domain": "工程",
+          "title": "南方电网海南-广东电力灵活互济工程（海上部分）施工招标",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444714.jhtml",
+          "summary": "招标公告"
+        },
+        {
+          "domain": "工程",
+          "title": "南网超高压500kV福徐甲线海缆终端改造物资中标",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444648.jhtml",
+          "summary": "中标公示｜电力电子"
+        }
+      ]
+    },
     {
       "date": "2026-10-01",
       "note": "南方电网每日日报·国庆保电专题（全量快照）",
