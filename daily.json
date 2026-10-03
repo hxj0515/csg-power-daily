@@ -1,6 +1,120 @@
 {
-  "updated": "2026-10-02",
+  "updated": "2026-10-03",
   "entries": [
+    {
+      "date": "2026-10-03",
+      "note": "南方电网每日日报精选·国庆假期第4天·信源：南网官网/南方电网报/南网供应链平台/主流媒体/南方电网技术网络首发",
+      "items": [
+        {
+          "domain": "负荷",
+          "title": "南方电网广西钦州供电局全面开启国庆保电护航模式",
+          "url": "https://www.163.com/dy/article/L87SF8EB05346936.html",
+          "summary": "平陆运河船闸+景区，861人应急待命"
+        },
+        {
+          "domain": "储能",
+          "title": "我国首台国产变速抽蓄机组转子吊装 肇庆浪江工程迎投产冲刺",
+          "url": "https://news.sciencenet.cn/htmlnews/2026/10/572433.shtm",
+          "summary": "年消纳清洁能源21.6亿度"
+        },
+        {
+          "domain": "绿电",
+          "title": "双节自驾出行忙 南方五省区充电电量预计破1.1亿度",
+          "url": "https://news.ycwb.com/ikimvkbtic/content_54308101.htm",
+          "summary": "10月1日迎充电峰值，部署15台移动充电车"
+        },
+        {
+          "domain": "负荷",
+          "title": "汕尾供电局多维发力守护国庆佳节万家灯火",
+          "url": "https://www.nfnews.com/content/96qKpWr4yM.html",
+          "summary": "精准调度+工器具体检+线路隐患清除"
+        },
+        {
+          "domain": "负荷",
+          "title": "海南电网启动二级保供电全力护航国庆假期用电",
+          "url": "https://www.hi.chinanews.com.cn/hnnew/2026-09-29/746721.html",
+          "summary": "摸排347家重点用户，景区枢纽特巡"
+        },
+        {
+          "domain": "负荷",
+          "title": "昌江供电多措并举筑牢双节电力保障网",
+          "url": "https://changjiang.hainan.gov.cn/changjiang/jrcj/202609/73a6033beeee4ec991c1b9f4692eb063.shtml",
+          "summary": "巡检40回线路，消除重过载台区69个"
+        },
+        {
+          "domain": "其他",
+          "title": "云南电网四端协同发力守护国庆假期民生用电",
+          "url": "https://www.toutiao.com/article/7692080746286891563/",
+          "summary": "蓄水280亿度，727户重点场所检查"
+        },
+        {
+          "domain": "绿电",
+          "title": "国庆保电“五心”在线 云南电网守护云岭烟火",
+          "url": "https://invest.10jqka.com.cn/20261002/c680433855.shtml",
+          "summary": "沿街商铺+夜市+充电枢纽多元服务"
+        },
+        {
+          "domain": "负荷",
+          "title": "德江供电局100余名干部职工护航国庆用电",
+          "url": "https://www.toutiao.com/article/7691617120799261247/",
+          "summary": "营配监盘+温情服务+全线特巡"
+        },
+        {
+          "domain": "储能",
+          "title": "我国首台国产变速抽蓄机组转子在肇庆浪江成功吊装",
+          "url": "https://china.huanqiu.com/article/4TQjPIe43oV",
+          "summary": "445吨转子就位，国产化率100%"
+        },
+        {
+          "domain": "工程",
+          "title": "昆明官渡供电局“机器蛇”上岗开展10千伏线路精细化巡检",
+          "url": "https://www.sohu.com/a/1081606133_162758",
+          "summary": "自主爬线越障，非接触取电全天候巡检"
+        },
+        {
+          "domain": "其他",
+          "title": "贺州供电局压板在线监测装置实现二次回路智能运维",
+          "url": "https://www.toutiao.com/article/7688933297415897615/",
+          "summary": "双路电磁感应，异常实时告警"
+        },
+        {
+          "domain": "绿电",
+          "title": "东博会南网展台“知行者1号”人形机器人等AI装备亮相",
+          "url": "https://www.toutiao.com/article/7687845112537235987/",
+          "summary": "人形机器人+吠云机器狗+无线充电无人机"
+        },
+        {
+          "domain": "工程",
+          "title": "云南昭通水富港建成全域透明智能配网 故障响应缩至5分钟",
+          "url": "https://www.cnenergynews.cn/article/4TP8slK7Jy4",
+          "summary": "低压GIS全域覆盖，自愈有效覆盖率100%"
+        },
+        {
+          "domain": "工程",
+          "title": "南方电网与宇树科技签署战略合作 共推具身智能机器人落地电网",
+          "url": "https://so.html5.qq.com/page/real/search_news?docid=70000021_8296abccc3903152",
+          "summary": "技术共研场景共建，机器人走向变电站"
+        },
+        {
+          "domain": "国际",
+          "title": "南方电网亮相国际数字能源展 大瓦特与数问智能体规模落地",
+          "url": "https://www.csg.cn/xwzx/2026/2026gsyw/202609/t20260918_357336.html",
+          "summary": "全域视联16万摄像头+可信数据空间"
+        },
+        {
+          "domain": "市场",
+          "title": "云南电网有限责任公司2026年35kV及以上输变电工程第3批施工工程专项采购（公开招标）招标公告",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444745.jhtml",
+          "summary": "招标公告｜配电网"
+        },
+        {
+          "domain": "市场",
+          "title": "贵州电网有限责任公司2026年工程类第三批培训基地输电项目总承包、培训基地配电项目总承包、培训项目总承包招标公告",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444675.jhtml",
+          "summary": "招标公告｜配电网"
+        }
+      ]
+    },
     {
       "date": "2026-10-02",
       "note": "南方电网每日快讯（全量快照）",
