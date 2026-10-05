@@ -1,6 +1,120 @@
 {
-  "updated": "2026-10-04",
+  "updated": "2026-10-05",
   "entries": [
+    {
+      "date": "2026-10-05",
+      "note": "南方电网每日情报·2026-10-05（国庆假期·全新快照）",
+      "items": [
+        {
+          "domain": "储能",
+          "title": "清华、南网科研院等申请纯新能源电力系统构网型储能规划专利",
+          "url": "https://www.sohu.com/a/1083455465_114984",
+          "summary": "公开号CN122869434A，保障小信号稳定"
+        },
+        {
+          "domain": "工程",
+          "title": "武汉大学、南网科研院申请基于功率同步控制的构网型变流器限流专利",
+          "url": "https://www.sohu.com/a/1083301217_114984",
+          "summary": "公开号CN122869316A，提升故障穿越"
+        },
+        {
+          "domain": "工程",
+          "title": "南网超高压、南网科研院等申请风光水储协同出力建模专利",
+          "url": "https://m.163.com/dy/article/L7GS28S10519QIKK.html",
+          "summary": "公开号CN122801428A，支撑一体化基地"
+        },
+        {
+          "domain": "工程",
+          "title": "阳江三山岛古澜换流站核心设备调试冲刺 10月底投产",
+          "url": "https://www.jiangmen.gov.cn/home/bmdt/content/post_3564108.html",
+          "summary": "海陆一体柔直，年送清洁电60亿"
+        },
+        {
+          "domain": "绿电",
+          "title": "大湾区首个重卡专用充电站暨光储充放一体化项目广州投产",
+          "url": "https://www.nfnews.com/content/v3aOXwwxo1.html",
+          "summary": "4台400千瓦桩，重卡1小时满电"
+        },
+        {
+          "domain": "市场",
+          "title": "贵州电网国庆前三天售电量12.66亿千瓦时 同比增7.84%",
+          "url": "https://www.guizhou.gov.cn/home/gzyw/202610/t20261005_90959877.html",
+          "summary": "充电站售电量同比增80.59%"
+        },
+        {
+          "domain": "负荷",
+          "title": "云南电网优服务强保障 国庆保电守一线赋能口岸园区",
+          "url": "https://yn.people.com.cn/n2/2026/1004/c372455-41714376.html",
+          "summary": "孟定清水河等口岸24小时生产"
+        },
+        {
+          "domain": "负荷",
+          "title": "国庆我在岗保电不打烊 贵州电网全力守护万家灯火",
+          "url": "https://www.cnr.cn/gz/hezuo/20261004/t20261004_527834075.shtml",
+          "summary": "梵净山等景区驻点值守"
+        },
+        {
+          "domain": "负荷",
+          "title": "揭阳普宁供电局全力保障节日供电",
+          "url": "https://www.nfnews.com/content/j3kjPmaryA.html",
+          "summary": "营配联动，高铁站特巡测温"
+        },
+        {
+          "domain": "负荷",
+          "title": "海口供电局组建503人抢修队伍保障国庆电力供应",
+          "url": "https://www.hndnews.com/p/760684.html",
+          "summary": "19辆发电车15驻点值守"
+        },
+        {
+          "domain": "储能",
+          "title": "计及设施农业柔性负荷的农村配电网与储能数据驱动分布鲁棒协同规划",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1312905239804105219",
+          "summary": "洪少凌等，弃光降41.3%"
+        },
+        {
+          "domain": "其他",
+          "title": "南网超高压公司2026年第二批生产项目监测、检测服务公开招标项目中标公示",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444664.jhtml",
+          "summary": "中标公示｜物资工具类"
+        },
+        {
+          "domain": "其他",
+          "title": "南网超高压公司2026年第二批服务公开谈判采购项目（2026-FW-2-S-TP2）（导线及避雷线螺丝螺帽锈蚀处理等6个标的二次采购）中标公示",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444627.jhtml",
+          "summary": "中标公示｜物资工具类"
+        },
+        {
+          "domain": "国际",
+          "title": "老挝南塔河1号水电站下游右岸护岸滑坡隐患治理项目施工监理采购公告",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444588.jhtml",
+          "summary": "采购公告｜配电网"
+        },
+        {
+          "domain": "工程",
+          "title": "广东湛江供电局落地广东电网首个220千伏降35千伏与10千伏背靠背供电架构",
+          "url": "https://k.sina.com.cn/article_5787187353_158f17899020029dzk.html",
+          "summary": "装配式设备室与预制舱式台区变"
+        },
+        {
+          "domain": "工程",
+          "title": "广西灌阳抽水蓄能工程水库截流 十五五首次截流完成",
+          "url": "https://v.gxnews.com.cn/a/22001241",
+          "summary": "年消纳清洁能源21.6亿度"
+        },
+        {
+          "domain": "工程",
+          "title": "南方电网近2000个在建项目不停工 超4.4万建设者坚守",
+          "url": "https://www.toutiao.com/article/7691922471938720271/",
+          "summary": "1983个重大项目冲刺年度目标"
+        },
+        {
+          "domain": "工程",
+          "title": "命令滤波反步融合滑模自适应有限时间一致性的微电网二次控制",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1312895610596479441",
+          "summary": "王君等，孤岛微网快速稳定"
+        }
+      ]
+    },
     {
       "date": "2026-10-04",
       "note": "南方电网每日情报·2026-10-04（国庆假期·全新快照）",
