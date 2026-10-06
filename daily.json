@@ -1,6 +1,252 @@
 {
-  "updated": "2026-10-05",
+  "updated": "2026-10-06",
   "entries": [
+    {
+      "date": "2026-10-06",
+      "note": "南方电网每日情报·2026-10-06（国庆假期·全新快照）",
+      "items": [
+        {
+          "domain": "工程",
+          "title": "南网人工智能科技申请粤汉方言语音大模型专利",
+          "url": "https://www.163.com/dy/article/L8FSORTH0519QIKK.html",
+          "summary": "公开号CN122867642A，面向方言语音识别"
+        },
+        {
+          "domain": "工程",
+          "title": "南网数字电网科技申请光储联合电压协调控制专利",
+          "url": "https://www.163.com/dy/article/L8FS463C0519QIKK.html",
+          "summary": "公开号CN122869408A，平抑波动"
+        },
+        {
+          "domain": "工程",
+          "title": "南网数字电网科技申请多场景知识图谱构建专利",
+          "url": "https://dy.163.com/article/L8B8G6SD0519QIKK.html",
+          "summary": "公开号CN122862599A，支撑电网认知"
+        },
+        {
+          "domain": "绿电",
+          "title": "南方五省区高速充电量同比增近50%",
+          "url": "https://www.163.com/dy/article/L8FHBQHS05567I2C.html",
+          "summary": "假期绿色出行充电需求攀升"
+        },
+        {
+          "domain": "绿电",
+          "title": "南方电网顺易充充电量首破千万千瓦时",
+          "url": "https://stcn.com/article/kx-tag-detail.html?tag=5yn9Q3w7HG_p",
+          "summary": "高速充电网络单日创新高"
+        },
+        {
+          "domain": "负荷",
+          "title": "南方电网投入5万余人保障国庆电力供应",
+          "url": "https://finance.sina.com.cn/jjxw/2026-10-06/doc-iniufhft9292422.shtml",
+          "summary": "五省区充电量预计破1.1亿度"
+        },
+        {
+          "domain": "绿电",
+          "title": "南网新能源无功电压控制专利获中国专利金奖",
+          "url": "https://www.toutiao.com/article/7693029561759679011",
+          "summary": "新能源消纳关键技术突破"
+        },
+        {
+          "domain": "负荷",
+          "title": "深圳供电局组建99支队伍护航国庆保电",
+          "url": "https://www.sohu.com/a/1082228374_121384220",
+          "summary": "重点场所值守保供电"
+        },
+        {
+          "domain": "负荷",
+          "title": "南方电网5万余人保电背后的协同体系",
+          "url": "https://www.cs.com.cn/xwzx/01/2026/10/05/detail_2026100510042998.html",
+          "summary": "防灾应急与清洁消纳并重"
+        },
+        {
+          "domain": "国际",
+          "title": "南方电网澜湄国际能源有限责任公司2026年新闻影视类策划及制作传播项目服务类框架采购（公开招标...",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444701.jhtml",
+          "summary": "中标公示｜服务类"
+        },
+        {
+          "domain": "市场",
+          "title": "南网产业发展集团《新兴产业对外股权并购工作机制探索与实践》中介咨询服务项目中标公示",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444661.jhtml",
+          "summary": "中标公示｜服务类"
+        },
+        {
+          "domain": "其他",
+          "title": "深圳供电局有限公司2026年主网一次设备类（500kV交流隔离开关、500kV站用避雷器）第五批次物资专...",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444093.jhtml",
+          "summary": "采购公告｜物资工具类"
+        },
+        {
+          "domain": "市场",
+          "title": "广西送变电建设有限责任公司2026年第八批服务类公开询比采购项目采购公告",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444135.jhtml",
+          "summary": "采购公告｜服务类"
+        },
+        {
+          "domain": "其他",
+          "title": "海南电网能源发展有限公司2026年度第二批设备专项公开询比项目(二次采购)采购公告",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444132.jhtml",
+          "summary": "采购公告｜物资工具类"
+        },
+        {
+          "domain": "市场",
+          "title": "南方电网云南电动汽车服务有限公司2026年-2028年第二批服务（文山、临沧、保山、怒江整合）框架...",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444064.jhtml",
+          "summary": "采购公告｜服务类"
+        },
+        {
+          "domain": "储能",
+          "title": "南网储能天二公司屋面漏水维修、路基塌陷专项治理、绿化施工，海蓄公司边坡改造公开谈判采购采购...",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444006.jhtml",
+          "summary": "采购公告｜物资工具类"
+        },
+        {
+          "domain": "工程",
+          "title": "南网科研院申请电网惯量在线测量专利",
+          "url": "https://www.163.com/dy/article/L8AAO1AC0519QIKK.html",
+          "summary": "公开号CN122862732A，提升稳定感知"
+        },
+        {
+          "domain": "工程",
+          "title": "南网科研院申请虚拟电厂可调能力评估专利",
+          "url": "https://www.sohu.com/a/1083664268_114984",
+          "summary": "公开号CN122869743A，量化调节潜力"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "note": "南方电网每日情报·2026-10-06（国庆假期·全新快照）",
+      "items": [
+        {
+          "domain": "工程",
+          "title": "云南电网四端协同保供国庆假期民生用电",
+          "url": "https://yn.people.com.cn/BIG5/n2/2026/1002/c372455-41713581.html",
+          "summary": "口岸园区保供24小时生产"
+        },
+        {
+          "domain": "其他",
+          "title": "南网超高压福徐甲线R2充油海缆终端改造物资采购",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444088.jhtml",
+          "summary": "采购公告｜物资工具类"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-06",
+      "note": "南方电网每日情报·2026-10-06（国庆假期·全新快照）",
+      "items": [
+        {
+          "domain": "工程",
+          "title": "南网人工智能科技申请粤汉方言语音大模型专利",
+          "url": "https://www.163.com/dy/article/L8FSORTH0519QIKK.html",
+          "summary": "公开号CN122867642A，面向方言语音识别"
+        },
+        {
+          "domain": "工程",
+          "title": "南网数字电网科技申请光储联合电压协调控制专利",
+          "url": "https://www.163.com/dy/article/L8FS463C0519QIKK.html",
+          "summary": "公开号CN122869408A，平抑波动"
+        },
+        {
+          "domain": "工程",
+          "title": "南网数字电网科技申请多场景知识图谱构建专利",
+          "url": "https://dy.163.com/article/L8B8G6SD0519QIKK.html",
+          "summary": "公开号CN122862599A，支撑电网认知"
+        },
+        {
+          "domain": "绿电",
+          "title": "南方五省区高速充电量同比增近50%",
+          "url": "https://www.163.com/dy/article/L8FHBQHS05567I2C.html",
+          "summary": "假期绿色出行充电需求攀升"
+        },
+        {
+          "domain": "绿电",
+          "title": "南方电网顺易充充电量首破千万千瓦时",
+          "url": "https://stcn.com/article/kx-tag-detail.html?tag=5yn9Q3w7HG_p",
+          "summary": "高速充电网络单日创新高"
+        },
+        {
+          "domain": "负荷",
+          "title": "南方电网投入5万余人保障国庆电力供应",
+          "url": "https://finance.sina.com.cn/jjxw/2026-10-06/doc-iniufhft9292422.shtml",
+          "summary": "五省区充电量预计破1.1亿度"
+        },
+        {
+          "domain": "绿电",
+          "title": "南网新能源无功电压控制专利获中国专利金奖",
+          "url": "https://www.toutiao.com/article/7693029561759679011",
+          "summary": "新能源消纳关键技术突破"
+        },
+        {
+          "domain": "负荷",
+          "title": "深圳供电局组建99支队伍护航国庆保电",
+          "url": "https://www.sohu.com/a/1082228374_121384220",
+          "summary": "重点场所值守保供电"
+        },
+        {
+          "domain": "负荷",
+          "title": "南方电网5万余人保电背后的协同体系",
+          "url": "https://www.cs.com.cn/xwzx/01/2026/10/05/detail_2026100510042998.html",
+          "summary": "防灾应急与清洁消纳并重"
+        },
+        {
+          "domain": "国际",
+          "title": "南方电网澜湄国际能源有限责任公司2026年新闻影视类策划及制作传播项目服务类框架采购（公开招标...",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444701.jhtml",
+          "summary": "中标公示｜服务类"
+        },
+        {
+          "domain": "市场",
+          "title": "南网产业发展集团《新兴产业对外股权并购工作机制探索与实践》中介咨询服务项目中标公示",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444661.jhtml",
+          "summary": "中标公示｜服务类"
+        },
+        {
+          "domain": "其他",
+          "title": "深圳供电局有限公司2026年主网一次设备类（500kV交流隔离开关、500kV站用避雷器）第五批次物资专...",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444093.jhtml",
+          "summary": "采购公告｜物资工具类"
+        },
+        {
+          "domain": "市场",
+          "title": "广西送变电建设有限责任公司2026年第八批服务类公开询比采购项目采购公告",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444135.jhtml",
+          "summary": "采购公告｜服务类"
+        },
+        {
+          "domain": "其他",
+          "title": "海南电网能源发展有限公司2026年度第二批设备专项公开询比项目(二次采购)采购公告",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444132.jhtml",
+          "summary": "采购公告｜物资工具类"
+        },
+        {
+          "domain": "市场",
+          "title": "南方电网云南电动汽车服务有限公司2026年-2028年第二批服务（文山、临沧、保山、怒江整合）框架...",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444064.jhtml",
+          "summary": "采购公告｜服务类"
+        },
+        {
+          "domain": "储能",
+          "title": "南网储能天二公司屋面漏水维修、路基塌陷专项治理、绿化施工，海蓄公司边坡改造公开谈判采购采购...",
+          "url": "https://www.bidding.csg.cn/fzbgg/1200444006.jhtml",
+          "summary": "采购公告｜物资工具类"
+        },
+        {
+          "domain": "工程",
+          "title": "南网科研院申请电网惯量在线测量专利",
+          "url": "https://www.163.com/dy/article/L8AAO1AC0519QIKK.html",
+          "summary": "公开号CN122862732A，提升稳定感知"
+        },
+        {
+          "domain": "工程",
+          "title": "南网科研院申请虚拟电厂可调能力评估专利",
+          "url": "https://www.sohu.com/a/1083664268_114984",
+          "summary": "公开号CN122869743A，量化调节潜力"
+        }
+      ]
+    },
     {
       "date": "2026-10-05",
       "note": "南方电网每日情报·2026-10-05（国庆假期·全新快照）",
