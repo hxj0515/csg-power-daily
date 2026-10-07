@@ -1,6 +1,234 @@
 {
-  "updated": "2026-10-06",
+  "updated": "2026-10-07",
   "entries": [
+    {
+      "date": "2026-10-07",
+      "note": "南方电网每日情报·2026-10-07（国庆假期收官·全新快照）",
+      "items": [
+        {
+          "domain": "储能",
+          "title": "南网电力科技申请储能电站功率异常波动处理专利",
+          "url": "https://dy.163.com/article/L8FU0LHT0519QIKK.html",
+          "summary": "公开号CN122869442A，精准定位根因"
+        },
+        {
+          "domain": "工程",
+          "title": "南方电网申请最短传输时延路径测量方法专利",
+          "url": "https://dy.163.com/article/L8BCUL760519QIKK.html",
+          "summary": "公开号CN122870717A，优化网络时延"
+        },
+        {
+          "domain": "工程",
+          "title": "南网科研院申请复杂水力系统耦合抑制控制方法专利",
+          "url": "https://www.163.com/dy/article/L8BHN9R40519QIKK.html",
+          "summary": "公开号CN122857282A，实现主动控制"
+        },
+        {
+          "domain": "工程",
+          "title": "南网数字电网科技申请电鸿物联数字变电站近场运维专利",
+          "url": "https://www.163.com/dy/article/L88TQBEJ0519QIKK.html",
+          "summary": "公开号CN122871243A，打破协议壁垒"
+        },
+        {
+          "domain": "市场",
+          "title": "深圳光明虹桥公园车网互动超充示范站投运",
+          "url": "https://cj.sina.com.cn/articles/view/2131593523/7f0d893302001pajk",
+          "summary": "光储直柔微电网反向放电"
+        },
+        {
+          "domain": "绿电",
+          "title": "顺易充发布弥勒全域充电站点护航国庆出行",
+          "url": "https://www.toutiao.com/article/7691860794983694863/",
+          "summary": "16站点97把枪乡镇覆盖"
+        },
+        {
+          "domain": "储能",
+          "title": "广西灌阳抽蓄电站群完成十五五首次截流",
+          "url": "https://gx.people.com.cn/n2/2026/1005/c179430-41714583.html",
+          "summary": "年消纳清洁电能21.6亿度"
+        },
+        {
+          "domain": "市场",
+          "title": "铜仁供电局满格电力护航国庆出游",
+          "url": "https://www.toutiao.com/article/7692835399584842286/",
+          "summary": "16支队伍700余人待命"
+        },
+        {
+          "domain": "负荷",
+          "title": "都匀供电局国庆暴雨极速抢修守护万家灯火",
+          "url": "https://www.toutiao.com/article/7692124851057803819",
+          "summary": "两表一图应急机制复电"
+        },
+        {
+          "domain": "国际",
+          "title": "中老联合运行管理委员会成立共建跨境电网",
+          "url": "https://yndrc.yn.gov.cn/html/2026/yunnandongtai_1002/28652.html",
+          "summary": "500千伏联网安全运行机制"
+        },
+        {
+          "domain": "绿电",
+          "title": "假期电车出行迎充电考验 补能焦虑如何破局",
+          "url": "https://www.toutiao.com/article/7693024761706545715/",
+          "summary": "充电网络升级保障加力"
+        },
+        {
+          "domain": "绿电",
+          "title": "单日充电量首破千万 新能源基建甜蜜烦恼",
+          "url": "https://businesstimescn.com/articles/628238.html",
+          "summary": "节假日结构性缺口待解"
+        },
+        {
+          "domain": "市场",
+          "title": "云南电网2026年第四批科技项目服务物资合并类专项采购直接采购公示",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444728.jhtml",
+          "summary": "中标公示｜服务类"
+        },
+        {
+          "domain": "其他",
+          "title": "贵州电网物资类OS2省级主站基础功能及平台等招标公告",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444678.jhtml",
+          "summary": "招标公告｜物资工具类"
+        },
+        {
+          "domain": "其他",
+          "title": "贵州送变电物资类信息设备框架招标二次招标公告",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444658.jhtml",
+          "summary": "招标公告｜物资工具类"
+        },
+        {
+          "domain": "工程",
+          "title": "南方电网与宇树科技签署具身智能机器人合作协议",
+          "url": "https://www.toutiao.com/article/7691518221853278763/",
+          "summary": "机器人上岗解放高危人力"
+        },
+        {
+          "domain": "工程",
+          "title": "大瓦特模型体系调用超200亿次 让停电变无感",
+          "url": "https://gzdaily.dayoo.com/pc/html/2026-10/07/content_869_915929.htm",
+          "summary": "营配协同智能体闭环处置"
+        },
+        {
+          "domain": "工程",
+          "title": "玉溪小易智能巡检车实现车机空地协同巡检",
+          "url": "https://news.dayoo.com/guangdong/202610/03/139996_55009748.htm",
+          "summary": "L4自动驾驶搭载无人机"
+        }
+      ]
+    },
+    {
+      "date": "2026-10-07",
+      "note": "南方电网每日情报·2026-10-07（国庆假期收官·全新快照）",
+      "items": [
+        {
+          "domain": "储能",
+          "title": "南网电力科技申请储能电站功率异常波动处理专利",
+          "url": "https://dy.163.com/article/L8FU0LHT0519QIKK.html",
+          "summary": "公开号CN122869442A，精准定位根因"
+        },
+        {
+          "domain": "工程",
+          "title": "南方电网申请最短传输时延路径测量方法专利",
+          "url": "https://dy.163.com/article/L8BCUL760519QIKK.html",
+          "summary": "公开号CN122870717A，优化网络时延"
+        },
+        {
+          "domain": "工程",
+          "title": "南网科研院申请复杂水力系统耦合抑制控制方法专利",
+          "url": "https://www.163.com/dy/article/L8BHN9R40519QIKK.html",
+          "summary": "公开号CN122857282A，实现主动控制"
+        },
+        {
+          "domain": "工程",
+          "title": "南网数字电网科技申请电鸿物联数字变电站近场运维专利",
+          "url": "https://www.163.com/dy/article/L88TQBEJ0519QIKK.html",
+          "summary": "公开号CN122871243A，打破协议壁垒"
+        },
+        {
+          "domain": "市场",
+          "title": "深圳光明虹桥公园车网互动超充示范站投运",
+          "url": "https://cj.sina.com.cn/articles/view/2131593523/7f0d893302001pajk",
+          "summary": "光储直柔微电网反向放电"
+        },
+        {
+          "domain": "绿电",
+          "title": "顺易充发布弥勒全域充电站点护航国庆出行",
+          "url": "https://www.toutiao.com/article/7691860794983694863/",
+          "summary": "16站点97把枪乡镇覆盖"
+        },
+        {
+          "domain": "储能",
+          "title": "广西灌阳抽蓄电站群完成十五五首次截流",
+          "url": "https://gx.people.com.cn/n2/2026/1005/c179430-41714583.html",
+          "summary": "年消纳清洁电能21.6亿度"
+        },
+        {
+          "domain": "市场",
+          "title": "铜仁供电局满格电力护航国庆出游",
+          "url": "https://www.toutiao.com/article/7692835399584842286/",
+          "summary": "16支队伍700余人待命"
+        },
+        {
+          "domain": "负荷",
+          "title": "都匀供电局国庆暴雨极速抢修守护万家灯火",
+          "url": "https://www.toutiao.com/article/7692124851057803819",
+          "summary": "两表一图应急机制复电"
+        },
+        {
+          "domain": "国际",
+          "title": "中老联合运行管理委员会成立共建跨境电网",
+          "url": "https://yndrc.yn.gov.cn/html/2026/yunnandongtai_1002/28652.html",
+          "summary": "500千伏联网安全运行机制"
+        },
+        {
+          "domain": "绿电",
+          "title": "假期电车出行迎充电考验 补能焦虑如何破局",
+          "url": "https://www.toutiao.com/article/7693024761706545715/",
+          "summary": "充电网络升级保障加力"
+        },
+        {
+          "domain": "绿电",
+          "title": "单日充电量首破千万 新能源基建甜蜜烦恼",
+          "url": "https://businesstimescn.com/articles/628238.html",
+          "summary": "节假日结构性缺口待解"
+        },
+        {
+          "domain": "市场",
+          "title": "云南电网2026年第四批科技项目服务物资合并类专项采购直接采购公示",
+          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444728.jhtml",
+          "summary": "中标公示｜服务类"
+        },
+        {
+          "domain": "其他",
+          "title": "贵州电网物资类OS2省级主站基础功能及平台等招标公告",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444678.jhtml",
+          "summary": "招标公告｜物资工具类"
+        },
+        {
+          "domain": "其他",
+          "title": "贵州送变电物资类信息设备框架招标二次招标公告",
+          "url": "https://www.bidding.csg.cn/zbgg/1200444658.jhtml",
+          "summary": "招标公告｜物资工具类"
+        },
+        {
+          "domain": "工程",
+          "title": "南方电网与宇树科技签署具身智能机器人合作协议",
+          "url": "https://www.toutiao.com/article/7691518221853278763/",
+          "summary": "机器人上岗解放高危人力"
+        },
+        {
+          "domain": "工程",
+          "title": "大瓦特模型体系调用超200亿次 让停电变无感",
+          "url": "https://gzdaily.dayoo.com/pc/html/2026-10/07/content_869_915929.htm",
+          "summary": "营配协同智能体闭环处置"
+        },
+        {
+          "domain": "工程",
+          "title": "玉溪小易智能巡检车实现车机空地协同巡检",
+          "url": "https://news.dayoo.com/guangdong/202610/03/139996_55009748.htm",
+          "summary": "L4自动驾驶搭载无人机"
+        }
+      ]
+    },
     {
       "date": "2026-10-06",
       "note": "南方电网每日情报·2026-10-06（国庆假期·全新快照）",
