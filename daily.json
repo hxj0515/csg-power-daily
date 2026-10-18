@@ -1,6 +1,204 @@
 {
-  "updated": "2026-10-17",
+  "updated": "2026-10-18",
   "entries": [
+    {
+      "date": "2026-10-18",
+      "note": "模型/产品/行业/论文/观点 五板块聚合，共32条（招投标 30 条见日报主表）",
+      "items": [
+        {
+          "domain": "智能电网",
+          "title": "“吠云”四足机器人上岗巡检变电站",
+          "url": "https://news.gmw.cn/2026-10/18/content_39051771.htm",
+          "summary": "具身智能进入变电运维,机器人按设定路线自主巡检设备"
+        },
+        {
+          "domain": "智能电网",
+          "title": "贵州电网规划数据应用平台十年重塑规划范式",
+          "url": "http://gz.news.cn/20261017/b1eb59d697a146d18c5585895e6fdc3d/c.html",
+          "summary": "打通59套业务系统,半小时集齐规划数据,效率提升九成以上"
+        },
+        {
+          "domain": "智能电网",
+          "title": "“大瓦特·知音”如何让AI听懂1.2亿用户",
+          "url": "https://field.10jqka.com.cn/20261016/c680791468.shtml",
+          "summary": "电力客服智能体采用混合架构加RAG,智能应答覆盖服务全流程"
+        },
+        {
+          "domain": "智能电网",
+          "title": "南网数字集团以AI守护新型电网网络安全",
+          "url": "https://m.10jqka.com.cn/20261015/c680725691.shtml",
+          "summary": "“大瓦特”已孵化3.1万个智能体,前瞻布局AI原生安全架构"
+        },
+        {
+          "domain": "智能电网",
+          "title": "电碳算协同运营平台贯通电碳算多维数据",
+          "url": "https://www.scdsjzx.cn/scdsjzx/2407hydt/2026/10/15/16d2db0cdafc4c09ba36d2a9411cbf85.shtml",
+          "summary": "绿电消纳响应达分钟级,部分数据中心PUE逼近1.1"
+        },
+        {
+          "domain": "电力电子",
+          "title": "首台固态变压器在浙江乐清量产下线",
+          "url": "https://www.cnr.cn/zjfw/qxkx/20261018/t20261018_527845573.shtml",
+          "summary": "转换效率超98.5%,体积缩减40%至60%,支持双向功率调控"
+        },
+        {
+          "domain": "电能质量",
+          "title": "新能源电站无功电压控制方法获中国专利金奖",
+          "url": "https://www.stdaily.com/web/gdxw/2026-10/17/content_598014.html",
+          "summary": "分层协同自主控制,让机组毫秒级支撑电网电压"
+        },
+        {
+          "domain": "智能电网",
+          "title": "多场景边缘侧智能采集装置通过成果鉴定",
+          "url": "https://finance.sina.com.cn/stock/s/2026-10-17/doc-inivnvkm6565442.shtml",
+          "summary": "核心元器件100%国产化,故障响应时间缩短40%以上"
+        },
+        {
+          "domain": "服务类",
+          "title": "玉溪江川推进重卡充电基础设施建设",
+          "url": "https://finance.sina.com.cn/wm/2026-10-17/doc-inivpsqm8096871.shtml",
+          "summary": "在线监测充电负荷与电压,推广有序充电引导错峰充电"
+        },
+        {
+          "domain": "智能电网",
+          "title": "数智赋能输电监控质效全面升级",
+          "url": "https://m.10jqka.com.cn/20261016/c680768945.shtml",
+          "summary": "外破隐患研判耗时缩短60%,单次闭环平均节省20分钟"
+        },
+        {
+          "domain": "智能电网",
+          "title": "东营500千伏输变电工程冲刺投产",
+          "url": "https://www.cnr.cn/nmgfw/yaowen/20261018/t20261018_527845433.shtml",
+          "summary": "新建两组1200兆伏安主变,保障算力园区用电负荷"
+        },
+        {
+          "domain": "电力电子",
+          "title": "藏粤直流工程线路建设全面提速",
+          "url": "https://www.stcn.com/article/detail/4223817.html",
+          "summary": "广西段首基塔开始浇筑,四端柔直组网,2029年建成投运"
+        },
+        {
+          "domain": "服务类",
+          "title": "黔南成立贵州首个电力要素保障专班",
+          "url": "https://www.cnr.cn/gz/hezuo/20261017/t20261017_527845240.shtml",
+          "summary": "年内投入15.5亿元,5个500千伏项目完成可研批复"
+        },
+        {
+          "domain": "服务类",
+          "title": "云南修订7个电力市场实施细则",
+          "url": "https://www.163.com/dy/article/L9EH1EA605568W0A.html",
+          "summary": "试点用户侧现货节点电价,2027年集团交易电量设上限"
+        },
+        {
+          "domain": "服务类",
+          "title": "国家能源局探索建立省间输电权交易机制",
+          "url": "https://finance.sina.com.cn/esg/2026-10-17/doc-inivqccx7061016.shtml",
+          "summary": "扩大跨省区交易规模,推动跨省区与省内联合交易"
+        },
+        {
+          "domain": "服务类",
+          "title": "两广售电市场承压 广东发出风险提醒",
+          "url": "https://www.163.com/dy/article/L9FKGRGF05567I2C.html",
+          "summary": "广东上半年298家售电公司亏损,占比接近六成"
+        },
+        {
+          "domain": "配电网",
+          "title": "汕尾第58座变电站建成投运",
+          "url": "https://m.21jingji.com/article/20261017/herald/ebf45be98a87230db21e900622bf643f.html",
+          "summary": "110千伏象山站新增10千伏出线4回,可转移负荷43314千伏安"
+        },
+        {
+          "domain": "电能质量",
+          "title": "政企户协同筑牢广交会高品质供电根基",
+          "url": "https://www.toutiao.com/article/7697456307665633827",
+          "summary": "电能质量治理关口前移,电压暂降防控由被动转主动"
+        },
+        {
+          "domain": "服务类",
+          "title": "弥勒供电局以可靠电力守护老年群体",
+          "url": "https://news.qq.com/rain/a/20261017A0DO1Z00",
+          "summary": "排查养老院配电线路隐患,入户更换老旧电气配件"
+        },
+        {
+          "domain": "服务类",
+          "title": "广东明确新能源就近消纳价格机制",
+          "url": "https://newenergy.in-en.com/html/newenergy-2457909.shtml",
+          "summary": "下网电量不再缴系统备用费与输配环节电量电费"
+        },
+        {
+          "domain": "应急工具类",
+          "title": "应对冰灾的山区智慧养殖园区复电优化策略",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1315708333990494825",
+          "summary": "构建“园区-单元”双层协同韧性架构与改进遗传算法复电策略"
+        },
+        {
+          "domain": "电力电子",
+          "title": "高压直流输电系统建模及稳定性分析综述",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1315340434159325419",
+          "summary": "系统梳理LCC与MMC换流器建模方法及大小信号稳性分析思路"
+        },
+        {
+          "domain": "智能电网",
+          "title": "面向输电网低碳调度的分层深度学习碳强度预测方法",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1315334966670147943",
+          "summary": "CNN-GRU双阶段注意力分层模型,调度使碳排放降低28.12%"
+        },
+        {
+          "domain": "智能电网",
+          "title": "多地铁线路杂散电流对变电站直流偏磁影响特性研究",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1315337145346834819",
+          "summary": "提出多地铁线路与区域电网耦合建模方法,最大相对误差约13%"
+        },
+        {
+          "domain": "配电网",
+          "title": "计及设施农业柔性负荷的农村配电网与储能协同规划",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1312905239804105219",
+          "summary": "考虑设施农业负荷不确定性,提出数据驱动分布鲁棒规划方法"
+        },
+        {
+          "domain": "智能电网",
+          "title": "命令滤波反步融合滑模的微电网二次控制",
+          "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/1312895610596479441",
+          "summary": "有限时间一致性控制律提升孤岛微网频率收敛速度与抗扰性"
+        },
+        {
+          "domain": "电力电子",
+          "title": "储能产业向“拼价值、拼盈利”阶段演进",
+          "url": "https://www.ce.cn/cysc/newmain/yc/jsxw/202610/t20261017_3261118.shtml",
+          "summary": "由拼装机转向全生命周期价值,收益转向多品种协同"
+        },
+        {
+          "domain": "电力电子",
+          "title": "50倍之后 储能要自己活下来",
+          "url": "https://mcn.solarbe.com/news/20261017/50030521.html",
+          "summary": "南方区域取消储能现货与调频互斥限制,收益三条腿走路"
+        },
+        {
+          "domain": "智能电网",
+          "title": "深化拓展“人工智能+” 国常会最新部署",
+          "url": "https://nw.eastday.com/zq/zh/20261017/2c4e0c474f035df22c087f27803a4b37.html",
+          "summary": "强调促进算电协同,以落地应用牵引技术创新"
+        },
+        {
+          "domain": "电力电子",
+          "title": "“任丘样本”给行业上了一课",
+          "url": "https://www.163.com/dy/article/L9FPD49705568FTN.html",
+          "summary": "锂钠双技术路线示范落地,电芯容量由电站收益模型决定"
+        },
+        {
+          "domain": "电力电子",
+          "title": "以绿电直连、虚拟电厂、零碳园区构建闭环",
+          "url": "https://www.toutiao.com/article/7697096208594125362/",
+          "summary": "三者是同一赛道三个环节,协同才能五重收益叠加"
+        },
+        {
+          "domain": "服务类",
+          "title": "V2G车网互动试点扩容 城市准备好了吗",
+          "url": "https://www.escn.com.cn/news/show-2333193.html",
+          "summary": "深圳单站最大兆瓦级车网互动站已接入虚拟电厂管理中心"
+        }
+      ]
+    },
     {
       "date": "2026-10-17",
       "note": "模型/产品/行业/论文/观点 五板块聚合，共34条（招投标 27 条见日报主表）",
@@ -1696,120 +1894,6 @@
           "title": "基于伯恩斯坦多项式的微电网连续时间聚合方法",
           "url": "https://nfdwjs.csg.cn/joweb/nfdw/CN/10.13648/j.cnki.issn1674-0629.2026.08.006",
           "summary": "伯恩斯坦多项式建模微电网连续调节"
-        }
-      ]
-    },
-    {
-      "date": "2026-10-07",
-      "note": "南方电网每日情报·2026-10-07（国庆假期收官·全新快照）",
-      "items": [
-        {
-          "domain": "储能",
-          "title": "南网电力科技申请储能电站功率异常波动处理专利",
-          "url": "https://dy.163.com/article/L8FU0LHT0519QIKK.html",
-          "summary": "公开号CN122869442A，精准定位根因"
-        },
-        {
-          "domain": "工程",
-          "title": "南方电网申请最短传输时延路径测量方法专利",
-          "url": "https://dy.163.com/article/L8BCUL760519QIKK.html",
-          "summary": "公开号CN122870717A，优化网络时延"
-        },
-        {
-          "domain": "工程",
-          "title": "南网科研院申请复杂水力系统耦合抑制控制方法专利",
-          "url": "https://www.163.com/dy/article/L8BHN9R40519QIKK.html",
-          "summary": "公开号CN122857282A，实现主动控制"
-        },
-        {
-          "domain": "工程",
-          "title": "南网数字电网科技申请电鸿物联数字变电站近场运维专利",
-          "url": "https://www.163.com/dy/article/L88TQBEJ0519QIKK.html",
-          "summary": "公开号CN122871243A，打破协议壁垒"
-        },
-        {
-          "domain": "市场",
-          "title": "深圳光明虹桥公园车网互动超充示范站投运",
-          "url": "https://cj.sina.com.cn/articles/view/2131593523/7f0d893302001pajk",
-          "summary": "光储直柔微电网反向放电"
-        },
-        {
-          "domain": "绿电",
-          "title": "顺易充发布弥勒全域充电站点护航国庆出行",
-          "url": "https://www.toutiao.com/article/7691860794983694863/",
-          "summary": "16站点97把枪乡镇覆盖"
-        },
-        {
-          "domain": "储能",
-          "title": "广西灌阳抽蓄电站群完成十五五首次截流",
-          "url": "https://gx.people.com.cn/n2/2026/1005/c179430-41714583.html",
-          "summary": "年消纳清洁电能21.6亿度"
-        },
-        {
-          "domain": "市场",
-          "title": "铜仁供电局满格电力护航国庆出游",
-          "url": "https://www.toutiao.com/article/7692835399584842286/",
-          "summary": "16支队伍700余人待命"
-        },
-        {
-          "domain": "负荷",
-          "title": "都匀供电局国庆暴雨极速抢修守护万家灯火",
-          "url": "https://www.toutiao.com/article/7692124851057803819",
-          "summary": "两表一图应急机制复电"
-        },
-        {
-          "domain": "国际",
-          "title": "中老联合运行管理委员会成立共建跨境电网",
-          "url": "https://yndrc.yn.gov.cn/html/2026/yunnandongtai_1002/28652.html",
-          "summary": "500千伏联网安全运行机制"
-        },
-        {
-          "domain": "绿电",
-          "title": "假期电车出行迎充电考验 补能焦虑如何破局",
-          "url": "https://www.toutiao.com/article/7693024761706545715/",
-          "summary": "充电网络升级保障加力"
-        },
-        {
-          "domain": "绿电",
-          "title": "单日充电量首破千万 新能源基建甜蜜烦恼",
-          "url": "https://businesstimescn.com/articles/628238.html",
-          "summary": "节假日结构性缺口待解"
-        },
-        {
-          "domain": "市场",
-          "title": "云南电网2026年第四批科技项目服务物资合并类专项采购直接采购公示",
-          "url": "https://www.bidding.csg.cn/zbhxrgs/1200444728.jhtml",
-          "summary": "中标公示｜服务类"
-        },
-        {
-          "domain": "其他",
-          "title": "贵州电网物资类OS2省级主站基础功能及平台等招标公告",
-          "url": "https://www.bidding.csg.cn/zbgg/1200444678.jhtml",
-          "summary": "招标公告｜物资工具类"
-        },
-        {
-          "domain": "其他",
-          "title": "贵州送变电物资类信息设备框架招标二次招标公告",
-          "url": "https://www.bidding.csg.cn/zbgg/1200444658.jhtml",
-          "summary": "招标公告｜物资工具类"
-        },
-        {
-          "domain": "工程",
-          "title": "南方电网与宇树科技签署具身智能机器人合作协议",
-          "url": "https://www.toutiao.com/article/7691518221853278763/",
-          "summary": "机器人上岗解放高危人力"
-        },
-        {
-          "domain": "工程",
-          "title": "大瓦特模型体系调用超200亿次 让停电变无感",
-          "url": "https://gzdaily.dayoo.com/pc/html/2026-10/07/content_869_915929.htm",
-          "summary": "营配协同智能体闭环处置"
-        },
-        {
-          "domain": "工程",
-          "title": "玉溪小易智能巡检车实现车机空地协同巡检",
-          "url": "https://news.dayoo.com/guangdong/202610/03/139996_55009748.htm",
-          "summary": "L4自动驾驶搭载无人机"
         }
       ]
     },
