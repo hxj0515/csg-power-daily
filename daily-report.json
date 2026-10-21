@@ -60,6 +60,15 @@
       "icon": "📦",
       "items": [
         {
+          "title": "全国首个“不停电”自愈型城中村项目在深投运",
+          "source": "深圳特区报",
+          "domain": "低压智能台区",
+          "date": "2026年10月21日",
+          "summary": "白石龙村5台变压器末端互联，80台智能开关组8组三供一备网架",
+          "url": "https://www.sohu.com/a/1090455338_121384255",
+          "sectionId": "product"
+        },
+        {
           "title": "紧凑化经济型中压直流固态变压器在横琴投运",
           "source": "南方电网",
           "domain": "电力电子",
@@ -120,6 +129,24 @@
       "name": "行业动态",
       "icon": "📰",
       "items": [
+        {
+          "title": "东莞分布式光伏并网容量突破500万千瓦",
+          "source": "羊城晚报",
+          "domain": "配电网",
+          "date": "2026年10月21日",
+          "summary": "年供清洁电约55亿千瓦时，配网投16.3亿提升承载力216万千瓦",
+          "url": "https://www.toutiao.com/article/7698892739080929833/",
+          "sectionId": "industry"
+        },
+        {
+          "title": "六网协同释放乘数效应 广东电网先行试点",
+          "source": "人民日报",
+          "domain": "智能电网",
+          "date": "2026年10月21日",
+          "summary": "谋划电碳算协同、多站合一等场景，2026年建首批协同示范",
+          "url": "https://news.qq.com/rain/a/20261021A0303X00",
+          "sectionId": "industry"
+        },
         {
           "title": "南方电网五项场景入选国家首批标志性重大应用场景",
           "source": "科技日报",
@@ -190,24 +217,6 @@
           "date": "2026年10月20日",
           "summary": "装机2万千瓦，年均上网电量3178万千瓦时",
           "url": "http://static.cninfo.com.cn/finalpage/2026-10-20/1225610134.PDF",
-          "sectionId": "industry"
-        },
-        {
-          "title": "贵州前三季度全社会用电量增4.05%",
-          "source": "北极星",
-          "domain": "服务类",
-          "date": "2026年10月19日",
-          "summary": "达1578.25亿千瓦时，充换电服务业用电增47.86%",
-          "url": "https://news.bjx.com.cn/html/20261019/1516696.shtml",
-          "sectionId": "industry"
-        },
-        {
-          "title": "关岭146项配网工程抢抓窗口期冬前投运",
-          "source": "今日头条",
-          "domain": "配电网",
-          "date": "2026年10月19日",
-          "summary": "112项已投运，台区增容翻倍，故障处置时间缩短近半",
-          "url": "https://www.toutiao.com/article/7698182101463515698/",
           "sectionId": "industry"
         }
       ]
